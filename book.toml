@@ -1,0 +1,10 @@
+[book]
+authors = ["Robert N. M. Watson"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Getting Started with CheriBSD"
+
+[output.html]
+git-repository-url = "https://github.com/CTSRD-CHERI/cheribsd-getting-started"
+site-url = "/cheribsd-getting-started/"
