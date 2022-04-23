@@ -1,0 +1,116 @@
+name: Build book
+
+on:
+  push:
+    branches-ignore:
+      - gh-pages
+  release:
+    types:
+      - created
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Install cargo
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+
+      - name: Install mdbook
+        run: curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.2/mdbook-v0.4.2-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=$HOME/.cargo/bin
+
+      - name: Checkout source
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: mdbook build
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: book
+          path: book
+
+  draft-release:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    needs: build
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: book
+          path: cheribsd-getting-started-snapshot
+
+      - name: Create archive
+        run: zip -r cheribsd-getting-started-snapshot-${{ github.sha }}.zip cheribsd-getting-started-snapshot
+
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date -u +'%Y%m%d')"
+
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: draft-${{ steps.date.outputs.date }}
+          release_name: Draft release ${{ steps.date.outputs.date }}
+          body: Latest snapshot (${{ github.sha }})
+          draft: true
+          prerelease: true
+
+      - name: Upload release asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: cheribsd-getting-started-snapshot-${{ github.sha }}.zip
+          asset_name: cheribsd-getting-started-snapshot-${{ github.sha }}.zip
+          asset_content_type: application/zip
+
+  release:
+    if: github.event_name == 'release' && github.event.action == 'created'
+    needs: build
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: book
+          path: cheribsd-getting-started-${{ github.event.release.tag_name }}
+
+      - name: Create archive
+        run: zip -r cheribsd-getting-started-${{ github.event.release.tag_name }}.zip cheribsd-getting-started-${{ github.event.release.tag_name }}
+
+      - name: Upload release asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: cheribsd-getting-started-${{ github.event.release.tag_name }}.zip
+          asset_name: cheribsd-getting-started-${{ github.event.release.tag_name }}.zip
+          asset_content_type: application/zip
+
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    needs: build
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: book
+          path: public
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
