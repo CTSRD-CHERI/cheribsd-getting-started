@@ -168,11 +168,9 @@
                         <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
 <p><a href="https://www.cheribsd.org/">CheriBSD</a> is a CHERI-extended version of the
 open-source <a href="https://www.freebsd.org/">FreeBSD</a> operating system.
-CheriBSD is a reference design for how to integrate CHERI support into an
-operating system.
 It is intended to:</p>
 <ul>
-<li>Provide a clean and in-depth illustration and template for how CHERI support
+<li>Provide a clean, in-depth illustration and template for how CHERI support
 can be integrated with a general-purpose, MMU-enabled operating system;</li>
 <li>Act as an OS research platform for how operating systems can use CHERI;</li>
 <li>Enable validation and evaluation of CHERI-extended architectures and
@@ -191,6 +189,11 @@ of our downloadable pre-compiled images.
 You may want to run directly from a live image, or alternatively want to use
 an installer image to install onto other media.</p>
 <h1><a class="header" href="#differences-between-cheribsd-and-freebsd" id="differences-between-cheribsd-and-freebsd">Differences between CheriBSD and FreeBSD</a></h1>
+<p>CheriBSD extends FreeBSD with added CHERI-enabled features, such as kernel and
+userspace memory safety.
+Some of these features are in the main CheriBSD branch; other experimental
+features  remain on development branches.
+Certain FreeBSD features are not yet available in CheriBSD.</p>
 <h2><a class="header" href="#new-cheri-based-features" id="new-cheri-based-features">New CHERI-based features</a></h2>
 <p>CheriBSD extends FreeBSD with the following CHERI-based features:</p>
 <ul>
@@ -213,7 +216,7 @@ an installer image to install onto other media.</p>
 </ul>
 </li>
 <li>Experimental temporally safe userspace (on a development branch)</li>
-<li>Two experimental OS compartmentalization models:
+<li>Experimental OS compartmentalization models:
 <ul>
 <li>Colocated processes (co-processes) compartmentalization model (on a
 development branch)</li>
@@ -233,13 +236,13 @@ Morello only)</li>
 <p>Two types of CheriBSD images may be download:</p>
 <ul>
 <li>
-<p><em>memstick</em> images that boot and automatically run <code>bsdinstall</code>, the FreeBSD
+<p><em>memstick images</em> that boot and automatically run <code>bsdinstall</code>, the FreeBSD
 installer, which can be used to prepare a filesystem on a disk, and then
 install CheriBSD onto it.
 These will typically be used on Arm Morello boards.</p>
 </li>
 <li>
-<p><em>live</em> images that boot CheriBSD to a login prompt for interactive use.
+<p><em>live images</em> that boot CheriBSD to a login prompt for interactive use.
 These will typically be used on instruction-set emulators such as QEMU and
 the Arm Morello FVP.</p>
 </li>
