@@ -34,7 +34,7 @@ jobs:
           path: book
 
   draft-release:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-20.04
     steps:
@@ -100,7 +100,7 @@ jobs:
           asset_content_type: application/zip
 
   deploy:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-20.04
     steps:
