@@ -2,11 +2,9 @@
 
 [CheriBSD](https://www.cheribsd.org/) is a CHERI-extended version of the
 open-source [FreeBSD](https://www.freebsd.org/) operating system.
-CheriBSD is a reference design for how to integrate CHERI support into an
-operating system.
 It is intended to:
 
-- Provide a clean and in-depth illustration and template for how CHERI support
+- Provide a clean, in-depth illustration and template for how CHERI support
   can be integrated with a general-purpose, MMU-enabled operating system;
 - Act as an OS research platform for how operating systems can use CHERI;
 - Enable validation and evaluation of CHERI-extended architectures and

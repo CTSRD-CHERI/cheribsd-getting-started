@@ -1,5 +1,11 @@
 # Differences between CheriBSD and FreeBSD
 
+CheriBSD extends FreeBSD with added CHERI-enabled features, such as kernel and
+userspace memory safety.
+Some of these features are in the main CheriBSD branch; other experimental
+features  remain on development branches.
+Certain FreeBSD features are not yet available in CheriBSD.
+
 ## New CHERI-based features
 
 CheriBSD extends FreeBSD with the following CHERI-based features:
@@ -14,7 +20,7 @@ CheriBSD extends FreeBSD with the following CHERI-based features:
   - CheriABI packages (experimental)
   - Hybrid packages
 - Experimental temporally safe userspace (on a development branch)
-- Two experimental OS compartmentalization models:
+- Experimental OS compartmentalization models:
   - Colocated processes (co-processes) compartmentalization model (on a
     development branch)
   - Dynamic-linker-based compartmentalization model (on a development branch)
