@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Introduction - Getting Started with CheriBSD</title>
+        <title>Downloading CheriBSD images - Getting Started with CheriBSD</title>
         
         
 
@@ -93,7 +93,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction/index.html" class="active"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../differences-from-freebsd/index.html"><strong aria-hidden="true">2.</strong> Differences from FreeBSD</a></li><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">3.</strong> Downloading CheriBSD images</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../differences-from-freebsd/index.html"><strong aria-hidden="true">2.</strong> Differences from FreeBSD</a></li><li class="chapter-item expanded "><a href="../downloading/index.html" class="active"><strong aria-hidden="true">3.</strong> Downloading CheriBSD images</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -163,42 +163,47 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
-<p><a href="https://www.cheribsd.org/">CheriBSD</a> is a CHERI-extended version of the
-open-source <a href="https://www.freebsd.org/">FreeBSD</a> operating system.
-CheriBSD is a reference design for how to integrate CHERI support into an
-operating system.
-It is intended to:</p>
+                        <h1><a class="header" href="#downloading-cheribsd-images" id="downloading-cheribsd-images">Downloading CheriBSD images</a></h1>
+<p>Two types of CheriBSD images may be download:</p>
 <ul>
-<li>Provide a clean and in-depth illustration and template for how CHERI support
-can be integrated with a general-purpose, MMU-enabled operating system;</li>
-<li>Act as an OS research platform for how operating systems can use CHERI;</li>
-<li>Enable validation and evaluation of CHERI-extended architectures and
-microarchitectures;</li>
-<li>Support the development and evaluation of CHERI-enabled applications; and</li>
-<li>Provide a foundation for CHERI-enabled demonstrations.</li>
+<li>
+<p><em>memstick</em> images that boot and automatically run <code>bsdinstall</code>, the FreeBSD
+installer, which can be used to prepare a filesystem on a disk, and then
+install CheriBSD onto it.
+These will typically be used on Arm Morello boards.</p>
+</li>
+<li>
+<p><em>live</em> images that boot CheriBSD to a login prompt for interactive use.
+These will typically be used on instruction-set emulators such as QEMU and
+the Arm Morello FVP.</p>
+</li>
 </ul>
-<p>This guide will support you in getting up and running with CheriBSD on the
-CHERI-RISC-V and Arm Morello platforms.
-As platforms vary substantially, from instruction-set emulators and executable
-formal models through to FPGA- and ASIC-based hardware implementations, there
-are several paths that can be taken to reach a shell prompt and start
-productive work.
-You might find that you want to build CheriBSD from scratch, or simply use one
-of our downloadable pre-compiled images.
-You may want to run directly from a live image, or alternatively want to use
-an installer image to install onto other media.</p>
+<p>Both can be downloaded from the <a href="https://www.cheribsd.org/">CheriBSD website</a>.</p>
+<h2><a class="header" href="#writing-a-memstick-image-to-a-usb-stick" id="writing-a-memstick-image-to-a-usb-stick">Writing a memstick image to a USB stick</a></h2>
+<p><em>memstick</em> images are typically decompressed using the UNIX <code>unxz</code> command:</p>
+<pre><code>unxz cheribsd-memstick-dev-arm64-aarch64c-2022-04-05.img.xz
+</code></pre>
+<p>and then written to a USB stick using the UNIX <code>dd</code> command:</p>
+<pre><code>dd if=cheribsd-memstick-dev-arm64-aarch64c-2022-04-05.img of=/dev/DISK bs=1048576
+</code></pre>
+<p>Here, <em>DISK</em> should be replaced with the name of the appropriate device.</p>
+<h2><a class="header" href="#using-a-live-image" id="using-a-live-image">Using a live image</a></h2>
+<p>Live images are typically decompressed using the UNIX <code>unxz</code> command:</p>
+<pre><code>unxz cheribsd-memstick-dev-arm64-aarch64c-2022-04-05.img.xz
+</code></pre>
+<p>The specific command line to use for a live image will depend on the target
+execution environment.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-
-                        
-                            <a rel="next" href="../differences-from-freebsd/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                            <a rel="prev" href="../differences-from-freebsd/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
                             </a>
+                        
+
                         
 
                         <div style="clear: both"></div>
@@ -208,11 +213,11 @@ an installer image to install onto other media.</p>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-
-                
-                    <a rel="next" href="../differences-from-freebsd/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                    <a rel="prev" href="../differences-from-freebsd/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
                     </a>
+                
+
                 
             </nav>
 
