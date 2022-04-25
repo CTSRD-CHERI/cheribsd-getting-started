@@ -226,6 +226,24 @@ development branch)</li>
 <li>Experimental CHERI-extended bhyve hypervisor (on a development branch) (on
 Morello only)</li>
 </ul>
+<h2><a class="header" href="#64-bit-and-cheriabi-packages" id="64-bit-and-cheriabi-packages">64-bit and CheriABI packages</a></h2>
+<p>CheriBSD on Morello ships with both hybrid and CheriABI packages
+(compilations) of the FreeBSD ports collection.
+The former is considered suitable for <em>day-to-day use</em> on Morello, providing
+a large suite of open-source applications that make Morello boards usable
+computers.
+The latter is considered <em>experimental</em>, as, at this time, only a modest
+portion of the ports collection builds for CheriABI, and they have seen little
+validation.
+Both hybrid and CheriABI packages can be installed via two independent
+instances of the package system in CheriBSD, one for each ABI.
+The intention is that, over time, the CheriABI packages will become more
+mature, and hence the preferred collection for day-to-day use.</p>
+<p>The default <code>pkg</code> command will print a note describing this arrangement, but
+cannot be used for package management as described in FreeBSD documentation.
+To manage and install hybrid packages, use the <code>pkg64</code> command.
+To manage and install CheriABI packages, use the <code>pkg64c</code> command.
+We expect that <code>pkg64c</code> will be renamed to <code>pkg</code> in a future CheriBSD release.</p>
 <h2><a class="header" href="#unsupported-freebsd-features" id="unsupported-freebsd-features">Unsupported FreeBSD features</a></h2>
 <p>Certain FreeBSD features are currently unavailable in CheriBSD, including:</p>
 <ul>
