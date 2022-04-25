@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Downloading CheriBSD images - Getting Started with CheriBSD</title>
+        <title>Background: CHERI and CheriBSD - Getting Started with CheriBSD</title>
         
         
 
@@ -93,7 +93,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../background/index.html"><strong aria-hidden="true">2.</strong> Background: CHERI and CheriBSD</a></li><li class="chapter-item expanded "><a href="../differences-from-freebsd/index.html"><strong aria-hidden="true">3.</strong> Differences between CheriBSD and FreeBSD</a></li><li class="chapter-item expanded "><a href="../downloading/index.html" class="active"><strong aria-hidden="true">4.</strong> Downloading CheriBSD images</a></li><li class="chapter-item expanded "><a href="../packages/index.html"><strong aria-hidden="true">5.</strong> 64-bit and CheriABI packages</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../background/index.html" class="active"><strong aria-hidden="true">2.</strong> Background: CHERI and CheriBSD</a></li><li class="chapter-item expanded "><a href="../differences-from-freebsd/index.html"><strong aria-hidden="true">3.</strong> Differences between CheriBSD and FreeBSD</a></li><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">4.</strong> Downloading CheriBSD images</a></li><li class="chapter-item expanded "><a href="../packages/index.html"><strong aria-hidden="true">5.</strong> 64-bit and CheriABI packages</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -163,49 +163,50 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#downloading-cheribsd-images" id="downloading-cheribsd-images">Downloading CheriBSD images</a></h1>
-<p>Two types of CheriBSD images may be download:</p>
+                        <h1><a class="header" href="#background-cheri-and-cheribsd" id="background-cheri-and-cheribsd">Background: CHERI and CheriBSD</a></h1>
+<h2><a class="header" href="#cheri" id="cheri">CHERI</a></h2>
+<p><em>CHERI</em> is an extension to processor Instruction-Set Architectures (ISAs) to
+introduce support for fine-grained memory protection and software
+compartmentalization.
+CHERI extensions have been specified for:</p>
 <ul>
-<li>
-<p><em>memstick images</em> that boot and automatically run <code>bsdinstall</code>, the FreeBSD
-installer, which can be used to prepare a filesystem on a disk, and then
-install CheriBSD onto it.
-These will typically be used on Arm Morello boards.</p>
-</li>
-<li>
-<p><em>live images</em> that boot CheriBSD to a login prompt for interactive use.
-These will typically be used on instruction-set emulators such as QEMU and
-the Arm Morello FVP.</p>
-</li>
+<li>Arm's 64-bit Armv8-a ISA, with the prototype architecture known as
+<em><a href="https://www.arm.com/architecture/cpu/morelloMorello">Morello</a></em>.
+The multi-GHz, multi-core, superscalar Morello design is a CHERI-extended
+version of the Arm Neoverse N1, available on an evaluation board from Arm.</li>
+<li>The open-source 32-bit and 64-bit RISC-V ISA, with the extended ISA known as
+CHERI-RISC-V.
+CHERI-RISC-V is available via multiple open-source soft processor cores for
+use on FPGA.</li>
 </ul>
-<p>Both can be downloaded from the <a href="https://www.cheribsd.org/">CheriBSD website</a>.</p>
-<h2><a class="header" href="#writing-a-memstick-image-to-a-usb-stick" id="writing-a-memstick-image-to-a-usb-stick">Writing a memstick image to a USB stick</a></h2>
-<p><em>memstick</em> images are typically decompressed using the UNIX <code>unxz</code> command:</p>
-<pre><code>unxz cheribsd-memstick-dev-arm64-aarch64c-2022-04-05.img.xz
-</code></pre>
-<p>and then written to a USB stick using the UNIX <code>dd</code> command:</p>
-<pre><code>dd if=cheribsd-memstick-dev-arm64-aarch64c-2022-04-05.img of=/dev/DISK bs=1048576
-</code></pre>
-<p>Here, <em>DISK</em> should be replaced with the name of the appropriate device.</p>
-<h2><a class="header" href="#using-a-live-image" id="using-a-live-image">Using a live image</a></h2>
-<p>Live images are typically decompressed using the UNIX <code>unxz</code> command:</p>
-<pre><code>unxz cheribsd-memstick-dev-arm64-aarch64c-2022-04-05.img.xz
-</code></pre>
-<p>The specific command line to use for a live image will depend on the target
-execution environment.</p>
+<p>ISA-level emulation platforms exist for both architectures (QEMU for
+CHERI-RISC-V and Morello, and Arm's Morello FVP for Morello).</p>
+<h2><a class="header" href="#cheribsd" id="cheribsd">CheriBSD</a></h2>
+<p><em>CheriBSD</em> is an extended version of the open-source
+<em><a href="https://www.freebsd.org/">FreeBSD</a></em> operating system.
+FreeBSD is a mature UNIX-based operating system able to run on multiple
+hardware architectures, and widely used in industry in service, appliance, and
+embedded environments.
+CheriBSD contains various CHERI-based extensions including support for kernel
+and userspace memory safety, and for multiple software compartmentalization
+models.
+CheriBSD runs on both CHERI-RISC-V and Morello with nearly identical feature
+sets (Morello includes hardware virtualisation extensions not present in the
+CHERI-RISC-V cores, and so CHERI-extended bhyve hypervisor support is not
+available for CHERI-RISC-V).</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../differences-from-freebsd/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../introduction/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../packages/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../differences-from-freebsd/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -217,13 +218,13 @@ execution environment.</p>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../differences-from-freebsd/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../introduction/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../packages/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../differences-from-freebsd/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

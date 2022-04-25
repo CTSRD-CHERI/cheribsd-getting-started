@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="differences-from-freebsd/index.html"><strong aria-hidden="true">2.</strong> Differences between CheriBSD and FreeBSD</a></li><li class="chapter-item expanded "><a href="downloading/index.html"><strong aria-hidden="true">3.</strong> Downloading CheriBSD images</a></li><li class="chapter-item expanded "><a href="packages/index.html"><strong aria-hidden="true">4.</strong> 64-bit and CheriABI packages</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="background/index.html"><strong aria-hidden="true">2.</strong> Background: CHERI and CheriBSD</a></li><li class="chapter-item expanded "><a href="differences-from-freebsd/index.html"><strong aria-hidden="true">3.</strong> Differences between CheriBSD and FreeBSD</a></li><li class="chapter-item expanded "><a href="downloading/index.html"><strong aria-hidden="true">4.</strong> Downloading CheriBSD images</a></li><li class="chapter-item expanded "><a href="packages/index.html"><strong aria-hidden="true">5.</strong> 64-bit and CheriABI packages</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -188,6 +188,37 @@ You might find that you want to build CheriBSD from scratch, or simply use one
 of our downloadable pre-compiled images.
 You may want to run directly from a live image, or alternatively want to use
 an installer image to install onto other media.</p>
+<h1><a class="header" href="#background-cheri-and-cheribsd" id="background-cheri-and-cheribsd">Background: CHERI and CheriBSD</a></h1>
+<h2><a class="header" href="#cheri" id="cheri">CHERI</a></h2>
+<p><em>CHERI</em> is an extension to processor Instruction-Set Architectures (ISAs) to
+introduce support for fine-grained memory protection and software
+compartmentalization.
+CHERI extensions have been specified for:</p>
+<ul>
+<li>Arm's 64-bit Armv8-a ISA, with the prototype architecture known as
+<em><a href="https://www.arm.com/architecture/cpu/morelloMorello">Morello</a></em>.
+The multi-GHz, multi-core, superscalar Morello design is a CHERI-extended
+version of the Arm Neoverse N1, available on an evaluation board from Arm.</li>
+<li>The open-source 32-bit and 64-bit RISC-V ISA, with the extended ISA known as
+CHERI-RISC-V.
+CHERI-RISC-V is available via multiple open-source soft processor cores for
+use on FPGA.</li>
+</ul>
+<p>ISA-level emulation platforms exist for both architectures (QEMU for
+CHERI-RISC-V and Morello, and Arm's Morello FVP for Morello).</p>
+<h2><a class="header" href="#cheribsd" id="cheribsd">CheriBSD</a></h2>
+<p><em>CheriBSD</em> is an extended version of the open-source
+<em><a href="https://www.freebsd.org/">FreeBSD</a></em> operating system.
+FreeBSD is a mature UNIX-based operating system able to run on multiple
+hardware architectures, and widely used in industry in service, appliance, and
+embedded environments.
+CheriBSD contains various CHERI-based extensions including support for kernel
+and userspace memory safety, and for multiple software compartmentalization
+models.
+CheriBSD runs on both CHERI-RISC-V and Morello with nearly identical feature
+sets (Morello includes hardware virtualisation extensions not present in the
+CHERI-RISC-V cores, and so CHERI-extended bhyve hypervisor support is not
+available for CHERI-RISC-V).</p>
 <h1><a class="header" href="#differences-between-cheribsd-and-freebsd" id="differences-between-cheribsd-and-freebsd">Differences between CheriBSD and FreeBSD</a></h1>
 <p>CheriBSD extends FreeBSD with added CHERI-enabled features, such as kernel and
 userspace memory safety.
