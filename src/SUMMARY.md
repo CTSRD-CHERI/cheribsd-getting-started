@@ -5,4 +5,4 @@
 - [Background: CHERI and CheriBSD](background/README.md)
 - [Differences between CheriBSD and FreeBSD](differences-from-freebsd/README.md)
 - [Downloading CheriBSD images](downloading/README.md)
-- [64-bit and CheriABI packages](packages/README.md)
+- [Third-party packages](packages/README.md)

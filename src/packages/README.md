@@ -1,4 +1,4 @@
-# 64-bit and CheriABI packages
+# Third-party packages
 
 CheriBSD on Morello ships with both hybrid and CheriABI packages
 (compilations) of the FreeBSD ports collection.
