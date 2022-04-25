@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Introduction - Getting Started with CheriBSD</title>
+        <title>64-bit and CheriABI packages - Getting Started with CheriBSD</title>
         
         
 
@@ -93,7 +93,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction/index.html" class="active"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../differences-from-freebsd/index.html"><strong aria-hidden="true">2.</strong> Differences between CheriBSD and FreeBSD</a></li><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">3.</strong> Downloading CheriBSD images</a></li><li class="chapter-item expanded "><a href="../packages/index.html"><strong aria-hidden="true">4.</strong> 64-bit and CheriABI packages</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../differences-from-freebsd/index.html"><strong aria-hidden="true">2.</strong> Differences between CheriBSD and FreeBSD</a></li><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">3.</strong> Downloading CheriBSD images</a></li><li class="chapter-item expanded "><a href="../packages/index.html" class="active"><strong aria-hidden="true">4.</strong> 64-bit and CheriABI packages</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -163,40 +163,35 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
-<p><a href="https://www.cheribsd.org/">CheriBSD</a> is a CHERI-extended version of the
-open-source <a href="https://www.freebsd.org/">FreeBSD</a> operating system.
-It is intended to:</p>
-<ul>
-<li>Provide a clean, in-depth illustration and template for how CHERI support
-can be integrated with a general-purpose, MMU-enabled operating system;</li>
-<li>Act as an OS research platform for how operating systems can use CHERI;</li>
-<li>Enable validation and evaluation of CHERI-extended architectures and
-microarchitectures;</li>
-<li>Support the development and evaluation of CHERI-enabled applications; and</li>
-<li>Provide a foundation for CHERI-enabled demonstrations.</li>
-</ul>
-<p>This guide will support you in getting up and running with CheriBSD on the
-CHERI-RISC-V and Arm Morello platforms.
-As platforms vary substantially, from instruction-set emulators and executable
-formal models through to FPGA- and ASIC-based hardware implementations, there
-are several paths that can be taken to reach a shell prompt and start
-productive work.
-You might find that you want to build CheriBSD from scratch, or simply use one
-of our downloadable pre-compiled images.
-You may want to run directly from a live image, or alternatively want to use
-an installer image to install onto other media.</p>
+                        <h1><a class="header" href="#64-bit-and-cheriabi-packages" id="64-bit-and-cheriabi-packages">64-bit and CheriABI packages</a></h1>
+<p>CheriBSD on Morello ships with both hybrid and CheriABI packages
+(compilations) of the FreeBSD ports collection.
+The former is considered suitable for <em>day-to-day use</em> on Morello, providing
+a large suite of open-source applications that make Morello boards usable
+computers.
+The latter is considered <em>experimental</em>, as, at this time, only a modest
+portion of the ports collection builds for CheriABI, and they have seen little
+validation.
+Both hybrid and CheriABI packages can be installed via two independent
+instances of the package system in CheriBSD, one for each ABI.
+The intention is that, over time, the CheriABI packages will become more
+mature, and hence the preferred collection for day-to-day use.</p>
+<p>The default <code>pkg</code> command will print a note describing this arrangement, but
+cannot be used for package management as described in FreeBSD documentation.
+To manage and install hybrid packages, use the <code>pkg64</code> command.
+To manage and install CheriABI packages, use the <code>pkg64c</code> command.
+We expect that <code>pkg64c</code> will be renamed to <code>pkg</code> in a future CheriBSD release.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-
-                        
-                            <a rel="next" href="../differences-from-freebsd/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                            <a rel="prev" href="../downloading/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
                             </a>
+                        
+
                         
 
                         <div style="clear: both"></div>
@@ -206,11 +201,11 @@ an installer image to install onto other media.</p>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-
-                
-                    <a rel="next" href="../differences-from-freebsd/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                    <a rel="prev" href="../downloading/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
                     </a>
+                
+
                 
             </nav>
 
