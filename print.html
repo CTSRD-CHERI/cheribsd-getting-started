@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="support/index.html"><strong aria-hidden="true">5.</strong> Getting help using CheriBSD</a></li><li class="chapter-item expanded "><a href="downloading/index.html"><strong aria-hidden="true">6.</strong> Downloading CheriBSD image files</a></li><li class="chapter-item expanded "><a href="building/index.html"><strong aria-hidden="true">7.</strong> Building CheriBSD</a></li><li class="chapter-item expanded "><a href="packages/index.html"><strong aria-hidden="true">8.</strong> Third-party packages</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="features/index.html"><strong aria-hidden="true">2.1.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="nonfeatures/index.html"><strong aria-hidden="true">2.2.</strong> Unsupported FreeBSD features</a></li></ol></li><li class="chapter-item expanded "><a href="support/index.html"><strong aria-hidden="true">3.</strong> Getting help using CheriBSD</a></li><li class="chapter-item expanded "><a href="getting/index.html"><strong aria-hidden="true">4.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="downloading/index.html"><strong aria-hidden="true">4.1.</strong> Downloading CheriBSD image files</a></li><li class="chapter-item expanded "><a href="building/index.html"><strong aria-hidden="true">4.2.</strong> Building CheriBSD</a></li></ol></li><li class="chapter-item expanded "><a href="installing/index.html"><strong aria-hidden="true">5.</strong> Installing CheriBSD</a></li><li class="chapter-item expanded "><a href="packages/index.html"><strong aria-hidden="true">6.</strong> Third-party packages</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -335,8 +335,9 @@ the UK in the future.</p>
 <p>Most CheriBSD developers are based at the University of Cambridge (UK) and SRI
 International (USA), and it is possible to set up meetings with them directly.
 Get in touch if this would be useful to you.</p>
-<h1><a class="header" href="#downloading-cheribsd-image-files" id="downloading-cheribsd-image-files">Downloading CheriBSD image files</a></h1>
-<p>Two types of CheriBSD images may be download:</p>
+<h1><a class="header" href="#getting-cheribsd" id="getting-cheribsd">Getting CheriBSD</a></h1>
+<p>CheriBSD can be installed by <a href="getting/downloading/README.html">downloading</a> or
+<a href="getting/building/README.html">building</a> one of two types of disk images:</p>
 <ul>
 <li>
 <p><em>memstick images</em> that boot and automatically run <code>bsdinstall</code>, the FreeBSD
@@ -347,24 +348,16 @@ These will typically be used on Arm Morello boards.</p>
 <li>
 <p><em>live images</em> that boot CheriBSD to a login prompt for interactive use.
 These will typically be used on instruction-set emulators such as QEMU and
-the Arm Morello FVP.</p>
+the Arm Morello FVP, as well as on FPGA.</p>
 </li>
 </ul>
-<p>Both can be downloaded from the <a href="https://www.cheribsd.org/">CheriBSD website</a>.</p>
-<h2><a class="header" href="#writing-a-memstick-image-to-a-usb-stick" id="writing-a-memstick-image-to-a-usb-stick">Writing a memstick image to a USB stick</a></h2>
-<p><em>memstick</em> images are typically decompressed using the UNIX <code>unxz</code> command:</p>
+<h1><a class="header" href="#downloading-cheribsd-image-files" id="downloading-cheribsd-image-files">Downloading CheriBSD image files</a></h1>
+<p><code>memstick</code> and <code>live</code> images can both be downloaded from the <a href="https://www.cheribsd.org/">CheriBSD
+website</a>.
+Images are compressed using the UNIX <code>xz</code> command, and must be decompressed
+before they can be used; for example by running:</p>
 <pre><code>unxz cheribsd-memstick-dev-arm64-aarch64c-2022-04-05.img.xz
 </code></pre>
-<p>and then written to a USB stick using the UNIX <code>dd</code> command:</p>
-<pre><code>dd if=cheribsd-memstick-dev-arm64-aarch64c-2022-04-05.img of=/dev/DISK bs=1048576
-</code></pre>
-<p>Here, <em>DISK</em> should be replaced with the name of the appropriate device.</p>
-<h2><a class="header" href="#using-a-live-image" id="using-a-live-image">Using a live image</a></h2>
-<p>Live images are typically decompressed using the UNIX <code>unxz</code> command:</p>
-<pre><code>unxz cheribsd-memstick-dev-arm64-aarch64c-2022-04-05.img.xz
-</code></pre>
-<p>The specific command line to use for a live image will depend on the target
-execution environment.</p>
 <h1><a class="header" href="#building-cheribsd" id="building-cheribsd">Building CheriBSD</a></h1>
 <p>CheriBSD can be built natively on an existing CheriBSD system (e.g., on an Arm
 Morello box), and it can also be cross-built from FreeBSD, Linux, and macOS.
@@ -416,6 +409,24 @@ It can be checked out from GitHub:</p>
 <p>The <code>cheribuild</code> <a href="https://github.com/CTSRD-CHERI/cheribuild#readme">README.md</a>
 provides detailed information on various parameters and targets its supports,
 as well as its dependencies.</p>
+<h1><a class="header" href="#installing-cheribsd" id="installing-cheribsd">Installing CheriBSD</a></h1>
+<p>Once you have a disk image, you will either need to write it to a USB stick
+to boot an Arm Morello system, or specify it as an argument to an emulator
+such as QEMU-CHERI or the Arm Morello FVP.</p>
+<h2><a class="header" href="#writing-an-installer-disk-image-to-a-usb-stick" id="writing-an-installer-disk-image-to-a-usb-stick">Writing an installer disk image to a USB stick</a></h2>
+<p>With appropriate substitutions of image filename and target device, the
+following command would write the image to a USB stick for use with a Morello
+board:</p>
+<pre><code>dd if=cheribsd-memstick-dev-arm64-aarch64c-2022-04-05.img of=/dev/DISK bs=1048576
+</code></pre>
+<p>It is also possible to write a live image to a USB stick, with appropriate
+filename substitution.</p>
+<h2><a class="header" href="#using-a-live-image" id="using-a-live-image">Using a live image</a></h2>
+<p>The specific command line to use for a live image will depend on the target
+execution environment.
+When using <code>cheribuild</code> to launch QEMU-CHERI or the Arm Morello FVP,
+<code>cheribuild</code> will automatically use any necessary command-line arguments to
+launch the most recently build live image in the emulator.</p>
 <h1><a class="header" href="#third-party-packages" id="third-party-packages">Third-party packages</a></h1>
 <p>CheriBSD on Morello ships with both hybrid and CheriABI packages
 (compilations) of the FreeBSD ports collection, each targeting a different
