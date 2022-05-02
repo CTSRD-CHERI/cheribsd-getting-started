@@ -8,12 +8,23 @@ the system.
 As you gain experience with CheriBSD, your help in supporting newcomers in the
 community will be greatly appreciated.
 
-## CHERI-CPU Slack
+## GitHub issue tracker and pull requests
+
+CheriBSD is developed and maintained in the [CheriBSD GitHub
+repository](https://github.com/CTSRD-CHERI/cheribsd), which includes an issue
+tracker in which bugs can be reported, as well as permitting pull requests to
+be submitted.
+
+This document is also mained in a [GitHub
+Repository](https://github.com/CTSRD-CHERI/cheribsd-getting-started), and your
+feedback and improvements would be very much appreciated.
+
+## CheriBSD Slack on cheri-cpu.slack.com
 
 Support for CheriBSD is provided via the [CHERI CPU
 Slack](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-slack.html),
-where there is a `#cheribsd` channel where many of the CheriBSD developers
-and many CheriBSD users can be found.
+where there is a `#cheribsd` channel where many of CheriBSD developers and
+users can be found.
 
 ## CheriBSD mailing lists
 
@@ -23,8 +34,22 @@ There are also several CheriBSD email lists available:
 - CheriBSD general discussion **XXX: To update**
 - CheriBSD security vulnerabilities contact address **XXX: To update**
 
-## In-person events
+## In-person events and meetings
 
-Further, you can meet with the CheriBSD developers at a number of conferences
-and other events, including the UKRI DSbD All Hands Meetings that take place
-twice annually in the UK.
+You can meet with the CheriBSD developers at a number of conferences and other
+events, including:
+
+- UKRI Digital Security by Design (DSbD) All Hands meetings that take place in
+  the UK twice annually to discuss the Morello architecture, board, and its
+  use.
+
+- FreeBSD developer summits and conferences around the world, including (when
+  it takes place) the BSDCan conference in Canada, and the EuroBSDCon
+  conference in Europe.
+
+There is discussion around creating further, more frequent CHERI workshops in
+the UK in the future.
+
+Most CheriBSD developers are based at the University of Cambridge (UK) and SRI
+International (USA), and it is possible to set up meetings with them directly.
+Get in touch if this would be useful to you.
