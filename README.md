@@ -10,7 +10,7 @@ CHERI-RISC-V.
 
 ## Acknowledgements
 
-The authors gratefully acknowledge ...
+The authors gratefully acknowledge Jessica Clarke, George Neville-Neil, ...
 
 *This document is a work-in-progress.  Feedback and contributions are
 welcomed.  Please see our [GitHub
