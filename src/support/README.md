@@ -8,11 +8,11 @@ the system.
 As you gain experience with CheriBSD, your help in supporting newcomers in the
 community will be greatly appreciated.
 
-## CHERI CPU Slack
+## CHERI-CPU Slack
 
 Support for CheriBSD is provided via the [CHERI CPU
 Slack](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-slack.html),
-where there is a `\#cheribsd` channel where many of the CheriBSD developers
+where there is a `#cheribsd` channel where many of the CheriBSD developers
 and many CheriBSD users can be found.
 
 ## CheriBSD mailing lists
