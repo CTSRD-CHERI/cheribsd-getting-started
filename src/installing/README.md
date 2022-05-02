@@ -21,6 +21,18 @@ filename substitution.
 
 **TO WRITE**
 
+### Updating the Morello firmware
+
+### Connecting to the serial console
+
+### Starting the boot
+
+### bsdinstall
+
+### Completing the installation
+
+### Logging in
+
 ## Using a live image
 
 The specific command line to use for a live image will depend on the target
