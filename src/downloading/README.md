@@ -1,4 +1,4 @@
-# Downloading CheriBSD images
+# Downloading CheriBSD image files
 
 Two types of CheriBSD images may be download:
 

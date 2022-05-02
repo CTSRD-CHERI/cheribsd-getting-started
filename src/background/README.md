@@ -1,6 +1,6 @@
-# Background: CHERI and CheriBSD
+# Background
 
-## CHERI
+## What is CHERI?
 
 *CHERI* is an extension to processor Instruction-Set Architectures (ISAs) to
 introduce support for fine-grained memory protection and software
@@ -18,8 +18,13 @@ CHERI extensions have been specified for:
 
 ISA-level emulation platforms exist for both architectures (QEMU for
 CHERI-RISC-V and Morello, and Arm's Morello FVP for Morello).
+Unless you have access to a Morello board or a high-end (and supported) FPGA
+development platform, using
+[QEMU-CHERI](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-qemu.html)
+will be the easiest way to get started using CHERI.
+This guide covers all of these use cases.
 
-## CheriBSD
+## What is CheriBSD?
 
 *CheriBSD* is an extended version of the open-source
 *[FreeBSD](https://www.freebsd.org/)* operating system.
