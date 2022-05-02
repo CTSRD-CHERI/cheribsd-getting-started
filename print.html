@@ -366,6 +366,56 @@ the Arm Morello FVP.</p>
 <p>The specific command line to use for a live image will depend on the target
 execution environment.</p>
 <h1><a class="header" href="#building-cheribsd" id="building-cheribsd">Building CheriBSD</a></h1>
+<p>CheriBSD can be built natively on an existing CheriBSD system (e.g., on an Arm
+Morello box), and it can also be cross-built from FreeBSD, Linux, and macOS.
+Building natively from an ISA-level emulator, such as QEMU, is not recommended
+for performance reasons.</p>
+<ul>
+<li>
+<p>Native builds follow the <a href="https://docs.freebsd.org/en/books/handbook/cutting-edge/#makeworld">same build
+procedure</a>
+as used for the baseline FreeBSD operating system.
+Suitable git command-line substitions must be made to use CheriBSD rather
+than FreeBSD source code.</p>
+</li>
+<li>
+<p>CheriBSD cross-build orchestration is performed by the Python-based
+<code>[cheribuild](https://github.com/CTSRD-CHERI/cheribuild)</code> tool, which is
+able to build CHERI-enabled toolchain, operating-system stack, and various
+applications and other software used by the CHERI project.</p>
+</li>
+</ul>
+<h2><a class="header" href="#key-source-repositories" id="key-source-repositories">Key source repositories</a></h2>
+<p>CheriBSD repositories currently reside in the <a href="https://github.com/CTSRD-CHERI">CTSRD-CHERI GitHub
+Organization</a>:</p>
+<ul>
+<li><a href="https://github.com/CTSRD-CHERI/cheribuild">cheribuild GitHub repository</a></li>
+<li><a href="https://github.com/CTSRD-CHERI/cheribsd">CheriBSD GitHub repository</a></li>
+<li><a href="https://github.com/CTSRD-CHERI/llvm-project">CHERI Clang/LLVM GitHub repository</a></li>
+<li><a href="https://github.com/CTSRD-CHERI/gdb">CHERI GDB GitHub repository</a></li>
+<li><a href="https://github.com/CTSRD-CHERI/qemu">QEMU-CHERI GitHub repository</a></li>
+</ul>
+<p>Unless you intend to modify CheriBSD, CHERI Clang/LLVM, CHERI GDB, or
+QEMU-CHERI, you should not generally need to manually check out or compile
+most of the above repositories.
+Instead, existing prebuilt software images/packages should be used, or the
+cheribuild command, which will orchestrate softare cross-build for you.</p>
+<h2><a class="header" href="#checking-out-cheribuild" id="checking-out-cheribuild">Checking out cheribuild</a></h2>
+<p><code>[cheribuild](https://github.com/CTSRD-CHERI/cheribuild)</code> is a Python-based
+build orchestration tool that is the preferred way to cross-build CheriBSD.
+It can be checked out from GitHub:</p>
+<pre><code>git clone git@github.com:CTSRD-CHERI/cheribuild.git
+</code></pre>
+<h2><a class="header" href="#building-and-running-cheribsdrisc-v-in-qemu" id="building-and-running-cheribsdrisc-v-in-qemu">Building and running CheriBSD/RISC-V in QEMU</a></h2>
+<p><strong>TO WRITE</strong></p>
+<h2><a class="header" href="#building-and-running-cheribsdmorello-in-qemu" id="building-and-running-cheribsdmorello-in-qemu">Building and running CheriBSD/Morello in QEMU</a></h2>
+<p><strong>TO WRITE</strong></p>
+<h2><a class="header" href="#building-cheribsd-release-images" id="building-cheribsd-release-images">Building CheriBSD release images</a></h2>
+<p><strong>TO WRITE</strong></p>
+<h2><a class="header" href="#obtaining-further-information" id="obtaining-further-information">Obtaining further information</a></h2>
+<p>The <code>cheribuild</code> <a href="https://github.com/CTSRD-CHERI/cheribuild#readme">README.md</a>
+provides detailed information on various parameters and targets its supports,
+as well as its dependencies.</p>
 <h1><a class="header" href="#third-party-packages" id="third-party-packages">Third-party packages</a></h1>
 <p>CheriBSD on Morello ships with both hybrid and CheriABI packages
 (compilations) of the FreeBSD ports collection, each targeting a different
