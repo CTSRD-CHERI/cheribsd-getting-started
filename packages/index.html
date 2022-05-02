@@ -93,7 +93,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../background/index.html"><strong aria-hidden="true">2.</strong> Background: CHERI and CheriBSD</a></li><li class="chapter-item expanded "><a href="../support/index.html"><strong aria-hidden="true">3.</strong> Getting CheriBSD support</a></li><li class="chapter-item expanded "><a href="../differences-from-freebsd/index.html"><strong aria-hidden="true">4.</strong> Differences between CheriBSD and FreeBSD</a></li><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">5.</strong> Downloading CheriBSD images</a></li><li class="chapter-item expanded "><a href="../building/index.html"><strong aria-hidden="true">6.</strong> Building CheriBSD</a></li><li class="chapter-item expanded "><a href="../packages/index.html" class="active"><strong aria-hidden="true">7.</strong> Third-party packages</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="../features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="../nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="../support/index.html"><strong aria-hidden="true">5.</strong> Getting help using CheriBSD</a></li><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">6.</strong> Downloading CheriBSD image files</a></li><li class="chapter-item expanded "><a href="../building/index.html"><strong aria-hidden="true">7.</strong> Building CheriBSD</a></li><li class="chapter-item expanded "><a href="../packages/index.html" class="active"><strong aria-hidden="true">8.</strong> Third-party packages</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -165,15 +165,28 @@
                     <main>
                         <h1><a class="header" href="#third-party-packages" id="third-party-packages">Third-party packages</a></h1>
 <p>CheriBSD on Morello ships with both hybrid and CheriABI packages
-(compilations) of the FreeBSD ports collection.
-The former is considered suitable for <em>day-to-day use</em> on Morello, providing
-a large suite of open-source applications that make Morello boards usable
-computers.
-The latter is considered <em>experimental</em>, as, at this time, only a modest
-portion of the ports collection builds for CheriABI, and they have seen little
-validation.
-Both hybrid and CheriABI packages can be installed via two independent
-instances of the package system in CheriBSD, one for each ABI.
+(compilations) of the FreeBSD ports collection, each targeting a different
+form of code generation and Application Binary Interface (ABI).
+They have different levels of completeness, maturity, security, and support.</p>
+<ul>
+<li>
+<p><strong>Hybrid ABI packages</strong> are compiled almost identically to packages in the
+baseline non-CHERI architecture (e.g., Armv8-a for Morello, and 64-bit
+RISC-V for RISC-V), and do not have improvements in memory protection or
+software compartmentalization.
+There are in the range of 20,000-30,000 hybrid ABI packages available.
+These are considered <em>appropriate for day-to-day use</em>.</p>
+</li>
+<li>
+<p><strong>CheriABI packages</strong> are compiled using pure-capability CHERI C/C++, and
+employ fine-grained C/C++ memory protection.
+There are in the range of 1,000-3,000 CheriABI packages available.
+These are considered <em>experimental</em>.
+command.</p>
+</li>
+</ul>
+<p>Hybrid and CheriABI packages can be installed via two independent instances of
+the package system in CheriBSD, one for each ABI.
 The intention is that, over time, the CheriABI packages will become more
 mature, and hence the preferred collection for day-to-day use.</p>
 <p>The default <code>pkg</code> command will print a note describing this arrangement, but

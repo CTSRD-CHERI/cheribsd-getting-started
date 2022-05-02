@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Background - Getting Started with CheriBSD</title>
+        <title>Unsupported FreeBSD features - Getting Started with CheriBSD</title>
         
         
 
@@ -93,7 +93,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../background/index.html" class="active"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="../features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="../nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="../support/index.html"><strong aria-hidden="true">5.</strong> Getting help using CheriBSD</a></li><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">6.</strong> Downloading CheriBSD image files</a></li><li class="chapter-item expanded "><a href="../building/index.html"><strong aria-hidden="true">7.</strong> Building CheriBSD</a></li><li class="chapter-item expanded "><a href="../packages/index.html"><strong aria-hidden="true">8.</strong> Third-party packages</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="../features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="../nonfeatures/index.html" class="active"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="../support/index.html"><strong aria-hidden="true">5.</strong> Getting help using CheriBSD</a></li><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">6.</strong> Downloading CheriBSD image files</a></li><li class="chapter-item expanded "><a href="../building/index.html"><strong aria-hidden="true">7.</strong> Building CheriBSD</a></li><li class="chapter-item expanded "><a href="../packages/index.html"><strong aria-hidden="true">8.</strong> Third-party packages</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -163,55 +163,33 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#background" id="background">Background</a></h1>
-<h2><a class="header" href="#what-is-cheri" id="what-is-cheri">What is CHERI?</a></h2>
-<p><em>CHERI</em> is an extension to processor Instruction-Set Architectures (ISAs) to
-introduce support for fine-grained memory protection and software
-compartmentalization.
-CHERI extensions have been specified for:</p>
+                        <h1><a class="header" href="#unsupported-freebsd-features" id="unsupported-freebsd-features">Unsupported FreeBSD features</a></h1>
+<p>Certain FreeBSD features are currently unavailable in CheriBSD, including:</p>
 <ul>
-<li>Arm's 64-bit Armv8-a ISA, with the prototype architecture known as
-<em><a href="https://www.arm.com/architecture/cpu/morelloMorello">Morello</a></em>.
-The multi-GHz, multi-core, superscalar Morello design is a CHERI-extended
-version of the Arm Neoverse N1, available on an evaluation board from Arm.</li>
-<li>The open-source 32-bit and 64-bit RISC-V ISA, with the extended ISA known as
-CHERI-RISC-V.
-CHERI-RISC-V is available via multiple open-source soft processor cores for
-use on FPGA.</li>
+<li>ZFS</li>
+<li>DTrace</li>
 </ul>
-<p>ISA-level emulation platforms exist for both architectures (QEMU for
-CHERI-RISC-V and Morello, and Arm's Morello FVP for Morello).
-Unless you have access to a Morello board or a high-end (and supported) FPGA
-development platform, using
-<a href="https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-qemu.html">QEMU-CHERI</a>
-will be the easiest way to get started using CHERI.
-This guide covers all of these use cases.</p>
-<h2><a class="header" href="#what-is-cheribsd" id="what-is-cheribsd">What is CheriBSD?</a></h2>
-<p><em>CheriBSD</em> is an extended version of the open-source
-<em><a href="https://www.freebsd.org/">FreeBSD</a></em> operating system.
-FreeBSD is a mature UNIX-based operating system able to run on multiple
-hardware architectures, and widely used in industry in service, appliance, and
-embedded environments.
-CheriBSD contains various CHERI-based extensions including support for kernel
-and userspace memory safety, and for multiple software compartmentalization
-models.
-CheriBSD runs on both CHERI-RISC-V and Morello with nearly identical feature
-sets (Morello includes hardware virtualisation extensions not present in the
-CHERI-RISC-V cores, and so CHERI-extended bhyve hypervisor support is not
-available for CHERI-RISC-V).</p>
+<p>Many other kernel features are not yet well validated, including:</p>
+<ul>
+<li>Non-UFS file systems</li>
+<li>Most optional modules, such as various firewall systems</li>
+</ul>
+<p>Bug reports relating to these under-validated subsystems would be appreciated,
+and may be submitted to the <a href="https://github.com/CTSRD-CHERI/cheribsd/issues">CheriBSD GitHub issue
+tracker</a>.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../introduction/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../features/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../features/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../support/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -223,13 +201,13 @@ available for CHERI-RISC-V).</p>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../introduction/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../features/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../features/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../support/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

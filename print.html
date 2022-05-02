@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="background/index.html"><strong aria-hidden="true">2.</strong> Background: CHERI and CheriBSD</a></li><li class="chapter-item expanded "><a href="support/index.html"><strong aria-hidden="true">3.</strong> Getting CheriBSD support</a></li><li class="chapter-item expanded "><a href="differences-from-freebsd/index.html"><strong aria-hidden="true">4.</strong> Differences between CheriBSD and FreeBSD</a></li><li class="chapter-item expanded "><a href="downloading/index.html"><strong aria-hidden="true">5.</strong> Downloading CheriBSD images</a></li><li class="chapter-item expanded "><a href="building/index.html"><strong aria-hidden="true">6.</strong> Building CheriBSD</a></li><li class="chapter-item expanded "><a href="packages/index.html"><strong aria-hidden="true">7.</strong> Third-party packages</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="support/index.html"><strong aria-hidden="true">5.</strong> Getting help using CheriBSD</a></li><li class="chapter-item expanded "><a href="downloading/index.html"><strong aria-hidden="true">6.</strong> Downloading CheriBSD image files</a></li><li class="chapter-item expanded "><a href="building/index.html"><strong aria-hidden="true">7.</strong> Building CheriBSD</a></li><li class="chapter-item expanded "><a href="packages/index.html"><strong aria-hidden="true">8.</strong> Third-party packages</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -201,8 +201,8 @@ of our downloadable pre-compiled images.
 You may want to run directly from a live image in an emulator, or
 alternatively want to use an installer image to install onto an internal disk
 in an Arm Morello-based server or workstation.</p>
-<h1><a class="header" href="#background-cheri-and-cheribsd" id="background-cheri-and-cheribsd">Background: CHERI and CheriBSD</a></h1>
-<h2><a class="header" href="#cheri" id="cheri">CHERI</a></h2>
+<h1><a class="header" href="#background" id="background">Background</a></h1>
+<h2><a class="header" href="#what-is-cheri" id="what-is-cheri">What is CHERI?</a></h2>
 <p><em>CHERI</em> is an extension to processor Instruction-Set Architectures (ISAs) to
 introduce support for fine-grained memory protection and software
 compartmentalization.
@@ -218,8 +218,13 @@ CHERI-RISC-V is available via multiple open-source soft processor cores for
 use on FPGA.</li>
 </ul>
 <p>ISA-level emulation platforms exist for both architectures (QEMU for
-CHERI-RISC-V and Morello, and Arm's Morello FVP for Morello).</p>
-<h2><a class="header" href="#cheribsd" id="cheribsd">CheriBSD</a></h2>
+CHERI-RISC-V and Morello, and Arm's Morello FVP for Morello).
+Unless you have access to a Morello board or a high-end (and supported) FPGA
+development platform, using
+<a href="https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-qemu.html">QEMU-CHERI</a>
+will be the easiest way to get started using CHERI.
+This guide covers all of these use cases.</p>
+<h2><a class="header" href="#what-is-cheribsd" id="what-is-cheribsd">What is CheriBSD?</a></h2>
 <p><em>CheriBSD</em> is an extended version of the open-source
 <em><a href="https://www.freebsd.org/">FreeBSD</a></em> operating system.
 FreeBSD is a mature UNIX-based operating system able to run on multiple
@@ -232,7 +237,57 @@ CheriBSD runs on both CHERI-RISC-V and Morello with nearly identical feature
 sets (Morello includes hardware virtualisation extensions not present in the
 CHERI-RISC-V cores, and so CHERI-extended bhyve hypervisor support is not
 available for CHERI-RISC-V).</p>
-<h1><a class="header" href="#getting-cheribsd-support" id="getting-cheribsd-support">Getting CheriBSD support</a></h1>
+<h1><a class="header" href="#cheribsd-features" id="cheribsd-features">CheriBSD features</a></h1>
+<p>CheriBSD extends FreeBSD with added CHERI-enabled features, such as kernel and
+userspace memory safety.
+Some of these features are in the main CheriBSD branch; other experimental
+features  remain on development branches.
+CheriBSD's major features are:</p>
+<ul>
+<li>Two kernel compilation modes:
+<ul>
+<li>Pure-capability spatially safe kernel</li>
+<li>Hybrid kernel</li>
+</ul>
+</li>
+<li>Two userspace process environments:
+<ul>
+<li>Spatially safe userspace (&quot;CheriABI&quot;)</li>
+<li>Hybrid userspace</li>
+</ul>
+</li>
+<li>Two sets of third-party packages
+<ul>
+<li>CheriABI packages (experimental)</li>
+<li>Hybrid packages</li>
+</ul>
+</li>
+<li>Experimental temporally safe userspace (on a development branch)</li>
+<li>Experimental OS compartmentalization models:
+<ul>
+<li>Colocated processes (co-processes) compartmentalization model (on a
+development branch)</li>
+<li>Dynamic-linker-based compartmentalization model (on a development branch)</li>
+</ul>
+</li>
+<li>Experimental CHERI-extended bhyve hypervisor (on a development branch) (on
+Morello only)</li>
+</ul>
+<h1><a class="header" href="#unsupported-freebsd-features" id="unsupported-freebsd-features">Unsupported FreeBSD features</a></h1>
+<p>Certain FreeBSD features are currently unavailable in CheriBSD, including:</p>
+<ul>
+<li>ZFS</li>
+<li>DTrace</li>
+</ul>
+<p>Many other kernel features are not yet well validated, including:</p>
+<ul>
+<li>Non-UFS file systems</li>
+<li>Most optional modules, such as various firewall systems</li>
+</ul>
+<p>Bug reports relating to these under-validated subsystems would be appreciated,
+and may be submitted to the <a href="https://github.com/CTSRD-CHERI/cheribsd/issues">CheriBSD GitHub issue
+tracker</a>.</p>
+<h1><a class="header" href="#getting-help-using-cheribsd" id="getting-help-using-cheribsd">Getting help using CheriBSD</a></h1>
 <p>CheriBSD is a community-supported open-source research operating system.
 While every effort has been made to engineer to a high quality, many aspects
 of OS design for CHERI processors remain active research, and there are
@@ -280,51 +335,7 @@ the UK in the future.</p>
 <p>Most CheriBSD developers are based at the University of Cambridge (UK) and SRI
 International (USA), and it is possible to set up meetings with them directly.
 Get in touch if this would be useful to you.</p>
-<h1><a class="header" href="#differences-between-cheribsd-and-freebsd" id="differences-between-cheribsd-and-freebsd">Differences between CheriBSD and FreeBSD</a></h1>
-<p>CheriBSD extends FreeBSD with added CHERI-enabled features, such as kernel and
-userspace memory safety.
-Some of these features are in the main CheriBSD branch; other experimental
-features  remain on development branches.
-Certain FreeBSD features are not yet available in CheriBSD.</p>
-<h2><a class="header" href="#new-cheri-based-features" id="new-cheri-based-features">New CHERI-based features</a></h2>
-<p>CheriBSD extends FreeBSD with the following CHERI-based features:</p>
-<ul>
-<li>Two kernel compilation modes:
-<ul>
-<li>Pure-capability spatially safe kernel</li>
-<li>Hybrid kernel</li>
-</ul>
-</li>
-<li>Two userspace process environments:
-<ul>
-<li>Spatially safe userspace (&quot;CheriABI&quot;)</li>
-<li>Hybrid userspace</li>
-</ul>
-</li>
-<li>Two sets of third-party packages
-<ul>
-<li>CheriABI packages (experimental)</li>
-<li>Hybrid packages</li>
-</ul>
-</li>
-<li>Experimental temporally safe userspace (on a development branch)</li>
-<li>Experimental OS compartmentalization models:
-<ul>
-<li>Colocated processes (co-processes) compartmentalization model (on a
-development branch)</li>
-<li>Dynamic-linker-based compartmentalization model (on a development branch)</li>
-</ul>
-</li>
-<li>Experimental CHERI-extended bhyve hypervisor (on a development branch) (on
-Morello only)</li>
-</ul>
-<h2><a class="header" href="#unsupported-freebsd-features" id="unsupported-freebsd-features">Unsupported FreeBSD features</a></h2>
-<p>Certain FreeBSD features are currently unavailable in CheriBSD, including:</p>
-<ul>
-<li>ZFS</li>
-<li>DTrace</li>
-</ul>
-<h1><a class="header" href="#downloading-cheribsd-images" id="downloading-cheribsd-images">Downloading CheriBSD images</a></h1>
+<h1><a class="header" href="#downloading-cheribsd-image-files" id="downloading-cheribsd-image-files">Downloading CheriBSD image files</a></h1>
 <p>Two types of CheriBSD images may be download:</p>
 <ul>
 <li>
@@ -357,15 +368,28 @@ execution environment.</p>
 <h1><a class="header" href="#building-cheribsd" id="building-cheribsd">Building CheriBSD</a></h1>
 <h1><a class="header" href="#third-party-packages" id="third-party-packages">Third-party packages</a></h1>
 <p>CheriBSD on Morello ships with both hybrid and CheriABI packages
-(compilations) of the FreeBSD ports collection.
-The former is considered suitable for <em>day-to-day use</em> on Morello, providing
-a large suite of open-source applications that make Morello boards usable
-computers.
-The latter is considered <em>experimental</em>, as, at this time, only a modest
-portion of the ports collection builds for CheriABI, and they have seen little
-validation.
-Both hybrid and CheriABI packages can be installed via two independent
-instances of the package system in CheriBSD, one for each ABI.
+(compilations) of the FreeBSD ports collection, each targeting a different
+form of code generation and Application Binary Interface (ABI).
+They have different levels of completeness, maturity, security, and support.</p>
+<ul>
+<li>
+<p><strong>Hybrid ABI packages</strong> are compiled almost identically to packages in the
+baseline non-CHERI architecture (e.g., Armv8-a for Morello, and 64-bit
+RISC-V for RISC-V), and do not have improvements in memory protection or
+software compartmentalization.
+There are in the range of 20,000-30,000 hybrid ABI packages available.
+These are considered <em>appropriate for day-to-day use</em>.</p>
+</li>
+<li>
+<p><strong>CheriABI packages</strong> are compiled using pure-capability CHERI C/C++, and
+employ fine-grained C/C++ memory protection.
+There are in the range of 1,000-3,000 CheriABI packages available.
+These are considered <em>experimental</em>.
+command.</p>
+</li>
+</ul>
+<p>Hybrid and CheriABI packages can be installed via two independent instances of
+the package system in CheriBSD, one for each ABI.
 The intention is that, over time, the CheriABI packages will become more
 mature, and hence the preferred collection for day-to-day use.</p>
 <p>The default <code>pkg</code> command will print a note describing this arrangement, but
