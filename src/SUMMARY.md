@@ -11,3 +11,5 @@
   - [Building CheriBSD](building/README.md)
 - [Installing CheriBSD](installing/README.md)
 - [Third-party packages](packages/README.md)
+- [CheriABI "Hello World"](helloworld/README.md)
+- [Resources](resources/README.md)
