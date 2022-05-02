@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="background/index.html"><strong aria-hidden="true">2.</strong> Background: CHERI and CheriBSD</a></li><li class="chapter-item expanded "><a href="differences-from-freebsd/index.html"><strong aria-hidden="true">3.</strong> Differences between CheriBSD and FreeBSD</a></li><li class="chapter-item expanded "><a href="downloading/index.html"><strong aria-hidden="true">4.</strong> Downloading CheriBSD images</a></li><li class="chapter-item expanded "><a href="building/index.html"><strong aria-hidden="true">5.</strong> Building CheriBSD</a></li><li class="chapter-item expanded "><a href="packages/index.html"><strong aria-hidden="true">6.</strong> Third-party packages</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="background/index.html"><strong aria-hidden="true">2.</strong> Background: CHERI and CheriBSD</a></li><li class="chapter-item expanded "><a href="support/index.html"><strong aria-hidden="true">3.</strong> Getting CheriBSD support</a></li><li class="chapter-item expanded "><a href="differences-from-freebsd/index.html"><strong aria-hidden="true">4.</strong> Differences between CheriBSD and FreeBSD</a></li><li class="chapter-item expanded "><a href="downloading/index.html"><strong aria-hidden="true">5.</strong> Downloading CheriBSD images</a></li><li class="chapter-item expanded "><a href="building/index.html"><strong aria-hidden="true">6.</strong> Building CheriBSD</a></li><li class="chapter-item expanded "><a href="packages/index.html"><strong aria-hidden="true">7.</strong> Third-party packages</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -166,17 +166,18 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
-<p><a href="https://www.cheribsd.org/">CheriBSD</a> is a CHERI-extended version of the
-open-source <a href="https://www.freebsd.org/">FreeBSD</a> operating system.
-It is intended to:</p>
+<p><a href="https://www.cheribsd.org/">CheriBSD</a> is a version of the open-source
+<a href="https://www.freebsd.org/">FreeBSD</a> operating system that has been extended to
+use CHERI architectural protections.
+CheriBSD is intended to:</p>
 <ul>
 <li>Provide a clean, in-depth illustration and template for how CHERI support
 can be integrated with a general-purpose, MMU-enabled operating system;</li>
+<li>Enable validation and evaluation of CHERI-extended processor architectures
+and microarchitectures;</li>
 <li>Act as an OS research platform for how operating systems can use CHERI;</li>
-<li>Enable validation and evaluation of CHERI-extended architectures and
-microarchitectures;</li>
 <li>Support the development and evaluation of CHERI-enabled applications; and</li>
-<li>Provide a foundation for CHERI-enabled demonstrations.</li>
+<li>Provide a foundation for CHERI-enabled software demonstrations.</li>
 </ul>
 <p>This guide will support you in getting up and running with CheriBSD on the
 CHERI-RISC-V and Arm Morello platforms.
@@ -186,8 +187,9 @@ are several paths that can be taken to reach a shell prompt and start
 productive work.
 You might find that you want to build CheriBSD from scratch, or simply use one
 of our downloadable pre-compiled images.
-You may want to run directly from a live image, or alternatively want to use
-an installer image to install onto other media.</p>
+You may want to run directly from a live image in an emulator, or
+alternatively want to use an installer image to install onto an internal disk
+in an Arm Morello-based server or workstation.</p>
 <h1><a class="header" href="#background-cheri-and-cheribsd" id="background-cheri-and-cheribsd">Background: CHERI and CheriBSD</a></h1>
 <h2><a class="header" href="#cheri" id="cheri">CHERI</a></h2>
 <p><em>CHERI</em> is an extension to processor Instruction-Set Architectures (ISAs) to
@@ -219,6 +221,30 @@ CheriBSD runs on both CHERI-RISC-V and Morello with nearly identical feature
 sets (Morello includes hardware virtualisation extensions not present in the
 CHERI-RISC-V cores, and so CHERI-extended bhyve hypervisor support is not
 available for CHERI-RISC-V).</p>
+<h1><a class="header" href="#getting-cheribsd-support" id="getting-cheribsd-support">Getting CheriBSD support</a></h1>
+<p>CheriBSD is a community-supported open-source research operating system.
+While every effort has been made to engineer to a high quality, many aspects
+of OS design for CHERI processors remain active research, and there are
+constrained engineering resources available to build, maintain, and support
+the system.
+As you gain experience with CheriBSD, your help in supporting newcomers in the
+community will be greatly appreciated.</p>
+<p>## CHERI CPU Slack</p>
+<p>Support for CheriBSD is provided via the <a href="https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-slack.html">CHERI CPU
+Slack</a>,
+where there is a <code>\#cheribsd</code> channel where many of the CheriBSD developers
+and many CheriBSD users can be found.</p>
+<h2><a class="header" href="#cheribsd-mailing-lists" id="cheribsd-mailing-lists">CheriBSD mailing lists</a></h2>
+<p>There are also several CheriBSD email lists available:</p>
+<ul>
+<li>CheriBSD announcement mailing list (low volume) <strong>XXX: To update</strong></li>
+<li>CheriBSD general discussion <strong>XXX: To update</strong></li>
+<li>CheriBSD security vulnerabilities contact address <strong>XXX: To update</strong></li>
+</ul>
+<h2><a class="header" href="#in-person-events" id="in-person-events">In-person events</a></h2>
+<p>Further, you can meet with the CheriBSD developers at a number of conferences
+and other events, including the UKRI DSbD All Hands Meetings that take place
+twice annually in the UK.</p>
 <h1><a class="header" href="#differences-between-cheribsd-and-freebsd" id="differences-between-cheribsd-and-freebsd">Differences between CheriBSD and FreeBSD</a></h1>
 <p>CheriBSD extends FreeBSD with added CHERI-enabled features, such as kernel and
 userspace memory safety.
