@@ -12,7 +12,7 @@ for performance reasons.
   than FreeBSD source code.
 
 - CheriBSD cross-build orchestration is performed by the Python-based
-  `[cheribuild](https://github.com/CTSRD-CHERI/cheribuild)` tool, which is
+  [cheribuild](https://github.com/CTSRD-CHERI/cheribuild) tool, which is
   able to build CHERI-enabled toolchain, operating-system stack, and various
   applications and other software used by the CHERI project.
 
