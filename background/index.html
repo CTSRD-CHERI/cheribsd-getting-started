@@ -164,18 +164,24 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#background" id="background">Background</a></h1>
-<h2><a class="header" href="#what-is-cheri" id="what-is-cheri">What is CHERI?</a></h2>
-<p><em>CHERI</em> is an extension to processor Instruction-Set Architectures (ISAs) to
+<h2><a class="header" href="#cheri" id="cheri">CHERI</a></h2>
+<p><strong>CHERI</strong> is an extension to processor Instruction-Set Architectures (ISAs) to
 introduce support for fine-grained memory protection and software
 compartmentalization.
+This is done by introducing a new architectural data type, the <strong>CHERI
+capability</strong>, which can be used to implement pointers with strong integrity,
+provenance validity, spatial safety, and monotonity.
+CHERI requires new microarchitectural support, including support for memory
+tags that triack the provenance validity of capabilities in registers and
+memory.
 CHERI extensions have been specified for:</p>
 <ul>
 <li>Arm's 64-bit Armv8-a ISA, with the prototype architecture known as
-<em><a href="https://www.arm.com/architecture/cpu/morelloMorello">Morello</a></em>.
+<strong><a href="https://www.arm.com/architecture/cpu/morelloMorello">Morello</a></strong>.
 The multi-GHz, multi-core, superscalar Morello design is a CHERI-extended
 version of the Arm Neoverse N1, available on an evaluation board from Arm.</li>
 <li>The open-source 32-bit and 64-bit RISC-V ISA, with the extended ISA known as
-CHERI-RISC-V.
+<strong><a href="https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-951.pdf">CHERI-RISC-V</a></strong>.
 CHERI-RISC-V is available via multiple open-source soft processor cores for
 use on FPGA.</li>
 </ul>
@@ -186,7 +192,18 @@ development platform, using
 <a href="https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-qemu.html">QEMU-CHERI</a>
 will be the easiest way to get started using CHERI.
 This guide covers all of these use cases.</p>
-<h2><a class="header" href="#what-is-cheribsd" id="what-is-cheribsd">What is CheriBSD?</a></h2>
+<p>You can learn more about CHERI by reading the technical report, <a href="https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-941.pdf">An
+Introduction to
+CHERI</a>.</p>
+<h2><a class="header" href="#cheri-cc" id="cheri-cc">CHERI C/C++</a></h2>
+<p>CHERI C and CHERI C++ are programming-language dialects closely tied to
+CHERI-based code generation and Application Binary Interfaces (ABIs) that
+directly support referential and spatial memory safety.
+These language variants compile to <em>pure-capability code</em>, which implements
+all language- and sub-language pointers using CHERI capabilities rather than
+architectural integers.
+With suitable OS support, they can also support temporal memory safety.</p>
+<h2><a class="header" href="#cheribsd" id="cheribsd">CheriBSD</a></h2>
 <p><em>CheriBSD</em> is an extended version of the open-source
 <em><a href="https://www.freebsd.org/">FreeBSD</a></em> operating system.
 FreeBSD is a mature UNIX-based operating system able to run on multiple
