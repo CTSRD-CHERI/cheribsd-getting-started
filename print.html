@@ -241,38 +241,60 @@ available for CHERI-RISC-V).</p>
 <p>CheriBSD extends FreeBSD with added CHERI-enabled features, such as kernel and
 userspace memory safety.
 Some of these features are in the main CheriBSD branch; other experimental
-features  remain on development branches.
-CheriBSD's major features are:</p>
+features  remain on development branches.</p>
+<h2><a class="header" href="#kernel-compilation-modes" id="kernel-compilation-modes">Kernel compilation modes</a></h2>
+<p>The CheriBSD kernel can be compiled either as hybrid or pure-capability code:</p>
 <ul>
-<li>Two kernel compilation modes:
+<li>The <strong>hybrid kernel</strong> enables capaility use in userspace while making
+relatively little use of capabilities in the kernel's own implementation.</li>
+<li>The <strong>pure-capability kernel</strong> implements strong referential and spatial
+memory protection internally in the kernel, protecting against memory-safety
+vulnerabilities in components such as the network stack and system-call
+layer.</li>
+</ul>
+<h2><a class="header" href="#userspace-process-environments" id="userspace-process-environments">Userspace process environments</a></h2>
+<p>The CheriBSD userspace likewise supports two different execution environments,
+hybrid processes and CheriABI (pure-capability) processes:</p>
 <ul>
-<li>Pure-capability spatially safe kernel</li>
-<li>Hybrid kernel</li>
+<li><strong>Hybrid processes</strong> provide strong binary compatibility with the non-CHERI
+version of the same architecture -- for example, aarch64 on Morello.</li>
+<li><strong>CheriABI processes</strong> implement strong referential and spatial memory
+protection through the system-call interface, dynamic linker, language
+runtime including heap memory allocators, and compiler-generated code.
+This protects against memory memory-safety vulnerabilities in both system
+services and applications.
+CheriABI is described in an <a href="https://www.cl.cam.ac.uk/research/security/ctsrd/pdfs/201904-asplos-cheriabi.pdf">ASPLOS 2019
+paper</a>.</li>
 </ul>
-</li>
-<li>Two userspace process environments:
+<p>Both environmnts can be used over either of the hybrid or pure-capability
+kernels.</p>
+<p>Pre-compiled third-party software applications (packages) are provided for
+both ABIs, although CheriABI packages are currently considered experimental.
+This is discussed further in the <a href="features/../packages/">chapter on packages</a>.</p>
+<h2><a class="header" href="#userspace-heap-temporal-memory-safety-experimental" id="userspace-heap-temporal-memory-safety-experimental">Userspace heap temporal memory safety (experimental)</a></h2>
+<p>CheriBSD implements, on an experimental development branch, support for the
+Cornucopia heap temporal safety algorithm, as well as successor algorithms
+based on load-side-barrier features present in the Morello prototype
+architecture and processor design.
+Cornucopia is described in an <a href="https://www.cl.cam.ac.uk/research/security/ctsrd/pdfs/2020oakland-cornucopia.pdf">IEEE SSP 2020
+paper</a>.</p>
+<h2><a class="header" href="#software-compartmentalization-experimental" id="software-compartmentalization-experimental">Software compartmentalization (experimental)</a></h2>
+<p>CheriBSD implements, on experimental development branches, two different
+CHERI-enabled software compartmentalization models:</p>
 <ul>
-<li>Spatially safe userspace (&quot;CheriABI&quot;)</li>
-<li>Hybrid userspace</li>
+<li><strong>Colocated processes (co-processes) compartmentalization</strong> accelerates
+UNIX Inter-Process Communication (IPC) and context switching by colocating
+multiple processes in the same address space, separating them using CHERI
+capabilities.</li>
+<li><strong>Dynamic-linker-based compartmentalization</strong> isolates shared libraries
+within a process using CHERI capabilities limiting the access of attackers
+who have achieved arbitrary code execution within a library.</li>
 </ul>
-</li>
-<li>Two sets of third-party packages
-<ul>
-<li>CheriABI packages (experimental)</li>
-<li>Hybrid packages</li>
-</ul>
-</li>
-<li>Experimental temporally safe userspace (on a development branch)</li>
-<li>Experimental OS compartmentalization models:
-<ul>
-<li>Colocated processes (co-processes) compartmentalization model (on a
-development branch)</li>
-<li>Dynamic-linker-based compartmentalization model (on a development branch)</li>
-</ul>
-</li>
-<li>Experimental CHERI-extended bhyve hypervisor (on a development branch) (on
-Morello only)</li>
-</ul>
+<h2><a class="header" href="#virtualization-experimental" id="virtualization-experimental">Virtualization (experimental)</a></h2>
+<p>CheriBSD implements, on an experimental development branch, CHERI extensions
+to FreeBSD's bhyve Type 2 hypervisor on the Morello architecture.
+This allows bhyve to host CHERI-enabled virtual machines, including those
+running CheriBSD.</p>
 <h1><a class="header" href="#unsupported-freebsd-features" id="unsupported-freebsd-features">Unsupported FreeBSD features</a></h1>
 <p>Certain FreeBSD features are currently unavailable in CheriBSD, including:</p>
 <ul>
