@@ -11,5 +11,6 @@
 - [Installing CheriBSD](installing/README.md)
 - [Third-party packages](packages/README.md)
 - [CheriABI "Hello World"](helloworld/README.md)
+- [Morello known issues](issues/README.md)
 - [Getting help with CheriBSD](support/README.md)
 - [Resources](resources/README.md)
