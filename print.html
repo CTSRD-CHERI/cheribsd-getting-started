@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="features/index.html"><strong aria-hidden="true">2.1.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="nonfeatures/index.html"><strong aria-hidden="true">2.2.</strong> Unsupported FreeBSD features</a></li></ol></li><li class="chapter-item expanded "><a href="getting/index.html"><strong aria-hidden="true">3.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="downloading/index.html"><strong aria-hidden="true">3.1.</strong> Downloading CheriBSD image files</a></li><li class="chapter-item expanded "><a href="building/index.html"><strong aria-hidden="true">3.2.</strong> Building CheriBSD</a></li></ol></li><li class="chapter-item expanded "><a href="installing/index.html"><strong aria-hidden="true">4.</strong> Installing CheriBSD</a></li><li class="chapter-item expanded "><a href="packages/index.html"><strong aria-hidden="true">5.</strong> Third-party packages</a></li><li class="chapter-item expanded "><a href="helloworld/index.html"><strong aria-hidden="true">6.</strong> CheriABI &quot;Hello World&quot;</a></li><li class="chapter-item expanded "><a href="support/index.html"><strong aria-hidden="true">7.</strong> Getting help with CheriBSD</a></li><li class="chapter-item expanded "><a href="resources/index.html"><strong aria-hidden="true">8.</strong> Resources</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="features/index.html"><strong aria-hidden="true">2.1.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="nonfeatures/index.html"><strong aria-hidden="true">2.2.</strong> Unsupported FreeBSD features</a></li></ol></li><li class="chapter-item expanded "><a href="getting/index.html"><strong aria-hidden="true">3.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="downloading/index.html"><strong aria-hidden="true">3.1.</strong> Downloading CheriBSD image files</a></li><li class="chapter-item expanded "><a href="building/index.html"><strong aria-hidden="true">3.2.</strong> Building CheriBSD</a></li></ol></li><li class="chapter-item expanded "><a href="installing/index.html"><strong aria-hidden="true">4.</strong> Installing CheriBSD</a></li><li class="chapter-item expanded "><a href="packages/index.html"><strong aria-hidden="true">5.</strong> Third-party packages</a></li><li class="chapter-item expanded "><a href="helloworld/index.html"><strong aria-hidden="true">6.</strong> CheriABI &quot;Hello World&quot;</a></li><li class="chapter-item expanded "><a href="issues/index.html"><strong aria-hidden="true">7.</strong> Morello known issues</a></li><li class="chapter-item expanded "><a href="support/index.html"><strong aria-hidden="true">8.</strong> Getting help with CheriBSD</a></li><li class="chapter-item expanded "><a href="resources/index.html"><strong aria-hidden="true">9.</strong> Resources</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -413,12 +413,463 @@ board:</p>
 <p>It is also possible to write a live image to a USB stick, with appropriate
 filename substitution.</p>
 <h2><a class="header" href="#installing-an-arm-morello-system" id="installing-an-arm-morello-system">Installing an Arm Morello system</a></h2>
-<p><strong>TO WRITE</strong></p>
-<h3><a class="header" href="#updating-the-morello-firmware" id="updating-the-morello-firmware">Updating the Morello firmware</a></h3>
-<h3><a class="header" href="#connecting-to-the-serial-console" id="connecting-to-the-serial-console">Connecting to the serial console</a></h3>
+<p>It is possible to use Arm Morello systems both by booting the live image on a
+USB stick, and also by installing to the internal hard disk.
+In this section, we describe the how to perform an installation using the
+memstick image.</p>
+<h3><a class="header" href="#updating-and-configuring-the-morello-firmware" id="updating-and-configuring-the-morello-firmware">Updating and configuring the Morello firmware</a></h3>
+<p>It is important that the most recent Arm-provided firmware be installed on
+your Morello board, as the board has most likely shipped with an older
+firmware version.
+Newer versions contain important feature extensions (such as support for
+network booting) and also bug fixes (such as persistent variable support for
+UEFI, which is relied on for CheriBSD boot).
+You should follow the directions provided in <a href="https://developer.arm.com/documentation/den0132/latest/">Arm's Morello installation
+guide</a>, having
+downloaded Arm's <a href="https://git.morello-project.org/morello/board-firmware">prebuilt Morello firmware
+binaries</a>.
+You can find detailed instructions for updating the firmware on the built-in
+firmware SD card
+<a href="https://developer.arm.com/documentation/den0132/0100/Flash-the-onboard-SD-card">here</a>.</p>
+<h3><a class="header" href="#connecting-to-the-serial-consoles" id="connecting-to-the-serial-consoles">Connecting to the serial consoles</a></h3>
+<p>Multiple consolers are available via the USB debug port on an Arm Morello
+board, including to the management microcontrollers, and also the console UART
+for the application processor.
+These typically attach as USB serial ports 0 (management console) and 2
+(Morello console), and a serial connection program such as <code>cu</code> can be used to
+connect to them.
+For example, on a FreeBSD system, the following commands can be used to
+connect:</p>
+<ul>
+<li>Management console: <code>cu -l /dev/cuaU0 -s 115200</code></li>
+<li>Morello console: <code>cu -l /dev/cuaU2 -s 115200</code></li>
+</ul>
+<p>However, commands and device names will vary by operating system.</p>
 <h3><a class="header" href="#starting-the-boot" id="starting-the-boot">Starting the boot</a></h3>
+<p>Before powering on your Morello board, ensure that the installer USB stick is
+inserted into one of the USB ports on the board.
+Use the power switch to power the board on, which should lead to firmware
+output on the management console during a multi-minute initialization and
+boot cycle.
+Once that has completed, you will see Morello firmware output on the Morello
+console, followed by CheriBSD loader and kernel boot output.
+You will eventually be prompted to select a terminal emulation type:</p>
+<pre><code>Welcome to FreeBSD!
+
+Please choose the appropriate terminal type for your system.
+Common console types are:
+   ansi     Standard ANSI terminal
+   vt100    VT100 or compatible terminal
+   xterm    xterm terminal emulator (or compatible)
+   cons25w  cons25w terminal
+
+Console type [xterm]:
+</code></pre>
+<p>In most cases, simply hitting enter will be the right thing to do.
+This will enter <code>bsdinstall</code>, the interactive FreeBSD installer.</p>
 <h3><a class="header" href="#bsdinstall" id="bsdinstall">bsdinstall</a></h3>
+<p><code>bsdinstall</code> uses the <code>libdialog</code> text interface library.
+<strong>Be aware that you will sometimes need to use the space bar, and not enter
+key, to select menu options, which many users find confusing.</strong></p>
+<p>Select <strong>Install</strong> at the first menu by hitting Enter:</p>
+<pre><code>                     ┌────────────Welcome──────────────┐
+                     │ Welcome to FreeBSD! Would you   │
+                     │ like to begin an installation   │
+                     │ or use the live CD?             │
+                     ├─────────────────────────────────┤
+                     │ &lt;Install&gt; &lt; Shell &gt; &lt;Live CD&gt;   │
+                     └─────────────────────────────────┘
+</code></pre>
+<h4><a class="header" href="#keymap-selection" id="keymap-selection">Keymap selection</a></h4>
+<p>If you intend only to use the serial console, and not video console, select
+the default keymap by hitting Enter at the next menu; otherwise, use the
+cursor keys and space bar to select a country-specific keyboard layout:</p>
+<pre><code>     ┌───────────────────────Keymap Selection──────────────────────────┐
+     │ The system console driver for FreeBSD defaults to standard &quot;US&quot; │
+     │ keyboard map. Other keymaps can be chosen below.                │
+     │ ┌─────────────────────────────────────────────────────────────┐ │
+     │ │&gt;&gt;&gt; Continue with default keymap                             │ │
+     │ │-&gt;- Test default keymap                                      │ │
+     │ │( ) Armenian phonetic layout                                 │ │
+     │ │( ) Belarusian                                               │ │
+     │ │( ) Belgian                                                  │ │
+     │ │( ) Belgian (accent keys)                                    │ │
+     │ │( ) Brazilian (accent keys)                                  │ │
+     │ │( ) Brazilian (without accent keys)                          │ │
+     │ │( ) Bulgarian (BDS)                                          │ │
+     │ │( ) Bulgarian (Phonetic)                                     │ │
+     │ │( ) Canadian Bilingual                                       │ │
+     │ └────↓(+)─────────────────────────────────────────────12%─────┘ │
+     ├─────────────────────────────────────────────────────────────────┤
+     │                   &lt;Select&gt;          &lt;Cancel&gt;                    │
+     └──────────────────[Press arrows, TAB or ENTER]───────────────────┘
+</code></pre>
+<h4><a class="header" href="#hostname" id="hostname">Hostname</a></h4>
+<p>Press Enter to accept the default hostname, or replace it:</p>
+<pre><code>           ┌───────────────────Set Hostname──────────────────────┐
+           │ Please choose a hostname for this machine.          │
+           │                                                     │
+           │ If you are running on a managed network, please ask │
+           │ your network administrator for an appropriate name. │
+           │ ┌─────────────────────────────────────────────────┐ │
+           │ │cheribsd                                         │ │
+           │ └─────────────────────────────────────────────────┘ │
+           ├─────────────────────────────────────────────────────┤
+           │                     &lt;  OK  &gt;                        │
+           └─────────────────────────────────────────────────────┘
+</code></pre>
+<h4><a class="header" href="#partitioning-automatic-or-manual" id="partitioning-automatic-or-manual">Partitioning (automatic or manual)</a></h4>
+<p>Press Enter to select an automated UFS install:</p>
+<pre><code>          ┌─────────────────────Partitioning───────────────────────┐
+          │ How would you like to partition your disk?             │
+          │ ┌────────────────────────────────────────────────────┐ │
+          │ │   Auto (UFS)  Guided UFS Disk Setup                │ │
+          │ │   Manual      Manual Disk Setup (experts)          │ │
+          │ │   Shell       Open a shell and partition by hand   │ │
+          │ │                                                    │ │
+          │ │                                                    │ │
+          │ └────────────────────────────────────────────────────┘ │
+          ├────────────────────────────────────────────────────────┤
+          │               &lt;  OK  &gt;        &lt;Cancel&gt;                 │
+          └────────────────────────────────────────────────────────┘
+</code></pre>
+<h4><a class="header" href="#partitioning-disk-selection" id="partitioning-disk-selection">Partitioning (disk selection)</a></h4>
+<p>Select the internal SATA hard disk, which will typically be ada0 on Morello
+boards:</p>
+<pre><code>       ┌───────────────────────Partitioning──────────────────────────┐
+       │ Select the disk on which to install FreeBSD.                │
+       │ ┌─────────────────────────────────────────────────────────┐ │
+       │ │   ada0  224 GB ATA Hard Disk &lt;WDC WDS240G2G0A-00JH30&gt;   │ │
+       │ │   da0   57 GB Disk &lt;SanDisk Ultra USB 3.0&gt;              │ │
+       │ │                                                         │ │
+       │ │                                                         │ │
+       │ └─────────────────────────────────────────────────────────┘ │
+       ├─────────────────────────────────────────────────────────────┤
+       │                 &lt;  OK  &gt;         &lt;Cancel&gt;                   │
+       └─────────────────────────────────────────────────────────────┘
+</code></pre>
+<h4><a class="header" href="#partition-entire-disk" id="partition-entire-disk">Partition (entire disk)</a></h4>
+<p>Select Entire Disk and press Enter:</p>
+<pre><code>                 ┌───────────────Partition──────────────────┐
+                 │ Would you like to use this entire disk   │
+                 │ (ada0) for FreeBSD or partition it to    │
+                 │ share it with other operating systems?   │
+                 │ Using the entire disk will erase any     │
+                 │ data currently stored there.             │
+                 ├──────────────────────────────────────────┤
+                 │     &lt;Entire Disk&gt;   &lt; Partition &gt;        │
+                 └──────────────────────────────────────────┘
+</code></pre>
+<p>#### Partition (entire disk - confirmation)</p>
+<p>Press Enter to confirm:</p>
+<pre><code>                 ┌───────────────Partition──────────────────┐
+                 │ Would┌──────Confirmation─────────┐disk   │
+                 │ (ada0│ This will erase the disk. │  o    │
+                 │ share│ Are you sure you want to  │  s?   │
+                 │ Using│ proceed?                  │       │
+                 │ data ├───────────────────────────┤       │
+                 ├──────│     &lt; Yes &gt;   &lt; No  &gt;     │  ─────┤
+                 │     &lt;└───────────────────────────┘       │
+                 └────────                             ─────┘
+</code></pre>
+<h4><a class="header" href="#partition-editor" id="partition-editor">Partition Editor</a></h4>
+<p>Review the proposed partition scheme, select Finish, and then press Enter to
+proceed:</p>
+<pre><code>           ┌──────────────────Partition Editor────────────────────┐
+           │ Please review the disk setup. When complete, press   │
+           │ the Finish button.                                   │
+           │┌────────────────────────────────────────────────────┐│
+           ││ada0            224 GB  GPT                         ││
+           ││  ada0p1        260 MB  efi            /boot/ef     ││
+           ││  ada0p2        220 GB  freebsd-ufs    /            ││
+           ││  ada0p3        3.6 GB  freebsd-swap   none         ││
+           ││da0             57 GB   GPT                         ││
+           ││  da0p1         33 MB   efi                         ││
+           ││  da0p2         814 MB  freebsd-ufs                 ││
+           ││                                                    ││
+           │└────────────────────────────────────────────────────┘│
+           ├──────────────────────────────────────────────────────┤
+           │&lt;Create&gt; &lt;Delete&gt; &lt;Modify&gt; &lt;Revert&gt; &lt; Auto &gt; &lt;Finish&gt; │
+           └──────────────────────────────────────────────────────┘
+</code></pre>
+<h4><a class="header" href="#partition-editor---confirmation" id="partition-editor---confirmation">Partition editor - confirmation</a></h4>
+<p>Select Commit and press Enter to continue with writing out a new partition
+table:</p>
+<pre><code>           ┌──────────────────Partition Editor────────────────────┐
+           │ Please review the disk setup. When complete, press   │
+           │ the Finish button.                                   │
+           │┌────────────────────────────────────────────────────┐│
+           │┌──────────────────Confirmation─────────────────────┐││
+           ││ Your changes will now be written to disk. If you  │
+           ││ have chosen to overwrite existing data, it will   │
+           ││ be PERMANENTLY ERASED. Are you sure you want to   │
+           ││ commit your changes?                              │
+           │├───────────────────────────────────────────────────┤
+           ││ &lt;   Commit    &gt; &lt;Revert &amp; Exit&gt; &lt;    Back     &gt;   │
+           │└───────────────────────────────────────────────────┘
+           │└─
+           ├──────────────────────────────────────────────────────┤
+           │&lt;Create&gt; &lt;Delete&gt; &lt;Modify&gt; &lt;Revert&gt; &lt; Auto &gt; &lt;Finish&gt; │
+           └──────────────────────────────────────────────────────┘
+</code></pre>
+<h4><a class="header" href="#setting-a-root-password" id="setting-a-root-password">Setting a root password</a></h4>
+<p>Enter a new root password and press enter.
+Then confirm it by typing the same password again and pressing enter.</p>
+<pre><code>Please select a password for the system management account (root):
+Typed characters will not be visible.
+Changing local password for root
+New Password:
+</code></pre>
+<h4><a class="header" href="#network-configuration" id="network-configuration">Network configuration</a></h4>
+<p>If desired, configure Ethernet networking by pressing Enter.</p>
+<pre><code>  ┌────────────────────────Network Configuration───────────────────────────┐
+  │ Please select a network interface to configure:                        │
+  │ ┌────────────────────────────────────────────────────────────────────┐ │
+  │ │   re0  RealTek 8168/8111 B/C/CP/D/DP/E/F/G PCIe Gigabit Ethernet   │ │
+  │ │                                                                    │ │
+  │ │                                                                    │ │
+  │ └────────────────────────────────────────────────────────────────────┘ │
+  ├────────────────────────────────────────────────────────────────────────┤
+  │                     &lt;  OK  &gt;           &lt;Cancel&gt;                        │
+  └────────────────────────────────────────────────────────────────────────┘
+</code></pre>
+<h4><a class="header" href="#network-configuration---enabling-ipv4" id="network-configuration---enabling-ipv4">Network configuration - enabling IPv4</a></h4>
+<p>If desired, enable IPv4 on the Ethernet interface by selecting Yes and
+pressing Enter:</p>
+<pre><code>                        ┌──Network Configuration────┐
+                        │ Would you like to         │
+                        │ configure IPv4 for this   │
+                        │ interface?                │
+                        ├───────────────────────────┤
+                        │     &lt; Yes &gt;   &lt; No  &gt;     │
+                        └───────────────────────────┘
+</code></pre>
+<h4><a class="header" href="#network-configuration---dhcp-for-ipv4" id="network-configuration---dhcp-for-ipv4">Network configuration - DHCP for IPv4</a></h4>
+<p>If you will be using DHCP, select Yes and press Enter.
+Otherwise select No and press Enter to perform a manual IPv4 configuration.</p>
+<pre><code>                        ┌──Network Configuration────┐
+                        │ Would you like to use     │
+                        │ DHCP to configure this    │
+                        │ interface?                │
+                        ├───────────────────────────┤
+                        │     &lt; Yes &gt;   &lt; No  &gt;     │
+                        └───────────────────────────┘
+</code></pre>
+<h4><a class="header" href="#network-configuration---enabling-ipv6" id="network-configuration---enabling-ipv6">Network configuration - enabling IPv6</a></h4>
+<p>If desired, enable IPv6 on the Ethernet interface by selecting Yes and
+pressing Enter:</p>
+<pre><code>                        ┌──Network Configuration────┐
+                        │ Would you like to         │
+                        │ configure IPv6 for this   │
+                        │ interface?                │
+                        ├───────────────────────────┤
+                        │     &lt; Yes &gt;   &lt; No  &gt;     │
+                        └───────────────────────────┘
+</code></pre>
+<h4><a class="header" href="#network-configuration---slaac-for-ipv6" id="network-configuration---slaac-for-ipv6">Network configuration - SLAAC for IPv6</a></h4>
+<p>Press Enter to use stateless address autoconfiguration for IPv6:</p>
+<pre><code>                        ┌──Network Configuration────┐
+                        │ Would you like to try     │
+                        │ stateless address         │
+                        │ autoconfiguration         │
+                        │ (SLAAC)?                  │
+                        ├───────────────────────────┤
+                        │     &lt; Yes &gt;   &lt; No  &gt;     │
+                        └───────────────────────────┘
+</code></pre>
+<h4><a class="header" href="#network-configuration---resolver-configuration" id="network-configuration---resolver-configuration">Network configuration - resolver configuration</a></h4>
+<p>Enter DNS resolution configuration information, or press Enter to confirm
+autoconfigured DNS configuration:</p>
+<pre><code>   ┌───────────────────────Network Configuration──────────────────────────┐
+   │ Resolver Configuration                                               │
+   │ ┌──────────────────────────────────────────────────────────────────┐ │
+   │ │Search                                                            │ │
+   │ │IPv6 DNS #1                                                       │ │
+   │ │IPv6 DNS #2                                                       │ │
+   │ │IPv4 DNS #1    192.168.4.1                                        │ │
+   │ │IPv4 DNS #2                                                       │ │
+   │ └──────────────────────────────────────────────────────────────────┘ │
+   ├──────────────────────────────────────────────────────────────────────┤
+   │                     &lt;  OK  &gt;           &lt;Cancel&gt;                      │
+   └──────────────────────────────────────────────────────────────────────┘
+</code></pre>
+<h4><a class="header" href="#local-or-utc-clock" id="local-or-utc-clock">Local or UTC clock</a></h4>
+<p>Press Enter to select a system clock on UTC</p>
+<pre><code>   ┌───────────┤Select local or UTC (Greenwich Mean Time) clock├───────────┐
+   │ Is this machine's CMOS clock set to UTC?  If it is set to local time, │
+   │ or you don't know, please choose NO here!                             │
+   │                                                                       │
+   ├───────────────────────────────────────────────────────────────────────┤
+   │                          [ Yes  ]   [  No  ]                          │
+   └───────────────────────────────────────────────────────────────────────┘
+</code></pre>
+<h4><a class="header" href="#timezone-selection" id="timezone-selection">Timezone selection</a></h4>
+<p>Select your continent and press Enter:</p>
+<pre><code>                     ┌───────┤Time Zone Selector├───────┐
+                     │ Select a region                  │
+                     │ ┌──────────────────────────────┐ │
+                     │ │ 1 Africa                     │ │
+                     │ │ 2 America -- North and South │ │
+                     │ │ 3 Antarctica                 │ │
+                     │ │ 4 Asia                       │ │
+                     │ │ 5 Atlantic Ocean             │ │
+                     │ │ 6 Australia                  │ │
+                     │ │ 7 Europe                     │ │
+                     │ │ 8 Indian Ocean               │ │
+                     │ │ 9 Pacific Ocean              │ │
+                     │ │ 0 UTC                        │ │
+                     │ └──────────────────────────────┘ │
+                     ├──────────────────────────────────┤
+                     │        [  OK  ]   [Cancel]       │
+                     └──────────────────────────────────┘
+</code></pre>
+<p>Then select your country and press Enter:</p>
+<pre><code>        ┌────────────────────┤Countries in Europe├────────────────────┐
+        │ Select a country or region                                  │
+        │ ┌─^^^─────────────────────────────────────────────────────┐ │
+        │ │ 35 Poland                                               │ │
+        │ │ 36 Portugal                                             │ │
+        │ │ 37 Romania                                              │ │
+        │ │ 38 Russian Federation                                   │ │
+        │ │ 39 San Marino                                           │ │
+        │ │ 40 Serbia                                               │ │
+        │ │ 41 Slovakia                                             │ │
+        │ │ 42 Slovenia                                             │ │
+        │ │ 43 Spain                                                │ │
+        │ │ 44 Svalbard and Jan Mayen                               │ │
+        │ │ 45 Sweden                                               │ │
+        │ │ 46 Switzerland                                          │ │
+        │ │ 47 Turkey                                               │ │
+        │ │ 48 Ukraine                                              │ │
+        │ │ 49 United Kingdom of Great Britain and Northern Ireland │ │
+        │ │ 50 Åland Islands                                        │ │
+        │ └────────────────────────────────────────────────100%─────┘ │
+        ├─────────────────────────────────────────────────────────────┤
+        │                     [  OK  ]   [Cancel]                     │
+        └─────────────────────────────────────────────────────────────┘
+</code></pre>
+<p>Confirm your choice by selecting Yes and pressing Enter:</p>
+<pre><code>   ┌────────────────────────────┤Confirmation├────────────────────────────┐
+   │ Does the abbreviation `BST' look reasonable?                         │
+   ├──────────────────────────────────────────────────────────────────────┤
+   │                          [ Yes  ]   [  No  ]                         │
+   └──────────────────────────────────────────────────────────────────────┘
+</code></pre>
+<h4><a class="header" href="#setting-the-date-and-time" id="setting-the-date-and-time">Setting the date and time</a></h4>
+<p>As desired, set the date, or select Skip and press Enter if you plan
+to use network time synchronization:</p>
+<pre><code>                   ┌────────────Time &amp; Date───────────────┐
+                   │                                      │
+                   │  Month            Year               │
+                   │  ┌───────────────┐┌───────────────┐  │
+                   │  │May            ││2022           │  │
+                   │  └───────────────┘└───────────────┘  │
+                   │  ┌─────↑(-)───────────────────────┐  │
+                   │  │    Sun Mon Tue Wed Thu Fri Sat │  │
+                   │  │ 18   1   2   3   4   5   6   7 │  │
+                   │  │ 19   8   9  10  11  12  13  14 │  │
+                   │  │ 20  15  16  17  18  19  20  21 │  │
+                   │  │ 21  22  23  24  25  26  27  28 │  │
+                   │  │ 22  29  30  31                 │  │
+                   │  │                                │  │
+                   │  └─────↓(+)───────────────────────┘  │
+                   ├──────────────────────────────────────┤
+                   │       &lt;Set Date&gt;    &lt;  Skip  &gt;       │
+                   └──────────────────────────────────────┘
+</code></pre>
+<p>And, likewise, the time:</p>
+<pre><code>                   ┌────────────Time &amp; Date───────────────┐
+                   │                                      │
+                   │           ┌──┐ ┌──┐ ┌──┐             │
+                   │           │00│:│34│:│36│             │
+                   │           └──┘ └──┘ └──┘             │
+                   │                                      │
+                   ├──────────────────────────────────────┤
+                   │       &lt;Set Time&gt;    &lt;  Skip  &gt;       │
+                   └──────────────────────────────────────┘
+</code></pre>
+<h4><a class="header" href="#system-configuration" id="system-configuration">System configuration</a></h4>
+<p>As desired, enable any further services (e.g., <code>ntpd</code> and <code>ntpdate</code>) by
+selecting them and hitting Space:</p>
+<pre><code>  ┌────────────────────────System Configuration───────────────────────────┐
+  │ Choose the services you would like to be started at boot:             │
+  │ ┌───────────────────────────────────────────────────────────────────┐ │
+  │ │ [ ] local_unbound  Local caching validating resolver              │ │
+  │ │ [*] sshd           Secure shell daemon                            │ │
+  │ │ [ ] moused         PS/2 mouse pointer on console                  │ │
+  │ │ [ ] ntpdate        Synchronize system and network time at bootime │ │
+  │ │ [ ] ntpd           Synchronize system and network time            │ │
+  │ │ [ ] powerd         Adjust CPU frequency dynamically if supported  │ │
+  │ │ [*] dumpdev        Enable kernel crash dumps to /var/crash        │ │
+  │ │                                                                   │ │
+  │ │                                                                   │ │
+  │ └───────────────────────────────────────────────────────────────────┘ │
+  ├───────────────────────────────────────────────────────────────────────┤
+  │                               &lt;  OK  &gt;                                │
+  └───────────────────────────────────────────────────────────────────────┘
+</code></pre>
+<p>Then press Enter to continue.</p>
+<h4><a class="header" href="#add-user-accounts" id="add-user-accounts">Add user accounts</a></h4>
+<p>If desired, select Yes and press Enter to add non-root accounts.
+Otherwise, select No and press Enter</p>
+<h4><a class="header" href="#final-configuration" id="final-configuration">Final configuration</a></h4>
+<p>If there are further configuration settings to change, select an appropriate
+option from the menu and press Space.
+Otherwise, press Enter to complete the installation:</p>
+<pre><code> ─┌─────────────────────────Final Configuration───────────────────────────┐────
+  │ Setup of your FreeBSD system is nearly complete. You can now modify   │
+  │ your configuration choices. After this screen, you will have an       │
+  │ opportunity to make more complex changes using a shell.               │
+  │ ┌───────────────────────────────────────────────────────────────────┐ │
+  │ │   Exit              Apply configuration and exit installer        │ │
+  │ │   Add User          Add a user to the system                      │ │
+  │ │   Root Password     Change root password                          │ │
+  │ │   Hostname          Set system hostname                           │ │
+  │ │   Network           Networking configuration                      │ │
+  │ │   Services          Set daemons to run on startup                 │ │
+  │ │   System Hardening  Set security options                          │ │
+  │ │   Time Zone         Set system timezone                           │ │
+  │ │   Handbook          Install FreeBSD Handbook (requires network)   │ │
+  │ │                                                                   │ │
+  │ │                                                                   │ │
+  │ └───────────────────────────────────────────────────────────────────┘ │
+  ├───────────────────────────────────────────────────────────────────────┤
+  │                               &lt;  OK  &gt;                                │
+  └───────────────────────────────────────────────────────────────────────┘
+</code></pre>
+<h4><a class="header" href="#manual-configuration" id="manual-configuration">Manual configuration</a></h4>
+<p>If desired, select Yes and press Enter to drop to a shell before reboot.
+Otherwise, select No and press Enter.</p>
+<pre><code>                   ┌───────Manual Configuration──────────┐
+                   │ The installation is now finished.   │
+                   │ Before exiting the installer, would │
+                   │ you like to open a shell in the new │
+                   │ system to make any final manual     │
+                   │ modifications?                      │
+                   ├─────────────────────────────────────┤
+                   │         &lt; Yes &gt;     &lt; No  &gt;         │
+                   └─────────────────────────────────────┘
+</code></pre>
+<h3><a class="header" href="#complete" id="complete">Complete</a></h3>
+<p>Select Reboot and press Enter:</p>
+<pre><code>                        ┌─────────Complete───────────┐
+                        │ Installation of FreeBSD    │
+                        │ complete! Would you like   │
+                        │ to reboot into the         │
+                        │ installed system now?      │
+                        ├────────────────────────────┤
+                        │   &lt;Reboot &gt;  &lt;Live CD&gt;     │
+                        └────────────────────────────┘
+</code></pre>
 <h3><a class="header" href="#completing-the-installation" id="completing-the-installation">Completing the installation</a></h3>
+<p>Remove the USB stick to prevent the installer from running after a system
+reboot.
+This is due to a <a href="installing/../issues/">Morello firmware bug</a> tht prevents proper
+restoring system boot-disk state after a reboot.</p>
+<p>Due to a <a href="installing/../issues/">Morello firmware bug</a>, OS-triggered reboot is not
+reliable.
+Until a firmware revision correcting this bug is released, you will need to
+type <code>reboot</code> on the management console to reboot after installation.</p>
 <p>### Logging in</p>
 <h2><a class="header" href="#using-a-live-image" id="using-a-live-image">Using a live image</a></h2>
 <p>The specific command line to use for a live image will depend on the target
@@ -476,6 +927,7 @@ main(void)
 <h2><a class="header" href="#debugging" id="debugging">Debugging</a></h2>
 <p>First, if it is not already installed, install the CHERI GDB debugger:</p>
 <p><code>pkg64 install gdb-cheri</code></p>
+<h1><a class="header" href="#morello-known-issues" id="morello-known-issues">Morello known issues</a></h1>
 <h1><a class="header" href="#getting-help-with-cheribsd" id="getting-help-with-cheribsd">Getting help with CheriBSD</a></h1>
 <p>CheriBSD is a community-supported open-source research operating system.
 While every effort has been made to engineer to a high quality, many aspects
