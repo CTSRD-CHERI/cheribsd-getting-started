@@ -196,22 +196,22 @@ This guide covers all of these use cases.</p>
 Introduction to
 CHERI</a>.</p>
 <h2><a class="header" href="#cheri-cc" id="cheri-cc">CHERI C/C++</a></h2>
-<p>CHERI C and CHERI C++ are programming-language dialects closely tied to
-CHERI-based code generation and Application Binary Interfaces (ABIs) that
+<p><strong>CHERI C</strong> and <strong>CHERI C++</strong> are programming-language dialects closely tied
+to CHERI-based code generation and Application Binary Interfaces (ABIs) that
 directly support referential and spatial memory safety.
 These language variants compile to <em>pure-capability code</em>, which implements
 all language- and sub-language pointers using CHERI capabilities rather than
 architectural integers.
 With suitable OS support, they can also support temporal memory safety.</p>
 <h2><a class="header" href="#cheribsd" id="cheribsd">CheriBSD</a></h2>
-<p><em>CheriBSD</em> is an extended version of the open-source
+<p><strong>CheriBSD</strong> is an extended version of the open-source
 <em><a href="https://www.freebsd.org/">FreeBSD</a></em> operating system.
 FreeBSD is a mature UNIX-based operating system able to run on multiple
 hardware architectures, and widely used in industry in service, appliance, and
 embedded environments.
 CheriBSD contains various CHERI-based extensions including support for kernel
-and userspace memory safety, and for multiple software compartmentalization
-models.
+and userspace memory safety, and supports multiple software
+compartmentalization models.
 CheriBSD runs on both CHERI-RISC-V and Morello with nearly identical feature
 sets (Morello includes hardware virtualisation extensions not present in the
 CHERI-RISC-V cores, and so CHERI-extended bhyve hypervisor support is not
