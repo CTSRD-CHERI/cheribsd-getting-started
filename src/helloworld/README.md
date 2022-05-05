@@ -2,28 +2,148 @@
 
 These instructions are intended for use on an Arm Morello board, and install
 hybrid ABI versions of key toolchain and utilities using `pkg64`.
+We aim to enhance them to work with CHERI-RISC-V system in due course.
 
-**TO WRITE**
+## Toolchain installation
+
+You will need the Morello LLVM toolchain and Morello GDB for this
+exercise. To install LLVM, use the command:
+
+```pkg64 install llvm```
+
+If this is the first time you are using `pkg64` on this system, you will
+be prompted to bootstrap the `pkg` package before the package database
+is downloaded and you are prompted to confirm before installing `llvm`
+and its dependencies:
+
+```
+root@cheribsd:~ # pkg64 install llvm
+The package management tool is not yet installed on your system.
+Do you want to fetch and install it now? [y/N]: y
+Bootstrapping pkg from pkg+http://pkg.CheriBSD.org/CheriBSD:20220314:aarch64, please wait...
+Verifying signature with trusted certificate pkg.cheribsd.org.2022032901... done
+Installing pkg-1.17.5_1...
+Extracting pkg-1.17.5_1: 100%
+Updating CheriBSD repository catalogue...
+Fetching meta.conf: 100%    163 B   0.2kB/s    00:01    
+Fetching packagesite.pkg: 100%    4 MiB   2.1MB/s    00:02    
+Processing entries: 100%
+CheriBSD repository update completed. 20953 packages processed.
+All repositories are up to date.
+Updating database digests format: 100%
+The following 11 package(s) will be affected (of 0 checked):
+
+New packages to be INSTALLED:
+        gettext-runtime: 0.21
+        indexinfo: 0.3.1
+        libedit: 3.1.20210910,1
+        libffi: 3.3_1
+        libxml2: 2.9.13_2
+        llvm: 13,1
+        llvm-morello: 13.0.d20220422_1
+        mpdecimal: 2.5.1
+        perl5: 5.32.1_1
+        python38: 3.8.13
+        readline: 8.1.2
+
+Number of packages to be installed: 11
+
+The process will require 902 MiB more space.
+135 MiB to be downloaded.
+
+Proceed with this action? [y/N]: y
+[1/11] Fetching llvm-13,1.pkg: 100%    7 KiB   7.1kB/s    00:01  
+...
+[11/11] Installing llvm-13,1...
+[11/11] Extracting llvm-13,1: 100%
+=====
+...
+```
+
+*Note:* By default FreeBSD ships with the `vi` and `ee` editors. You may
+wish to install the `emacs-nox`, `nano`, or `vim` package to access a
+more familiar editor. Currently only hybrid packages installable with
+`pkg64` are available.
 
 ## Source code
 
-```
+```C
 #include <stdio.h>
 
-void
+int
 main(void)
 {
-
 	printf("Hello world\n");
 }
 ```
 
 ## Building
 
+To build a CheriABI Hello World program use:
+
+```clang -g -O2 -Wall -o helloworld -march=morello -mabi=purecap helloworld.c```
+
+*Note:* Currently, clang defaults to targeting standard Armv8-a rather
+than Morello so you must add `-march=morello` to use CHERI extensions
+and `-mabi=purecap` to build CheriABI binaries.
+
 ## Running
+
+Run the program:
+
+```
+root@cheribsd:~ # ./helloworld
+Hello world
+```
 
 ## Debugging
 
 First, if it is not already installed, install the CHERI GDB debugger:
 
 ```pkg64 install gdb-cheri```
+
+You can then debug `helloworld` by running GDB and setting a breakpoint
+on `main`:
+
+```
+root@cheribsd:~ # gdb ./helloworld
+GNU gdb (GDB) 8.3
+...
+Reading symbols from ./helloworld...
+...
+(gdb) b main
+Breakpoint 1 at 0x10a14: file helloworld.c, line 6.
+(gdb) r
+Starting program: /root/helloworld
+
+Breakpoint 1, main () at helloworld.c:6
+6           printf("Hello world\n");
+(gdb) 
+```
+
+If you then step into the `printf` call you will see that GDB prints
+the capability argument with expanded information including bounds and
+permissions:
+
+```
+(gdb) s
+printf (fmt=0x1006e0 [rR,0x1006e0-0x1006ed] "Hello world\n")
+    at /home/bed22/cheri/cheribsd/lib/libc/stdio/printf.c:57
+57      /home/bed22/cheri/cheribsd/lib/libc/stdio/printf.c: No such file or directory.
+```
+The argument can also be examined directly as either an integer or capability register:
+```
+(gdb) info reg x0
+x0             0x1006e0            1050336
+(gdb) info reg c0
+c0             0x905f400046ed06e000000000001006e0 0x1006e0 [rR,0x1006e0-0x1006ed]
+(gdb)
+```
+
+*Note:* as of this writing, GDB emits a large number of complaints like
+those below when loading files. They are mostly harmless and will be
+addressed in a future release:
+
+```
+BFD: /lib/libc.so.7: unsupported relocation type 0xe802
+```
