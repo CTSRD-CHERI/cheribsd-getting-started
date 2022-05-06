@@ -2,7 +2,7 @@
 
 # Getting Started with CheriBSD
 
-Robert N. M. Watson (University of Cambridge), ...
+Robert N. M. Watson (University of Cambridge), Brooks Davis (SRI International), ...
 
 This repository contains a living document describing how to get up and
 running with [CheriBSD](https://www.cheribsd.org/) on Morello and
