@@ -174,17 +174,29 @@ They have different levels of completeness, maturity, security, and support.</p>
 baseline non-CHERI architecture (e.g., Armv8-a for Morello, and 64-bit
 RISC-V for RISC-V), and do not have improvements in memory protection or
 software compartmentalization.
-There are in the range of 20,000-30,000 hybrid ABI packages available.
+There are over 20,000 packages available.
 These are considered <em>appropriate for day-to-day use</em>.</p>
+<p>These packages are installed in the <code>/usr/local64</code> hierarchy. By default
+<code>/usr/local64/bin</code> and <code>/usr/local64/sbin</code> should be in your path.</p>
+<p><em>Note:</em> Because these packages are installed in a non-standard location,
+there may be bugs related to them looking in <code>/usr/local</code> instead of
+<code>/usr/local64</code> for dependencies. Please report bugs of this sort in
+the <a href="https://github.com/CTSRD-CHERI/cheribsd-ports/issues">CheriBSD ports issue tracker</a>.</p>
 </li>
 <li>
 <p><strong>CheriABI packages</strong> are compiled using pure-capability CHERI C/C++, and
 employ fine-grained C/C++ memory protection.
-There are in the range of 1,000-3,000 CheriABI packages available.
-These are considered <em>experimental</em>.
-command.</p>
+There are currently over 8,000 CheriABI packages available.
+These packages are considered <em>experimental</em>.</p>
+<p>These packages are installed in the standard <code>/usr/local</code> hierarchy.</p>
+<p><em>Note:</em> These packages compile, but many have CHERI-related warnings that
+have not been audited and only a limited set have been tested.  Bugs
+related to CHERI support can be reported in the
+<a href="https://github.com/CTSRD-CHERI/cheribsd-ports/issues">CheriBSD ports issue tracker</a>.</p>
 </li>
 </ul>
+<p><em>Note:</em> As of this writing we only provide packages for Morello systems.
+We aim to add RISC-V package sets in the near future.</p>
 <p>Hybrid and CheriABI packages can be installed via two independent instances of
 the package system in CheriBSD, one for each ABI.
 The intention is that, over time, the CheriABI packages will become more
