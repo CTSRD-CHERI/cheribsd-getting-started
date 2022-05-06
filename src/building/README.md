@@ -31,7 +31,7 @@ Unless you intend to modify CheriBSD, CHERI Clang/LLVM, CHERI GDB, or
 QEMU-CHERI, you should not generally need to manually check out or compile
 most of the above repositories.
 Instead, existing prebuilt software images/packages should be used, or the
-cheribuild command, which will orchestrate softare cross-build for you.
+cheribuild command, which will orchestrate software cross-build for you.
 
 ## Checking out cheribuild
 

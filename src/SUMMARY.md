@@ -8,7 +8,7 @@
 - [Getting CheriBSD](getting/README.md)
   - [Downloading CheriBSD image files](downloading/README.md)
   - [Building CheriBSD](building/README.md)
-- [Installing CheriBSD](installing/README.md)
+- [Installing on an Arm Morello Board](installing/README.md)
 - [Third-party packages](packages/README.md)
 - [CheriABI "Hello World"](helloworld/README.md)
 - [Morello known issues](issues/README.md)

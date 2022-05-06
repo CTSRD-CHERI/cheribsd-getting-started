@@ -1,4 +1,4 @@
-# Installing CheriBSD
+# Installing on an Arm Morello Board
 
 Once you have a disk image, you will either need to write it to a USB stick
 to boot an Arm Morello system, or specify it as an argument to an emulator
