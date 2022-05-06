@@ -396,11 +396,17 @@ It can be checked out from GitHub:</p>
 <pre><code>git clone git@github.com:CTSRD-CHERI/cheribuild.git
 </code></pre>
 <h2><a class="header" href="#building-and-running-cheribsdrisc-v-in-qemu" id="building-and-running-cheribsdrisc-v-in-qemu">Building and running CheriBSD/RISC-V in QEMU</a></h2>
-<p><strong>TO WRITE</strong></p>
+<pre><code>% ./cheribuild -d --force cheribsd-riscv64-purecap
+</code></pre>
 <h2><a class="header" href="#building-and-running-cheribsdmorello-in-qemu" id="building-and-running-cheribsdmorello-in-qemu">Building and running CheriBSD/Morello in QEMU</a></h2>
-<p><strong>TO WRITE</strong></p>
-<h2><a class="header" href="#building-cheribsd-release-images" id="building-cheribsd-release-images">Building CheriBSD release images</a></h2>
-<p><strong>TO WRITE</strong></p>
+<pre><code>% ./cheribuild -d --force cheribsd-morello-purecap
+</code></pre>
+<h2><a class="header" href="#building-cheribsdrisc-v-release-images" id="building-cheribsdrisc-v-release-images">Building CheriBSD/RISC-V release images</a></h2>
+<pre><code>% ./cheribuild -d --force cheribsd-release-riscv64-purecap
+</code></pre>
+<h2><a class="header" href="#building-cheribsdmorello-release-images" id="building-cheribsdmorello-release-images">Building CheriBSD/Morello release images</a></h2>
+<pre><code>% ./cheribuild -d --force cheribsd-release-morello-purecap
+</code></pre>
 <h2><a class="header" href="#obtaining-further-information" id="obtaining-further-information">Obtaining further information</a></h2>
 <p>The <code>cheribuild</code> <a href="https://github.com/CTSRD-CHERI/cheribuild#readme">README.md</a>
 provides detailed information on various parameters and targets its supports,
@@ -887,8 +893,7 @@ launch the most recently build live image in the emulator.</p>
 (compilations) of the FreeBSD ports collection, each targeting a different
 form of code generation and Application Binary Interface (ABI).
 They have different levels of completeness, maturity, security, and support.</p>
-<ul>
-<li>
+<h2><a class="header" href="#hybrid-abi-packages" id="hybrid-abi-packages">Hybrid ABI packages</a></h2>
 <p><strong>Hybrid ABI packages</strong> are compiled almost identically to packages in the
 baseline non-CHERI architecture (e.g., Armv8-a for Morello, and 64-bit
 RISC-V for RISC-V), and do not have improvements in memory protection or
@@ -901,8 +906,7 @@ These are considered <em>appropriate for day-to-day use</em>.</p>
 there may be bugs related to them looking in <code>/usr/local</code> instead of
 <code>/usr/local64</code> for dependencies. Please report bugs of this sort in
 the <a href="https://github.com/CTSRD-CHERI/cheribsd-ports/issues">CheriBSD ports issue tracker</a>.</p>
-</li>
-<li>
+<h2><a class="header" href="#cheriabi-packages" id="cheriabi-packages">CheriABI packages</a></h2>
 <p><strong>CheriABI packages</strong> are compiled using pure-capability CHERI C/C++, and
 employ fine-grained C/C++ memory protection.
 There are currently over 8,000 CheriABI packages available.
@@ -912,8 +916,7 @@ These packages are considered <em>experimental</em>.</p>
 have not been audited and only a limited set have been tested.  Bugs
 related to CHERI support can be reported in the
 <a href="https://github.com/CTSRD-CHERI/cheribsd-ports/issues">CheriBSD ports issue tracker</a>.</p>
-</li>
-</ul>
+<h2><a class="header" href="#managing-packages-in-cheribsd" id="managing-packages-in-cheribsd">Managing packages in CheriBSD</a></h2>
 <p><em>Note:</em> As of this writing we only provide packages for Morello systems.
 We aim to add RISC-V package sets in the near future.</p>
 <p>Hybrid and CheriABI packages can be installed via two independent instances of
@@ -925,6 +928,10 @@ cannot be used for package management as described in FreeBSD documentation.
 To manage and install hybrid packages, use the <code>pkg64</code> command.
 To manage and install CheriABI packages, use the <code>pkg64c</code> command.
 We expect that <code>pkg64c</code> will be renamed to <code>pkg</code> in a future CheriBSD release.</p>
+<p>You can learn more about FreeBSD's package manager by reading the <a href="https://www.freebsd.org/cgi/man.cgi?pkg(7)">pkg(8)
+manual page</a>
+and the <a href="https://docs.freebsd.org/en/books/handbook/ports/">FreeBSD Handbook chapter on packages and
+ports</a>.</p>
 <h1><a class="header" href="#cheriabi-hello-world" id="cheriabi-hello-world">CheriABI &quot;Hello World&quot;</a></h1>
 <p>These instructions are intended for use on an Arm Morello board, and install
 hybrid ABI versions of key toolchain and utilities using <code>pkg64</code>.

@@ -205,11 +205,17 @@ It can be checked out from GitHub:</p>
 <pre><code>git clone git@github.com:CTSRD-CHERI/cheribuild.git
 </code></pre>
 <h2><a class="header" href="#building-and-running-cheribsdrisc-v-in-qemu" id="building-and-running-cheribsdrisc-v-in-qemu">Building and running CheriBSD/RISC-V in QEMU</a></h2>
-<p><strong>TO WRITE</strong></p>
+<pre><code>% ./cheribuild -d --force cheribsd-riscv64-purecap
+</code></pre>
 <h2><a class="header" href="#building-and-running-cheribsdmorello-in-qemu" id="building-and-running-cheribsdmorello-in-qemu">Building and running CheriBSD/Morello in QEMU</a></h2>
-<p><strong>TO WRITE</strong></p>
-<h2><a class="header" href="#building-cheribsd-release-images" id="building-cheribsd-release-images">Building CheriBSD release images</a></h2>
-<p><strong>TO WRITE</strong></p>
+<pre><code>% ./cheribuild -d --force cheribsd-morello-purecap
+</code></pre>
+<h2><a class="header" href="#building-cheribsdrisc-v-release-images" id="building-cheribsdrisc-v-release-images">Building CheriBSD/RISC-V release images</a></h2>
+<pre><code>% ./cheribuild -d --force cheribsd-release-riscv64-purecap
+</code></pre>
+<h2><a class="header" href="#building-cheribsdmorello-release-images" id="building-cheribsdmorello-release-images">Building CheriBSD/Morello release images</a></h2>
+<pre><code>% ./cheribuild -d --force cheribsd-release-morello-purecap
+</code></pre>
 <h2><a class="header" href="#obtaining-further-information" id="obtaining-further-information">Obtaining further information</a></h2>
 <p>The <code>cheribuild</code> <a href="https://github.com/CTSRD-CHERI/cheribuild#readme">README.md</a>
 provides detailed information on various parameters and targets its supports,
