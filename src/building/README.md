@@ -45,15 +45,27 @@ git clone git@github.com:CTSRD-CHERI/cheribuild.git
 
 ## Building and running CheriBSD/RISC-V in QEMU
 
-**TO WRITE**
+```
+% ./cheribuild -d --force cheribsd-riscv64-purecap
+```
 
 ## Building and running CheriBSD/Morello in QEMU
 
-**TO WRITE**
+```
+% ./cheribuild -d --force cheribsd-morello-purecap
+```
 
-## Building CheriBSD release images
+## Building CheriBSD/RISC-V release images
 
-**TO WRITE**
+```
+% ./cheribuild -d --force cheribsd-release-riscv64-purecap
+```
+
+## Building CheriBSD/Morello release images
+
+```
+% ./cheribuild -d --force cheribsd-release-morello-purecap
+```
 
 ## Obtaining further information
 
