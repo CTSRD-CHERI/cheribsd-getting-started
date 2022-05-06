@@ -928,11 +928,12 @@ We expect that <code>pkg64c</code> will be renamed to <code>pkg</code> in a futu
 <h1><a class="header" href="#cheriabi-hello-world" id="cheriabi-hello-world">CheriABI &quot;Hello World&quot;</a></h1>
 <p>These instructions are intended for use on an Arm Morello board, and install
 hybrid ABI versions of key toolchain and utilities using <code>pkg64</code>.
-We aim to enhance them to work with CHERI-RISC-V system in due course.</p>
+The commands will (eventually) work the same on CHERI-RISC-V, but output
+details and registers in GDB will differ.</p>
 <h2><a class="header" href="#toolchain-installation" id="toolchain-installation">Toolchain installation</a></h2>
 <p>You will need the Morello LLVM toolchain and Morello GDB for this
 exercise. To install LLVM, use the command:</p>
-<p><code>pkg64 install llvm</code></p>
+<p><code>pkg64 install llvm-base</code></p>
 <p>If this is the first time you are using <code>pkg64</code> on this system, you will
 be prompted to bootstrap the <code>pkg</code> package before the package database
 is downloaded and you are prompted to confirm before installing <code>llvm</code>
@@ -994,10 +995,11 @@ main(void)
 </code></pre>
 <h2><a class="header" href="#building" id="building">Building</a></h2>
 <p>To build a CheriABI Hello World program use:</p>
-<p><code>clang -g -O2 -Wall -o helloworld -march=morello -mabi=purecap helloworld.c</code></p>
-<p><em>Note:</em> Currently, clang defaults to targeting standard Armv8-a rather
-than Morello so you must add <code>-march=morello</code> to use CHERI extensions
-and <code>-mabi=purecap</code> to build CheriABI binaries.</p>
+<p><code>cc -g -O2 -Wall -o helloworld helloworld.c</code></p>
+<p>You can verify this is a CheriABI binary with the <code>file</code> command:</p>
+<pre><code>root@cheribsd:~ # file helloworld
+helloworld: ELF 64-bit LSB pie executable, ARM aarch64, C64, CheriABI, version 1 (SYSV), dynamically linked, interpreter /libexec/ld-elf.so.1, for FreeBSD 14.0 (1400053), FreeBSD-style, with debug_info, not stripped
+</code></pre>
 <h2><a class="header" href="#running" id="running">Running</a></h2>
 <p>Run the program:</p>
 <pre><code>root@cheribsd:~ # ./helloworld
