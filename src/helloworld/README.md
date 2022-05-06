@@ -2,14 +2,15 @@
 
 These instructions are intended for use on an Arm Morello board, and install
 hybrid ABI versions of key toolchain and utilities using `pkg64`.
-We aim to enhance them to work with CHERI-RISC-V system in due course.
+The commands will (eventually) work the same on CHERI-RISC-V, but output
+details and registers in GDB will differ.
 
 ## Toolchain installation
 
 You will need the Morello LLVM toolchain and Morello GDB for this
 exercise. To install LLVM, use the command:
 
-```pkg64 install llvm```
+```pkg64 install llvm-base```
 
 If this is the first time you are using `pkg64` on this system, you will
 be prompted to bootstrap the `pkg` package before the package database
@@ -81,11 +82,14 @@ main(void)
 
 To build a CheriABI Hello World program use:
 
-```clang -g -O2 -Wall -o helloworld -march=morello -mabi=purecap helloworld.c```
+```cc -g -O2 -Wall -o helloworld helloworld.c```
 
-*Note:* Currently, clang defaults to targeting standard Armv8-a rather
-than Morello so you must add `-march=morello` to use CHERI extensions
-and `-mabi=purecap` to build CheriABI binaries.
+You can verify this is a CheriABI binary with the `file` command:
+
+```
+root@cheribsd:~ # file helloworld
+helloworld: ELF 64-bit LSB pie executable, ARM aarch64, C64, CheriABI, version 1 (SYSV), dynamically linked, interpreter /libexec/ld-elf.so.1, for FreeBSD 14.0 (1400053), FreeBSD-style, with debug_info, not stripped
+```
 
 ## Running
 
