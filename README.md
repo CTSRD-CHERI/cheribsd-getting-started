@@ -17,6 +17,12 @@ welcomed.  Please see our [GitHub
 Repository](https://github.com/CTSRD-CHERI/cheribsd-getting-started) for the
 source code and an issue tracker.*
 
+This material is based upon work supported by the Defense Advanced
+Research Projects Agency (DARPA) under Contract No. HR001122C0110. Any
+opinions, findings and conclusions or recommendations expressed in this
+material are those of the author(s) and do not necessarily reflect the
+views of the Defense Advanced Research Projects Agency (DARPA).
+
 <!-- ANCHOR_END: cover -->
 
 ## Building
