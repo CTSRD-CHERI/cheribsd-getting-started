@@ -51,3 +51,8 @@ cannot be used for package management as described in FreeBSD documentation.
 To manage and install hybrid packages, use the `pkg64` command.
 To manage and install CheriABI packages, use the `pkg64c` command.
 We expect that `pkg64c` will be renamed to `pkg` in a future CheriBSD release.
+
+You can learn more about FreeBSD's package manager by reading the [pkg(8)
+manual page](https://www.freebsd.org/cgi/man.cgi?pkg(7))
+and the [FreeBSD Handbook chapter on packages and
+ports](https://docs.freebsd.org/en/books/handbook/ports/).
