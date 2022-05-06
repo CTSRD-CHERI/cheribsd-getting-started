@@ -5,32 +5,38 @@ CheriBSD on Morello ships with both hybrid and CheriABI packages
 form of code generation and Application Binary Interface (ABI).
 They have different levels of completeness, maturity, security, and support.
 
-- **Hybrid ABI packages** are compiled almost identically to packages in the
-  baseline non-CHERI architecture (e.g., Armv8-a for Morello, and 64-bit
-  RISC-V for RISC-V), and do not have improvements in memory protection or
-  software compartmentalization.
-  There are over 20,000 packages available.
-  These are considered *appropriate for day-to-day use*.
+## Hybrid ABI packages
 
-  These packages are installed in the `/usr/local64` hierarchy. By default
-  `/usr/local64/bin` and `/usr/local64/sbin` should be in your path.
+**Hybrid ABI packages** are compiled almost identically to packages in the
+baseline non-CHERI architecture (e.g., Armv8-a for Morello, and 64-bit
+RISC-V for RISC-V), and do not have improvements in memory protection or
+software compartmentalization.
+There are over 20,000 packages available.
+These are considered *appropriate for day-to-day use*.
 
-  *Note:* Because these packages are installed in a non-standard location,
-  there may be bugs related to them looking in `/usr/local` instead of
-  `/usr/local64` for dependencies. Please report bugs of this sort in
-  the [CheriBSD ports issue tracker](https://github.com/CTSRD-CHERI/cheribsd-ports/issues).
+These packages are installed in the `/usr/local64` hierarchy. By default
+`/usr/local64/bin` and `/usr/local64/sbin` should be in your path.
 
-- **CheriABI packages** are compiled using pure-capability CHERI C/C++, and
-  employ fine-grained C/C++ memory protection.
-  There are currently over 8,000 CheriABI packages available.
-  These packages are considered *experimental*.
+*Note:* Because these packages are installed in a non-standard location,
+there may be bugs related to them looking in `/usr/local` instead of
+`/usr/local64` for dependencies. Please report bugs of this sort in
+the [CheriBSD ports issue tracker](https://github.com/CTSRD-CHERI/cheribsd-ports/issues).
 
-  These packages are installed in the standard `/usr/local` hierarchy.
+## CheriABI packages
 
-  *Note:* These packages compile, but many have CHERI-related warnings that
-  have not been audited and only a limited set have been tested.  Bugs
-  related to CHERI support can be reported in the
-  [CheriBSD ports issue tracker](https://github.com/CTSRD-CHERI/cheribsd-ports/issues).
+**CheriABI packages** are compiled using pure-capability CHERI C/C++, and
+employ fine-grained C/C++ memory protection.
+There are currently over 8,000 CheriABI packages available.
+These packages are considered *experimental*.
+
+These packages are installed in the standard `/usr/local` hierarchy.
+
+*Note:* These packages compile, but many have CHERI-related warnings that
+have not been audited and only a limited set have been tested.  Bugs
+related to CHERI support can be reported in the
+[CheriBSD ports issue tracker](https://github.com/CTSRD-CHERI/cheribsd-ports/issues).
+
+## Managing packages in CheriBSD
 
 *Note:* As of this writing we only provide packages for Morello systems.
 We aim to add RISC-V package sets in the near future.
