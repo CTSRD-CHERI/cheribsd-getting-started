@@ -80,7 +80,7 @@ Common console types are:
 Console type [xterm]:
 ```
 
-In most cases, simply hitting enter will be the right thing to do.
+In most cases, simply hitting Enter will be the right thing to do.
 This will enter `bsdinstall`, the interactive FreeBSD installer.
 
 ### bsdinstall
@@ -259,8 +259,8 @@ table:
 
 #### Setting a root password
 
-Enter a new root password and press enter.
-Then confirm it by typing the same password again and pressing enter.
+Enter a new root password and press Enter.
+Then confirm it by typing the same password again and pressing Enter.
 
 ```
 Please select a password for the system management account (root):
