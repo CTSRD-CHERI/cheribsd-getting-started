@@ -49,7 +49,7 @@ The following command builds a CheriBSD/RISC-V live image, and boots it in
 QEMU-CHERI:
 
 ```
-% ./cheribuild -d --force build-and-run-cheribsd-riscv64-purecap
+% ./cheribuild -d build-and-run-cheribsd-riscv64-purecap
 ```
 
 ## Building and running CheriBSD/Morello in QEMU
@@ -58,7 +58,7 @@ The following command builds a CheriBSD/Morello live image, and boots it in
 QEMU-CHERI:
 
 ```
-% ./cheribuild -d --force build-and-run-cheribsd-morello-purecap
+% ./cheribuild -d build-and-run-cheribsd-morello-purecap
 ```
 
 ## Building CheriBSD/Morello release images
@@ -67,7 +67,7 @@ The following command builds a CheriBSD/Morello installer (memstick) image
 suitable to write to a USB stick:
 
 ```
-% ./cheribuild -d --clean --force cheribsd-release-morello-purecap
+% ./cheribuild -d --clean cheribsd-release-morello-purecap
 ```
 
 The resulting image file will be generated in a file with a name along the
