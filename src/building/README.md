@@ -67,7 +67,7 @@ The following command builds a CheriBSD/Morello installer (memstick) image
 suitable to write to a USB stick:
 
 ```
-% ./cheribuild -d --force cheribsd-release-morello-purecap
+% ./cheribuild -d --clean --force cheribsd-release-morello-purecap
 ```
 
 The resulting image file will be generated in a file with a name along the
