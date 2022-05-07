@@ -12,16 +12,19 @@ Topics include how to download and install prebuilt CheriBSD images, how to
 build your own images, how third-party packages work, and where to find
 further information and support.
 
+*This document is a work-in-progress.  Feedback and contributions are
+welcomed.  Please see our [GitHub
+Repository](https://github.com/CTSRD-CHERI/cheribsd-getting-started) for the
+source code and an issue tracker.
+There is a [rendered version on the
+web](https://ctsrd-cheri.github.io/cheribsd-getting-started/), which is
+automatically updated when the git repository is committed to.*
+
 ## Acknowledgements
 
 The authors gratefully acknowledge Jessica Clarke (University of Cambridge),
 George Neville-Neil (MSB Associates), and Konrad Witaszczy (University of
 Cambridge)
-
-*This document is a work-in-progress.  Feedback and contributions are
-welcomed.  Please see our [GitHub
-Repository](https://github.com/CTSRD-CHERI/cheribsd-getting-started) for the
-source code and an issue tracker.*
 
 This work was supported by the Innovate UK project Digital Security by Design
 (DSbD) Technology Platform Prototype, 105694.
