@@ -1,4 +1,4 @@
-# Building CheriBSD
+# Building image files
 
 CheriBSD can be built natively on an existing CheriBSD system (e.g., on an Arm
 Morello box), and it can also be cross-built from FreeBSD, Linux, and macOS.

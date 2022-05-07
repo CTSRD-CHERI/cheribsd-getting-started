@@ -1,4 +1,4 @@
-# Downloading CheriBSD image files
+# Downloading image files
 
 Memstick and live images can both be downloaded from the [CheriBSD
 website](https://www.cheribsd.org/).

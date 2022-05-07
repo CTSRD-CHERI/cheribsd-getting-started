@@ -1,4 +1,4 @@
-# Getting help with CheriBSD
+# Getting help
 
 CheriBSD is a community-supported open-source research operating system.
 While every effort has been made to engineer to a high quality, many aspects
