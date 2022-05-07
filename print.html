@@ -409,17 +409,17 @@ It can be checked out from GitHub:</p>
 <h2><a class="header" href="#building-and-running-cheribsdrisc-v-in-qemu" id="building-and-running-cheribsdrisc-v-in-qemu">Building and running CheriBSD/RISC-V in QEMU</a></h2>
 <p>The following command builds a CheriBSD/RISC-V live image, and boots it in
 QEMU-CHERI:</p>
-<pre><code>% ./cheribuild -d --force build-and-run-cheribsd-riscv64-purecap
+<pre><code>% ./cheribuild -d build-and-run-cheribsd-riscv64-purecap
 </code></pre>
 <h2><a class="header" href="#building-and-running-cheribsdmorello-in-qemu" id="building-and-running-cheribsdmorello-in-qemu">Building and running CheriBSD/Morello in QEMU</a></h2>
 <p>The following command builds a CheriBSD/Morello live image, and boots it in
 QEMU-CHERI:</p>
-<pre><code>% ./cheribuild -d --force build-and-run-cheribsd-morello-purecap
+<pre><code>% ./cheribuild -d build-and-run-cheribsd-morello-purecap
 </code></pre>
 <h2><a class="header" href="#building-cheribsdmorello-release-images" id="building-cheribsdmorello-release-images">Building CheriBSD/Morello release images</a></h2>
 <p>The following command builds a CheriBSD/Morello installer (memstick) image
 suitable to write to a USB stick:</p>
-<pre><code>% ./cheribuild -d --clean --force cheribsd-release-morello-purecap
+<pre><code>% ./cheribuild -d --clean cheribsd-release-morello-purecap
 </code></pre>
 <p>The resulting image file will be generated in a file with a name along the
 lines of:
