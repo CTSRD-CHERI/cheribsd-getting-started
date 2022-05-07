@@ -563,7 +563,7 @@ Select Reboot and press Enter:
                         └────────────────────────────┘
 ```
 
-### Completing the installation
+### Rebooting after installation
 
 Remove the USB stick to prevent the installer from running after a system
 reboot.
