@@ -181,10 +181,12 @@ USB stick, and also by installing to the internal hard disk.
 In this section, we describe the how to perform an installation using the
 memstick image.</p>
 <h3><a class="header" href="#updating-and-configuring-the-morello-firmware" id="updating-and-configuring-the-morello-firmware">Updating and configuring the Morello firmware</a></h3>
-<p>It is important that the most recent Arm-provided firmware be installed on
+<p><strong>It is important that the most recent Arm-provided firmware be installed on
 your Morello board, as the board has most likely shipped with an older
 firmware version.
-Newer versions contain important feature extensions (such as support for
+If you are not running the latest version, you may experience hard-to-diagnose
+behaviour or reliability problems.</strong></p>
+<p>Newer versions contain important feature extensions (such as support for
 network booting) and also bug fixes (such as persistent variable support for
 UEFI, which is relied on for CheriBSD boot).
 You should follow the directions provided in <a href="https://developer.arm.com/documentation/den0132/latest/">Arm's Morello installation
