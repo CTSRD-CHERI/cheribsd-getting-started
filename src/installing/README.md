@@ -43,6 +43,10 @@ You can find detailed instructions for updating the firmware on the built-in
 firmware SD card
 [here](https://developer.arm.com/documentation/den0132/0100/Flash-the-onboard-SD-card).
 
+We recommend that, rather than setting the firmware time to local time, as
+recommended in the Arm guide, you instead set the firmware time to UTC; you
+will then need to select UTC as the timezone in CheriBSD.
+
 ### Connecting to the serial consoles
 
 Multiple consolers are available via the USB debug port on an Arm Morello
