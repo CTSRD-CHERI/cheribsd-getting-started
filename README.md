@@ -2,20 +2,29 @@
 
 # Getting Started with CheriBSD
 
-Robert N. M. Watson (University of Cambridge), Brooks Davis (SRI International), ...
+Robert N. M. Watson (University of Cambridge)
+and
+Brooks Davis (SRI International)
 
-This repository contains a living document describing how to get up and
-running with [CheriBSD](https://www.cheribsd.org/) on Morello and
-CHERI-RISC-V.
+This is a living document that describes how to get up and running with
+[CheriBSD](https://www.cheribsd.org/) on Morello and CHERI-RISC-V.
+Topics include how to download and install prebuilt CheriBSD images, how to
+build your own images, how third-party packages work, and where to find
+further information and support.
 
 ## Acknowledgements
 
-The authors gratefully acknowledge Jessica Clarke, George Neville-Neil, ...
+The authors gratefully acknowledge Jessica Clarke (University of Cambridge),
+George Neville-Neil (MSB Associates), and Konrad Witaszczy (University of
+Cambridge)
 
 *This document is a work-in-progress.  Feedback and contributions are
 welcomed.  Please see our [GitHub
 Repository](https://github.com/CTSRD-CHERI/cheribsd-getting-started) for the
 source code and an issue tracker.*
+
+This work was supported by the Innovate UK project Digital Security by Design
+(DSbD) Technology Platform Prototype, 105694.
 
 This material is based upon work supported by the Defense Advanced
 Research Projects Agency (DARPA) under Contract No. HR001122C0110 ("ETC"). Any
