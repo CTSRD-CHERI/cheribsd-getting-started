@@ -26,9 +26,12 @@ memstick image.
 
 ### Updating and configuring the Morello firmware
 
-It is important that the most recent Arm-provided firmware be installed on
+**It is important that the most recent Arm-provided firmware be installed on
 your Morello board, as the board has most likely shipped with an older
 firmware version.
+If you are not running the latest version, you may experience hard-to-diagnose
+behaviour or reliability problems.**
+
 Newer versions contain important feature extensions (such as support for
 network booting) and also bug fixes (such as persistent variable support for
 UEFI, which is relied on for CheriBSD boot).
