@@ -203,7 +203,7 @@ Select Entire Disk and press Enter:
                  └──────────────────────────────────────────┘
 ```
 
-#### Partition (entire disk - confirmation)
+#### Partition (entire disk - confirmation)
 
 Press Enter to confirm:
 ```
@@ -579,7 +579,7 @@ reliable.
 Until a firmware revision correcting this bug is released, you will need to
 type `reboot` on the management console to reboot after installation.
 
-### Logging in
+### Logging in
 
 Log in using the username `root` and the password you entered during the
 installation process:
