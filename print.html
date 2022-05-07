@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="features/index.html"><strong aria-hidden="true">2.1.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="nonfeatures/index.html"><strong aria-hidden="true">2.2.</strong> Unsupported FreeBSD features</a></li></ol></li><li class="chapter-item expanded "><a href="getting/index.html"><strong aria-hidden="true">3.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="downloading/index.html"><strong aria-hidden="true">3.1.</strong> Downloading CheriBSD image files</a></li><li class="chapter-item expanded "><a href="building/index.html"><strong aria-hidden="true">3.2.</strong> Building CheriBSD</a></li></ol></li><li class="chapter-item expanded "><a href="installing/index.html"><strong aria-hidden="true">4.</strong> Installing on an Arm Morello Board</a></li><li class="chapter-item expanded "><a href="packages/index.html"><strong aria-hidden="true">5.</strong> Third-party packages</a></li><li class="chapter-item expanded "><a href="helloworld/index.html"><strong aria-hidden="true">6.</strong> CheriABI &quot;Hello World&quot;</a></li><li class="chapter-item expanded "><a href="issues/index.html"><strong aria-hidden="true">7.</strong> Morello known issues</a></li><li class="chapter-item expanded "><a href="support/index.html"><strong aria-hidden="true">8.</strong> Getting help with CheriBSD</a></li><li class="chapter-item expanded "><a href="resources/index.html"><strong aria-hidden="true">9.</strong> Resources</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="getting/index.html"><strong aria-hidden="true">5.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="downloading/index.html"><strong aria-hidden="true">5.1.</strong> Downloading CheriBSD image files</a></li><li class="chapter-item expanded "><a href="building/index.html"><strong aria-hidden="true">5.2.</strong> Building CheriBSD</a></li></ol></li><li class="chapter-item expanded "><a href="installing/index.html"><strong aria-hidden="true">6.</strong> Installing on an Arm Morello Board</a></li><li class="chapter-item expanded "><a href="packages/index.html"><strong aria-hidden="true">7.</strong> Third-party packages</a></li><li class="chapter-item expanded "><a href="helloworld/index.html"><strong aria-hidden="true">8.</strong> CheriABI &quot;Hello World&quot;</a></li><li class="chapter-item expanded "><a href="issues/index.html"><strong aria-hidden="true">9.</strong> Morello known issues</a></li><li class="chapter-item expanded "><a href="support/index.html"><strong aria-hidden="true">10.</strong> Getting help with CheriBSD</a></li><li class="chapter-item expanded "><a href="resources/index.html"><strong aria-hidden="true">11.</strong> Resources</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -407,17 +407,25 @@ It can be checked out from GitHub:</p>
 <pre><code>git clone git@github.com:CTSRD-CHERI/cheribuild.git
 </code></pre>
 <h2><a class="header" href="#building-and-running-cheribsdrisc-v-in-qemu" id="building-and-running-cheribsdrisc-v-in-qemu">Building and running CheriBSD/RISC-V in QEMU</a></h2>
-<pre><code>% ./cheribuild -d --force cheribsd-riscv64-purecap
+<p>The following command builds a CheriBSD/RISC-V live image, and boots it in
+QEMU-CHERI:</p>
+<pre><code>% ./cheribuild -d --force build-and-run-cheribsd-riscv64-purecap
 </code></pre>
 <h2><a class="header" href="#building-and-running-cheribsdmorello-in-qemu" id="building-and-running-cheribsdmorello-in-qemu">Building and running CheriBSD/Morello in QEMU</a></h2>
-<pre><code>% ./cheribuild -d --force cheribsd-morello-purecap
-</code></pre>
-<h2><a class="header" href="#building-cheribsdrisc-v-release-images" id="building-cheribsdrisc-v-release-images">Building CheriBSD/RISC-V release images</a></h2>
-<pre><code>% ./cheribuild -d --force cheribsd-release-riscv64-purecap
+<p>The following command builds a CheriBSD/Morello live image, and boots it in
+QEMU-CHERI:</p>
+<pre><code>% ./cheribuild -d --force build-and-run-cheribsd-morello-purecap
 </code></pre>
 <h2><a class="header" href="#building-cheribsdmorello-release-images" id="building-cheribsdmorello-release-images">Building CheriBSD/Morello release images</a></h2>
+<p>The following command builds a CheriBSD/Morello installer (memstick) image
+suitable to write to a USB stick:</p>
 <pre><code>% ./cheribuild -d --force cheribsd-release-morello-purecap
 </code></pre>
+<p>The resulting image file will be generated in a file with a name along the
+lines of:
+<code>output/cheribsd-release-morello-purecap/FreeBSD-14.0-CURRENT-arm64-aarch64c-memstick.img</code>.
+This is relative to your <code>cheribuild</code> destination root, which is, by default,
+<code>~/cheri</code>.</p>
 <h2><a class="header" href="#obtaining-further-information" id="obtaining-further-information">Obtaining further information</a></h2>
 <p>The <code>cheribuild</code> <a href="https://github.com/CTSRD-CHERI/cheribuild#readme">README.md</a>
 provides detailed information on various parameters and targets its supports,
