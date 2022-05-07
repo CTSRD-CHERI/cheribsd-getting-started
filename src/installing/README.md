@@ -577,10 +577,48 @@ type `reboot` on the management console to reboot after installation.
 
 ### Logging in
 
-## Using a live image
+Log in using the username `root` and the password you entered during the
+installation process:
 
-The specific command line to use for a live image will depend on the target
-execution environment.
-When using `cheribuild` to launch QEMU-CHERI or the Arm Morello FVP,
-`cheribuild` will automatically use any necessary command-line arguments to
-launch the most recently build live image in the emulator.
+```
+...
+Mounting late filesystems:.
+Security policy loaded: MAC/ntpd (mac_ntpd)
+Starting ntpd.
+Starting cron.
+Starting sendmail_submit.
+Starting sendmail_msp_queue.
+Performing sanity check on sshd configuration.
+Starting sshd.
+Starting background file system checks in 60 seconds.
+
+Sun May  8 00:13:04 BST 
+CheriBSD/arm64 (cheribsd) (ttyu0)
+
+login: root
+Password:
+May  8 00:13:25 cheribsd login[772]: ROOT LOGIN (root) ON ttyu0
+Last login: Sat May  7 23:41:04 on ttyu0
+FreeBSD 14.0-CURRENT #0 dev-d4897febcde: Tue May  3 13:34:49 BST 2022     rnw24@zeno.sec.cl.cam.ac.uk:/home/rnw24/cheri/build/cheribsd-morello-purecap-build/home/rnw24/cheri/cheribsd/arm64.aarch64c/sys/GENERIC-MORELLO
+
+Welcome to CheriBSD!
+
+CheriBSD extends FreeBSD to implement memory protection and software
+compartmentalization features available in CHERI-extended CPUs.
+
+We provide support via a mailing list:
+  https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-lists.html
+
+And also via the CHERI-CPU Slack:
+  https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-slack.html
+
+CheriBSD source may be found at:
+  https://github.com/CTSRD-CHERI/cheribsd/
+
+Find out more about about CHERI at https://cheri-cpu.org/
+You have new mail.
+root@cheribsd:~ # 
+```
+
+You can now add further users, install SSH keys for remote access, install
+packages, and so on.
