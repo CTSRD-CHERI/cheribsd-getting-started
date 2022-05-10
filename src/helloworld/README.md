@@ -18,7 +18,7 @@ is downloaded and you are prompted to confirm before installing `llvm`
 and its dependencies:
 
 ```
-root@cheribsd:~ # pkg64 install llvm
+root@cheribsd:~ # pkg64 install llvm-base
 The package management tool is not yet installed on your system.
 Do you want to fetch and install it now? [y/N]: y
 Bootstrapping pkg from pkg+http://pkg.CheriBSD.org/CheriBSD:20220314:aarch64, please wait...
@@ -26,13 +26,13 @@ Verifying signature with trusted certificate pkg.cheribsd.org.2022032901... done
 Installing pkg-1.17.5_1...
 Extracting pkg-1.17.5_1: 100%
 Updating CheriBSD repository catalogue...
-Fetching meta.conf: 100%    163 B   0.2kB/s    00:01    
-Fetching packagesite.pkg: 100%    4 MiB   2.1MB/s    00:02    
+Fetching meta.conf: 100%    163 B   0.2kB/s    00:01
+Fetching packagesite.pkg: 100%    4 MiB   1.4MB/s    00:03
 Processing entries: 100%
-CheriBSD repository update completed. 20953 packages processed.
+CheriBSD repository update completed. 20954 packages processed.
 All repositories are up to date.
 Updating database digests format: 100%
-The following 11 package(s) will be affected (of 0 checked):
+The following 12 package(s) will be affected (of 0 checked):
 
 New packages to be INSTALLED:
         gettext-runtime: 0.21
@@ -41,24 +41,32 @@ New packages to be INSTALLED:
         libffi: 3.3_1
         libxml2: 2.9.13_2
         llvm: 13,1
-        llvm-morello: 13.0.d20220422_1
+        llvm-base: 1
+        llvm-morello: 13.0.d20220502_1
         mpdecimal: 2.5.1
         perl5: 5.32.1_1
         python38: 3.8.13
         readline: 8.1.2
 
-Number of packages to be installed: 11
+Number of packages to be installed: 12
 
 The process will require 902 MiB more space.
-135 MiB to be downloaded.
+190 MiB to be downloaded.
 
 Proceed with this action? [y/N]: y
-[1/11] Fetching llvm-13,1.pkg: 100%    7 KiB   7.1kB/s    00:01  
+[1/12] Fetching llvm-base-1.pkg: 100%    3 KiB   2.8kB/s    00:01
+[2/12] Fetching llvm-13,1.pkg: 100%   11 KiB  11.2kB/s    00:01
 ...
-[11/11] Installing llvm-13,1...
-[11/11] Extracting llvm-13,1: 100%
+[12/12] Fetching libedit-3.1.20210910,1.pkg: 100%  119 KiB 121.8kB/s    00:01
+Checking integrity... done (0 conflicting)
+[1/12] Installing indexinfo-0.3.1...
+[1/12] Extracting indexinfo-0.3.1: 100%
+...
+[12/12] Installing llvm-base-1...
+[12/12] Extracting llvm-base-1: 100%
 =====
 ...
+
 ```
 
 *Note:* By default FreeBSD ships with the `vi` and `ee` editors. You may
