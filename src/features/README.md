@@ -31,7 +31,7 @@ hybrid processes and CheriABI (pure-capability) processes:
   CheriABI is described in an [ASPLOS 2019
   paper](https://www.cl.cam.ac.uk/research/security/ctsrd/pdfs/201904-asplos-cheriabi.pdf).
 
-Both environmnts can be used over either of the hybrid or pure-capability
+Both environments can be used over either of the hybrid or pure-capability
 kernels.
 
 Pre-compiled third-party software applications (packages) are provided for

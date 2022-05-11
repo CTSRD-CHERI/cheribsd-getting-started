@@ -23,8 +23,23 @@ feedback and improvements would be very much appreciated.
 
 Support for CheriBSD is provided via the [CHERI CPU
 Slack](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-slack.html),
-where there is a `#cheribsd` channel where many of CheriBSD developers and
-users can be found.
+where a number of topic-specific channels can be found:
+* `#cheribsd`;
+
+  CheriBSD, its features, releases and future plans.
+
+* `#debuggers`;
+
+  GDB extended to support CHERI.
+
+* `#qemu`;
+
+  QEMU-CHERI, QEMU system and user modes for Morello and CHERI-RISC-V.
+
+* `#software-porting`.
+
+  Third-party software adaptations to CheriABI and CHERI-enabled achitectures,
+  CheriBSD ports and Poudriere.
 
 ## CheriBSD mailing lists
 

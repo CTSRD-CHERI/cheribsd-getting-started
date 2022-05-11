@@ -44,6 +44,19 @@ all language- and sub-language pointers using CHERI capabilities rather than
 architectural integers.
 With suitable OS support, they can also support temporal memory safety.
 
+CHERI C/C++ support is implemented by [CHERI
+LLVM](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-llvm.html).
+The Clang/LLVM compiler is able to statically identify and report as warnings
+many of the incompatibilites between C/C++ and CHERI C/C++ that would result in
+run-time CHERI exceptions. However, a correctly compiled CHERI C/C++ program
+might still trigger CHERI capability violations at run time (e.g., due to
+pointer misalignment) that can be diagnosed with
+[GDB](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-software.html).
+
+You can learn more about CHERI C/C++ and its CheriABI run-time environment by
+reading the technical report, [CHERI C/C++ Programming
+Guide](https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-947.pdf).
+
 ## CheriBSD
 
 **CheriBSD** is an extended version of the open-source
