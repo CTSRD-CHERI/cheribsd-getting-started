@@ -30,7 +30,7 @@ automatically updated when the git repository is committed to.*
 
 The authors gratefully acknowledge Brian Campbell (University of Edinburgh),
 Jessica Clarke (University of Cambridge),
-George Neville-Neil (MSB Associates), and Konrad Witaszczy (University of
+George Neville-Neil (MSB Associates), and Konrad Witaszczyk (University of
 Cambridge) for their contributions to this document.
 
 This work was supported by the Innovate UK project Digital Security by Design
