@@ -70,7 +70,7 @@ Checking integrity... done (0 conflicting)
 ```
 
 *Note:* By default FreeBSD ships with the `vi` and `ee` editors. You may
-wish to install the `emacs-nox`, `nano`, or `vim` package to access a
+wish to install the `nano` or `vim` package to access a
 more familiar editor. Currently only hybrid packages installable with
 `pkg64` are available.
 
