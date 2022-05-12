@@ -14,3 +14,8 @@
 - [Morello known issues](issues/README.md)
 - [Getting help](support/README.md)
 - [Resources](resources/README.md)
+
+<!--
+NOTE: A release version is also in README.md.
+-->
+[Current release: 22.05]()

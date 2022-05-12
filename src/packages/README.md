@@ -5,10 +5,6 @@ CheriBSD on Morello ships with both hybrid and CheriABI packages
 form of code generation and Application Binary Interface (ABI).
 They have different levels of completeness, maturity, security, and support.
 
-**This document describes CheriBSD support for packages as of the 22.05
-release, which differs substantially from prior releases and software
-snapshots due to the introduction of a `pkg64c` package set.**
-
 ## Hybrid ABI packages
 
 **Hybrid ABI packages** are compiled almost identically to packages in the

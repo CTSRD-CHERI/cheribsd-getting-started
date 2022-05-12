@@ -12,6 +12,12 @@ Topics include how to download and install prebuilt CheriBSD images, how to
 build your own images, how third-party packages work, and where to find
 further information and support.
 
+<!--
+NOTE: A release version is also in SUMMARY.md.
+-->
+**The document describes CheriBSD as of the 22.05 release, unless explicitly
+stated in sections referring to earlier or later releases.**
+
 *This document is a work-in-progress.  Feedback and contributions are
 welcomed.  Please see our [GitHub
 Repository](https://github.com/CTSRD-CHERI/cheribsd-getting-started) for the
