@@ -133,15 +133,15 @@ Breakpoint 1, main () at helloworld.c:6
 (gdb) 
 ```
 
-If you then step into the `printf` call you will see that GDB prints
-the capability argument with expanded information including bounds and
-permissions:
+If you then step into the `printf` (or `puts` depending on
+optimization level) call you will see that GDB prints the capability
+argument with expanded information including bounds and permissions:
 
 ```
 (gdb) s
-printf (fmt=0x1006e0 [rR,0x1006e0-0x1006ed] "Hello world\n")
-    at /home/bed22/cheri/cheribsd/lib/libc/stdio/printf.c:57
-57      /home/bed22/cheri/cheribsd/lib/libc/stdio/printf.c: No such file or directory.
+puts (s=0x1006e0 [rR,0x1006e0-0x1006ec] "Hello world")
+    at /home/bed22/cheri/cheribsd/lib/libc/stdio/puts.c:60
+60      /home/bed22/cheri/cheribsd/lib/libc/stdio/puts.c: No such file or directory.
 ```
 The argument can also be examined directly as either an integer or capability register:
 ```
@@ -154,7 +154,7 @@ c0             0x905f400046ed06e000000000001006e0 0x1006e0 [rR,0x1006e0-0x1006ed
 
 *Note:* as of this writing, GDB emits a large number of complaints like
 those below when loading files. They are mostly harmless and will be
-addressed in a future release:
+addressed in a future package update:
 
 ```
 BFD: /lib/libc.so.7: unsupported relocation type 0xe802
