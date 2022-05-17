@@ -189,7 +189,7 @@ automatically updated when the git repository is committed to.</em></p>
 <h2><a class="header" href="#acknowledgements" id="acknowledgements">Acknowledgements</a></h2>
 <p>The authors gratefully acknowledge Brian Campbell (University of Edinburgh),
 Jessica Clarke (University of Cambridge),
-George Neville-Neil (MSB Associates), and Konrad Witaszczy (University of
+George Neville-Neil (MSB Associates), and Konrad Witaszczyk (University of
 Cambridge) for their contributions to this document.</p>
 <p>This work was supported by the Innovate UK project Digital Security by Design
 (DSbD) Technology Platform Prototype, 105694.</p>
@@ -263,6 +263,17 @@ These language variants compile to <em>pure-capability code</em>, which implemen
 all language- and sub-language pointers using CHERI capabilities rather than
 architectural integers.
 With suitable OS support, they can also support temporal memory safety.</p>
+<p>CHERI C/C++ support is implemented by <a href="https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-llvm.html">CHERI
+LLVM</a>.
+The Clang/LLVM compiler is able to statically identify and report as warnings
+many of the incompatibilites between C/C++ and CHERI C/C++ that would result in
+run-time CHERI exceptions. However, a correctly compiled CHERI C/C++ program
+might still trigger CHERI capability violations at run time (e.g., due to
+pointer misalignment) that can be diagnosed with
+<a href="https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-software.html">GDB</a>.</p>
+<p>You can learn more about CHERI C/C++ and its CheriABI run-time environment by
+reading the technical report, <a href="https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-947.pdf">CHERI C/C++ Programming
+Guide</a>.</p>
 <h2><a class="header" href="#cheribsd" id="cheribsd">CheriBSD</a></h2>
 <p><strong>CheriBSD</strong> is an extended version of the open-source
 <em><a href="https://www.freebsd.org/">FreeBSD</a></em> operating system.
@@ -305,7 +316,7 @@ services and applications.
 CheriABI is described in an <a href="https://www.cl.cam.ac.uk/research/security/ctsrd/pdfs/201904-asplos-cheriabi.pdf">ASPLOS 2019
 paper</a>.</li>
 </ul>
-<p>Both environmnts can be used over either of the hybrid or pure-capability
+<p>Both environments can be used over either of the hybrid or pure-capability
 kernels.</p>
 <p>Pre-compiled third-party software applications (packages) are provided for
 both ABIs, although CheriABI packages are currently considered experimental.
@@ -1159,8 +1170,26 @@ feedback and improvements would be very much appreciated.</p>
 <h2><a class="header" href="#cheribsd-slack-on-cheri-cpuslackcom" id="cheribsd-slack-on-cheri-cpuslackcom">CheriBSD Slack on cheri-cpu.slack.com</a></h2>
 <p>Support for CheriBSD is provided via the <a href="https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-slack.html">CHERI CPU
 Slack</a>,
-where there is a <code>#cheribsd</code> channel where many of CheriBSD developers and
-users can be found.</p>
+where a number of topic-specific channels can be found:</p>
+<ul>
+<li>
+<p><code>#cheribsd</code>;</p>
+<p>CheriBSD, its features, releases and future plans.</p>
+</li>
+<li>
+<p><code>#debuggers</code>;</p>
+<p>GDB extended to support CHERI.</p>
+</li>
+<li>
+<p><code>#qemu</code>;</p>
+<p>QEMU-CHERI, QEMU system and user modes for Morello and CHERI-RISC-V.</p>
+</li>
+<li>
+<p><code>#software-porting</code>.</p>
+<p>Third-party software adaptations to CheriABI and CHERI-enabled achitectures,
+CheriBSD ports and Poudriere.</p>
+</li>
+</ul>
 <h2><a class="header" href="#cheribsd-mailing-lists" id="cheribsd-mailing-lists">CheriBSD mailing lists</a></h2>
 <p>There are also several CheriBSD email lists available:</p>
 <ul>
