@@ -22,9 +22,10 @@ automatically updated when the git repository is committed to.*
 
 ## Acknowledgements
 
-The authors gratefully acknowledge Jessica Clarke (University of Cambridge),
+The authors gratefully acknowledge Brian Campbell (University of Edinburgh),
+Jessica Clarke (University of Cambridge),
 George Neville-Neil (MSB Associates), and Konrad Witaszczy (University of
-Cambridge)
+Cambridge) for their contributions to this document.
 
 This work was supported by the Innovate UK project Digital Security by Design
 (DSbD) Technology Platform Prototype, 105694.
