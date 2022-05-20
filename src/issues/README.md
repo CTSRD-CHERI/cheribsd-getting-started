@@ -4,7 +4,8 @@ The following known issues may affect the reliability and usability of
 CheriBSD on Morello:
 
 - Due to a firmware bug, OS-triggered reboot may lead the system to hang.
-  Use the "reboot" command on the management console to reboot the system.
+  Use the "reboot" command on the management console to reboot the system
+  once the OS has shut down.
 - Due to a firmware bug, some earlier firmware versions are not able to
   persist UEFI configuration variables.
   This affects, for example, the installation environment as the OS installer
