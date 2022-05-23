@@ -1,6 +1,6 @@
 # Resources
 
-In addition to the [CheriBSD support channels](support/README.md), the
+In addition to the [CheriBSD support channels](../support/), the
 following resources may also be useful.
 
 ## CheriBSD

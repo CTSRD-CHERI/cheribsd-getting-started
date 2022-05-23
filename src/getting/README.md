@@ -1,7 +1,7 @@
 # Getting CheriBSD
 
-CheriBSD can be installed by [downloading](downloading/README.md) or
-[building](building/README.md) one of two types of disk images:
+CheriBSD can be installed by [downloading](../downloading/) or
+[building](../building/) one of two types of disk images:
 
 - **Memstick images** that boot and automatically run `bsdinstall`, the FreeBSD
   installer, which can be used to prepare a filesystem on a disk, and then
