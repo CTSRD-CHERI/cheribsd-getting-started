@@ -71,7 +71,11 @@ connect:
 - Management console: `cu -l /dev/cuaU0 -s 115200`
 - Morello console: `cu -l /dev/cuaU2 -s 115200`
 
-However, commands and device names will vary by operating system.
+However, commands and device names will vary by operating system.  For
+Ubuntu we suggest:
+
+- Management console: `sudo picocom -b 115200 /dev/ttyUSB0`
+- Morello console: `sudo picocom -b 115200 /dev/ttyUSB2`
 
 ### Starting the boot
 
