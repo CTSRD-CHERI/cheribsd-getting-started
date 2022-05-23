@@ -47,6 +47,7 @@ There are also several CheriBSD email lists available:
 
 - [CheriBSD announcement mailing list (low volume)](https://lists.cam.ac.uk/sympa/info/cl-cheribsd-announce)
 - [CheriBSD general discussion](https://lists.cam.ac.uk/sympa/info/cl-cheribsd-discuss)
+- [CheriBSD ports and packages discussion](https://lists.cam.ac.uk/sympa/info/cl-cheribsd-ports)
 - CheriBSD security vulnerabilities contact address [cl-cheribsd-security@lists.cam.ac.uk](mailto:cl-cheribsd-security@lists.cam.ac.uk) 
 
 ## In-person events and meetings
