@@ -35,7 +35,7 @@ cheribuild command, which will orchestrate software cross-build for you.
 
 ## Checking out cheribuild
 
-`[cheribuild](https://github.com/CTSRD-CHERI/cheribuild)` is a Python-based
+[cheribuild](https://github.com/CTSRD-CHERI/cheribuild) is a Python-based
 build orchestration tool that is the preferred way to cross-build CheriBSD.
 It can be checked out from GitHub:
 

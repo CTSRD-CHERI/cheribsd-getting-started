@@ -14,7 +14,7 @@ memory.
 CHERI extensions have been specified for:
 
 - Arm's 64-bit Armv8-a ISA, with the prototype architecture known as
-  **[Morello](https://www.arm.com/architecture/cpu/morelloMorello)**.
+  **[Morello](https://www.arm.com/architecture/cpu/morello)**.
   The multi-GHz, multi-core, superscalar Morello design is a CHERI-extended
   version of the Arm Neoverse N1, available on an evaluation board from Arm.
 - The open-source 32-bit and 64-bit RISC-V ISA, with the extended ISA known as
