@@ -966,49 +966,155 @@ root@cheribsd:~ #
 <p>You can now add further users, install SSH keys for remote access, install
 packages, and so on.</p>
 <h1><a class="header" href="#third-party-packages" id="third-party-packages">Third-party packages</a></h1>
-<p>CheriBSD on Morello ships with both hybrid and CheriABI packages
+<p>CheriBSD on Morello ships with both hybrid ABI and CheriABI packages
 (compilations) of the FreeBSD ports collection, each targeting a different
 form of code generation and Application Binary Interface (ABI).
 They have different levels of completeness, maturity, security, and support.</p>
+<h2><a class="header" href="#overview" id="overview">Overview</a></h2>
+<p>The following table presents an overview of available package managers in
+CheriBSD that are described in more details in consecutive sections.</p>
+<table><thead><tr><th>ABI</th><th>#</th><th>Manager</th><th>Install path</th><th>Suitable for</th><th>Examples</th></tr></thead><tbody>
+<tr><td>Hybrid ABI</td><td>~20,000</td><td><code>pkg64</code></td><td><code>/usr/local64</code></td><td>Day-to-day use</td><td>bash<br/>gdb-cheri<br/>llvm-base<br/>vim</td></tr>
+<tr><td>CheriABI</td><td>~8,000</td><td><code>pkg64c</code></td><td><code>/usr/local</code></td><td>Experimental use</td><td>git<br/>nano<br/>rsync<br/>sudo</td></tr>
+</tbody></table>
+<h2><a class="header" href="#package-managers-in-cheribsd" id="package-managers-in-cheribsd">Package managers in CheriBSD</a></h2>
+<p><em>Note:</em> As of this writing we only provide packages for Morello systems.
+We aim to add CHERI-RISC-V package sets in the near future.</p>
+<p>CheriBSD includes two package managers:</p>
+<ul>
+<li><code>pkg64</code> for hybrid ABI packages;</li>
+<li><code>pkg64c</code> for CheriABI packages.</li>
+</ul>
+<p>The FreeBSD package manager <code>pkg</code> is not available on CheriBSD.
+We expect that <code>pkg64c</code> will be renamed to <code>pkg</code> in a future CheriBSD release.
+The intention is that, over time, the CheriABI packages will become more
+mature, and hence the preferred collection for day-to-day use.</p>
+<p>The syntax of the <code>pkg64</code> and <code>pkg64c</code> commands match the syntax of the <code>pkg</code>
+command from FreeBSD.
+You can find information on package manager commands in FreeBSD's <code>pkg</code> manual
+pages shipped with CheriBSD, e.g. for the commands <code>pkg64 rquery</code> and
+<code>pkg64c rquery</code>, execute <code>man pkg-rquery</code>.</p>
+<p>Additionally, you can learn more about FreeBSD's package manager by reading the
+<a href="https://www.freebsd.org/cgi/man.cgi?pkg(7)">pkg(8) manual page</a> online
+and the <a href="https://docs.freebsd.org/en/books/handbook/ports/">FreeBSD Handbook chapter on packages and
+ports</a>.</p>
 <h2><a class="header" href="#hybrid-abi-packages" id="hybrid-abi-packages">Hybrid ABI packages</a></h2>
 <p><strong>Hybrid ABI packages</strong> are compiled almost identically to packages in the
 baseline non-CHERI architecture (e.g., Armv8-a for Morello, and 64-bit
 RISC-V for RISC-V), and do not have improvements in memory protection or
-software compartmentalization.
-There are over 20,000 packages available.
-These are considered <em>appropriate for day-to-day use</em>.</p>
-<p>These packages are installed in the <code>/usr/local64</code> hierarchy. By default
-<code>/usr/local64/bin</code> and <code>/usr/local64/sbin</code> should be in your path.</p>
+software compartmentalization.</p>
+<p>These packages are considered <em>appropriate for day-to-day use</em>.
+They are intended to provide stable versions of tools necessary to develop
+software and use your CHERI system while more software is ported to CheriABI.</p>
+<p>There are currently over 20,000 hybrid ABI packages available, including:</p>
+<ul>
+<li>Compilers:
+<ul>
+<li>
+<p><code>llvm-morello</code>;</p>
+<p>Includes Clang (a CHERI C/C++ compiler), LLD (a linker), and the LLVM
+infrastructure for the Arm Morello architecture.
+Binaries installed with this package have the suffix <code>-morello</code>.</p>
+</li>
+<li>
+<p><code>llvm</code>;</p>
+<p>Adds links in <code>/usr/local64/bin</code> to allow the <code>llvm-morello</code> package to be
+used as the default LLVM package, without the suffix <code>-morello</code>,
+e.g. <code>clang</code> instead of <code>clang-morello</code>.</p>
+</li>
+<li>
+<p><code>llvm-base</code>.</p>
+<p>Adds links in <code>/usr/bin</code> to allow the <code>llvm</code> package to be used in place of
+a base-system toolchain. The <code>cc</code> script installed with this package adds
+compiler flags required to natively compile code for a CHERI-enabled
+architecture.</p>
+</li>
+</ul>
+</li>
+<li>Debuggers: <code>gdb-cheri</code>;</li>
+<li>Editors: <code>nano</code>, <code>vim</code>;</li>
+<li>Shells: <code>bash</code>, <code>dash</code>, <code>fish</code>.</li>
+</ul>
+<p>The packages are installed in the <code>/usr/local64</code> hierarchy.
+By default <code>/usr/local64/bin</code> and <code>/usr/local64/sbin</code> should be included in your
+<code>PATH</code> environment variable of a default shell shipped with CheriBSD.
+If you are planning to use a custom shell, remember to add these paths to
+<code>PATH</code>.</p>
 <p><em>Note:</em> Because these packages are installed in a non-standard location,
 there may be bugs related to them looking in <code>/usr/local</code> instead of
 <code>/usr/local64</code> for dependencies. Please report bugs of this sort in
 the <a href="https://github.com/CTSRD-CHERI/cheribsd-ports/issues">CheriBSD ports issue tracker</a>.</p>
 <h2><a class="header" href="#cheriabi-packages" id="cheriabi-packages">CheriABI packages</a></h2>
 <p><strong>CheriABI packages</strong> are compiled using pure-capability CHERI C/C++, and
-employ fine-grained C/C++ memory protection.
-There are currently over 8,000 CheriABI packages available.
-These packages are considered <em>experimental</em>.</p>
-<p>These packages are installed in the standard <code>/usr/local</code> hierarchy.</p>
+employ fine-grained C/C++ memory protection.</p>
+<p>These packages are considered <em>appropriate for experimental use</em>.
+Their primary function is to provide necessary dependencies for efforts to port
+software to CheriABI and to support CHERI demonstration and evaluation.
+They are suitable for research and development of software that benefit from
+spatial and temporal memory safety as well as software compartmentalisation.
+They can also be used to investigate potential memory safety issues in
+third-party software that are easier to detect and debug using a CHERI-enabled
+hardware-software stack.</p>
+<p>There are currently over 8,000 CheriABI packages available, including:</p>
+<ul>
+<li>Development utilities: <code>git</code>;</li>
+<li>Editors: <code>nano</code>;</li>
+<li>Libraries: <code>libnghttp2</code>, <code>libressl</code>, <code>libssh2</code>, <code>lzlib</code>, <code>wolfssl</code>;</li>
+<li>Networking tools: <code>rsync</code>;</li>
+<li>Security tools: <code>sudo</code>;</li>
+<li>Shells: <code>dash</code>.</li>
+</ul>
+<p>The packages are installed in the standard <code>/usr/local</code> hierarchy as they match
+the base system ABI.</p>
 <p><em>Note:</em> These packages compile, but many have CHERI-related warnings that
-have not been audited and only a limited set have been tested.  Bugs
-related to CHERI support can be reported in the
-<a href="https://github.com/CTSRD-CHERI/cheribsd-ports/issues">CheriBSD ports issue tracker</a>.</p>
-<h2><a class="header" href="#managing-packages-in-cheribsd" id="managing-packages-in-cheribsd">Managing packages in CheriBSD</a></h2>
-<p><em>Note:</em> As of this writing we only provide packages for Morello systems.
-We aim to add RISC-V package sets in the near future.</p>
-<p>Hybrid and CheriABI packages can be installed via two independent instances of
-the package system in CheriBSD, one for each ABI.
-The intention is that, over time, the CheriABI packages will become more
-mature, and hence the preferred collection for day-to-day use.</p>
-<p>The default <code>pkg</code> command will print a note describing this arrangement, but
-cannot be used for package management as described in FreeBSD documentation.
-To manage and install hybrid packages, use the <code>pkg64</code> command.
-To manage and install CheriABI packages, use the <code>pkg64c</code> command.
-We expect that <code>pkg64c</code> will be renamed to <code>pkg</code> in a future CheriBSD release.</p>
-<p>You can learn more about FreeBSD's package manager by reading the <a href="https://www.freebsd.org/cgi/man.cgi?pkg(7)">pkg(8)
-manual page</a>
-and the <a href="https://docs.freebsd.org/en/books/handbook/ports/">FreeBSD Handbook chapter on packages and
-ports</a>.</p>
+have not been audited and only a limited set have been tested. Bugs related to
+CHERI support can be reported in the <a href="https://github.com/CTSRD-CHERI/cheribsd-ports/issues">CheriBSD ports issue
+tracker</a>.
+While the CheriABI packages are more interesting as they use CHERI memory-safety
+features, you must remember that they might break in run-time and hence might
+not be suitable for critical operations.
+In such case, a corresponding hybrid ABI package might be considered instead of
+a CheriABI package.</p>
+<h2><a class="header" href="#cross-abi-package-conflicts" id="cross-abi-package-conflicts">Cross-ABI package conflicts</a></h2>
+<p>Hybrid ABI and CheriABI package repositories include many counterpart packages,
+e.g. <code>git</code> is available in both repositories.
+If you decided to use a CheriABI package and find that it crashes, you
+might consider using a hybrid ABI package instead.</p>
+<p>CheriABI packages have a higher priority than the hybrid ABI packages in default
+<code>PATH</code> environment variables in CheriBSD.
+In case you installed a CheriABI package and a hybrid ABI package with a
+conflicting program name, you must execute the hybrid ABI program using
+an absolute path.</p>
+<h2><a class="header" href="#cross-abi-package-dependencies" id="cross-abi-package-dependencies">Cross-ABI package dependencies</a></h2>
+<p>At the moment, a package cannot depend in run-time on another package with
+a different ABI, e.g. to execute a program provided by that package.
+Such feature would be useful if a CheriBSD port cannot easily be adapted to
+CheriABI and includes a program that is executed by another port that has
+a CheriABI package.
+There are currently no plans to support this case.</p>
+<h2><a class="header" href="#missing-packages" id="missing-packages">Missing packages</a></h2>
+<p>Hybrid ABI and CheriABI package repositories might be missing third-party
+software due to the following reasons:</p>
+<ul>
+<li>
+<p>There is no FreeBSD port including that software or it is broken on AArch64;</p>
+<p>Check <a href="https://www.freshports.org/">FreshPorts</a>,
+<a href="https://wiki.freebsd.org/WantedPorts">FreeBSD Wiki</a>,
+<a href="https://bugs.freebsd.org/bugzilla/">FreeBSD Bugzilla</a> and
+the <a href="https://lists.freebsd.org/subscription/freebsd-ports">freebsd-ports mailing
+list</a> to find out
+if anyone is working on software you are interested in.</p>
+</li>
+<li>
+<p>A CheriBSD port with the software is broken on Morello or is not adapted to
+CheriABI.</p>
+<p>Check the <a href="https://github.com/CTSRD-CHERI/cheribsd-ports/issues">CheriBSD ports issue
+tracker</a> to find out if
+an issue with the software is documented and the <a href="https://poudriere.cheribsd.org">Poudriere infrastructure for
+CheriBSD packages</a> to find failed build
+results.</p>
+</li>
+</ul>
 <h1><a class="header" href="#cheriabi-hello-world" id="cheriabi-hello-world">CheriABI &quot;Hello World&quot;</a></h1>
 <p>These instructions are intended for use on an Arm Morello board, and install
 hybrid ABI versions of key toolchain and utilities using <code>pkg64</code>.
