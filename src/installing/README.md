@@ -11,7 +11,7 @@ following command would write the image to a USB stick for use with a Morello
 board:
 
 ```
-dd if=cheribsd-memstick-dev-arm64-aarch64c-2022-04-05.img of=/dev/DISK bs=1048576
+dd if=cheribsd-memstick-arm64-aarch64c-22.05.img of=/dev/DISK bs=1048576
 ```
 
 It is also possible to write a live image to a USB stick, with appropriate
