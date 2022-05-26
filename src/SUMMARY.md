@@ -15,6 +15,7 @@
   - [Installing on a Morello board](morello-install/README.md)
   - [Morello known issues](morello-issues/README.md)
 - [Third-party packages](packages/README.md)
+  - [Limitations of packages](packages/limitations.md)
 - [CheriABI "Hello World"](helloworld/README.md)
 - [Getting help](support/README.md)
 - [Resources](resources/README.md)
