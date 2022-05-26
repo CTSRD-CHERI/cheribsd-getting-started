@@ -17,6 +17,7 @@
 - [Third-party packages](packages/README.md)
   - [Limitations of packages](packages/limitations.md)
   - [Upgrading packages](packages/upgrading.md)
+  - [Useful commands](packages/commands.md)
 - [CheriABI "Hello World"](helloworld/README.md)
 - [Getting help](support/README.md)
 - [Resources](resources/README.md)
