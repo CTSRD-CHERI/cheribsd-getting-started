@@ -17,6 +17,16 @@ dd if=cheribsd-memstick-arm64-aarch64c-22.05.img of=/dev/DISK bs=1048576
 It is also possible to write a live image to a USB stick, with appropriate
 filename substitution.
 
+On systems such as Ubuntu you can also use the GNOME Disks utility to
+write to a USB stick:
+
+![GNOME Disks](gnome-disks.png)
+
+First select the USB stick in the left pane, then use the menu at the
+top right to select "Restore Disk Image...".  It will ask for the
+image to write and confirm which device will be written to.  Finally
+the eject icon can be used to safely remove the stick before use.
+
 ## Installing an Arm Morello system
 
 It is possible to use Arm Morello systems both by booting the live image on a
@@ -61,7 +71,11 @@ connect:
 - Management console: `cu -l /dev/cuaU0 -s 115200`
 - Morello console: `cu -l /dev/cuaU2 -s 115200`
 
-However, commands and device names will vary by operating system.
+However, commands and device names will vary by operating system.  For
+Ubuntu we suggest:
+
+- Management console: `sudo picocom -b 115200 /dev/ttyUSB0`
+- Morello console: `sudo picocom -b 115200 /dev/ttyUSB2`
 
 ### Starting the boot
 
