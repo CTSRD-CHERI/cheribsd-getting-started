@@ -12,6 +12,6 @@ CheriBSD on Morello:
   cannot instruct the firmware to boot only from the installed target, and not
   further USB sticks.
 
-**It is extremely important that you use the most recent firwmare with your
+**It is extremely important that you use the most recent firmware with your
 Morello board, to avoid these and other issues present in earlier firmware
 releases.**
