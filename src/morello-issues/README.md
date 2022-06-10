@@ -12,6 +12,15 @@ CheriBSD on Morello:
   This affects, for example, the installation environment as the OS installer
   cannot instruct the firmware to boot only from the installed target, and not
   further USB sticks.
+- Due to a firmware bug, the system sometimes corrupts the AP QSPI flash.
+  This appears to the user as hang on the morello console with an assertion
+  like:
+  ```
+  Loading driver at 0x000F9490000 EntryPoint=0x000F94A003C VariableRuntimeDxe.efi
+  ASSERT [VariableRuntimeDxe] VariableParsing.c(502): NameSizeOfVariable (PtrTrack->CurrPtr, AuthFormat) != 0
+  ```
+  To recover from this error, run following commands at the mcc console:
+  `debug`, `selftest`, `R`, `0`, `exit`, `reboot`.
 
 **It is extremely important that you use the most recent firmware with your
 Morello board, to avoid these and other issues present in earlier firmware
