@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Installing on an Arm Morello Board - Getting Started with CheriBSD</title>
+        <title>Installing on a Morello board - Getting Started with CheriBSD</title>
         
         
 
@@ -93,7 +93,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="../features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="../nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="../getting/index.html"><strong aria-hidden="true">5.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">5.1.</strong> Downloading image files</a></li><li class="chapter-item expanded "><a href="../building/index.html"><strong aria-hidden="true">5.2.</strong> Building image files</a></li></ol></li><li class="chapter-item expanded "><a href="../installing/index.html" class="active"><strong aria-hidden="true">6.</strong> Installing on an Arm Morello Board</a></li><li class="chapter-item expanded "><a href="../packages/index.html"><strong aria-hidden="true">7.</strong> Third-party packages</a></li><li class="chapter-item expanded "><a href="../helloworld/index.html"><strong aria-hidden="true">8.</strong> CheriABI &quot;Hello World&quot;</a></li><li class="chapter-item expanded "><a href="../issues/index.html"><strong aria-hidden="true">9.</strong> Morello known issues</a></li><li class="chapter-item expanded "><a href="../support/index.html"><strong aria-hidden="true">10.</strong> Getting help</a></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">11.</strong> Resources</a></li><li class="chapter-item expanded affix ">Current release: 22.05</li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="../features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="../nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="../getting/index.html"><strong aria-hidden="true">5.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">5.1.</strong> Downloading image files</a></li><li class="chapter-item expanded "><a href="../building/index.html"><strong aria-hidden="true">5.2.</strong> Building image files</a></li></ol></li><li class="chapter-item expanded "><a href="../morello/index.html"><strong aria-hidden="true">6.</strong> CheriBSD on an Arm Morello board</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../morello-console/index.html"><strong aria-hidden="true">6.1.</strong> Accessing the Morello console</a></li><li class="chapter-item expanded "><a href="../morello-firmware/index.html"><strong aria-hidden="true">6.2.</strong> Upgrading the Morello firmware</a></li><li class="chapter-item expanded "><a href="../morello-install/index.html" class="active"><strong aria-hidden="true">6.3.</strong> Installing on a Morello board</a></li><li class="chapter-item expanded "><a href="../morello-issues/index.html"><strong aria-hidden="true">6.4.</strong> Morello known issues</a></li></ol></li><li class="chapter-item expanded "><a href="../packages/index.html"><strong aria-hidden="true">7.</strong> Third-party packages</a></li><li class="chapter-item expanded "><a href="../helloworld/index.html"><strong aria-hidden="true">8.</strong> CheriABI &quot;Hello World&quot;</a></li><li class="chapter-item expanded "><a href="../support/index.html"><strong aria-hidden="true">9.</strong> Getting help</a></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">10.</strong> Resources</a></li><li class="chapter-item expanded affix ">Current release: 22.05</li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -163,7 +163,9 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#installing-on-an-arm-morello-board" id="installing-on-an-arm-morello-board">Installing on an Arm Morello Board</a></h1>
+                        <h1><a class="header" href="#installing-on-a-morello-board" id="installing-on-a-morello-board">Installing on a Morello Board</a></h1>
+<p><em><strong>Please ensure that you have upgraded the Morello board firmware before
+proceeding to CheriBSD installation.</strong></em></p>
 <p>Once you have a disk image, you will either need to write it to a USB stick
 to boot an Arm Morello system, or specify it as an argument to an emulator
 such as QEMU-CHERI or the Arm Morello FVP.</p>
@@ -180,48 +182,90 @@ filename substitution.</p>
 USB stick, and also by installing to the internal hard disk.
 In this section, we describe the how to perform an installation using the
 memstick image.</p>
-<h3><a class="header" href="#updating-and-configuring-the-morello-firmware" id="updating-and-configuring-the-morello-firmware">Updating and configuring the Morello firmware</a></h3>
-<p><strong>It is important that the most recent Arm-provided firmware be installed on
-your Morello board, as the board has most likely shipped with an older
-firmware version.
-If you are not running the latest version, you may experience hard-to-diagnose
-behaviour or reliability problems.</strong></p>
-<p>Newer versions contain important feature extensions (such as support for
-network booting) and also bug fixes (such as persistent variable support for
-UEFI, which is relied on for CheriBSD boot).
-You should follow the directions provided in <a href="https://developer.arm.com/documentation/den0132/latest/">Arm's Morello installation
-guide</a>, having
-downloaded Arm's <a href="https://git.morello-project.org/morello/board-firmware">prebuilt Morello firmware
-binaries</a>.
-You can find detailed instructions for updating the firmware on the built-in
-firmware SD card
-<a href="https://developer.arm.com/documentation/den0132/0100/Flash-the-onboard-SD-card">here</a>.</p>
-<p>We recommend that, rather than setting the firmware time to local time, as
-recommended in the Arm guide, you instead set the firmware time to UTC; you
-will then need to select UTC as the timezone in CheriBSD.</p>
-<h3><a class="header" href="#connecting-to-the-serial-consoles" id="connecting-to-the-serial-consoles">Connecting to the serial consoles</a></h3>
-<p>Multiple consolers are available via the USB debug port on an Arm Morello
-board, including to the management microcontrollers, and also the console UART
-for the application processor.
-These typically attach as USB serial ports 0 (management console) and 2
-(Morello console), and a serial connection program such as <code>cu</code> can be used to
-connect to them.
-For example, on a FreeBSD system, the following commands can be used to
-connect:</p>
-<ul>
-<li>Management console: <code>cu -l /dev/cuaU0 -s 115200</code></li>
-<li>Morello console: <code>cu -l /dev/cuaU2 -s 115200</code></li>
-</ul>
-<p>However, commands and device names will vary by operating system.</p>
 <h3><a class="header" href="#starting-the-boot" id="starting-the-boot">Starting the boot</a></h3>
 <p>Before powering on your Morello board, ensure that the installer USB stick is
 inserted into one of the USB ports on the board.
 Use the power switch to power the board on, which should lead to firmware
-output on the management console during a multi-minute initialization and
-boot cycle.
-Once that has completed, you will see Morello firmware output on the Morello
-console, followed by CheriBSD loader and kernel boot output.
-You will eventually be prompted to select a terminal emulation type:</p>
+output on the MCC console during a multi-minute initialization and boot cycle.</p>
+<p>Once that has completed, you will see Morello firmware output on the Morello
+console.
+When this message is presented, press Escape to enter the UEFI boot menu:</p>
+<pre><code>Press ESCAPE for boot options .......
+</code></pre>
+<p>At the UEFI menu, select Boot Manager using the cursor keys, and press
+Enter:</p>
+<pre><code>   Select Language            &lt;Standard English&gt;         This selection will
+                                                         take you to the
+ &gt; Device Manager                                        Device Manager
+ &gt; Boot Manager
+ &gt; Boot Maintenance Manager
+
+   Continue
+   Reset
+
+
+
+
+
+
+
+  ^v=Move Highlight       &lt;Enter&gt;=Select Entry
+</code></pre>
+<p>Select your USB stick from the Boot Manager menu using the cursor keys, and
+press enter.
+In the example below, it is the SanDisk Ultra USB 3.0 device:</p>
+<pre><code>/------------------------------------------------------------------------------\
+|                                Boot Manager                                  |
+\------------------------------------------------------------------------------/
+
+                                                         Device Path :
+   Boot Manager Menu                                     PcieRoot(0x0)/Pci(0x0,
+                                                         0x0)/Pci(0x0,0x0)/Pci(
+   UEFI Shell                                            0x14,0x0)/Pci(0x0,0x0)
+   UEFI Misc Device                                      /USB(0x5,0x0)
+   UEFI WDC WDS240G2G0A-00JH30 2143B2455605
+   UEFI PXEv4 (MAC:0002F7009856)
+   UEFI HTTPv4 (MAC:0002F7009856)
+   UEFI HTTPv6 (MAC:0002F7009856)
+   UEFI PXEv6 (MAC:0002F7009856)
+   UEFI SanDisk Ultra USB 3.0
+   0101cfbb32adfd6c145cd38e7d6164cd167456963c3a71b9f157
+   e574567b43d96c6000000000000000000000e49dde42009f1a00
+   955581079e275d95
+   UEFI Non-Block Boot Device
+                                                       v
+/------------------------------------------------------------------------------\
+|                                                                              |
+| ^v=Move Highlight       &lt;Enter&gt;=Select Entry      Esc=Exit                   |
+\------------------------------------------------------------------------------/
+</code></pre>
+<p>This will be followed by the CheriBSD boot loader and kernel output.
+You can press Enter to proceed, or wait for the countdown timer to finish:</p>
+<pre><code>    _____ _               _ ____   _____ _____
+   / ____| |             (_)  _ \ / ____|  __ \
+  | |    | |__   ___ _ __ _| |_) | (___ | |  | |
+  | |    | '_ \ / _ \ '__| |  _ &lt; \___ \| |  | |
+  | |____| | | |  __/ |  | | |_) |____) | |__| |
+   \_____|_| |_|\___|_|  |_|____/|_____/|_____/
+                                                 ```                        `
+                                                s` `.....---.......--.```   -/
+ /---------- Welcome to CheriBSD ----------\    +o   .--`         /y:`      +.
+ |                                         |     yo`:.            :o      `+-
+ |  1. Boot Multi user [Enter]             |      y/               -/`   -o/
+ |  2. Boot Single user                    |     .-                  ::/sy+:.
+ |  3. Escape to loader prompt             |     /                     `--  /
+ |  4. Reboot                              |    `:                          :`
+ |  5. Cons: Serial                        |    `:                          :`
+ |                                         |     /                          /
+ |  Options:                               |     .-                        -.
+ |  6. Kernel: default/kernel (1 of 1)     |      --                      -.
+ |  7. Boot Options                        |       `:`                  `:`
+ |                                         |         .--             `--.
+ |                                         |            .---.....----.
+ \-----------------------------------------/
+   Autoboot in 10 seconds. [Space] to pause
+</code></pre>
+<p>You will eventually be prompted to select a terminal emulation type:</p>
 <pre><code>Welcome to FreeBSD!
 
 Please choose the appropriate terminal type for your system.
@@ -632,12 +676,17 @@ Otherwise, select No and press Enter.</p>
 <h3><a class="header" href="#rebooting-after-installation" id="rebooting-after-installation">Rebooting after installation</a></h3>
 <p>Remove the USB stick to prevent the installer from running after a system
 reboot.
-This is due to a <a href="../issues/">Morello firmware bug</a> tht prevents proper
-restoring system boot-disk state after a reboot.</p>
-<p>Due to a <a href="../issues/">Morello firmware bug</a>, OS-triggered reboot is not
-reliable.
+Due to a <a href="../morello-issues/">Morello firmware bug</a>, OS-triggered reboot is
+not reliable.
 Until a firmware revision correcting this bug is released, you will need to
-type <code>reboot</code> on the management console to reboot after installation.</p>
+type <code>reboot</code> on the management console to reboot after installation.
+CheriBSD will print messages along the following lines once it is safe to
+reboot:</p>
+<pre><code>Waiting (max 60 seconds) for system process `syncer' to stop...
+Syncing disks, vnodes remaining... 24 0 0 done
+All buffers synced.
+Uptime: 3m12s
+</code></pre>
 <h3><a class="header" href="#logging-in" id="logging-in">Logging in</a></h3>
 <p>Log in using the username <code>root</code> and the password you entered during the
 installation process:</p>
@@ -652,7 +701,7 @@ Performing sanity check on sshd configuration.
 Starting sshd.
 Starting background file system checks in 60 seconds.
 
-Sun May  8 00:13:04 BST 
+Sun May  8 00:13:04 BST
 CheriBSD/arm64 (cheribsd) (ttyu0)
 
 login: root
@@ -677,7 +726,7 @@ CheriBSD source may be found at:
 
 Find out more about about CHERI at https://cheri-cpu.org/
 You have new mail.
-root@cheribsd:~ # 
+root@cheribsd:~ #
 </code></pre>
 <p>You can now add further users, install SSH keys for remote access, install
 packages, and so on.</p>
@@ -687,13 +736,13 @@ packages, and so on.</p>
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../building/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../morello-firmware/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../packages/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../morello-issues/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -705,13 +754,13 @@ packages, and so on.</p>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../building/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../morello-firmware/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../packages/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../morello-issues/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

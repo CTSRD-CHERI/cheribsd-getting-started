@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Building image files - Getting Started with CheriBSD</title>
+        <title>CheriBSD on an Arm Morello board - Getting Started with CheriBSD</title>
         
         
 
@@ -93,7 +93,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="../features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="../nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="../getting/index.html"><strong aria-hidden="true">5.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">5.1.</strong> Downloading image files</a></li><li class="chapter-item expanded "><a href="../building/index.html" class="active"><strong aria-hidden="true">5.2.</strong> Building image files</a></li></ol></li><li class="chapter-item expanded "><a href="../morello/index.html"><strong aria-hidden="true">6.</strong> CheriBSD on an Arm Morello board</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../morello-console/index.html"><strong aria-hidden="true">6.1.</strong> Accessing the Morello console</a></li><li class="chapter-item expanded "><a href="../morello-firmware/index.html"><strong aria-hidden="true">6.2.</strong> Upgrading the Morello firmware</a></li><li class="chapter-item expanded "><a href="../morello-install/index.html"><strong aria-hidden="true">6.3.</strong> Installing on a Morello board</a></li><li class="chapter-item expanded "><a href="../morello-issues/index.html"><strong aria-hidden="true">6.4.</strong> Morello known issues</a></li></ol></li><li class="chapter-item expanded "><a href="../packages/index.html"><strong aria-hidden="true">7.</strong> Third-party packages</a></li><li class="chapter-item expanded "><a href="../helloworld/index.html"><strong aria-hidden="true">8.</strong> CheriABI &quot;Hello World&quot;</a></li><li class="chapter-item expanded "><a href="../support/index.html"><strong aria-hidden="true">9.</strong> Getting help</a></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">10.</strong> Resources</a></li><li class="chapter-item expanded affix ">Current release: 22.05</li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="../features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="../nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="../getting/index.html"><strong aria-hidden="true">5.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">5.1.</strong> Downloading image files</a></li><li class="chapter-item expanded "><a href="../building/index.html"><strong aria-hidden="true">5.2.</strong> Building image files</a></li></ol></li><li class="chapter-item expanded "><a href="../morello/index.html" class="active"><strong aria-hidden="true">6.</strong> CheriBSD on an Arm Morello board</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../morello-console/index.html"><strong aria-hidden="true">6.1.</strong> Accessing the Morello console</a></li><li class="chapter-item expanded "><a href="../morello-firmware/index.html"><strong aria-hidden="true">6.2.</strong> Upgrading the Morello firmware</a></li><li class="chapter-item expanded "><a href="../morello-install/index.html"><strong aria-hidden="true">6.3.</strong> Installing on a Morello board</a></li><li class="chapter-item expanded "><a href="../morello-issues/index.html"><strong aria-hidden="true">6.4.</strong> Morello known issues</a></li></ol></li><li class="chapter-item expanded "><a href="../packages/index.html"><strong aria-hidden="true">7.</strong> Third-party packages</a></li><li class="chapter-item expanded "><a href="../helloworld/index.html"><strong aria-hidden="true">8.</strong> CheriABI &quot;Hello World&quot;</a></li><li class="chapter-item expanded "><a href="../support/index.html"><strong aria-hidden="true">9.</strong> Getting help</a></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">10.</strong> Resources</a></li><li class="chapter-item expanded affix ">Current release: 22.05</li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -163,84 +163,42 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#building-image-files" id="building-image-files">Building image files</a></h1>
-<p>CheriBSD can be built natively on an existing CheriBSD system (e.g., on an Arm
-Morello box), and it can also be cross-built from FreeBSD, Linux, and macOS.
-Building natively from an ISA-level emulator, such as QEMU, is not recommended
-for performance reasons.</p>
+                        <h1><a class="header" href="#cheribsd-on-an-arm-morello-board" id="cheribsd-on-an-arm-morello-board">CheriBSD on an Arm Morello board</a></h1>
+<p>Arm's Morello board contains a quadcore CHERI-extended Neoverse N1 processor
+design, as well as two management microcontrollers.
+CheriBSD is able to run on, and fully utilize, Morello's CHERI support to
+implement fine-grained kernel and userspace memory safety, and on experimental
+branches, also implement scalable software compartmentalization.
+You can install CheriBSD into the hard disk in your Morello box using a USB
+stick installer image.
+You will first need to upgrade the firmware, as older firmware revisions
+contain bugs or lack features essential to running the OS.
+This chapter explains how to:</p>
 <ul>
-<li>
-<p>Native builds follow the <a href="https://docs.freebsd.org/en/books/handbook/cutting-edge/#makeworld">same build
-procedure</a>
-as used for the baseline FreeBSD operating system.
-Suitable git command-line substitions must be made to use CheriBSD rather
-than FreeBSD source code.</p>
-</li>
-<li>
-<p>CheriBSD cross-build orchestration is performed by the Python-based
-<a href="https://github.com/CTSRD-CHERI/cheribuild">cheribuild</a> tool, which is
-able to build CHERI-enabled toolchain, operating-system stack, and various
-applications and other software used by the CHERI project.</p>
-</li>
+<li>Connect to the Morello management and system consoles via USB,</li>
+<li>Upgrade the board's firmware, and</li>
+<li>Install CheriBSD from a USB stick.</li>
 </ul>
-<h2><a class="header" href="#key-source-repositories" id="key-source-repositories">Key source repositories</a></h2>
-<p>CheriBSD repositories currently reside in the <a href="https://github.com/CTSRD-CHERI">CTSRD-CHERI GitHub
-Organization</a>:</p>
-<ul>
-<li><a href="https://github.com/CTSRD-CHERI/cheribuild">cheribuild GitHub repository</a></li>
-<li><a href="https://github.com/CTSRD-CHERI/cheribsd">CheriBSD GitHub repository</a></li>
-<li><a href="https://github.com/CTSRD-CHERI/llvm-project">CHERI Clang/LLVM GitHub repository</a></li>
-<li><a href="https://github.com/CTSRD-CHERI/gdb">CHERI GDB GitHub repository</a></li>
-<li><a href="https://github.com/CTSRD-CHERI/qemu">QEMU-CHERI GitHub repository</a></li>
-</ul>
-<p>Unless you intend to modify CheriBSD, CHERI Clang/LLVM, CHERI GDB, or
-QEMU-CHERI, you should not generally need to manually check out or compile
-most of the above repositories.
-Instead, existing prebuilt software images/packages should be used, or the
-cheribuild command, which will orchestrate software cross-build for you.</p>
-<h2><a class="header" href="#checking-out-cheribuild" id="checking-out-cheribuild">Checking out cheribuild</a></h2>
-<p><a href="https://github.com/CTSRD-CHERI/cheribuild">cheribuild</a> is a Python-based
-build orchestration tool that is the preferred way to cross-build CheriBSD.
-It can be checked out from GitHub:</p>
-<pre><code>git clone git@github.com:CTSRD-CHERI/cheribuild.git
-</code></pre>
-<h2><a class="header" href="#building-and-running-cheribsdrisc-v-in-qemu" id="building-and-running-cheribsdrisc-v-in-qemu">Building and running CheriBSD/RISC-V in QEMU</a></h2>
-<p>The following command builds a CheriBSD/RISC-V live image, and boots it in
-QEMU-CHERI:</p>
-<pre><code>% ./cheribuild.py -d build-and-run-cheribsd-riscv64-purecap
-</code></pre>
-<h2><a class="header" href="#building-and-running-cheribsdmorello-in-qemu" id="building-and-running-cheribsdmorello-in-qemu">Building and running CheriBSD/Morello in QEMU</a></h2>
-<p>The following command builds a CheriBSD/Morello live image, and boots it in
-QEMU-CHERI:</p>
-<pre><code>% ./cheribuild.py -d build-and-run-cheribsd-morello-purecap
-</code></pre>
-<h2><a class="header" href="#building-cheribsdmorello-release-images" id="building-cheribsdmorello-release-images">Building CheriBSD/Morello release images</a></h2>
-<p>The following command builds a CheriBSD/Morello installer (memstick) image
-suitable to write to a USB stick:</p>
-<pre><code>% ./cheribuild.py -d --clean cheribsd-release-morello-purecap
-</code></pre>
-<p>The resulting image file will be generated in a file with a name along the
-lines of:
-<code>output/cheribsd-release-morello-purecap/FreeBSD-14.0-CURRENT-arm64-aarch64c-memstick.img</code>.
-This is relative to your <code>cheribuild</code> destination root, which is, by default,
-<code>~/cheri</code>.</p>
-<h2><a class="header" href="#obtaining-further-information" id="obtaining-further-information">Obtaining further information</a></h2>
-<p>The <code>cheribuild</code> <a href="https://github.com/CTSRD-CHERI/cheribuild#readme">README.md</a>
-provides detailed information on various parameters and targets its supports,
-as well as its dependencies.</p>
+<p>It is also possible to run CheriBSD from a USB stick, or netboot CheriBSD on
+the board, but those topics are not currently covered by this guide.</p>
+<p><strong>It is important that the most recent Arm-provided firmware be installed on
+your Morello board, as the board has most likely shipped with an older
+firmware version.
+If you are not running the latest version, you may experience hard-to-diagnose
+behaviour or reliability problems.</strong></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../downloading/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../building/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../morello/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../morello-console/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -252,13 +210,13 @@ as well as its dependencies.</p>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../downloading/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../building/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../morello/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../morello-console/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

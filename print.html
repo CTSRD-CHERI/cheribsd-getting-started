@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="getting/index.html"><strong aria-hidden="true">5.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="downloading/index.html"><strong aria-hidden="true">5.1.</strong> Downloading image files</a></li><li class="chapter-item expanded "><a href="building/index.html"><strong aria-hidden="true">5.2.</strong> Building image files</a></li></ol></li><li class="chapter-item expanded "><a href="installing/index.html"><strong aria-hidden="true">6.</strong> Installing on an Arm Morello Board</a></li><li class="chapter-item expanded "><a href="packages/index.html"><strong aria-hidden="true">7.</strong> Third-party packages</a></li><li class="chapter-item expanded "><a href="helloworld/index.html"><strong aria-hidden="true">8.</strong> CheriABI &quot;Hello World&quot;</a></li><li class="chapter-item expanded "><a href="issues/index.html"><strong aria-hidden="true">9.</strong> Morello known issues</a></li><li class="chapter-item expanded "><a href="support/index.html"><strong aria-hidden="true">10.</strong> Getting help</a></li><li class="chapter-item expanded "><a href="resources/index.html"><strong aria-hidden="true">11.</strong> Resources</a></li><li class="chapter-item expanded affix ">Current release: 22.05</li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="getting/index.html"><strong aria-hidden="true">5.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="downloading/index.html"><strong aria-hidden="true">5.1.</strong> Downloading image files</a></li><li class="chapter-item expanded "><a href="building/index.html"><strong aria-hidden="true">5.2.</strong> Building image files</a></li></ol></li><li class="chapter-item expanded "><a href="morello/index.html"><strong aria-hidden="true">6.</strong> CheriBSD on an Arm Morello board</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="morello-console/index.html"><strong aria-hidden="true">6.1.</strong> Accessing the Morello console</a></li><li class="chapter-item expanded "><a href="morello-firmware/index.html"><strong aria-hidden="true">6.2.</strong> Upgrading the Morello firmware</a></li><li class="chapter-item expanded "><a href="morello-install/index.html"><strong aria-hidden="true">6.3.</strong> Installing on a Morello board</a></li><li class="chapter-item expanded "><a href="morello-issues/index.html"><strong aria-hidden="true">6.4.</strong> Morello known issues</a></li></ol></li><li class="chapter-item expanded "><a href="packages/index.html"><strong aria-hidden="true">7.</strong> Third-party packages</a></li><li class="chapter-item expanded "><a href="helloworld/index.html"><strong aria-hidden="true">8.</strong> CheriABI &quot;Hello World&quot;</a></li><li class="chapter-item expanded "><a href="support/index.html"><strong aria-hidden="true">9.</strong> Getting help</a></li><li class="chapter-item expanded "><a href="resources/index.html"><strong aria-hidden="true">10.</strong> Resources</a></li><li class="chapter-item expanded affix ">Current release: 22.05</li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -447,7 +447,140 @@ This is relative to your <code>cheribuild</code> destination root, which is, by 
 <p>The <code>cheribuild</code> <a href="https://github.com/CTSRD-CHERI/cheribuild#readme">README.md</a>
 provides detailed information on various parameters and targets its supports,
 as well as its dependencies.</p>
-<h1><a class="header" href="#installing-on-an-arm-morello-board" id="installing-on-an-arm-morello-board">Installing on an Arm Morello Board</a></h1>
+<h1><a class="header" href="#cheribsd-on-an-arm-morello-board" id="cheribsd-on-an-arm-morello-board">CheriBSD on an Arm Morello board</a></h1>
+<p>Arm's Morello board contains a quadcore CHERI-extended Neoverse N1 processor
+design, as well as two management microcontrollers.
+CheriBSD is able to run on, and fully utilize, Morello's CHERI support to
+implement fine-grained kernel and userspace memory safety, and on experimental
+branches, also implement scalable software compartmentalization.
+You can install CheriBSD into the hard disk in your Morello box using a USB
+stick installer image.
+You will first need to upgrade the firmware, as older firmware revisions
+contain bugs or lack features essential to running the OS.
+This chapter explains how to:</p>
+<ul>
+<li>Connect to the Morello management and system consoles via USB,</li>
+<li>Upgrade the board's firmware, and</li>
+<li>Install CheriBSD from a USB stick.</li>
+</ul>
+<p>It is also possible to run CheriBSD from a USB stick, or netboot CheriBSD on
+the board, but those topics are not currently covered by this guide.</p>
+<p><strong>It is important that the most recent Arm-provided firmware be installed on
+your Morello board, as the board has most likely shipped with an older
+firmware version.
+If you are not running the latest version, you may experience hard-to-diagnose
+behaviour or reliability problems.</strong></p>
+<h1><a class="header" href="#accessing-the-morello-console" id="accessing-the-morello-console">Accessing the Morello console</a></h1>
+<p>You can manage the Morello board, including reaching its multiple serial
+consoles and firmware flash storage, via a USB cable connected to a second
+computer -- typically a workstation or remote management server.
+When you plug the USB cable into your workstation, a number of different
+devices will attach (depending on device drivers on your workstation),
+including:</p>
+<ul>
+<li>Arm Morello USB debug and trace</li>
+<li>Flash storage used for firmware (an on-board SD card)</li>
+<li>Two 4-port USB-to-serial converters</li>
+</ul>
+<p>Each controller has a unique serial number ending in the letter &quot;A&quot; or B&quot;.
+The serial-port converters attach to UARTs associated with:</p>
+<ul>
+<li>The MCC management microcontroller (converter B port 0)</li>
+<li>The PCC management microcontroller (converter B port 1)</li>
+<li>The Morello system console (converter B port 2)</li>
+</ul>
+<p>In normal use, only the MCC and Morello system console ports will be used.
+You can connect to these using a serial access tool such as cu(1), or a full
+terminal emulation environment such as screen(1).
+The precise names of the <code>/dev</code> device nodes appearing on the workstation
+depend on the operating system being used.
+Often access will also require running the terminal command under su(8) or
+sudo(8), or adding your user to a <code>dialer</code> or similar group to grant access to
+the USB device nodes.</p>
+<h2><a class="header" href="#connecting-from-freebsd" id="connecting-from-freebsd">Connecting from FreeBSD</a></h2>
+<p>FreeBSD names USB device nodes in the order they probe and attach.
+Typical command lines to access the MCC and Morello consoles are:</p>
+<ul>
+<li>MCC console: <code>cu -l /dev/cuaU0 -s 115200</code></li>
+<li>Morello console: <code>cu -l /dev/cuaU2 -s 115200</code></li>
+</ul>
+<h2><a class="header" href="#connecting-from-apple-macos" id="connecting-from-apple-macos">Connecting from Apple macOS</a></h2>
+<p>macOS creates <code>/dev/cu.usbserial-</code> device nodes that embed the device
+serial number (including <code>A</code> or <code>B</code>) and port number.
+Typical command lines to access the MCC and Morello consoles are:</p>
+<ul>
+<li>MCC console: <code>cu -l /dev/cu.usbserial-00FT41683097B0 -s 115200</code></li>
+<li>Morello console: <code>cu -l /dev/cu.usbserial-00FT41683097B2 -s 115200</code></li>
+</ul>
+<p>You will need to substitute the serial numbers of the USB converters in your
+specific Morello board for these commands to work.</p>
+<h1><a class="header" href="#upgrading-the-morello-firmware" id="upgrading-the-morello-firmware">Upgrading the Morello firmware</a></h1>
+<p>Newer Morello firmware versions contain important feature extensions (such as
+support for network booting) and also bug fixes (such as persistent variable
+support for UEFI, which is relied on for CheriBSD boot).</p>
+<p>More detailed information from Arm on Morello firmware builds and
+configuration can be found
+<a href="https://developer.arm.com/documentation/den0132/0100/Flash-the-onboard-SD-card">here</a>.
+The instructions in this guide are an abbreviated and slightly modified set of
+instructions better tuned to CheriBSD requirements.</p>
+<p><strong>WARNING: These instructions apply to Morello boards with an SoC version of
+r0p1 or higher, and are not suitable for a small number of pre-production r0p0
+boards distributed in January 2022.
+If you have an r0p0 board, please contact Arm directly for advice regarding
+firmware upgrades for that board.</strong>*</p>
+<h2><a class="header" href="#setting-the-system-clock" id="setting-the-system-clock">Setting the system clock</a></h2>
+<p>Start by setting the system date and time in the MCC.
+Although the Arm documentation recommends setting your local time, we
+recommend using UTC with CheriBSD:</p>
+<pre><code>Cmd&gt; debug
+Debug&gt; time
+Debug&gt; date
+Debug&gt; exit
+</code></pre>
+<h2><a class="header" href="#downloading-prebuilt-firmware" id="downloading-prebuilt-firmware">Downloading prebuilt firmware</a></h2>
+<p>Arm provides <a href="https://git.morello-project.org/morello/board-firmware">prebuilt firmware
+images</a> via the
+Morello GitLab instance, although you can also build your own.
+Start by downloading this directory tree, which can be done by performing a
+<code>git clone</code>:</p>
+<pre><code>git clone https://git.morello-project.org/morello/board-firmware.git
+</code></pre>
+<h2><a class="header" href="#reflashing-the-firmware" id="reflashing-the-firmware">Reflashing the firmware</a></h2>
+<p>The Morello firmware is stored on a 2.0GiB SD Card on the Morello board within
+the case.
+The SD Card content can be exposed as a USB mass storage device accessible
+over the USB cable from your workstation.
+This may require first enabling USB support on the MCC console:</p>
+<pre><code>Cmd&gt; USB_ON
+Enabling debug USB...
+</code></pre>
+<p>The SD Card will attach as a USB disk containing a FAT filesystem.
+Depending on your workstation operating system, this may be automatically
+mounted (e.g., on macOS), or require manual mounting (e.g., on FreeBSD).
+Once mounted, delete the existing firmware and configuration, and then copy on
+the new version (substituting an appropriate mounted directory for <code>/mnt</code>
+below):</p>
+<pre><code>rm -rf /mnt/*
+cp -r board-firmware/* /mnt
+sync
+</code></pre>
+<p>Depending on your workstation OS and configuration, you may need to run as
+root, or use sudo(8), to execute these commands.
+Some shells may require confirmation before they will complete the <code>rm</code>
+command.</p>
+<p><strong>When done, you must unmount the mounted filesystem to ensure that all blocks
+in your workstation's filesystem buffer cache have been written back, and to
+avoid concurrent accesses leading to possible filesystem corruption.
+This must be done before issuing the MCC <code>reboot</code> command.</strong></p>
+<h2><a class="header" href="#rebooting-the-mcc" id="rebooting-the-mcc">Rebooting the MCC</a></h2>
+<p>Complete the upgrade by rebooting the Morello board via the MCC:</p>
+<pre><code>Cmd&gt; reboot
+Rebooting...
+Disabling debug USB..
+</code></pre>
+<h1><a class="header" href="#installing-on-a-morello-board" id="installing-on-a-morello-board">Installing on a Morello Board</a></h1>
+<p><em><strong>Please ensure that you have upgraded the Morello board firmware before
+proceeding to CheriBSD installation.</strong></em></p>
 <p>Once you have a disk image, you will either need to write it to a USB stick
 to boot an Arm Morello system, or specify it as an argument to an emulator
 such as QEMU-CHERI or the Arm Morello FVP.</p>
@@ -464,48 +597,90 @@ filename substitution.</p>
 USB stick, and also by installing to the internal hard disk.
 In this section, we describe the how to perform an installation using the
 memstick image.</p>
-<h3><a class="header" href="#updating-and-configuring-the-morello-firmware" id="updating-and-configuring-the-morello-firmware">Updating and configuring the Morello firmware</a></h3>
-<p><strong>It is important that the most recent Arm-provided firmware be installed on
-your Morello board, as the board has most likely shipped with an older
-firmware version.
-If you are not running the latest version, you may experience hard-to-diagnose
-behaviour or reliability problems.</strong></p>
-<p>Newer versions contain important feature extensions (such as support for
-network booting) and also bug fixes (such as persistent variable support for
-UEFI, which is relied on for CheriBSD boot).
-You should follow the directions provided in <a href="https://developer.arm.com/documentation/den0132/latest/">Arm's Morello installation
-guide</a>, having
-downloaded Arm's <a href="https://git.morello-project.org/morello/board-firmware">prebuilt Morello firmware
-binaries</a>.
-You can find detailed instructions for updating the firmware on the built-in
-firmware SD card
-<a href="https://developer.arm.com/documentation/den0132/0100/Flash-the-onboard-SD-card">here</a>.</p>
-<p>We recommend that, rather than setting the firmware time to local time, as
-recommended in the Arm guide, you instead set the firmware time to UTC; you
-will then need to select UTC as the timezone in CheriBSD.</p>
-<h3><a class="header" href="#connecting-to-the-serial-consoles" id="connecting-to-the-serial-consoles">Connecting to the serial consoles</a></h3>
-<p>Multiple consolers are available via the USB debug port on an Arm Morello
-board, including to the management microcontrollers, and also the console UART
-for the application processor.
-These typically attach as USB serial ports 0 (management console) and 2
-(Morello console), and a serial connection program such as <code>cu</code> can be used to
-connect to them.
-For example, on a FreeBSD system, the following commands can be used to
-connect:</p>
-<ul>
-<li>Management console: <code>cu -l /dev/cuaU0 -s 115200</code></li>
-<li>Morello console: <code>cu -l /dev/cuaU2 -s 115200</code></li>
-</ul>
-<p>However, commands and device names will vary by operating system.</p>
 <h3><a class="header" href="#starting-the-boot" id="starting-the-boot">Starting the boot</a></h3>
 <p>Before powering on your Morello board, ensure that the installer USB stick is
 inserted into one of the USB ports on the board.
 Use the power switch to power the board on, which should lead to firmware
-output on the management console during a multi-minute initialization and
-boot cycle.
-Once that has completed, you will see Morello firmware output on the Morello
-console, followed by CheriBSD loader and kernel boot output.
-You will eventually be prompted to select a terminal emulation type:</p>
+output on the MCC console during a multi-minute initialization and boot cycle.</p>
+<p>Once that has completed, you will see Morello firmware output on the Morello
+console.
+When this message is presented, press Escape to enter the UEFI boot menu:</p>
+<pre><code>Press ESCAPE for boot options .......
+</code></pre>
+<p>At the UEFI menu, select Boot Manager using the cursor keys, and press
+Enter:</p>
+<pre><code>   Select Language            &lt;Standard English&gt;         This selection will
+                                                         take you to the
+ &gt; Device Manager                                        Device Manager
+ &gt; Boot Manager
+ &gt; Boot Maintenance Manager
+
+   Continue
+   Reset
+
+
+
+
+
+
+
+  ^v=Move Highlight       &lt;Enter&gt;=Select Entry
+</code></pre>
+<p>Select your USB stick from the Boot Manager menu using the cursor keys, and
+press enter.
+In the example below, it is the SanDisk Ultra USB 3.0 device:</p>
+<pre><code>/------------------------------------------------------------------------------\
+|                                Boot Manager                                  |
+\------------------------------------------------------------------------------/
+
+                                                         Device Path :
+   Boot Manager Menu                                     PcieRoot(0x0)/Pci(0x0,
+                                                         0x0)/Pci(0x0,0x0)/Pci(
+   UEFI Shell                                            0x14,0x0)/Pci(0x0,0x0)
+   UEFI Misc Device                                      /USB(0x5,0x0)
+   UEFI WDC WDS240G2G0A-00JH30 2143B2455605
+   UEFI PXEv4 (MAC:0002F7009856)
+   UEFI HTTPv4 (MAC:0002F7009856)
+   UEFI HTTPv6 (MAC:0002F7009856)
+   UEFI PXEv6 (MAC:0002F7009856)
+   UEFI SanDisk Ultra USB 3.0
+   0101cfbb32adfd6c145cd38e7d6164cd167456963c3a71b9f157
+   e574567b43d96c6000000000000000000000e49dde42009f1a00
+   955581079e275d95
+   UEFI Non-Block Boot Device
+                                                       v
+/------------------------------------------------------------------------------\
+|                                                                              |
+| ^v=Move Highlight       &lt;Enter&gt;=Select Entry      Esc=Exit                   |
+\------------------------------------------------------------------------------/
+</code></pre>
+<p>This will be followed by the CheriBSD boot loader and kernel output.
+You can press Enter to proceed, or wait for the countdown timer to finish:</p>
+<pre><code>    _____ _               _ ____   _____ _____
+   / ____| |             (_)  _ \ / ____|  __ \
+  | |    | |__   ___ _ __ _| |_) | (___ | |  | |
+  | |    | '_ \ / _ \ '__| |  _ &lt; \___ \| |  | |
+  | |____| | | |  __/ |  | | |_) |____) | |__| |
+   \_____|_| |_|\___|_|  |_|____/|_____/|_____/
+                                                 ```                        `
+                                                s` `.....---.......--.```   -/
+ /---------- Welcome to CheriBSD ----------\    +o   .--`         /y:`      +.
+ |                                         |     yo`:.            :o      `+-
+ |  1. Boot Multi user [Enter]             |      y/               -/`   -o/
+ |  2. Boot Single user                    |     .-                  ::/sy+:.
+ |  3. Escape to loader prompt             |     /                     `--  /
+ |  4. Reboot                              |    `:                          :`
+ |  5. Cons: Serial                        |    `:                          :`
+ |                                         |     /                          /
+ |  Options:                               |     .-                        -.
+ |  6. Kernel: default/kernel (1 of 1)     |      --                      -.
+ |  7. Boot Options                        |       `:`                  `:`
+ |                                         |         .--             `--.
+ |                                         |            .---.....----.
+ \-----------------------------------------/
+   Autoboot in 10 seconds. [Space] to pause
+</code></pre>
+<p>You will eventually be prompted to select a terminal emulation type:</p>
 <pre><code>Welcome to FreeBSD!
 
 Please choose the appropriate terminal type for your system.
@@ -916,12 +1091,17 @@ Otherwise, select No and press Enter.</p>
 <h3><a class="header" href="#rebooting-after-installation" id="rebooting-after-installation">Rebooting after installation</a></h3>
 <p>Remove the USB stick to prevent the installer from running after a system
 reboot.
-This is due to a <a href="installing/../issues/">Morello firmware bug</a> tht prevents proper
-restoring system boot-disk state after a reboot.</p>
-<p>Due to a <a href="installing/../issues/">Morello firmware bug</a>, OS-triggered reboot is not
-reliable.
+Due to a <a href="morello-install/../morello-issues/">Morello firmware bug</a>, OS-triggered reboot is
+not reliable.
 Until a firmware revision correcting this bug is released, you will need to
-type <code>reboot</code> on the management console to reboot after installation.</p>
+type <code>reboot</code> on the management console to reboot after installation.
+CheriBSD will print messages along the following lines once it is safe to
+reboot:</p>
+<pre><code>Waiting (max 60 seconds) for system process `syncer' to stop...
+Syncing disks, vnodes remaining... 24 0 0 done
+All buffers synced.
+Uptime: 3m12s
+</code></pre>
 <h3><a class="header" href="#logging-in" id="logging-in">Logging in</a></h3>
 <p>Log in using the username <code>root</code> and the password you entered during the
 installation process:</p>
@@ -936,7 +1116,7 @@ Performing sanity check on sshd configuration.
 Starting sshd.
 Starting background file system checks in 60 seconds.
 
-Sun May  8 00:13:04 BST 
+Sun May  8 00:13:04 BST
 CheriBSD/arm64 (cheribsd) (ttyu0)
 
 login: root
@@ -961,10 +1141,26 @@ CheriBSD source may be found at:
 
 Find out more about about CHERI at https://cheri-cpu.org/
 You have new mail.
-root@cheribsd:~ # 
+root@cheribsd:~ #
 </code></pre>
 <p>You can now add further users, install SSH keys for remote access, install
 packages, and so on.</p>
+<h1><a class="header" href="#morello-known-issues" id="morello-known-issues">Morello known issues</a></h1>
+<p>The following known issues may affect the reliability and usability of
+CheriBSD on Morello:</p>
+<ul>
+<li>Due to a firmware bug, OS-triggered reboot may lead the system to hang.
+Use the &quot;reboot&quot; command on the management console to reboot the system
+once the OS has shut down.</li>
+<li>Due to a firmware bug, some earlier firmware versions are not able to
+persist UEFI configuration variables.
+This affects, for example, the installation environment as the OS installer
+cannot instruct the firmware to boot only from the installed target, and not
+further USB sticks.</li>
+</ul>
+<p><strong>It is extremely important that you use the most recent firmware with your
+Morello board, to avoid these and other issues present in earlier firmware
+releases.</strong></p>
 <h1><a class="header" href="#third-party-packages" id="third-party-packages">Third-party packages</a></h1>
 <p>CheriBSD on Morello ships with both hybrid ABI and CheriABI packages
 (compilations) of the FreeBSD ports collection, each targeting a different
@@ -1242,22 +1438,6 @@ those below when loading files. They are mostly harmless and will be
 addressed in a future package update:</p>
 <pre><code>BFD: /lib/libc.so.7: unsupported relocation type 0xe802
 </code></pre>
-<h1><a class="header" href="#morello-known-issues" id="morello-known-issues">Morello known issues</a></h1>
-<p>The following known issues may affect the reliability and usability of
-CheriBSD on Morello:</p>
-<ul>
-<li>Due to a firmware bug, OS-triggered reboot may lead the system to hang.
-Use the &quot;reboot&quot; command on the management console to reboot the system
-once the OS has shut down.</li>
-<li>Due to a firmware bug, some earlier firmware versions are not able to
-persist UEFI configuration variables.
-This affects, for example, the installation environment as the OS installer
-cannot instruct the firmware to boot only from the installed target, and not
-further USB sticks.</li>
-</ul>
-<p><strong>It is extremely important that you use the most recent firwmare with your
-Morello board, to avoid these and other issues present in earlier firmware
-releases.</strong></p>
 <h1><a class="header" href="#getting-help" id="getting-help">Getting help</a></h1>
 <p>CheriBSD is a community-supported open-source research operating system.
 While every effort has been made to engineer to a high quality, many aspects
