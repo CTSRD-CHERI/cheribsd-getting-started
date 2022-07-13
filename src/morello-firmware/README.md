@@ -63,7 +63,7 @@ below):
 
 ```
 rm -rf /mnt/*
-cp -r board-firmware/* /mnt
+cp -R board-firmware/* /mnt
 sync
 ```
 
