@@ -210,7 +210,7 @@ Once mounted, delete the existing firmware and configuration, and then copy on
 the new version (substituting an appropriate mounted directory for <code>/mnt</code>
 below):</p>
 <pre><code>rm -rf /mnt/*
-cp -r board-firmware/* /mnt
+cp -R board-firmware/* /mnt
 sync
 </code></pre>
 <p>Depending on your workstation OS and configuration, you may need to run as
