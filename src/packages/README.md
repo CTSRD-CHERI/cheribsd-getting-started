@@ -164,3 +164,14 @@ CheriABI.
   an issue with the software is documented and the [Poudriere infrastructure for
   CheriBSD packages](https://poudriere.cheribsd.org) to find failed build
   results.
+
+## Known Issues
+In some some circumstances shared libraries cannot be not found because /usr/local/lib is set to writable.
+For example, git clone via https fails then with this error:
+```
+ld-elf.so.1: Shared object "libnghttp2.so.14" not found, required by "libcurl.so.4"
+```
+This can be fixed with:
+```
+chmod g-w /usr/local/lib && service ldconfig start
+```
