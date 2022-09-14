@@ -15,8 +15,8 @@ repository](https://github.com/CTSRD-CHERI/cheribsd), which includes an issue
 tracker in which bugs can be reported, as well as permitting pull requests to
 be submitted.
 
-This document is also mained in a [GitHub
-Repository](https://github.com/CTSRD-CHERI/cheribsd-getting-started), and your
+This document is also maintained in a [GitHub
+repository](https://github.com/CTSRD-CHERI/cheribsd-getting-started), and your
 feedback and improvements would be very much appreciated.
 
 ## CheriBSD Slack on cheri-cpu.slack.com
