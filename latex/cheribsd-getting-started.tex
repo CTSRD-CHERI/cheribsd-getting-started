@@ -1,0 +1,49 @@
+\documentclass[12pt,openright,a4paper]{article}
+\usepackage{hyperref}
+\usepackage[inlineFootnotes,fencedCode,headerAttributes]{markdown}
+\usepackage[inner=25mm,outer=25mm,top=20mm,bottom=20mm]{geometry}
+\usepackage{url}
+
+% The default produces footnotes that work except for bogus relative links
+% (e.g., `../downloading`).  This inlines the URLs without descriptive text
+% and is broken for URLs containing `#` characters as well as relative links.
+% Ideally we'd like all the links to work and for the decription to hide the
+% URL when provided.
+%\markdownSetup{
+%  renderers = {
+%    link = {%
+%      \url{#2}%
+%    },
+%  },
+%}
+
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{2}
+
+\title{CheriBSD Getting Started Guide}
+\author{Robert N. M. Watson (Univerity of Cambridge)\\
+Brooks Davis (SRI International)}
+
+
+\begin{document}
+\maketitle
+% XXX: how to disable section numbering here?
+\markdownInput[shiftHeadings=-1,slice=^abstract acknowledgements]{header.md}
+\clearpage
+\tableofcontents
+\clearpage
+\setcounter{section}{0}
+\markdownInput{../src/introduction/README.md}
+\markdownInput{../src/background/README.md}
+\markdownInput{../src/features/README.md}
+\markdownInput{../src/nonfeatures/README.md}
+\markdownInput{../src/getting/README.md}
+\markdownInput[shiftHeadings=+1]{../src/downloading/README.md}
+\markdownInput[shiftHeadings=+1]{../src/building/README.md}
+\markdownInput{../src/installing/README.md}
+\markdownInput{../src/packages/README.md}
+\markdownInput{../src/helloworld/README.md}
+\markdownInput{../src/issues/README.md}
+\markdownInput{../src/support/README.md}
+\markdownInput{../src/resources/README.md}
+\end{document}
