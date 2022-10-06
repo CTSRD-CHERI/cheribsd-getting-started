@@ -10,7 +10,9 @@ details and registers in GDB will differ.
 You will need the Morello LLVM toolchain and Morello GDB for this
 exercise. To install LLVM, use the command:
 
-```pkg64 install llvm-base```
+```
+pkg64 install llvm-base
+```
 
 If this is the first time you are using `pkg64` on this system, you will
 be prompted to bootstrap the `pkg` package before the package database
@@ -90,7 +92,9 @@ main(void)
 
 To build a CheriABI Hello World program use:
 
-```cc -g -O2 -Wall -o helloworld helloworld.c```
+```
+cc -g -O2 -Wall -o helloworld helloworld.c
+```
 
 You can verify this is a CheriABI binary with the `file` command:
 
@@ -112,7 +116,9 @@ Hello world
 
 First, if it is not already installed, install the CHERI GDB debugger:
 
-```pkg64 install gdb-cheri```
+```
+pkg64 install gdb-cheri
+```
 
 You can then debug `helloworld` by running GDB and setting a breakpoint
 on `main`:
