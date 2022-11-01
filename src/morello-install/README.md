@@ -121,6 +121,10 @@ You can press Enter to proceed, or wait for the countdown timer to finish:
    Autoboot in 10 seconds. [Space] to pause
 ```
 
+Note that the installer will only run on the configured primary console, which
+defaults to serial. If you are using a video console instead, press 5 or C
+until it displays "5. Cons: Video". This is only required during installation.
+
 You will eventually be prompted to select a terminal emulation type:
 ```
 Welcome to FreeBSD!
