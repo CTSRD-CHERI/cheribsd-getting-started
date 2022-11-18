@@ -80,3 +80,25 @@ Cmd> reboot
 Rebooting...
 Disabling debug USB..
 ```
+
+## Recovering the SD Card format
+
+If you find that your SD Card no longer has a correct partition table
+(for example, if like the author you have written an installer image
+over it by accident) you will need to restore it to the original state
+with a FAT16 formated volume named M1SDP. The mechanism for creating
+such a filesystem will vary by OS. After you have created the FAT16
+filesystem, follow the instruction above to copy the firmware into place
+and install it.
+
+### MacOS
+
+On MacOS the following command will create and format the M1SDP partition:
+
+```
+diskutil partitionDisk /dev/disk# 1 MBRFormat "MS-DOS FAT16" "M1SDP" 1000M
+```
+
+In this command `/dev/disk#` should be replaced by the path to the SD Card
+device.  The size `1000M` is required, but the actual value is ignored and
+the entire disk is used.
