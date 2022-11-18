@@ -10,12 +10,6 @@ configuration can be found
 The instructions in this guide are an abbreviated and slightly modified set of
 instructions better tuned to CheriBSD requirements.
 
-**WARNING: These instructions apply to Morello boards with an SoC version of
-r0p1 or higher, and are not suitable for a small number of pre-production r0p0
-boards distributed in January 2022.
-If you have an r0p0 board, please contact Arm directly for advice regarding
-firmware upgrades for that board.***
-
 ## Setting the system clock
 
 Start by setting the system date and time in the MCC.
