@@ -91,6 +91,18 @@ such a filesystem will vary by OS. After you have created the FAT16
 filesystem, follow the instruction above to copy the firmware into place
 and install it.
 
+### Linux
+
+On Linux the following commands will create and format the FAT16 partition:
+
+```
+parted /dev/sdX mktable msdos
+parted /dev/sdX mkpart primary fat16 0% 100%
+```
+
+In this command `/dev/sdX` shoudl be replaced by the path to the SD Card
+device.
+
 ### MacOS
 
 On MacOS the following command will create and format the M1SDP partition:
