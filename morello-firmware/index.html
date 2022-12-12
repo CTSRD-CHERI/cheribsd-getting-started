@@ -172,11 +172,6 @@ configuration can be found
 <a href="https://developer.arm.com/documentation/den0132/0100/Flash-the-onboard-SD-card">here</a>.
 The instructions in this guide are an abbreviated and slightly modified set of
 instructions better tuned to CheriBSD requirements.</p>
-<p><strong>WARNING: These instructions apply to Morello boards with an SoC version of
-r0p1 or higher, and are not suitable for a small number of pre-production r0p0
-boards distributed in January 2022.
-If you have an r0p0 board, please contact Arm directly for advice regarding
-firmware upgrades for that board.</strong>*</p>
 <h2><a class="header" href="#setting-the-system-clock" id="setting-the-system-clock">Setting the system clock</a></h2>
 <p>Start by setting the system date and time in the MCC.
 Although the Arm documentation recommends setting your local time, we
@@ -227,6 +222,28 @@ This must be done before issuing the MCC <code>reboot</code> command.</strong></
 Rebooting...
 Disabling debug USB..
 </code></pre>
+<h2><a class="header" href="#recovering-the-sd-card-format" id="recovering-the-sd-card-format">Recovering the SD Card format</a></h2>
+<p>If you find that your SD Card no longer has a correct partition table
+(for example, if like the author you have written an installer image
+over it by accident) you will need to restore it to the original state
+with a FAT16 formated volume named M1SDP. The mechanism for creating
+such a filesystem will vary by OS. After you have created the FAT16
+filesystem, follow the instruction above to copy the firmware into place
+and install it.</p>
+<h3><a class="header" href="#linux" id="linux">Linux</a></h3>
+<p>On Linux the following commands will create and format the FAT16 partition:</p>
+<pre><code>parted /dev/sdX mktable msdos
+parted /dev/sdX mkpart primary fat16 0% 100%
+</code></pre>
+<p>In this command <code>/dev/sdX</code> shoudl be replaced by the path to the SD Card
+device.</p>
+<h3><a class="header" href="#macos" id="macos">MacOS</a></h3>
+<p>On MacOS the following command will create and format the M1SDP partition:</p>
+<pre><code>diskutil partitionDisk /dev/disk# 1 MBRFormat &quot;MS-DOS FAT16&quot; &quot;M1SDP&quot; 1000M
+</code></pre>
+<p>In this command <code>/dev/disk#</code> should be replaced by the path to the SD Card
+device.  The size <code>1000M</code> is required, but the actual value is ignored and
+the entire disk is used.</p>
 
                     </main>
 
