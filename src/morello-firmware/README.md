@@ -100,7 +100,7 @@ parted /dev/sdX mktable msdos
 parted /dev/sdX mkpart primary fat16 0% 100%
 ```
 
-In this command `/dev/sdX` shoudl be replaced by the path to the SD Card
+In this command `/dev/sdX` should be replaced by the path to the SD Card
 device.
 
 ### MacOS
