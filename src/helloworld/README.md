@@ -96,7 +96,7 @@ You can verify this is a CheriABI binary with the `file` command:
 
 ```
 root@cheribsd:~ # file helloworld
-helloworld: ELF 64-bit LSB pie executable, ARM aarch64, C64, CheriABI, version 1 (SYSV), dynamically linked, interpreter /libexec/ld-elf.so.1, for FreeBSD 14.0 (1400053), FreeBSD-style, with debug_info, not stripped
+helloworld: ELF 64-bit LSB pie executable, ARM aarch64, C64, CheriABI, version 1 (SYSV), dynamically linked, interpreter /libexec/ld-elf.so.1, for FreeBSD 14.0 (1400064), FreeBSD-style, with debug_info, not stripped
 ```
 
 ## Running
@@ -119,7 +119,7 @@ on `main`:
 
 ```
 root@cheribsd:~ # gdb ./helloworld
-GNU gdb (GDB) 8.3
+GNU gdb (GDB) 12.1
 ...
 Reading symbols from ./helloworld...
 ...
@@ -148,14 +148,5 @@ The argument can also be examined directly as either an integer or capability re
 (gdb) info reg x0
 x0             0x1006e0            1050336
 (gdb) info reg c0
-c0             0x905f400046ed06e000000000001006e0 0x1006e0 [rR,0x1006e0-0x1006ed]
+c0             0x905f400046ec06e000000000001006e0 0x1006e0 [rR,0x1006e0-0x1006ec]
 (gdb)
-```
-
-*Note:* as of this writing, GDB emits a large number of complaints like
-those below when loading files. They are mostly harmless and will be
-addressed in a future package update:
-
-```
-BFD: /lib/libc.so.7: unsupported relocation type 0xe802
-```
