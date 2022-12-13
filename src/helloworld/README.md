@@ -150,3 +150,46 @@ x0             0x1006e0            1050336
 (gdb) info reg c0
 c0             0x905f400046ec06e000000000001006e0 0x1006e0 [rR,0x1006e0-0x1006ec]
 (gdb)
+```
+
+If a capability (either in memory or a register) contains a
+null-derived value, it is displayed as a simple scalar value without
+any attributes.  If a capability is not null-derived but is untagged,
+the string "(invalid)" is displayed after the bounds.
+
+Capability tags in memory can also be examined by passing the "m"
+flag to the eXamine command.  For example, compare the output of the
+internal FILE structure used for stdout in libc:
+
+```
+(gdb) p *__stdoutp
+$1 = {_p = 0x0, _r = 0, _w = 0, _flags = 8, _file = 1, _bf = {_base = 0x0, 
+    _size = 0}, _lbfsize = 0, 
+  _cookie = 0x403a8400 [rwRWE,0x403a8230-0x403a87a0], 
+  _close = 0x402bade5 <__sclose> [rxRE,0x4018e000-0x407f0000] (sentry), 
+  _read = 0x402bada5 <__sread> [rxRE,0x4018e000-0x407f0000] (sentry), 
+  _seek = 0x402baddd <__sseek> [rxRE,0x4018e000-0x407f0000] (sentry), 
+  _write = 0x402badc1 <__swrite> [rxRE,0x4018e000-0x407f0000] (sentry), _ub = {
+    _base = 0x0, _size = 0}, _up = 0x0, _ur = 0, _ubuf = "\000\000", 
+  _nbuf = "", _lb = {_base = 0x0, _size = 0}, _blksize = 0, _offset = 0, 
+  _fl_mutex = 0x0, _fl_owner = 0x0, _fl_count = 0, _orientation = 0, 
+  _mbstate = {__mbstate8 = '\000' <repeats 127 times>, _mbstateL = 0, 
+    _mbstateP = 0x0 }, _flags2 = 0}
+(gdb) x/16gxm __stdoutp
+<CHERI Tag 0 for range [0x403a8400,0x403a8410)>
+0x403a8400:     0x0000000000000000      0x0000000000000000
+<CHERI Tag 0 for range [0x403a8410,0x403a8420)>
+0x403a8410:     0x0000000000000000      0x0000000000010008
+<CHERI Tag 0 for range [0x403a8420,0x403a8430)>
+0x403a8420:     0x0000000000000000      0x0000000000000000
+<CHERI Tag 0 for range [0x403a8430,0x403a8440)>
+0x403a8430:     0x0000000000000000      0x0000000000000000
+<CHERI Tag 0 for range [0x403a8440,0x403a8450)>
+0x403a8440:     0x0000000000000000      0x0000000000000000
+<CHERI Tag 1 for range [0x403a8450,0x403a8460)>
+0x403a8450:     0x00000000403a8400      0xdc5fc00047a08230
+<CHERI Tag 1 for range [0x403a8460,0x403a8470)>
+0x403a8460:     0x00000000402bade5      0xb05fc000bf0618e7
+<CHERI Tag 1 for range [0x403a8470,0x403a8480)>
+0x403a8470:     0x00000000402bada5      0xb05fc000bf0618e7
+```
