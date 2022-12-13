@@ -244,7 +244,7 @@ main(void)
 <p><code>cc -g -O2 -Wall -o helloworld helloworld.c</code></p>
 <p>You can verify this is a CheriABI binary with the <code>file</code> command:</p>
 <pre><code>root@cheribsd:~ # file helloworld
-helloworld: ELF 64-bit LSB pie executable, ARM aarch64, C64, CheriABI, version 1 (SYSV), dynamically linked, interpreter /libexec/ld-elf.so.1, for FreeBSD 14.0 (1400053), FreeBSD-style, with debug_info, not stripped
+helloworld: ELF 64-bit LSB pie executable, ARM aarch64, C64, CheriABI, version 1 (SYSV), dynamically linked, interpreter /libexec/ld-elf.so.1, for FreeBSD 14.0 (1400064), FreeBSD-style, with debug_info, not stripped
 </code></pre>
 <h2><a class="header" href="#running" id="running">Running</a></h2>
 <p>Run the program:</p>
@@ -257,7 +257,7 @@ Hello world
 <p>You can then debug <code>helloworld</code> by running GDB and setting a breakpoint
 on <code>main</code>:</p>
 <pre><code>root@cheribsd:~ # gdb ./helloworld
-GNU gdb (GDB) 8.3
+GNU gdb (GDB) 12.1
 ...
 Reading symbols from ./helloworld...
 ...
@@ -282,13 +282,8 @@ puts (s=0x1006e0 [rR,0x1006e0-0x1006ec] &quot;Hello world&quot;)
 <pre><code>(gdb) info reg x0
 x0             0x1006e0            1050336
 (gdb) info reg c0
-c0             0x905f400046ed06e000000000001006e0 0x1006e0 [rR,0x1006e0-0x1006ed]
+c0             0x905f400046ec06e000000000001006e0 0x1006e0 [rR,0x1006e0-0x1006ec]
 (gdb)
-</code></pre>
-<p><em>Note:</em> as of this writing, GDB emits a large number of complaints like
-those below when loading files. They are mostly harmless and will be
-addressed in a future package update:</p>
-<pre><code>BFD: /lib/libc.so.7: unsupported relocation type 0xe802
 </code></pre>
 
                     </main>
