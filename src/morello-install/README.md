@@ -221,24 +221,6 @@ Press Enter to select an automated UFS install:
           └────────────────────────────────────────────────────────┘
 ```
 
-#### Partitioning (disk selection)
-
-Select the internal SATA hard disk, which will typically be ada0 on Morello
-boards:
-```
-       ┌───────────────────────Partitioning──────────────────────────┐
-       │ Select the disk on which to install FreeBSD.                │
-       │ ┌─────────────────────────────────────────────────────────┐ │
-       │ │   ada0  224 GB ATA Hard Disk <WDC WDS240G2G0A-00JH30>   │ │
-       │ │   da0   57 GB Disk <SanDisk Ultra USB 3.0>              │ │
-       │ │                                                         │ │
-       │ │                                                         │ │
-       │ └─────────────────────────────────────────────────────────┘ │
-       ├─────────────────────────────────────────────────────────────┤
-       │                 <  OK  >         <Cancel>                   │
-       └─────────────────────────────────────────────────────────────┘
-```
-
 #### Partition (entire disk)
 
 Select Entire Disk and press Enter:
