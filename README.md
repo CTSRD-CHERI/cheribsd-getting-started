@@ -15,7 +15,7 @@ further information and support.
 <!--
 NOTE: A release version is also in SUMMARY.md.
 -->
-**The document describes CheriBSD as of the 22.05p1 release, unless explicitly
+**The document describes CheriBSD as of the 22.12 release, unless explicitly
 stated in sections referring to earlier or later releases.**
 
 *This document is a work-in-progress.  Feedback and contributions are

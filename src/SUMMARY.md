@@ -21,4 +21,4 @@
 <!--
 NOTE: A release version is also in README.md.
 -->
-[Current release: 22.05p1]()
+[Current release: 22.12]()
