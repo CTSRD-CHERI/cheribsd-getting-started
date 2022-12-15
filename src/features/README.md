@@ -38,6 +38,15 @@ Pre-compiled third-party software applications (packages) are provided for
 both ABIs, although CheriABI packages are currently considered experimental.
 This is discussed further in the [chapter on packages](../packages/).
 
+## CheriABI desktop environment (experimental)
+
+As of the 22.12 release, the installer has gained the option to install a
+desktop environment using the Panfrost GPU on the Morello System-on-Chip.
+The option installs a basic desktop environment using KDE and Wayland
+compiled for CheriABI with the `cheri-desktop` package.  It also
+installs a hybrid ABI Firefox web browser via the `cheri-desktop-hybrid-extras`
+package.
+
 ## Userspace heap temporal memory safety (experimental)
 
 CheriBSD implements, on an experimental development branch, support for the
