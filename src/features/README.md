@@ -49,16 +49,22 @@ paper](https://www.cl.cam.ac.uk/research/security/ctsrd/pdfs/2020oakland-cornuco
 
 ## Software compartmentalization (experimental)
 
-CheriBSD implements, on experimental development branches, two different
+CheriBSD implements two different
 CHERI-enabled software compartmentalization models:
 
 - **Colocated processes (co-processes) compartmentalization** accelerates
   UNIX Inter-Process Communication (IPC) and context switching by colocating
   multiple processes in the same address space, separating them using CHERI
-  capabilities.
+  capabilities.  Support for co-processes is maintained in an experimental
+  development branch and is not included in current software releases.
+  For more information see the [Colocation Tutorial](https://github.com/CTSRD-CHERI/cheripedia/wiki/Colocation-Tutorial)
+  wiki page.
 - **Dynamic-linker-based compartmentalization** isolates shared libraries
   within a process using CHERI capabilities limiting the access of attackers
   who have achieved arbitrary code execution within a library.
+  Initial support for linker-based library compartmentalization is included
+  in the 22.12 release of CheriBSD.  See the compartmentalization(7) manual
+  page on an installed system for more information.
 
 ## Virtualization (experimental)
 
