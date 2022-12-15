@@ -14,7 +14,7 @@ following command would write the image to a USB stick for use with a Morello
 board:
 
 ```
-dd if=cheribsd-memstick-arm64-aarch64c-22.05p1.img of=/dev/DISK bs=1048576
+dd if=cheribsd-memstick-arm64-aarch64c-22.12.img of=/dev/DISK bs=1048576
 ```
 
 It is also possible to write a live image to a USB stick, with appropriate
@@ -106,7 +106,7 @@ You can press Enter to proceed, or wait for the countdown timer to finish:
                                                 s` `.....---.......--.```   -/
  /---------- Welcome to CheriBSD ----------\    +o   .--`         /y:`      +.
  |                                         |     yo`:.            :o      `+-
- |  1. Boot Multi user [Enter]             |      y/               -/`   -o/
+ |  1. Boot Installer [Enter]              |      y/               -/`   -o/
  |  2. Boot Single user                    |     .-                  ::/sy+:.
  |  3. Escape to loader prompt             |     /                     `--  /
  |  4. Reboot                              |    `:                          :`
@@ -121,11 +121,12 @@ You can press Enter to proceed, or wait for the countdown timer to finish:
    Autoboot in 10 seconds. [Space] to pause
 ```
 
-Note that the installer will only run on the configured primary console, which
-defaults to serial. If you are using a video console instead, press 5 or C
-until it displays "5. Cons: Video". This is only required during installation.
+Note that seperate instances of the installer will run on both the video and
+serial consoles.  Care should be taken to ensure that only one is used as
+no mechanism is implemented to prevent one from destroying the other's work.
 
-You will eventually be prompted to select a terminal emulation type:
+On the serial console, you will eventually be prompted to select a terminal
+emulation type:
 ```
 Welcome to FreeBSD!
 
@@ -211,6 +212,7 @@ Press Enter to select an automated UFS install:
           │ How would you like to partition your disk?             │
           │ ┌────────────────────────────────────────────────────┐ │
           │ │   Auto (UFS)  Guided UFS Disk Setup                │ │
+          │ │   Auto (ZFS)  EXPERIMENTAL Guided Root-on-ZFS      │ │
           │ │   Manual      Manual Disk Setup (experts)          │ │
           │ │   Shell       Open a shell and partition by hand   │ │
           │ │                                                    │ │
@@ -262,7 +264,7 @@ proceed:
            │ the Finish button.                                   │
            │┌────────────────────────────────────────────────────┐│
            ││ada0            224 GB  GPT                         ││
-           ││  ada0p1        260 MB  efi            /boot/ef     ││
+           ││  ada0p1        260 MB  efi            /boot/efi    ││
            ││  ada0p2        220 GB  freebsd-ufs    /            ││
            ││  ada0p3        3.6 GB  freebsd-swap   none         ││
            ││da0             57 GB   GPT                         ││
