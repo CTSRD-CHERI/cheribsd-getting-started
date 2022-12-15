@@ -550,15 +550,17 @@ Otherwise, select No and press Enter
 #### CHERI Desktop environment
 
 If you wish to configure your CheriBSD system with a KDE-based desktop
-environment you can do so now:
+environment you can do so now.  **NOTE: You must have previously
+configured the network and be able to reach pkg.CheriBSD.org.**
 
 ```
-                       ┌────────┤CHERI Desktop├────────┐
-                       │ Would you like to install the │
-                       │ CHERI desktop environment?    │
-                       ├───────────────────────────────┤
-                       │     [ Yes  ]     [  No  ]     │
-                       └───────────────────────────────┘
+                      ┌─────────┤CHERI Desktop├────────┐
+                      │ Would you like to install the  │
+                      │ CHERI desktop environment      │
+                      │ (requires network)?            │
+                      ├────────────────────────────────┤
+                      │      [ Yes  ]     [  No  ]     │
+                      └────────────────────────────────┘
 ```
 Select Yes to install (**NOTE: this may take 20-50 minutes depending on
 network conditions**).
@@ -590,26 +592,28 @@ If there are further configuration settings to change, select an appropriate
 option from the menu and press Space.
 Otherwise, press Enter to complete the installation:
 ```
- ─┌─────────────────────────Final Configuration───────────────────────────┐────
-  │ Setup of your FreeBSD system is nearly complete. You can now modify   │
-  │ your configuration choices. After this screen, you will have an       │
-  │ opportunity to make more complex changes using a shell.               │
-  │ ┌───────────────────────────────────────────────────────────────────┐ │
-  │ │   Exit              Apply configuration and exit installer        │ │
-  │ │   Add User          Add a user to the system                      │ │
-  │ │   Root Password     Change root password                          │ │
-  │ │   Hostname          Set system hostname                           │ │
-  │ │   Network           Networking configuration                      │ │
-  │ │   Services          Set daemons to run on startup                 │ │
-  │ │   System Hardening  Set security options                          │ │
-  │ │   Time Zone         Set system timezone                           │ │
-  │ │   Handbook          Install FreeBSD Handbook (requires network)   │ │
-  │ │                                                                   │ │
-  │ │                                                                   │ │
-  │ └───────────────────────────────────────────────────────────────────┘ │
-  ├───────────────────────────────────────────────────────────────────────┤
-  │                               <  OK  >                                │
-  └───────────────────────────────────────────────────────────────────────┘
+┌───────────────────────────Final Configuration──────────────────────────────┐
+│ Setup of your FreeBSD system is nearly complete. You can now modify your   │
+│ configuration choices. After this screen, you will have an opportunity to  │
+│ make more complex changes using a shell.                                   │
+│ ┌────────────────────────────────────────────────────────────────────────┐ │
+│ │Exit              Apply configuration and exit installer                │ │
+│ │Add User          Add a user to the system                              │ │
+│ │Root Password     Change root password                                  │ │
+│ │Hostname          Set system hostname                                   │ │
+│ │Network           Networking configuration                              │ │
+│ │Services          Set daemons to run on startup                         │ │
+│ │System Hardening  Set security options                                  │ │
+│ │Time Zone         Set system timezone                                   │ │
+│ │Handbook          Install FreeBSD Handbook (requires network)           │ │
+│ │CHERI Desktop     Install the CHERI desktop environment (requires networ│ │
+│ │                                                                        │ │
+│ │                                                                        │ │
+│ │                                                                        │ │
+│ └────────────────────────────────────────────────────────────────────────┘ │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                 <  OK  >                                   │
+└────────────────────────────────────────────────────────────────────────────┘
 ```
 
 #### Manual configuration
