@@ -542,8 +542,47 @@ Then press Enter to continue.
 
 #### Add user accounts
 
+If you plan to install the desktop environment in the next step, it is
+useful to create user accounts now.
 If desired, select Yes and press Enter to add non-root accounts.
 Otherwise, select No and press Enter
+
+#### CHERI Desktop environment
+
+If you wish to configure your CheriBSD system with a KDE-based desktop
+environment you can do so now:
+
+```
+                       ┌────────┤CHERI Desktop├────────┐
+                       │ Would you like to install the │
+                       │ CHERI desktop environment?    │
+                       ├───────────────────────────────┤
+                       │     [ Yes  ]     [  No  ]     │
+                       └───────────────────────────────┘
+```
+Select Yes to install (**NOTE: this may take 20-50 minutes depending on
+network conditions**).
+
+#### Adding users to video group
+
+In order to be able to use the keyboard and mouse when logged in via the
+Simple Desktop Display Manager (SDDM), users must be in the video group.
+If users were added earlier, you will be prompted to select ones to add
+to the group.
+
+```
+                  ┌─────────────┤CHERI Desktop├─────────────┐
+                  │ Users must be in the video group to log │
+                  │ in to a desktop environment. Choose any │
+                  │ additional users to add to the group:   │
+                  │ ┌─────────────────────────────────────┐ │
+                  │ │       [ ] localuser Local User      │ │
+                  │ └─────────────────────────────────────┘ │
+                  ├─────────────────────────────────────────┤
+                  │                [  OK  ]                 │
+                  └─────────────────────────────────────────┘
+```
+Use Space to select users to add and then press Enter.
 
 #### Final configuration
 
