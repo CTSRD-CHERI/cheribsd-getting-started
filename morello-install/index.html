@@ -93,7 +93,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="../features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="../nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="../getting/index.html"><strong aria-hidden="true">5.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">5.1.</strong> Downloading image files</a></li><li class="chapter-item expanded "><a href="../building/index.html"><strong aria-hidden="true">5.2.</strong> Building image files</a></li></ol></li><li class="chapter-item expanded "><a href="../morello/index.html"><strong aria-hidden="true">6.</strong> CheriBSD on an Arm Morello board</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../morello-console/index.html"><strong aria-hidden="true">6.1.</strong> Accessing the Morello console</a></li><li class="chapter-item expanded "><a href="../morello-firmware/index.html"><strong aria-hidden="true">6.2.</strong> Upgrading the Morello firmware</a></li><li class="chapter-item expanded "><a href="../morello-install/index.html" class="active"><strong aria-hidden="true">6.3.</strong> Installing on a Morello board</a></li><li class="chapter-item expanded "><a href="../morello-issues/index.html"><strong aria-hidden="true">6.4.</strong> Morello known issues</a></li></ol></li><li class="chapter-item expanded "><a href="../packages/index.html"><strong aria-hidden="true">7.</strong> Third-party packages</a></li><li class="chapter-item expanded "><a href="../helloworld/index.html"><strong aria-hidden="true">8.</strong> CheriABI &quot;Hello World&quot;</a></li><li class="chapter-item expanded "><a href="../support/index.html"><strong aria-hidden="true">9.</strong> Getting help</a></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">10.</strong> Resources</a></li><li class="chapter-item expanded affix ">Current release: 22.05p1</li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="../features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="../nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="../getting/index.html"><strong aria-hidden="true">5.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">5.1.</strong> Downloading image files</a></li><li class="chapter-item expanded "><a href="../building/index.html"><strong aria-hidden="true">5.2.</strong> Building image files</a></li></ol></li><li class="chapter-item expanded "><a href="../morello/index.html"><strong aria-hidden="true">6.</strong> CheriBSD on an Arm Morello board</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../morello-console/index.html"><strong aria-hidden="true">6.1.</strong> Accessing the Morello console</a></li><li class="chapter-item expanded "><a href="../morello-firmware/index.html"><strong aria-hidden="true">6.2.</strong> Upgrading the Morello firmware</a></li><li class="chapter-item expanded "><a href="../morello-install/index.html" class="active"><strong aria-hidden="true">6.3.</strong> Installing on a Morello board</a></li><li class="chapter-item expanded "><a href="../morello-issues/index.html"><strong aria-hidden="true">6.4.</strong> Morello known issues</a></li></ol></li><li class="chapter-item expanded "><a href="../packages/index.html"><strong aria-hidden="true">7.</strong> Third-party packages</a></li><li class="chapter-item expanded "><a href="../helloworld/index.html"><strong aria-hidden="true">8.</strong> CheriABI &quot;Hello World&quot;</a></li><li class="chapter-item expanded "><a href="../support/index.html"><strong aria-hidden="true">9.</strong> Getting help</a></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">10.</strong> Resources</a></li><li class="chapter-item expanded affix ">Current release: 22.12</li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -173,7 +173,7 @@ such as QEMU-CHERI or the Arm Morello FVP.</p>
 <p>With appropriate substitutions of image filename and target device, the
 following command would write the image to a USB stick for use with a Morello
 board:</p>
-<pre><code>dd if=cheribsd-memstick-arm64-aarch64c-22.05p1.img of=/dev/DISK bs=1048576
+<pre><code>dd if=cheribsd-memstick-arm64-aarch64c-22.12.img of=/dev/DISK bs=1048576
 </code></pre>
 <p>It is also possible to write a live image to a USB stick, with appropriate
 filename substitution.</p>
@@ -251,7 +251,7 @@ You can press Enter to proceed, or wait for the countdown timer to finish:</p>
                                                 s` `.....---.......--.```   -/
  /---------- Welcome to CheriBSD ----------\    +o   .--`         /y:`      +.
  |                                         |     yo`:.            :o      `+-
- |  1. Boot Multi user [Enter]             |      y/               -/`   -o/
+ |  1. Boot Installer [Enter]              |      y/               -/`   -o/
  |  2. Boot Single user                    |     .-                  ::/sy+:.
  |  3. Escape to loader prompt             |     /                     `--  /
  |  4. Reboot                              |    `:                          :`
@@ -265,10 +265,11 @@ You can press Enter to proceed, or wait for the countdown timer to finish:</p>
  \-----------------------------------------/
    Autoboot in 10 seconds. [Space] to pause
 </code></pre>
-<p>Note that the installer will only run on the configured primary console, which
-defaults to serial. If you are using a video console instead, press 5 or C
-until it displays &quot;5. Cons: Video&quot;. This is only required during installation.</p>
-<p>You will eventually be prompted to select a terminal emulation type:</p>
+<p>Note that seperate instances of the installer will run on both the video and
+serial consoles.  Care should be taken to ensure that only one is used as
+no mechanism is implemented to prevent one from destroying the other's work.</p>
+<p>On the serial console, you will eventually be prompted to select a terminal
+emulation type:</p>
 <pre><code>Welcome to FreeBSD!
 
 Please choose the appropriate terminal type for your system.
@@ -339,6 +340,7 @@ cursor keys and space bar to select a country-specific keyboard layout:</p>
           │ How would you like to partition your disk?             │
           │ ┌────────────────────────────────────────────────────┐ │
           │ │   Auto (UFS)  Guided UFS Disk Setup                │ │
+          │ │   Auto (ZFS)  EXPERIMENTAL Guided Root-on-ZFS      │ │
           │ │   Manual      Manual Disk Setup (experts)          │ │
           │ │   Shell       Open a shell and partition by hand   │ │
           │ │                                                    │ │
@@ -347,21 +349,6 @@ cursor keys and space bar to select a country-specific keyboard layout:</p>
           ├────────────────────────────────────────────────────────┤
           │               &lt;  OK  &gt;        &lt;Cancel&gt;                 │
           └────────────────────────────────────────────────────────┘
-</code></pre>
-<h4><a class="header" href="#partitioning-disk-selection" id="partitioning-disk-selection">Partitioning (disk selection)</a></h4>
-<p>Select the internal SATA hard disk, which will typically be ada0 on Morello
-boards:</p>
-<pre><code>       ┌───────────────────────Partitioning──────────────────────────┐
-       │ Select the disk on which to install FreeBSD.                │
-       │ ┌─────────────────────────────────────────────────────────┐ │
-       │ │   ada0  224 GB ATA Hard Disk &lt;WDC WDS240G2G0A-00JH30&gt;   │ │
-       │ │   da0   57 GB Disk &lt;SanDisk Ultra USB 3.0&gt;              │ │
-       │ │                                                         │ │
-       │ │                                                         │ │
-       │ └─────────────────────────────────────────────────────────┘ │
-       ├─────────────────────────────────────────────────────────────┤
-       │                 &lt;  OK  &gt;         &lt;Cancel&gt;                   │
-       └─────────────────────────────────────────────────────────────┘
 </code></pre>
 <h4><a class="header" href="#partition-entire-disk" id="partition-entire-disk">Partition (entire disk)</a></h4>
 <p>Select Entire Disk and press Enter:</p>
@@ -395,7 +382,7 @@ proceed:</p>
            │ the Finish button.                                   │
            │┌────────────────────────────────────────────────────┐│
            ││ada0            224 GB  GPT                         ││
-           ││  ada0p1        260 MB  efi            /boot/ef     ││
+           ││  ada0p1        260 MB  efi            /boot/efi    ││
            ││  ada0p2        220 GB  freebsd-ufs    /            ││
            ││  ada0p3        3.6 GB  freebsd-swap   none         ││
            ││da0             57 GB   GPT                         ││
@@ -625,32 +612,67 @@ selecting them and hitting Space:</p>
 </code></pre>
 <p>Then press Enter to continue.</p>
 <h4><a class="header" href="#add-user-accounts" id="add-user-accounts">Add user accounts</a></h4>
-<p>If desired, select Yes and press Enter to add non-root accounts.
+<p>If you plan to install the desktop environment in the next step, it is
+useful to create user accounts now.
+If desired, select Yes and press Enter to add non-root accounts.
 Otherwise, select No and press Enter</p>
+<h4><a class="header" href="#cheri-desktop-environment" id="cheri-desktop-environment">CHERI Desktop environment</a></h4>
+<p>If you wish to configure your CheriBSD system with a KDE-based desktop
+environment you can do so now.  <strong>NOTE: You must have previously
+configured the network and be able to reach pkg.CheriBSD.org.</strong></p>
+<pre><code>                      ┌─────────┤CHERI Desktop├────────┐
+                      │ Would you like to install the  │
+                      │ CHERI desktop environment      │
+                      │ (requires network)?            │
+                      ├────────────────────────────────┤
+                      │      [ Yes  ]     [  No  ]     │
+                      └────────────────────────────────┘
+</code></pre>
+<p>Select Yes to install (<strong>NOTE: this may take 20-50 minutes depending on
+network conditions</strong>).</p>
+<h4><a class="header" href="#adding-users-to-video-group" id="adding-users-to-video-group">Adding users to video group</a></h4>
+<p>In order to be able to use the keyboard and mouse when logged in via the
+Simple Desktop Display Manager (SDDM), users must be in the video group.
+If users were added earlier, you will be prompted to select ones to add
+to the group.</p>
+<pre><code>                  ┌─────────────┤CHERI Desktop├─────────────┐
+                  │ Users must be in the video group to log │
+                  │ in to a desktop environment. Choose any │
+                  │ additional users to add to the group:   │
+                  │ ┌─────────────────────────────────────┐ │
+                  │ │       [ ] localuser Local User      │ │
+                  │ └─────────────────────────────────────┘ │
+                  ├─────────────────────────────────────────┤
+                  │                [  OK  ]                 │
+                  └─────────────────────────────────────────┘
+</code></pre>
+<p>Use Space to select users to add and then press Enter.</p>
 <h4><a class="header" href="#final-configuration" id="final-configuration">Final configuration</a></h4>
 <p>If there are further configuration settings to change, select an appropriate
 option from the menu and press Space.
 Otherwise, press Enter to complete the installation:</p>
-<pre><code> ─┌─────────────────────────Final Configuration───────────────────────────┐────
-  │ Setup of your FreeBSD system is nearly complete. You can now modify   │
-  │ your configuration choices. After this screen, you will have an       │
-  │ opportunity to make more complex changes using a shell.               │
-  │ ┌───────────────────────────────────────────────────────────────────┐ │
-  │ │   Exit              Apply configuration and exit installer        │ │
-  │ │   Add User          Add a user to the system                      │ │
-  │ │   Root Password     Change root password                          │ │
-  │ │   Hostname          Set system hostname                           │ │
-  │ │   Network           Networking configuration                      │ │
-  │ │   Services          Set daemons to run on startup                 │ │
-  │ │   System Hardening  Set security options                          │ │
-  │ │   Time Zone         Set system timezone                           │ │
-  │ │   Handbook          Install FreeBSD Handbook (requires network)   │ │
-  │ │                                                                   │ │
-  │ │                                                                   │ │
-  │ └───────────────────────────────────────────────────────────────────┘ │
-  ├───────────────────────────────────────────────────────────────────────┤
-  │                               &lt;  OK  &gt;                                │
-  └───────────────────────────────────────────────────────────────────────┘
+<pre><code>┌───────────────────────────Final Configuration──────────────────────────────┐
+│ Setup of your FreeBSD system is nearly complete. You can now modify your   │
+│ configuration choices. After this screen, you will have an opportunity to  │
+│ make more complex changes using a shell.                                   │
+│ ┌────────────────────────────────────────────────────────────────────────┐ │
+│ │Exit              Apply configuration and exit installer                │ │
+│ │Add User          Add a user to the system                              │ │
+│ │Root Password     Change root password                                  │ │
+│ │Hostname          Set system hostname                                   │ │
+│ │Network           Networking configuration                              │ │
+│ │Services          Set daemons to run on startup                         │ │
+│ │System Hardening  Set security options                                  │ │
+│ │Time Zone         Set system timezone                                   │ │
+│ │Handbook          Install FreeBSD Handbook (requires network)           │ │
+│ │CHERI Desktop     Install the CHERI desktop environment (requires networ│ │
+│ │                                                                        │ │
+│ │                                                                        │ │
+│ │                                                                        │ │
+│ └────────────────────────────────────────────────────────────────────────┘ │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                 &lt;  OK  &gt;                                   │
+└────────────────────────────────────────────────────────────────────────────┘
 </code></pre>
 <h4><a class="header" href="#manual-configuration" id="manual-configuration">Manual configuration</a></h4>
 <p>If desired, select Yes and press Enter to drop to a shell before reboot.

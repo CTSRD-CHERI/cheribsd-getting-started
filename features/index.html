@@ -93,7 +93,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="../features/index.html" class="active"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="../nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="../getting/index.html"><strong aria-hidden="true">5.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">5.1.</strong> Downloading image files</a></li><li class="chapter-item expanded "><a href="../building/index.html"><strong aria-hidden="true">5.2.</strong> Building image files</a></li></ol></li><li class="chapter-item expanded "><a href="../morello/index.html"><strong aria-hidden="true">6.</strong> CheriBSD on an Arm Morello board</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../morello-console/index.html"><strong aria-hidden="true">6.1.</strong> Accessing the Morello console</a></li><li class="chapter-item expanded "><a href="../morello-firmware/index.html"><strong aria-hidden="true">6.2.</strong> Upgrading the Morello firmware</a></li><li class="chapter-item expanded "><a href="../morello-install/index.html"><strong aria-hidden="true">6.3.</strong> Installing on a Morello board</a></li><li class="chapter-item expanded "><a href="../morello-issues/index.html"><strong aria-hidden="true">6.4.</strong> Morello known issues</a></li></ol></li><li class="chapter-item expanded "><a href="../packages/index.html"><strong aria-hidden="true">7.</strong> Third-party packages</a></li><li class="chapter-item expanded "><a href="../helloworld/index.html"><strong aria-hidden="true">8.</strong> CheriABI &quot;Hello World&quot;</a></li><li class="chapter-item expanded "><a href="../support/index.html"><strong aria-hidden="true">9.</strong> Getting help</a></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">10.</strong> Resources</a></li><li class="chapter-item expanded affix ">Current release: 22.05p1</li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="../features/index.html" class="active"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="../nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="../getting/index.html"><strong aria-hidden="true">5.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">5.1.</strong> Downloading image files</a></li><li class="chapter-item expanded "><a href="../building/index.html"><strong aria-hidden="true">5.2.</strong> Building image files</a></li></ol></li><li class="chapter-item expanded "><a href="../morello/index.html"><strong aria-hidden="true">6.</strong> CheriBSD on an Arm Morello board</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../morello-console/index.html"><strong aria-hidden="true">6.1.</strong> Accessing the Morello console</a></li><li class="chapter-item expanded "><a href="../morello-firmware/index.html"><strong aria-hidden="true">6.2.</strong> Upgrading the Morello firmware</a></li><li class="chapter-item expanded "><a href="../morello-install/index.html"><strong aria-hidden="true">6.3.</strong> Installing on a Morello board</a></li><li class="chapter-item expanded "><a href="../morello-issues/index.html"><strong aria-hidden="true">6.4.</strong> Morello known issues</a></li></ol></li><li class="chapter-item expanded "><a href="../packages/index.html"><strong aria-hidden="true">7.</strong> Third-party packages</a></li><li class="chapter-item expanded "><a href="../helloworld/index.html"><strong aria-hidden="true">8.</strong> CheriABI &quot;Hello World&quot;</a></li><li class="chapter-item expanded "><a href="../support/index.html"><strong aria-hidden="true">9.</strong> Getting help</a></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">10.</strong> Resources</a></li><li class="chapter-item expanded affix ">Current release: 22.12</li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -197,6 +197,13 @@ kernels.</p>
 <p>Pre-compiled third-party software applications (packages) are provided for
 both ABIs, although CheriABI packages are currently considered experimental.
 This is discussed further in the <a href="../packages/">chapter on packages</a>.</p>
+<h2><a class="header" href="#cheriabi-desktop-environment-experimental" id="cheriabi-desktop-environment-experimental">CheriABI desktop environment (experimental)</a></h2>
+<p>As of the 22.12 release, the installer has gained the option to install a
+desktop environment using the Panfrost GPU on the Morello System-on-Chip.
+The option installs a basic desktop environment using KDE and Wayland
+compiled for CheriABI with the <code>cheri-desktop</code> package.  It also
+installs a hybrid ABI Firefox web browser via the <code>cheri-desktop-hybrid-extras</code>
+package.</p>
 <h2><a class="header" href="#userspace-heap-temporal-memory-safety-experimental" id="userspace-heap-temporal-memory-safety-experimental">Userspace heap temporal memory safety (experimental)</a></h2>
 <p>CheriBSD implements, on an experimental development branch, support for the
 Cornucopia heap temporal safety algorithm, as well as successor algorithms
@@ -205,16 +212,22 @@ architecture and processor design.
 Cornucopia is described in an <a href="https://www.cl.cam.ac.uk/research/security/ctsrd/pdfs/2020oakland-cornucopia.pdf">IEEE SSP 2020
 paper</a>.</p>
 <h2><a class="header" href="#software-compartmentalization-experimental" id="software-compartmentalization-experimental">Software compartmentalization (experimental)</a></h2>
-<p>CheriBSD implements, on experimental development branches, two different
+<p>CheriBSD implements two different
 CHERI-enabled software compartmentalization models:</p>
 <ul>
 <li><strong>Colocated processes (co-processes) compartmentalization</strong> accelerates
 UNIX Inter-Process Communication (IPC) and context switching by colocating
 multiple processes in the same address space, separating them using CHERI
-capabilities.</li>
+capabilities.  Support for co-processes is maintained in an experimental
+development branch and is not included in current software releases.
+For more information see the <a href="https://github.com/CTSRD-CHERI/cheripedia/wiki/Colocation-Tutorial">Colocation Tutorial</a>
+wiki page.</li>
 <li><strong>Dynamic-linker-based compartmentalization</strong> isolates shared libraries
 within a process using CHERI capabilities limiting the access of attackers
-who have achieved arbitrary code execution within a library.</li>
+who have achieved arbitrary code execution within a library.
+Initial support for linker-based library compartmentalization is included
+in the 22.12 release of CheriBSD.  See the compartmentalization(7) manual
+page on an installed system for more information.</li>
 </ul>
 <h2><a class="header" href="#virtualization-experimental" id="virtualization-experimental">Virtualization (experimental)</a></h2>
 <p>CheriBSD implements, on an experimental development branch, CHERI extensions
