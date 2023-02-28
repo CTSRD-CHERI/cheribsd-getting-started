@@ -234,6 +234,7 @@ and install it.</p>
 <p>On Linux the following commands will create and format the FAT16 partition:</p>
 <pre><code>parted /dev/sdX mktable msdos
 parted /dev/sdX mkpart primary fat16 0% 100%
+mkfs.msdos -F 16 /dev/sdX1
 </code></pre>
 <p>In this command <code>/dev/sdX</code> should be replaced by the path to the SD Card
 device.</p>
