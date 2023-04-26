@@ -18,8 +18,10 @@ This chapter explains how to:
 It is also possible to run CheriBSD from a USB stick, or netboot CheriBSD on
 the board, but those topics are not currently covered by this guide.
 
-**It is important that the most recent Arm-provided firmware be installed on
-your Morello board, as the board has most likely shipped with an older
-firmware version.
-If you are not running the latest version, you may experience hard-to-diagnose
-behaviour or reliability problems.**
+**It is important that recent Arm-provided firmware be installed on your
+Morello board, as the board has most likely shipped with an older firmware
+version.
+At the time of writing, 1.5 is the latest known-good version, and 1.6 is known
+to break CheriBSD.
+If you are not running a known-good version, you may experience
+hard-to-diagnose behaviour or reliability problems.**

@@ -3,6 +3,8 @@
 Newer Morello firmware versions contain important feature extensions (such as
 support for network booting) and also bug fixes (such as persistent variable
 support for UEFI, which is relied on for CheriBSD boot).
+However, not all recent versions work with CheriBSD.
+1.5 is the most recent known-good version, and 1.6 is known to break CheriBSD.
 
 More detailed information from Arm on Morello firmware builds and
 configuration can be found
@@ -28,11 +30,11 @@ Debug> exit
 Arm provides [prebuilt firmware
 images](https://git.morello-project.org/morello/board-firmware) via the
 Morello GitLab instance, although you can also build your own.
-Start by downloading this directory tree, which can be done by performing a
-`git clone`:
+Start by downloading an appropriate version of this directory tree, which can
+be done by performing a `git clone`:
 
 ```
-git clone https://git.morello-project.org/morello/board-firmware.git
+git clone -b morello/release-1.5 https://git.morello-project.org/morello/board-firmware.git
 ```
 
 ## Reflashing the firmware

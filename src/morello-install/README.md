@@ -1,7 +1,7 @@
 # Installing on a Morello Board
 
-***Please ensure that you have upgraded the Morello board firmware before
-proceeding to CheriBSD installation.***
+***Please ensure that you have upgraded the Morello board firmware to a
+known-good version before proceeding to CheriBSD installation.***
 
 Once you have a disk image, you will either need to write it to a USB stick
 to boot an Arm Morello system, or specify it as an argument to an emulator

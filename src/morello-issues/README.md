@@ -30,6 +30,12 @@ CheriBSD on Morello:
   Dozens of other installs have completed without issue so this is not
   common.
 
+- The most recent firmware version at the time of writing, 1.6, is known to
+  break CheriBSD, leading to various unpredictable symptoms such as panics
+  during boot and no console appearing on the video port. If you expereince
+  these symptoms, make sure you are on a known-good version, currently 1.5 at
+  the time of writing.
+
 ## Issues with older firmware
 
 The following issues affected users of older firmware revisions:
