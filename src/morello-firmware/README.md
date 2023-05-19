@@ -86,19 +86,19 @@ Disabling debug USB..
 If you find that your SD Card no longer has a correct partition table
 (for example, if like the author you have written an installer image
 over it by accident) you will need to restore it to the original state
-with a FAT16 formated volume named M1SDP. The mechanism for creating
-such a filesystem will vary by OS. After you have created the FAT16
+with a FAT formated volume named M1SDP. The mechanism for creating
+such a filesystem will vary by OS. After you have created the FAT
 filesystem, follow the instruction above to copy the firmware into place
 and install it.
 
 ### Linux
 
-On Linux the following commands will create and format the FAT16 partition:
+On Linux the following commands will create and format the FAT32 partition:
 
 ```
 parted /dev/sdX mktable msdos
-parted /dev/sdX mkpart primary fat16 0% 100%
-mkfs.msdos -F 16 /dev/sdX1
+parted /dev/sdX mkpart primary fat32 0% 100%
+mkfs.msdos /dev/sdX1
 ```
 
 In this command `/dev/sdX` should be replaced by the path to the SD Card
@@ -109,7 +109,7 @@ device.
 On MacOS the following command will create and format the M1SDP partition:
 
 ```
-diskutil partitionDisk /dev/disk# 1 MBRFormat "MS-DOS FAT16" "M1SDP" 1000M
+diskutil partitionDisk /dev/disk# 1 MBRFormat "MS-DOS" "M1SDP" 1000M
 ```
 
 In this command `/dev/disk#` should be replaced by the path to the SD Card
