@@ -109,9 +109,8 @@ device.
 On MacOS the following command will create and format the M1SDP partition:
 
 ```
-diskutil partitionDisk /dev/disk# 1 MBRFormat "MS-DOS" "M1SDP" 1000M
+diskutil partitionDisk /dev/disk# 1 MBRFormat MS-DOS M1SDP 100%
 ```
 
 In this command `/dev/disk#` should be replaced by the path to the SD Card
-device.  The size `1000M` is required, but the actual value is ignored and
-the entire disk is used.
+device.
