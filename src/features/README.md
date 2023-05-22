@@ -9,7 +9,7 @@ features  remain on development branches.
 
 The CheriBSD kernel can be compiled either as hybrid or pure-capability code:
 
-- The **hybrid kernel** enables capaility use in userspace while making
+- The **hybrid kernel** enables capability use in userspace while making
   relatively little use of capabilities in the kernel's own implementation.
 - The **pure-capability kernel** implements strong referential and spatial
   memory protection internally in the kernel, protecting against memory-safety
