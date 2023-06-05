@@ -7,9 +7,9 @@ introduce support for fine-grained memory protection and software
 compartmentalization.
 This is done by introducing a new architectural data type, the **CHERI
 capability**, which can be used to implement pointers with strong integrity,
-provenance validity, spatial safety, and monotonity.
+provenance validity, spatial safety, and monotonicity.
 CHERI requires new microarchitectural support, including support for memory
-tags that triack the provenance validity of capabilities in registers and
+tags that track the provenance validity of capabilities in registers and
 memory.
 CHERI extensions have been specified for:
 
