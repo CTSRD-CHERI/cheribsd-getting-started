@@ -24,6 +24,7 @@ feedback and improvements would be very much appreciated.
 Support for CheriBSD is provided via the [CHERI CPU
 Slack](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-slack.html),
 where a number of topic-specific channels can be found:
+
 * `#cheribsd`;
 
   CheriBSD, its features, releases and future plans.

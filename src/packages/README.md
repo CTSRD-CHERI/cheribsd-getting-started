@@ -21,6 +21,7 @@ CheriBSD that are described in more details in consecutive sections.
 We aim to add CHERI-RISC-V package sets in the near future.
 
 CheriBSD includes two package managers:
+
 * `pkg64` for hybrid ABI packages;
 * `pkg64c` for CheriABI packages.
 
@@ -52,7 +53,9 @@ They are intended to provide stable versions of tools necessary to develop
 software and use your CHERI system while more software is ported to CheriABI.
 
 There are currently over 20,000 hybrid ABI packages available, including:
+
 * Compilers:
+
   * `llvm-morello`;
 
     Includes Clang (a CHERI C/C++ compiler), LLD (a linker), and the LLVM
@@ -71,6 +74,7 @@ There are currently over 20,000 hybrid ABI packages available, including:
     a base-system toolchain. The `cc` script installed with this package adds
     compiler flags required to natively compile code for a CHERI-enabled
     architecture.
+
 * Debuggers: `gdb-cheri`;
 * Editors: `nano`, `vim`;
 * Shells: `bash`, `dash`, `fish`.
@@ -101,6 +105,7 @@ third-party software that are easier to detect and debug using a CHERI-enabled
 hardware-software stack.
 
 There are currently over 8,000 CheriABI packages available, including:
+
 * Development utilities: `git`;
 * Editors: `nano`;
 * Libraries: `libnghttp2`, `libressl`, `libssh2`, `lzlib`, `wolfssl`;
@@ -147,6 +152,7 @@ There are currently no plans to support this case.
 
 Hybrid ABI and CheriABI package repositories might be missing third-party
 software due to the following reasons:
+
 * There is no FreeBSD port including that software or it is broken on AArch64;
 
   Check [FreshPorts](https://www.freshports.org/),
