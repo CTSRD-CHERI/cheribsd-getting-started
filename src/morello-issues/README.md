@@ -21,6 +21,18 @@ CheriBSD on Morello:
   it's generally best to start over as performance is awful once timeouts
   start.
 
+- The HDMI transmitter on the board might fail to detect if a monitor is
+  plugged in.
+  In such a case, the monitor will turn blank when the CheriBSD kernel starts
+  printing messages to the console, after the CheriBSD boot loader menu.
+  A user can configure the kernel to ignore hot plug detection and assume
+  that the attached monitor can receive HDMI input.
+  To do that, add the following line to `/boot/loader.conf` and reboot your
+  board:
+  ```
+  hw.tda19988.broken_hpd="1"
+  ```
+
 - The ZFS port is unstable with pure-capability kernels. While it does
   support creation of file systems it hangs while mounting a ZFS root file
   system either as a module or compiled in to the kernel. In general it is
