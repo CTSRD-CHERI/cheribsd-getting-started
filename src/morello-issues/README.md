@@ -32,6 +32,18 @@ CheriBSD on Morello:
   ```
   hw.tda19988.broken_hpd="1"
   ```
+  While the screen itself should be working with this workaround, the user can
+  still experience EDID reading failures described below.
+
+- The HDMI transmitter on the board might fail to detect the monitor's
+  resolution.
+  The CheriBSD kernel writes the following message to the console in such a
+  case:
+  ```
+  tda0: Failed to read EDID
+  ```
+  Currently, there is no workaround for this issue and it is likely to occur
+  with the HDMI transmitter issue described above.
 
 - The ZFS port is unstable with pure-capability kernels. While it does
   support creation of file systems it hangs while mounting a ZFS root file
