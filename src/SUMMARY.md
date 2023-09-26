@@ -16,6 +16,7 @@
   - [Morello known issues](morello-issues/README.md)
 - [Third-party packages](packages/README.md)
   - [Limitations of packages](packages/limitations.md)
+  - [Missing packages](packages/missing.md)
   - [Upgrading packages](packages/upgrading.md)
   - [Useful commands](packages/commands.md)
 - [CheriABI "Hello World"](helloworld/README.md)
