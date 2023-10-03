@@ -1,14 +1,25 @@
 # Third-party packages
 
 CheriBSD on Morello ships with both hybrid ABI and CheriABI packages
-(compilations) of the FreeBSD ports collection, each targeting a different
+(compilations) of the CheriBSD ports collection, each targeting a different
 form of code generation and Application Binary Interface (ABI).
 They have different levels of completeness, maturity, security, and support.
+
+[CheriBSD ports](https://github.com/CTSRD-CHERI/cheribsd-ports)
+extend FreeBSD ports, a collection of over 30,000 third-party
+software adaptations to FreeBSD, with CHERI- and CheriBSD-specific patches.
+The
+[releng/22.12](https://github.com/CTSRD-CHERI/cheribsd-ports/tree/releng/22.12)
+CheriBSD ports branch contains ports matching packages built for the current
+release.
 
 ## Overview
 
 The following table presents an overview of available package managers in
 CheriBSD that are described in more details in consecutive sections.
+You can also browse package repositories at
+[pkg.CheriBSD.org](https://pkg.CheriBSD.org/)
+to check what packages are available for a specific ABI version.
 
 | ABI        | #       | Manager | Install path   | Suitable for     | Examples |
 |------------|---------|---------|----------------|------------------|----------|
