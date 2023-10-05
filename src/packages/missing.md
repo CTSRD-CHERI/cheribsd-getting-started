@@ -11,8 +11,9 @@ software due to the following reasons:
   list](https://lists.freebsd.org/subscription/freebsd-ports) to find out
   if anyone is working on software you are interested in.
 
-* A CheriBSD port with the software is broken on Morello or is not adapted to
-CheriABI.
+* A CheriBSD port with the software is broken on Morello, does not respect a
+  custom local base (`/usr/local64`) when compiled for the hybrid ABI or is not
+  adapted to CheriABI.
 
   Check the [CheriBSD ports issue
   tracker](https://github.com/CTSRD-CHERI/cheribsd-ports/issues) to find out if
