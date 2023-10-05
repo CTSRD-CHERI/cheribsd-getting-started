@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="getting/index.html"><strong aria-hidden="true">5.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="downloading/index.html"><strong aria-hidden="true">5.1.</strong> Downloading image files</a></li><li class="chapter-item expanded "><a href="building/index.html"><strong aria-hidden="true">5.2.</strong> Building image files</a></li></ol></li><li class="chapter-item expanded "><a href="morello/index.html"><strong aria-hidden="true">6.</strong> CheriBSD on an Arm Morello board</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="morello-console/index.html"><strong aria-hidden="true">6.1.</strong> Accessing the Morello console</a></li><li class="chapter-item expanded "><a href="morello-firmware/index.html"><strong aria-hidden="true">6.2.</strong> Upgrading the Morello firmware</a></li><li class="chapter-item expanded "><a href="morello-install/index.html"><strong aria-hidden="true">6.3.</strong> Installing on a Morello board</a></li><li class="chapter-item expanded "><a href="morello-issues/index.html"><strong aria-hidden="true">6.4.</strong> Morello known issues</a></li></ol></li><li class="chapter-item expanded "><a href="packages/index.html"><strong aria-hidden="true">7.</strong> Third-party packages</a></li><li class="chapter-item expanded "><a href="helloworld/index.html"><strong aria-hidden="true">8.</strong> CheriABI &quot;Hello World&quot;</a></li><li class="chapter-item expanded "><a href="support/index.html"><strong aria-hidden="true">9.</strong> Getting help</a></li><li class="chapter-item expanded "><a href="resources/index.html"><strong aria-hidden="true">10.</strong> Resources</a></li><li class="chapter-item expanded affix ">Current release: 22.12</li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="getting/index.html"><strong aria-hidden="true">5.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="downloading/index.html"><strong aria-hidden="true">5.1.</strong> Downloading image files</a></li><li class="chapter-item expanded "><a href="building/index.html"><strong aria-hidden="true">5.2.</strong> Building image files</a></li></ol></li><li class="chapter-item expanded "><a href="morello/index.html"><strong aria-hidden="true">6.</strong> CheriBSD on an Arm Morello board</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="morello-console/index.html"><strong aria-hidden="true">6.1.</strong> Accessing the Morello console</a></li><li class="chapter-item expanded "><a href="morello-firmware/index.html"><strong aria-hidden="true">6.2.</strong> Upgrading the Morello firmware</a></li><li class="chapter-item expanded "><a href="morello-install/index.html"><strong aria-hidden="true">6.3.</strong> Installing on a Morello board</a></li><li class="chapter-item expanded "><a href="morello-issues/index.html"><strong aria-hidden="true">6.4.</strong> Morello known issues</a></li></ol></li><li class="chapter-item expanded "><a href="packages/index.html"><strong aria-hidden="true">7.</strong> Third-party packages</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="packages/limitations.html"><strong aria-hidden="true">7.1.</strong> Limitations of packages</a></li><li class="chapter-item expanded "><a href="packages/missing.html"><strong aria-hidden="true">7.2.</strong> Missing packages</a></li><li class="chapter-item expanded "><a href="packages/upgrading.html"><strong aria-hidden="true">7.3.</strong> Upgrading packages</a></li><li class="chapter-item expanded "><a href="packages/commands.html"><strong aria-hidden="true">7.4.</strong> Useful commands</a></li></ol></li><li class="chapter-item expanded "><a href="helloworld/index.html"><strong aria-hidden="true">8.</strong> CheriABI &quot;Hello World&quot;</a></li><li class="chapter-item expanded "><a href="support/index.html"><strong aria-hidden="true">9.</strong> Getting help</a></li><li class="chapter-item expanded "><a href="resources/index.html"><strong aria-hidden="true">10.</strong> Resources</a></li><li class="chapter-item expanded affix ">Current release: 22.12</li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -1262,12 +1262,22 @@ Morello board, to avoid these and other issues present in earlier firmware
 releases.</strong></p>
 <h1><a class="header" href="#third-party-packages" id="third-party-packages">Third-party packages</a></h1>
 <p>CheriBSD on Morello ships with both hybrid ABI and CheriABI packages
-(compilations) of the FreeBSD ports collection, each targeting a different
+(compilations) of the CheriBSD ports collection, each targeting a different
 form of code generation and Application Binary Interface (ABI).
 They have different levels of completeness, maturity, security, and support.</p>
+<p><a href="https://github.com/CTSRD-CHERI/cheribsd-ports">CheriBSD ports</a>
+extend FreeBSD ports, a collection of over 30,000 third-party
+software adaptations to FreeBSD, with CHERI- and CheriBSD-specific patches.
+The
+<a href="https://github.com/CTSRD-CHERI/cheribsd-ports/tree/releng/22.12">releng/22.12</a>
+CheriBSD ports branch contains ports matching packages built for the current
+release.</p>
 <h2><a class="header" href="#overview" id="overview">Overview</a></h2>
 <p>The following table presents an overview of available package managers in
-CheriBSD that are described in more details in consecutive sections.</p>
+CheriBSD that are described in more details in consecutive sections.
+You can also browse package repositories at
+<a href="https://pkg.CheriBSD.org/">pkg.CheriBSD.org</a>
+to check what packages are available for a specific ABI version.</p>
 <table><thead><tr><th>ABI</th><th>#</th><th>Manager</th><th>Install path</th><th>Suitable for</th><th>Examples</th></tr></thead><tbody>
 <tr><td>Hybrid ABI</td><td>~20,000</td><td><code>pkg64</code></td><td><code>/usr/local64</code></td><td>Day-to-day use</td><td>bash<br/>gdb-cheri<br/>llvm-base<br/>vim</td></tr>
 <tr><td>CheriABI</td><td>~8,000</td><td><code>pkg64c</code></td><td><code>/usr/local</code></td><td>Experimental use</td><td>git<br/>nano<br/>rsync<br/>sudo</td></tr>
@@ -1342,10 +1352,6 @@ By default <code>/usr/local64/bin</code> and <code>/usr/local64/sbin</code> shou
 <code>PATH</code> environment variable of a default shell shipped with CheriBSD.
 If you are planning to use a custom shell, remember to add these paths to
 <code>PATH</code>.</p>
-<p><em>Note:</em> Because these packages are installed in a non-standard location,
-there may be bugs related to them looking in <code>/usr/local</code> instead of
-<code>/usr/local64</code> for dependencies. Please report bugs of this sort in
-the <a href="https://github.com/CTSRD-CHERI/cheribsd-ports/issues">CheriBSD ports issue tracker</a>.</p>
 <h2><a class="header" href="#cheriabi-packages" id="cheriabi-packages">CheriABI packages</a></h2>
 <p><strong>CheriABI packages</strong> are compiled using pure-capability CHERI C/C++, and
 employ fine-grained C/C++ memory protection.</p>
@@ -1368,25 +1374,59 @@ hardware-software stack.</p>
 </ul>
 <p>The packages are installed in the standard <code>/usr/local</code> hierarchy as they match
 the base system ABI.</p>
-<p><em>Note:</em> These packages compile, but many have CHERI-related warnings that
-have not been audited and only a limited set have been tested. Bugs related to
-CHERI support can be reported in the <a href="https://github.com/CTSRD-CHERI/cheribsd-ports/issues">CheriBSD ports issue
-tracker</a>.
+<h1><a class="header" href="#limitations-of-packages" id="limitations-of-packages">Limitations of packages</a></h1>
+<p>When using or even considering third-party software delivered with CheriBSD
+packages, it is important to keep in mind the maturity of currently available
+CheriABI packages and potential conflicts between hybrid ABI and CheriABI
+packages.
+The following sections describe some of such limitations.</p>
+<h2><a class="header" href="#maturity-of-cheriabi-packages" id="maturity-of-cheriabi-packages">Maturity of CheriABI packages</a></h2>
+<p>There are many projects that must still be ported to CHERI in order to provide
+a fully functional CheriABI package repository.
+The available CheriABI packages are also not continuously tested as part of the
+CheriBSD package building infrastructure.</p>
+<p>CheriABI packages compile, but many have CHERI-related warnings that
+have not been audited and only a limited set have been tested.
 While the CheriABI packages are more interesting as they use CHERI memory-safety
 features, you must remember that they might break in run-time and hence might
 not be suitable for critical operations.
 In such case, a corresponding hybrid ABI package might be considered instead of
 a CheriABI package.</p>
+<p>We expect the number of available and tested packages to grow with future
+CheriBSD releases but it will take quite some time until we will be able to
+provide a CheriABI package repository that would include all packages currently
+provided with the hybrid ABI package repository.</p>
+<p>We encourage everyone to report bugs related to CHERI support in the
+<a href="https://github.com/CTSRD-CHERI/cheribsd-ports/issues">CheriBSD ports issue tracker</a>.</p>
+<h2><a class="header" href="#separate-local-bases-for-abis" id="separate-local-bases-for-abis">Separate local bases for ABIs</a></h2>
+<p>Upstream FreeBSD does not have any notion of an ABI at the package manager
+level and installs all packages in the default local base path (<code>/usr/local</code>).
+CheriBSD introduces a workaround for this issue by using separate local base
+paths for different package repositories.</p>
+<p>The hybrid ABI packages are compiled with a local base set to <code>/usr/local64</code>
+while the CheriABI packages use the default local base.
+Because the hybrid ABI packages are installed in a non-standard location, there
+may be bugs resulting in hybrid ABI packages looking for its dependencies in
+<code>/usr/local</code> instead of <code>/usr/local64</code>.
+For example, a CheriBSD port a package was built from might not configure
+a project-specific build system to use a custom local base or an upstream
+project might hardcode <code>/usr/local</code> in its source code.</p>
+<p>We encourage everyone to report bugs related to invalid local base paths in the
+hybrid ABI packages in
+<a href="https://github.com/CTSRD-CHERI/cheribsd-ports/issues">CheriBSD ports issue tracker</a>.</p>
 <h2><a class="header" href="#cross-abi-package-conflicts" id="cross-abi-package-conflicts">Cross-ABI package conflicts</a></h2>
 <p>Hybrid ABI and CheriABI package repositories include many counterpart packages,
 e.g. <code>git</code> is available in both repositories.
-If you decided to use a CheriABI package and find that it crashes, you
-might consider using a hybrid ABI package instead.</p>
-<p>CheriABI packages have a higher priority than the hybrid ABI packages in default
+CheriABI packages have a higher priority than the hybrid ABI packages in default
 <code>PATH</code> environment variables in CheriBSD.
 In case you installed a CheriABI package and a hybrid ABI package with a
 conflicting program name, you must execute the hybrid ABI program using
 an absolute path.</p>
+<p>When using a shell configuration not included in CheriBSD's source code, a user
+must remember to appropriately set the <code>PATH</code> environment variable to take into
+account both <code>/usr/local</code> and <code>/usr/local64</code> paths.
+It is also recommended to place <code>/usr/local</code> before <code>/usr/local64</code> in such
+configuration to match the CheriBSD's approach.</p>
 <h2><a class="header" href="#cross-abi-package-dependencies" id="cross-abi-package-dependencies">Cross-ABI package dependencies</a></h2>
 <p>At the moment, a package cannot depend in run-time on another package with
 a different ABI, e.g. to execute a program provided by that package.
@@ -1394,7 +1434,7 @@ Such feature would be useful if a CheriBSD port cannot easily be adapted to
 CheriABI and includes a program that is executed by another port that has
 a CheriABI package.
 There are currently no plans to support this case.</p>
-<h2><a class="header" href="#missing-packages" id="missing-packages">Missing packages</a></h2>
+<h1><a class="header" href="#missing-packages" id="missing-packages">Missing packages</a></h1>
 <p>Hybrid ABI and CheriABI package repositories might be missing third-party
 software due to the following reasons:</p>
 <ul>
@@ -1408,13 +1448,127 @@ list</a> to find out
 if anyone is working on software you are interested in.</p>
 </li>
 <li>
-<p>A CheriBSD port with the software is broken on Morello or is not adapted to
-CheriABI.</p>
+<p>A CheriBSD port with the software is broken on Morello, does not respect a
+custom local base (<code>/usr/local64</code>) when compiled for the hybrid ABI or is not
+adapted to CheriABI.</p>
 <p>Check the <a href="https://github.com/CTSRD-CHERI/cheribsd-ports/issues">CheriBSD ports issue
 tracker</a> to find out if
 an issue with the software is documented and the <a href="https://poudriere.cheribsd.org">Poudriere infrastructure for
 CheriBSD packages</a> to find failed build
 results.</p>
+</li>
+</ul>
+<h1><a class="header" href="#upgrading-packages" id="upgrading-packages">Upgrading packages</a></h1>
+<p>It is recommended to upgrade packages in the following situations:</p>
+<ul>
+<li>
+<p>Before building a newer CheriBSD release;</p>
+<p>The release might require an updated toolchain (e.g., due to ABI changes in
+the release that must by supported by the toolchain).</p>
+</li>
+<li>
+<p>After updating your host to a newer CheriBSD release;</p>
+<p>A package repository for the release is compiled against an ABI version
+supported by the newer release that might have changed since its prior
+release.</p>
+<p>Where practical, we intend to support packages from the immediately prior
+release on the newer release, but will make no effort to ensure that package
+repositories from even older releases continue to work.</p>
+<p>Additionally, the package repository for the newer release will most likely
+include updated third-party software versions that are tested against that
+release.</p>
+</li>
+<li>
+<p>After finding a bug in a package (e.g., a library, a toolchain).</p>
+<p>It might happen that the bug you discovered has already been reported and
+fixed.
+If the package upgrade does not resolve your issue, please
+<a href="packages/../support/">report the bug</a>.</p>
+</li>
+</ul>
+<p>Use the following commands to upgrade your packages:</p>
+<table><thead><tr><th>CheriABI</th><th>Hybrid ABI</th></tr></thead><tbody>
+<tr><td><code>pkg64c upgrade</code></td><td><code>pkg64 upgrade</code></td></tr>
+</tbody></table>
+<p>If you do not want perform the upgrade itself but only check if newer versions
+are available, you can add the <code>-n</code> flag to do so:</p>
+<table><thead><tr><th>CheriABI</th><th>Hybrid ABI</th></tr></thead><tbody>
+<tr><td><code>pkg64c upgrade -n</code></td><td><code>pkg64 upgrade -n</code></td></tr>
+</tbody></table>
+<p>You can read more on the <code>upgrade</code> command at
+<a href="https://www.freebsd.org/cgi/man.cgi?pkg-upgrade(8)">pkg-upgrade(8)</a>
+or in your console with <code>man pkg-upgrade</code>.</p>
+<h1><a class="header" href="#useful-commands" id="useful-commands">Useful commands</a></h1>
+<p>The following list includes useful commands to manage packages.
+Replace <code>&lt;pkg&gt;</code> with <code>pkg64c</code> to execute a command in the context of CheriABI
+packages and with <code>pkg64</code> in the context of hybrid ABI packages.</p>
+<p>Most <code>pkg</code> commands have separate man pages describing them.
+For a command <code>&lt;pkg&gt; foo</code>, you can read its man page by executing <code>man pkg-foo</code>
+on a CheriBSD host.</p>
+<ul>
+<li>List available package manager commands:
+<pre><code>&lt;pkg&gt; help
+</code></pre>
+</li>
+<li>Read more information on a package manager command:
+<pre><code>&lt;pkg&gt; help &lt;command&gt;
+</code></pre>
+</li>
+<li>Search a package repository:
+<pre><code>&lt;pkg&gt; search &lt;pattern&gt;
+</code></pre>
+</li>
+<li>Search a package repository and display full information:
+<pre><code>&lt;pkg&gt; search --full &lt;pattern&gt;
+</code></pre>
+</li>
+<li>List installed packages:
+<pre><code>&lt;pkg&gt; info
+</code></pre>
+</li>
+<li>Display information for an installed package:
+<pre><code>&lt;pkg&gt; info &lt;pkg-name&gt;
+</code></pre>
+</li>
+<li>Install a package:
+<pre><code>&lt;pkg&gt; install &lt;pkg-name&gt;
+</code></pre>
+</li>
+<li>Delete a package:
+<pre><code>&lt;pkg&gt; delete &lt;pkg-name&gt;
+</code></pre>
+</li>
+<li>Delete packages that are no longer required:
+<pre><code>&lt;pkg&gt; autoremove
+</code></pre>
+</li>
+<li>Check a new package version for an installed package:
+<pre><code>&lt;pkg&gt; upgrade -n &lt;pkg-name&gt;
+</code></pre>
+</li>
+<li>Check new package versions for all installed packages:
+<pre><code>&lt;pkg&gt; upgrade -n
+</code></pre>
+</li>
+<li>Upgrade a package after confirmation:
+<pre><code>&lt;pkg&gt; upgrade &lt;pkg-name&gt;
+</code></pre>
+</li>
+<li>Upgrade all packages after confirmation:
+<pre><code>&lt;pkg&gt; upgrade
+</code></pre>
+</li>
+<li>Display which package installed a file:
+<pre><code>&lt;pkg&gt; which /path/to/file
+</code></pre>
+</li>
+<li>Check a number of installed packages:
+<pre><code>&lt;pkg&gt; stats -l
+</code></pre>
+</li>
+<li>Check a number of available packages:
+<pre><code>&lt;pkg&gt; stats -r
+</code></pre>
 </li>
 </ul>
 <h1><a class="header" href="#cheriabi-hello-world" id="cheriabi-hello-world">CheriABI &quot;Hello World&quot;</a></h1>

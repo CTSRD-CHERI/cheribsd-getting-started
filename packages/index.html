@@ -93,7 +93,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="../features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="../nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="../getting/index.html"><strong aria-hidden="true">5.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">5.1.</strong> Downloading image files</a></li><li class="chapter-item expanded "><a href="../building/index.html"><strong aria-hidden="true">5.2.</strong> Building image files</a></li></ol></li><li class="chapter-item expanded "><a href="../morello/index.html"><strong aria-hidden="true">6.</strong> CheriBSD on an Arm Morello board</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../morello-console/index.html"><strong aria-hidden="true">6.1.</strong> Accessing the Morello console</a></li><li class="chapter-item expanded "><a href="../morello-firmware/index.html"><strong aria-hidden="true">6.2.</strong> Upgrading the Morello firmware</a></li><li class="chapter-item expanded "><a href="../morello-install/index.html"><strong aria-hidden="true">6.3.</strong> Installing on a Morello board</a></li><li class="chapter-item expanded "><a href="../morello-issues/index.html"><strong aria-hidden="true">6.4.</strong> Morello known issues</a></li></ol></li><li class="chapter-item expanded "><a href="../packages/index.html" class="active"><strong aria-hidden="true">7.</strong> Third-party packages</a></li><li class="chapter-item expanded "><a href="../helloworld/index.html"><strong aria-hidden="true">8.</strong> CheriABI &quot;Hello World&quot;</a></li><li class="chapter-item expanded "><a href="../support/index.html"><strong aria-hidden="true">9.</strong> Getting help</a></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">10.</strong> Resources</a></li><li class="chapter-item expanded affix ">Current release: 22.12</li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../cover/index.html">Getting Started with CheriBSD</a></li><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="../features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li class="chapter-item expanded "><a href="../nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="../getting/index.html"><strong aria-hidden="true">5.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">5.1.</strong> Downloading image files</a></li><li class="chapter-item expanded "><a href="../building/index.html"><strong aria-hidden="true">5.2.</strong> Building image files</a></li></ol></li><li class="chapter-item expanded "><a href="../morello/index.html"><strong aria-hidden="true">6.</strong> CheriBSD on an Arm Morello board</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../morello-console/index.html"><strong aria-hidden="true">6.1.</strong> Accessing the Morello console</a></li><li class="chapter-item expanded "><a href="../morello-firmware/index.html"><strong aria-hidden="true">6.2.</strong> Upgrading the Morello firmware</a></li><li class="chapter-item expanded "><a href="../morello-install/index.html"><strong aria-hidden="true">6.3.</strong> Installing on a Morello board</a></li><li class="chapter-item expanded "><a href="../morello-issues/index.html"><strong aria-hidden="true">6.4.</strong> Morello known issues</a></li></ol></li><li class="chapter-item expanded "><a href="../packages/index.html" class="active"><strong aria-hidden="true">7.</strong> Third-party packages</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../packages/limitations.html"><strong aria-hidden="true">7.1.</strong> Limitations of packages</a></li><li class="chapter-item expanded "><a href="../packages/missing.html"><strong aria-hidden="true">7.2.</strong> Missing packages</a></li><li class="chapter-item expanded "><a href="../packages/upgrading.html"><strong aria-hidden="true">7.3.</strong> Upgrading packages</a></li><li class="chapter-item expanded "><a href="../packages/commands.html"><strong aria-hidden="true">7.4.</strong> Useful commands</a></li></ol></li><li class="chapter-item expanded "><a href="../helloworld/index.html"><strong aria-hidden="true">8.</strong> CheriABI &quot;Hello World&quot;</a></li><li class="chapter-item expanded "><a href="../support/index.html"><strong aria-hidden="true">9.</strong> Getting help</a></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">10.</strong> Resources</a></li><li class="chapter-item expanded affix ">Current release: 22.12</li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -165,12 +165,22 @@
                     <main>
                         <h1><a class="header" href="#third-party-packages" id="third-party-packages">Third-party packages</a></h1>
 <p>CheriBSD on Morello ships with both hybrid ABI and CheriABI packages
-(compilations) of the FreeBSD ports collection, each targeting a different
+(compilations) of the CheriBSD ports collection, each targeting a different
 form of code generation and Application Binary Interface (ABI).
 They have different levels of completeness, maturity, security, and support.</p>
+<p><a href="https://github.com/CTSRD-CHERI/cheribsd-ports">CheriBSD ports</a>
+extend FreeBSD ports, a collection of over 30,000 third-party
+software adaptations to FreeBSD, with CHERI- and CheriBSD-specific patches.
+The
+<a href="https://github.com/CTSRD-CHERI/cheribsd-ports/tree/releng/22.12">releng/22.12</a>
+CheriBSD ports branch contains ports matching packages built for the current
+release.</p>
 <h2><a class="header" href="#overview" id="overview">Overview</a></h2>
 <p>The following table presents an overview of available package managers in
-CheriBSD that are described in more details in consecutive sections.</p>
+CheriBSD that are described in more details in consecutive sections.
+You can also browse package repositories at
+<a href="https://pkg.CheriBSD.org/">pkg.CheriBSD.org</a>
+to check what packages are available for a specific ABI version.</p>
 <table><thead><tr><th>ABI</th><th>#</th><th>Manager</th><th>Install path</th><th>Suitable for</th><th>Examples</th></tr></thead><tbody>
 <tr><td>Hybrid ABI</td><td>~20,000</td><td><code>pkg64</code></td><td><code>/usr/local64</code></td><td>Day-to-day use</td><td>bash<br/>gdb-cheri<br/>llvm-base<br/>vim</td></tr>
 <tr><td>CheriABI</td><td>~8,000</td><td><code>pkg64c</code></td><td><code>/usr/local</code></td><td>Experimental use</td><td>git<br/>nano<br/>rsync<br/>sudo</td></tr>
@@ -245,10 +255,6 @@ By default <code>/usr/local64/bin</code> and <code>/usr/local64/sbin</code> shou
 <code>PATH</code> environment variable of a default shell shipped with CheriBSD.
 If you are planning to use a custom shell, remember to add these paths to
 <code>PATH</code>.</p>
-<p><em>Note:</em> Because these packages are installed in a non-standard location,
-there may be bugs related to them looking in <code>/usr/local</code> instead of
-<code>/usr/local64</code> for dependencies. Please report bugs of this sort in
-the <a href="https://github.com/CTSRD-CHERI/cheribsd-ports/issues">CheriBSD ports issue tracker</a>.</p>
 <h2><a class="header" href="#cheriabi-packages" id="cheriabi-packages">CheriABI packages</a></h2>
 <p><strong>CheriABI packages</strong> are compiled using pure-capability CHERI C/C++, and
 employ fine-grained C/C++ memory protection.</p>
@@ -271,55 +277,6 @@ hardware-software stack.</p>
 </ul>
 <p>The packages are installed in the standard <code>/usr/local</code> hierarchy as they match
 the base system ABI.</p>
-<p><em>Note:</em> These packages compile, but many have CHERI-related warnings that
-have not been audited and only a limited set have been tested. Bugs related to
-CHERI support can be reported in the <a href="https://github.com/CTSRD-CHERI/cheribsd-ports/issues">CheriBSD ports issue
-tracker</a>.
-While the CheriABI packages are more interesting as they use CHERI memory-safety
-features, you must remember that they might break in run-time and hence might
-not be suitable for critical operations.
-In such case, a corresponding hybrid ABI package might be considered instead of
-a CheriABI package.</p>
-<h2><a class="header" href="#cross-abi-package-conflicts" id="cross-abi-package-conflicts">Cross-ABI package conflicts</a></h2>
-<p>Hybrid ABI and CheriABI package repositories include many counterpart packages,
-e.g. <code>git</code> is available in both repositories.
-If you decided to use a CheriABI package and find that it crashes, you
-might consider using a hybrid ABI package instead.</p>
-<p>CheriABI packages have a higher priority than the hybrid ABI packages in default
-<code>PATH</code> environment variables in CheriBSD.
-In case you installed a CheriABI package and a hybrid ABI package with a
-conflicting program name, you must execute the hybrid ABI program using
-an absolute path.</p>
-<h2><a class="header" href="#cross-abi-package-dependencies" id="cross-abi-package-dependencies">Cross-ABI package dependencies</a></h2>
-<p>At the moment, a package cannot depend in run-time on another package with
-a different ABI, e.g. to execute a program provided by that package.
-Such feature would be useful if a CheriBSD port cannot easily be adapted to
-CheriABI and includes a program that is executed by another port that has
-a CheriABI package.
-There are currently no plans to support this case.</p>
-<h2><a class="header" href="#missing-packages" id="missing-packages">Missing packages</a></h2>
-<p>Hybrid ABI and CheriABI package repositories might be missing third-party
-software due to the following reasons:</p>
-<ul>
-<li>
-<p>There is no FreeBSD port including that software or it is broken on AArch64;</p>
-<p>Check <a href="https://www.freshports.org/">FreshPorts</a>,
-<a href="https://wiki.freebsd.org/WantedPorts">FreeBSD Wiki</a>,
-<a href="https://bugs.freebsd.org/bugzilla/">FreeBSD Bugzilla</a> and
-the <a href="https://lists.freebsd.org/subscription/freebsd-ports">freebsd-ports mailing
-list</a> to find out
-if anyone is working on software you are interested in.</p>
-</li>
-<li>
-<p>A CheriBSD port with the software is broken on Morello or is not adapted to
-CheriABI.</p>
-<p>Check the <a href="https://github.com/CTSRD-CHERI/cheribsd-ports/issues">CheriBSD ports issue
-tracker</a> to find out if
-an issue with the software is documented and the <a href="https://poudriere.cheribsd.org">Poudriere infrastructure for
-CheriBSD packages</a> to find failed build
-results.</p>
-</li>
-</ul>
 
                     </main>
 
@@ -332,7 +289,7 @@ results.</p>
                         
 
                         
-                            <a rel="next" href="../helloworld/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../packages/limitations.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -350,7 +307,7 @@ results.</p>
                 
 
                 
-                    <a rel="next" href="../helloworld/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../packages/limitations.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
