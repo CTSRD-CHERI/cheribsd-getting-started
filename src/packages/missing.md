@@ -11,12 +11,12 @@ software due to the following reasons:
   list](https://lists.freebsd.org/subscription/freebsd-ports) to find out
   if anyone is working on software you are interested in.
 
-* A CheriBSD port with the software is broken on Morello, does not respect a
-  custom local base (`/usr/local64`) when compiled for the hybrid ABI or is not
-  adapted to CheriABI.
+* A CheriBSD port with the software is broken on Morello (e.g., it is not
+  adapted to CheriABI), or does not respect a custom local base (`/usr/local64`)
+  when compiled for the hybrid ABI.
 
   Check the [CheriBSD ports issue
   tracker](https://github.com/CTSRD-CHERI/cheribsd-ports/issues) to find out if
   an issue with the software is documented and the [Poudriere infrastructure for
-  CheriBSD packages](https://poudriere.cheribsd.org) to find failed build
-  results.
+  CheriBSD packages](https://poudriere.cheribsd.org) to find failed build logs
+  and skipped build causes.

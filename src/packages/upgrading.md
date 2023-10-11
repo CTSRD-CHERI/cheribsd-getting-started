@@ -5,19 +5,19 @@ It is recommended to upgrade packages in the following situations:
 * Before building a newer CheriBSD release;
 
   The release might require an updated toolchain (e.g., due to ABI changes in
-  the release that must by supported by the toolchain).
+  the release that must be supported by the toolchain).
 
 * After updating your host to a newer CheriBSD release;
 
-  A package repository for the release is compiled against an ABI version
-  supported by the newer release that might have changed since its prior
+  Package repositories are compiled for the ABI version used by the
+  corresponding release, which might differ from the ABI of the previous
   release.
 
   Where practical, we intend to support packages from the immediately prior
   release on the newer release, but will make no effort to ensure that package
   repositories from even older releases continue to work.
 
-  Additionally, the package repository for the newer release will most likely
+  Additionally, package repositories for the newer release will most likely
   include updated third-party software versions that are tested against that
   release.
 
@@ -35,7 +35,7 @@ Use the following commands to upgrade your packages:
 | `pkg64c upgrade` | `pkg64 upgrade` |
 
 If you do not want perform the upgrade itself but only check if newer versions
-are available, you can add the `-n` flag to do so:
+are available, use the `-n` flag:
 
 | CheriABI            | Hybrid ABI         |
 |---------------------|--------------------|
