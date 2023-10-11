@@ -6,11 +6,11 @@ form of code generation and Application Binary Interface (ABI).
 They have different levels of completeness, maturity, security, and support.
 
 [CheriBSD ports](https://github.com/CTSRD-CHERI/cheribsd-ports)
-extend FreeBSD ports, a collection of over 30,000 third-party
+extends FreeBSD ports, a collection of over 30,000 third-party
 software adaptations to FreeBSD, with CHERI- and CheriBSD-specific patches.
 The
 [releng/22.12](https://github.com/CTSRD-CHERI/cheribsd-ports/tree/releng/22.12)
-CheriBSD ports branch contains ports matching packages built for the current
+CheriBSD ports branch contains ports matching the packages built for the current
 release.
 
 ## Overview
