@@ -169,17 +169,17 @@
 <li>
 <p>Before building a newer CheriBSD release;</p>
 <p>The release might require an updated toolchain (e.g., due to ABI changes in
-the release that must by supported by the toolchain).</p>
+the release that must be supported by the toolchain).</p>
 </li>
 <li>
 <p>After updating your host to a newer CheriBSD release;</p>
-<p>A package repository for the release is compiled against an ABI version
-supported by the newer release that might have changed since its prior
+<p>Package repositories are compiled for the ABI version used by the
+corresponding release, which might differ from the ABI of the previous
 release.</p>
 <p>Where practical, we intend to support packages from the immediately prior
 release on the newer release, but will make no effort to ensure that package
 repositories from even older releases continue to work.</p>
-<p>Additionally, the package repository for the newer release will most likely
+<p>Additionally, package repositories for the newer release will most likely
 include updated third-party software versions that are tested against that
 release.</p>
 </li>
@@ -196,7 +196,7 @@ If the package upgrade does not resolve your issue, please
 <tr><td><code>pkg64c upgrade</code></td><td><code>pkg64 upgrade</code></td></tr>
 </tbody></table>
 <p>If you do not want perform the upgrade itself but only check if newer versions
-are available, you can add the <code>-n</code> flag to do so:</p>
+are available, use the <code>-n</code> flag:</p>
 <table><thead><tr><th>CheriABI</th><th>Hybrid ABI</th></tr></thead><tbody>
 <tr><td><code>pkg64c upgrade -n</code></td><td><code>pkg64 upgrade -n</code></td></tr>
 </tbody></table>
