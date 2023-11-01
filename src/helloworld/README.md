@@ -1,4 +1,4 @@
-# CheriABI "Hello World"
+# Compiling "Hello World"
 
 These instructions are intended for use on an Arm Morello board, and install
 hybrid ABI versions of key toolchain and utilities using `pkg64`.
@@ -96,7 +96,18 @@ You can verify this is a CheriABI binary with the `file` command:
 
 ```
 root@cheribsd:~ # file helloworld
-helloworld: ELF 64-bit LSB pie executable, ARM aarch64, C64, CheriABI, version 1 (SYSV), dynamically linked, interpreter /libexec/ld-elf.so.1, for FreeBSD 14.0 (1400064), FreeBSD-style, with debug_info, not stripped
+helloworld: ELF 64-bit LSB pie executable, ARM aarch64, C64, CheriABI, version 1 (SYSV), dynamically linked, interpreter /libexec/ld-elf.so.1, for FreeBSD 14.0 (1400094), FreeBSD-style, with debug_info, not stripped
+```
+
+To target the [Benchmark ABI](../benchmarking/), add the argument
+`-mabi=purecap-benchmark` to the `cc` command line:
+
+```cc -g -O2 -Wall -mabi=purecap-benchmark -o helloworld helloworld.c```
+
+You can verify this is a Benchmark ABI binary with the `file` command:
+```
+root@cheribsd:~ # file helloworld
+helloworld: ELF 64-bit LSB pie executable, ARM aarch64, C64, CheriABI, version 1 (SYSV), dynamically linked, interpreter /libexec/ld-elf.so.1, for FreeBSD 14.0 (1400094), FreeBSD-style, pure-capability benchmark ABI, with debug_info, not stripped
 ```
 
 ## Running
