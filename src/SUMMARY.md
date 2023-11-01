@@ -25,7 +25,8 @@
   - [Missing packages](packages/missing.md)
   - [Upgrading packages](packages/upgrading.md)
   - [Useful commands](packages/commands.md)
-- [CheriABI "Hello World"](helloworld/README.md)
+- [Compiling "Hello World"](helloworld/README.md)
+- [Benchmarking guidance](benchmarking/README.md)
 - [Getting help](support/README.md)
 - [Resources](resources/README.md)
 
