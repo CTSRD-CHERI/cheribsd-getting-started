@@ -26,7 +26,7 @@ and not aarch64c.
 
 Depending on the version of CheriBSD you are using, the kernel may have a
 number of debugging fetures enabled.
-These features can substantially impact system performance, including having
+These features can substantially impact system performance, including
 inducing disproportionate performance overhead for specific system behaviours.
 For example, enabling kernel lock-order checking ("WITNESS") will introduce
 substantial overhead, and in particular will impact kernel-centric workloads
