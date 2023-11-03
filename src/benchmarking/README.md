@@ -61,7 +61,7 @@ You will need to reboot in order for this change to take effect.
 
 # Heap temporal memory safety
 
-As of CheriBSD 23.11, userlevel heap temporal safety is enabled by default.
+As of CheriBSD 23.11, userlevel heap temporal safety is enabled by default with jemalloc as the memory allocator.
 This support is experimental, and has not yet been through significant
 performance analysis and optimization.
 We recommend disabling temporal safety support for the full system during
