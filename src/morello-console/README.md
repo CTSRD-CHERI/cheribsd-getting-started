@@ -46,3 +46,14 @@ Typical command lines to access the MCC and Morello consoles are:
 
 You will need to substitute the serial numbers of the USB converters in your
 specific Morello board for these commands to work.
+
+## Connecting from Windows
+
+Windows requires the installation of FTDI drivers to access the Morello board's USB ports, and the OS should identify the appropriate driver version once the board is connected. After installing the drivers and powering the board on for the first time, access to the MCC console can be tested via the following:
+```powershell
+$port = New-Object System.IO.Ports.SerialPort COM3,115200,None,8,one
+$port.Open()
+$port.WriteLine("?")
+$port.ReadExisting()
+$port.Close()
+```
