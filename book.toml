@@ -3,7 +3,7 @@ authors = ["Robert N. M. Watson"]
 language = "en"
 multilingual = false
 src = "src"
-title = "Getting Started with CheriBSD"
+title = "Getting Started with CheriBSD 22.12"
 
 [output.html]
 git-repository-url = "https://github.com/CTSRD-CHERI/cheribsd-getting-started"

@@ -1,6 +1,6 @@
 <!-- ANCHOR: cover -->
 
-# Getting Started with CheriBSD
+# Getting Started with CheriBSD 22.12
 
 Robert N. M. Watson (University of Cambridge)
 and
