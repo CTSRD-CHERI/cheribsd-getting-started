@@ -1,6 +1,6 @@
 # Summary
 
-[Getting Started with CheriBSD](cover/README.md)
+[Getting Started with CheriBSD 22.12](cover/README.md)
 
 - [Introduction](introduction/README.md)
 - [Background](background/README.md)
@@ -29,8 +29,3 @@
 - [Benchmarking guidance](benchmarking/README.md)
 - [Getting help](support/README.md)
 - [Resources](resources/README.md)
-
-<!--
-NOTE: A release version is also in README.md.
--->
-[Current release: 22.12]()
