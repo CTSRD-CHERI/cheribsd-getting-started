@@ -77,7 +77,7 @@ WARNING: capability revocation enabled by default, this may affect performance
 The following line can be added to `/boot/loader.conf`:
 
 ```
-security.cheri.runtime_quarantine_default=0
+security.cheri.runtime_revocation_default=0
 ```
 
 You will need to reboot in order for this change to take effect.
