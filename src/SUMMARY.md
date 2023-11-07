@@ -32,4 +32,4 @@
 <!--
 NOTE: A release version is also in README.md.
 -->
-[Current release: 22.12]()
+[Current release: 23.11]()
