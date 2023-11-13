@@ -29,7 +29,6 @@ to check what packages are available for a specific ABI version.
 ## Package managers in CheriBSD
 
 *Note:* As of this writing we only provide packages for Morello systems.
-We aim to add CHERI-RISC-V package sets in the near future.
 
 CheriBSD includes two package managers:
 
