@@ -6,7 +6,7 @@ form of code generation and Application Binary Interface (ABI).
 They have different levels of completeness, maturity, security, and support.
 
 [CheriBSD ports](https://github.com/CTSRD-CHERI/cheribsd-ports)
-extends FreeBSD ports, a collection of over 30,000 third-party
+extends FreeBSD ports, a collection of over 34,000 third-party
 software adaptations to FreeBSD, with CHERI- and CheriBSD-specific patches.
 The
 [releng/22.12](https://github.com/CTSRD-CHERI/cheribsd-ports/tree/releng/22.12)
@@ -23,9 +23,9 @@ to check what packages are available for a specific ABI version.
 
 | ABI           | #       | Manager   | Install path     | Suitable for           |
 |---------------|---------|-----------|------------------|------------------------|
-| CheriABI      | ~8,000  | `pkg64c`  | `/usr/local`     | Security evaluation    |
-| Benchmark ABI | ~9,500  | `pkg64cb` | `/usr/local64cb` | Performance evaluation |
-| Hybrid ABI    | ~20,000 | `pkg64`   | `/usr/local64`   | Day-to-day use         |
+| CheriABI      | ~10,000 | `pkg64c`  | `/usr/local`     | Security evaluation    |
+| Benchmark ABI | ~10,000 | `pkg64cb` | `/usr/local64cb` | Performance evaluation |
+| Hybrid ABI    | ~25,000 | `pkg64`   | `/usr/local64`   | Day-to-day use         |
 
 ## Package managers in CheriBSD
 
@@ -68,7 +68,7 @@ They can also be used to investigate potential memory safety issues in
 third-party software that are easier to detect and debug using a CHERI-enabled
 hardware-software stack.
 
-There are currently over 8,000 CheriABI packages available, including:
+There are currently ~10,000 CheriABI packages available, including:
 
 * Development utilities: `git`;
 * Editors: `nano`;
@@ -95,7 +95,7 @@ the Arm Morello architecture and third-party software executed on it.
 They should not be used for a security evaluation, in which case you should use
 CheriABI instead.
 
-There are currently over 9,500 benchmark ABI packages available which should
+There are currently ~10,000 benchmark ABI packages available which should
 include almost all packages that are available in the CheriABI package
 repository.
 
@@ -121,7 +121,7 @@ These packages are considered *appropriate for day-to-day use*.
 They are intended to provide stable versions of tools necessary to develop
 software and use your CHERI system while more software is ported to CheriABI.
 
-There are currently over 20,000 hybrid ABI packages available, including:
+There are currently ~25,000 hybrid ABI packages available, including:
 
 * Compilers:
 
