@@ -1,6 +1,6 @@
 # Third-party packages
 
-CheriBSD on Morello ships with hybrid ABI, CheriABI and benchmark ABI  packages
+CheriBSD on Morello ships with CheriABI, hybrid ABI and benchmark ABI packages
 (compilations) of the CheriBSD ports collection, each targeting a different
 form of code generation and Application Binary Interface (ABI).
 They have different levels of completeness, maturity, security, and support.
@@ -23,9 +23,9 @@ to check what packages are available for a specific ABI version.
 
 | ABI           | #       | Manager   | Install path     | Suitable for           |
 |---------------|---------|-----------|------------------|------------------------|
-| Hybrid ABI    | ~20,000 | `pkg64`   | `/usr/local64`   | Day-to-day use         |
 | CheriABI      | ~8,000  | `pkg64c`  | `/usr/local`     | Security evaluation    |
 | Benchmark ABI | ~9,500  | `pkg64cb` | `/usr/local64cb` | Performance evaluation |
+| Hybrid ABI    | ~20,000 | `pkg64`   | `/usr/local64`   | Day-to-day use         |
 
 ## Package managers in CheriBSD
 
@@ -33,9 +33,9 @@ to check what packages are available for a specific ABI version.
 
 CheriBSD includes three package managers:
 
-* `pkg64` for hybrid ABI packages;
 * `pkg64c` for CheriABI packages;
-* `pkg64cb` for benchmark ABI packages.
+* `pkg64cb` for benchmark ABI packages;
+* `pkg64` for hybrid ABI packages.
 
 The FreeBSD package manager `pkg` is not available on CheriBSD.
 We expect that `pkg64c` will be renamed to `pkg` in a future CheriBSD release.
@@ -52,50 +52,6 @@ Additionally, you can learn more about FreeBSD's package manager by reading the
 [pkg(8) manual page](https://www.freebsd.org/cgi/man.cgi?pkg(7)) online
 and the [FreeBSD Handbook chapter on packages and
 ports](https://docs.freebsd.org/en/books/handbook/ports/).
-
-## Hybrid ABI packages
-
-**Hybrid ABI packages** are compiled almost identically to packages in the
-baseline non-CHERI architecture (e.g., Armv8-a for Morello, and 64-bit
-RISC-V for RISC-V), and do not have improvements in memory protection or
-software compartmentalization.
-
-These packages are considered *appropriate for day-to-day use*.
-They are intended to provide stable versions of tools necessary to develop
-software and use your CHERI system while more software is ported to CheriABI.
-
-There are currently over 20,000 hybrid ABI packages available, including:
-
-* Compilers:
-
-  * `llvm-morello`;
-
-    Includes Clang (a CHERI C/C++ compiler), LLD (a linker), and the LLVM
-    infrastructure for the Arm Morello architecture.
-    Binaries installed with this package have the suffix `-morello`.
-
-  * `llvm`;
-
-    Adds links in `/usr/local64/bin` to allow the `llvm-morello` package to be
-    used as the default LLVM package, without the suffix `-morello`,
-    e.g. `clang` instead of `clang-morello`.
-
-  * `llvm-base`.
-
-    Adds links in `/usr/bin` to allow the `llvm` package to be used in place of
-    a base-system toolchain. The `cc` script installed with this package adds
-    compiler flags required to natively compile code for a CHERI-enabled
-    architecture.
-
-* Debuggers: `gdb-cheri`;
-* Editors: `nano`, `vim`;
-* Shells: `bash`, `dash`, `fish`.
-
-The packages are installed in the `/usr/local64` hierarchy.
-By default, `/usr/local64/bin` and `/usr/local64/sbin` are included in your
-`PATH` environment variable of a shell shipped with CheriBSD.
-If you are planning to use a custom shell, remember to add these paths to
-`PATH`.
 
 ## CheriABI packages
 
@@ -153,3 +109,47 @@ Different numbers of CheriABI and benchmark ABI packages is a result of using a
 custom local base path (`/usr/local64cb`) and a custom `LD_LIBRARY_PATH`
 variable name (`LD_64CB_LIBRARY_PATH`) for the benchmark ABI.
 Multiple ports do not correctly handle these differences.
+
+## Hybrid ABI packages
+
+**Hybrid ABI packages** are compiled almost identically to packages in the
+baseline non-CHERI architecture (e.g., Armv8-a for Morello, and 64-bit
+RISC-V for RISC-V), and do not have improvements in memory protection or
+software compartmentalization.
+
+These packages are considered *appropriate for day-to-day use*.
+They are intended to provide stable versions of tools necessary to develop
+software and use your CHERI system while more software is ported to CheriABI.
+
+There are currently over 20,000 hybrid ABI packages available, including:
+
+* Compilers:
+
+  * `llvm-morello`;
+
+    Includes Clang (a CHERI C/C++ compiler), LLD (a linker), and the LLVM
+    infrastructure for the Arm Morello architecture.
+    Binaries installed with this package have the suffix `-morello`.
+
+  * `llvm`;
+
+    Adds links in `/usr/local64/bin` to allow the `llvm-morello` package to be
+    used as the default LLVM package, without the suffix `-morello`,
+    e.g. `clang` instead of `clang-morello`.
+
+  * `llvm-base`.
+
+    Adds links in `/usr/bin` to allow the `llvm` package to be used in place of
+    a base-system toolchain. The `cc` script installed with this package adds
+    compiler flags required to natively compile code for a CHERI-enabled
+    architecture.
+
+* Debuggers: `gdb-cheri`;
+* Editors: `nano`, `vim`;
+* Shells: `bash`, `dash`, `fish`.
+
+The packages are installed in the `/usr/local64` hierarchy.
+By default, `/usr/local64/bin` and `/usr/local64/sbin` are included in your
+`PATH` environment variable of a shell shipped with CheriBSD.
+If you are planning to use a custom shell, remember to add these paths to
+`PATH`.
