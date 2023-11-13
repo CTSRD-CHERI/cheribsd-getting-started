@@ -1,6 +1,6 @@
 # Third-party packages
 
-CheriBSD on Morello ships with both hybrid ABI and CheriABI packages
+CheriBSD on Morello ships with hybrid ABI, CheriABI and benchmark ABI  packages
 (compilations) of the CheriBSD ports collection, each targeting a different
 form of code generation and Application Binary Interface (ABI).
 They have different levels of completeness, maturity, security, and support.
@@ -21,26 +21,28 @@ You can also browse package repositories at
 [pkg.CheriBSD.org](https://pkg.CheriBSD.org/)
 to check what packages are available for a specific ABI version.
 
-| ABI        | #       | Manager | Install path   | Suitable for     | Examples |
-|------------|---------|---------|----------------|------------------|----------|
-| Hybrid ABI | ~20,000 | `pkg64` | `/usr/local64` | Day-to-day use   | bash<br/>gdb-cheri<br/>llvm-base<br/>vim |
-| CheriABI   | ~8,000  | `pkg64c`| `/usr/local`   | Experimental use | git<br/>nano<br/>rsync<br/>sudo |
+| ABI           | #       | Manager   | Install path     | Suitable for           |
+|---------------|---------|-----------|------------------|------------------------|
+| Hybrid ABI    | ~20,000 | `pkg64`   | `/usr/local64`   | Day-to-day use         |
+| CheriABI      | ~8,000  | `pkg64c`  | `/usr/local`     | Security evaluation    |
+| Benchmark ABI | ~9,500  | `pkg64cb` | `/usr/local64cb` | Performance evaluation |
 
 ## Package managers in CheriBSD
 
 *Note:* As of this writing we only provide packages for Morello systems.
 
-CheriBSD includes two package managers:
+CheriBSD includes three package managers:
 
 * `pkg64` for hybrid ABI packages;
-* `pkg64c` for CheriABI packages.
+* `pkg64c` for CheriABI packages;
+* `pkg64cb` for benchmark ABI packages.
 
 The FreeBSD package manager `pkg` is not available on CheriBSD.
 We expect that `pkg64c` will be renamed to `pkg` in a future CheriBSD release.
 The intention is that, over time, the CheriABI packages will become more
 mature, and hence the preferred collection for day-to-day use.
 
-The syntax of the `pkg64` and `pkg64c` commands match the syntax of the `pkg`
+The syntax of the `pkg64*` commands match the syntax of the `pkg`
 command from FreeBSD.
 You can find information on package manager commands in FreeBSD's `pkg` manual
 pages shipped with CheriBSD, e.g. for the commands `pkg64 rquery` and
@@ -90,8 +92,8 @@ There are currently over 20,000 hybrid ABI packages available, including:
 * Shells: `bash`, `dash`, `fish`.
 
 The packages are installed in the `/usr/local64` hierarchy.
-By default `/usr/local64/bin` and `/usr/local64/sbin` should be included in your
-`PATH` environment variable of a default shell shipped with CheriBSD.
+By default, `/usr/local64/bin` and `/usr/local64/sbin` are included in your
+`PATH` environment variable of a shell shipped with CheriBSD.
 If you are planning to use a custom shell, remember to add these paths to
 `PATH`.
 
@@ -100,7 +102,8 @@ If you are planning to use a custom shell, remember to add these paths to
 **CheriABI packages** are compiled using pure-capability CHERI C/C++, and
 employ fine-grained C/C++ memory protection.
 
-These packages are considered *appropriate for experimental use*.
+These packages are considered appropriate for **experimental use** and
+a **security evaluation** of CHERI-extended hardware-software stacks.
 Their primary function is to provide necessary dependencies for efforts to port
 software to CheriABI and to support CHERI demonstration and evaluation.
 They are suitable for research and development of software that benefit from
@@ -120,3 +123,33 @@ There are currently over 8,000 CheriABI packages available, including:
 
 The packages are installed in the standard `/usr/local` hierarchy as they match
 the base system ABI.
+
+## Benchmark ABI packages
+
+**Benchmark ABI packages** are compiled similarly to CheriABI packages, but
+differ in generated code that takes into account current limitations of the
+Morello architecture.
+You should make sure to read the
+[Benchmarking guidance](../benchmarking/)
+section before using the benchmark ABI packages to understand the differences
+between CheriABI and the benchmark ABI.
+
+These packages are considered appropriate for a **performance evaluation** of
+the Arm Morello architecture and third-party software executed on it.
+They should not be used for a security evaluation, in which case you should use
+CheriABI instead.
+
+There are currently over 9,500 benchmark ABI packages available which should
+include almost all packages that are available in the CheriABI package
+repository.
+
+The packages are installed in the `/usr/local64cb` hierarchy.
+By default, `/usr/local64cb/bin` and `/usr/local64cb/sbin` are included in your
+`PATH` environment variable of a shell shipped with CheriBSD.
+If you are planning to use a custom shell, remember to add these paths to
+`PATH`.
+
+Different numbers of CheriABI and benchmark ABI packages is a result of using a
+custom local base path (`/usr/local64cb`) and a custom `LD_LIBRARY_PATH`
+variable name (`LD_64CB_LIBRARY_PATH`) for the benchmark ABI.
+Multiple ports do not correctly handle these differences.
