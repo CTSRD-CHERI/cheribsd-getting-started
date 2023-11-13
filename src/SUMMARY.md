@@ -24,6 +24,7 @@
   - [Limitations of packages](packages/limitations.md)
   - [Missing packages](packages/missing.md)
   - [Upgrading packages](packages/upgrading.md)
+  - [Debugging packages](packages/debugging.md)
   - [Useful commands](packages/commands.md)
 - [Compiling "Hello World"](helloworld/README.md)
 - [Benchmarking guidance](benchmarking/README.md)
