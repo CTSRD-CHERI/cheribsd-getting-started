@@ -49,11 +49,11 @@ specific Morello board for these commands to work.
 
 ## Connecting from Windows
 
-Windows requires the installation of FTDI drivers to access the Morello board's USB ports, and the OS should identify the appropriate driver version once the board is connected. After installing the drivers and powering the board on for the first time, access to the MCC console can be tested via the following:
-```powershell
-$port = New-Object System.IO.Ports.SerialPort COM3,115200,None,8,one
-$port.Open()
-$port.WriteLine("?")
-$port.ReadExisting()
-$port.Close()
-```
+Windows requires the installation of FTDI drivers to access the Morello board's USB ports, and the OS should identify the appropriate driver version once the board is connected. After installing the drivers and powering the board on for the first time, access to the MCC and Morello consoles can be tested via the following:
+
+- MCC console: `plink -serial \\.\COM3 -sercfg 115200,8,1,N,N`
+- Morello console: `plink -serial \\.\COM5 -sercfg 115200,8,1,N,N`
+
+`plink` is a CLI bundled with PuTTY.
+
+Do note that Windows assigns serial numbers at random.
