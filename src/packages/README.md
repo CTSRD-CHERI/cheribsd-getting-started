@@ -70,12 +70,26 @@ hardware-software stack.
 
 There are currently ~10,000 CheriABI packages available, including:
 
-* Development utilities: `git`;
-* Editors: `nano`;
-* Libraries: `libnghttp2`, `libressl`, `libssh2`, `lzlib`, `wolfssl`;
-* Networking tools: `rsync`;
-* Security tools: `sudo`;
-* Shells: `dash`.
+* Databases: `sqlite3`;
+
+* Development utilities: `autoconf`, `chericat`, `cmake`, `git`, `gmake`;
+
+* Editors: `nano`, `vim-tiny`;
+
+* GUI environment: `cheri-desktop` (`seatd`, `sddm`, `wayland`,
+  `plasma5-plasma-workspace`, `dolphin`, `kate`, `konsole`, `okular`);
+
+* Hypervisor tools: `cheri-vm-support` (`u-boot-bhyve-arm64`);
+
+* Language interpreters: `perl5`, `tcl86`;
+
+* Libraries: `libnghttp2`, `libressl`, `libssh2`, `lzlib`;
+
+* Networking tools: `rsync31`;
+
+* Shells: `bash`, `dash`;
+
+* System tools: `sudo`, `tmux`.
 
 The packages are installed in the standard `/usr/local` hierarchy as they match
 the base system ABI.
@@ -123,6 +137,8 @@ software and use your CHERI system while more software is ported to CheriABI.
 
 There are currently ~25,000 hybrid ABI packages available, including:
 
+* Browsers: `chromium`, `firefox`;
+
 * Compilers:
 
   * `llvm-morello`;
@@ -137,16 +153,24 @@ There are currently ~25,000 hybrid ABI packages available, including:
     used as the default LLVM package, without the suffix `-morello`,
     e.g. `clang` instead of `clang-morello`.
 
-  * `llvm-base`.
+  * `llvm-base`;
 
     Adds links in `/usr/bin` to allow the `llvm` package to be used in place of
     a base-system toolchain. The `cc` script installed with this package adds
     compiler flags required to natively compile code for a CHERI-enabled
     architecture.
 
-* Debuggers: `gdb-cheri`;
-* Editors: `nano`, `vim`;
-* Shells: `bash`, `dash`, `fish`.
+  * `rust`.
+
+* Debuggers: `gdb`;
+
+* Development utilities: `meson`, `ninja`;
+
+* Editors: `emacs`;
+
+* Language interpreters: `lua54`, `python39`, `ruby`;
+
+* Shells: `fish`, `zsh`.
 
 The packages are installed in the `/usr/local64` hierarchy.
 By default, `/usr/local64/bin` and `/usr/local64/sbin` are included in your
