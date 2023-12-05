@@ -14,7 +14,7 @@ following command would write the image to a USB stick for use with a Morello
 board:
 
 ```
-dd if=cheribsd-memstick-arm64-aarch64c-22.12.img of=/dev/DISK bs=1048576
+dd if=cheribsd-memstick-arm64-aarch64c-23.11.img of=/dev/DISK bs=1048576
 ```
 
 It is also possible to write a live image to a USB stick, with appropriate
@@ -135,7 +135,6 @@ Common console types are:
    ansi     Standard ANSI terminal
    vt100    VT100 or compatible terminal
    xterm    xterm terminal emulator (or compatible)
-   cons25w  cons25w terminal
 
 Console type [xterm]:
 ```
@@ -206,6 +205,12 @@ Press Enter to accept the default hostname, or replace it:
 
 #### Partitioning (automatic or manual)
 
+This tutorial assumes that you are performing a fresh install, or a complete
+reinstall of your Morello system, with the intention of booting only CheriBSD.
+It also assumes that you will be using the UFS file system.
+If these assumpsions are not true, read the FreeBSD documentation for more
+information on partitioning disks before proceeding.
+
 Press Enter to select an automated UFS install:
 ```
           ┌─────────────────────Partitioning───────────────────────┐
@@ -269,7 +274,7 @@ proceed:
            ││  ada0p3        3.6 GB  freebsd-swap   none         ││
            ││da0             57 GB   GPT                         ││
            ││  da0p1         33 MB   efi                         ││
-           ││  da0p2         814 MB  freebsd-ufs                 ││
+           ││  da0p2         2.4 GB  freebsd-ufs                 ││
            ││                                                    ││
            │└────────────────────────────────────────────────────┘│
            ├──────────────────────────────────────────────────────┤
@@ -282,22 +287,76 @@ proceed:
 Select Commit and press Enter to continue with writing out a new partition
 table:
 ```
-           ┌──────────────────Partition Editor────────────────────┐
-           │ Please review the disk setup. When complete, press   │
-           │ the Finish button.                                   │
-           │┌────────────────────────────────────────────────────┐│
-           │┌──────────────────Confirmation─────────────────────┐││
-           ││ Your changes will now be written to disk. If you  │
-           ││ have chosen to overwrite existing data, it will   │
-           ││ be PERMANENTLY ERASED. Are you sure you want to   │
-           ││ commit your changes?                              │
-           │├───────────────────────────────────────────────────┤
-           ││ <   Commit    > <Revert & Exit> <    Back     >   │
-           │└───────────────────────────────────────────────────┘
-           │└─
-           ├──────────────────────────────────────────────────────┤
-           │<Create> <Delete> <Modify> <Revert> < Auto > <Finish> │
-           └──────────────────────────────────────────────────────┘
+            ┌─────────────────┤Partition Editor├──────────────────┐
+            │ Please review the disk setup. When complete, press  │
+            │ the Finish button.                                  │
+            │                                                     │
+            │                                                     │
+            │ ┌─────────────────────────────────────────────────┐ │
+            │ │┌────────────────┤Confirmation├─────────────────┐│ │
+            │ ││ Your changes will now be written to disk. If  │  │
+            │ ││ you have chosen to overwrite existing data,   │  │
+            │ ││ it will be PERMANENTLY ERASED. Are you sure   │  │
+            │ ││ you want to commit your changes?              │  │
+            │ │├───────────────────────────────────────────────┤  │
+            │ ││[   Commit    ] [Revert & Exit] [    Back     ]│  │
+            │ │└───────────────────────────────────────────────┘  │
+            │ │                                                   │
+            │ │                                                 │ │
+            │ └─────────────────────────────────────────────────┘ │
+            ├─────────────────────────────────────────────────────┤
+            │[Create] [Delete] [Modify] [Revert] [ Auto ] [Finish]│
+            └─────────────────────────────────────────────────────┘
+```
+
+#### The installation proceeds
+
+The installer will now proceed to check distribution files and unpack them
+onto the disk.
+Unless something goes wrong, no user interaction is required.
+Typical output from the installation process will look like this:
+
+```
+ FreeBSD Installer
+ ──────────────────────────────────────────────────────────────────────────────
+┌───────────────────────────┤Checksum Verification├──────────────────────────┐
+│ base.txz                                                   [   Passed    ] │
+│ kernel.txz                                                 [   Passed    ] │
+│ base-dbg.txz                                               [   Passed    ] │
+│ kernel-dbg.txz                                             [   Passed    ] │
+│ kernel.GENERIC-MORELLO-NOCAPREVOKE-NODEBUG-dbg.txz         [   Passed    ] │
+│ kernel.GENERIC-MORELLO-NOCAPREVOKE-NODEBUG.txz             [   Passed    ] │
+│ kernel.GENERIC-MORELLO-NOCAPREVOKE-dbg.txz                 [ In Progress ] │
+│ kernel.GENERIC-MORELLO-NOCAPREVOKE.txz                     [   Pending   ] │
+│ kernel.GENERIC-MORELLO-NODEBUG-dbg.txz                     [   Pending   ] │
+│ kernel.GENERIC-MORELLO-NODEBUG.txz                         [   Pending   ] │
+│ kernel.GENERIC-MORELLO-PURECAP-NOCAPREVOKE-NODEBUG-dbg...  [   Pending   ] │
+│ kernel.GENERIC-MORELLO-PURECAP-NOCAPREVOKE-NODEBUG.txz     [   Pending   ] │
+│ ...                                                                        │
+│                                                                            │
+│ Verifying checksums of selected distributions.                             │
+│                                                                            │
+│  ┌─Overall Progress─────────────────────────────────────────────────────┐  │
+│  │                                  24%                                 │  │
+│  └──────────────────────────────────────────────────────────────────────┘  │
+└────────────────────────────────────────────────────────────────────────────┘
+```
+
+#### Updating the EFI configuration table
+
+If you are reinstalling a Morello box with an existing OS install, you may be
+prompted to update the boot configuration.
+Press Enter to proceed:
+
+```
+                      ┌─────Boot Configuration────────┐
+                      │ There are multiple "FreeBSD"  │
+                      │ EFI boot entries. Would you   │
+                      │ like to remove them all and   │
+                      │ add a new one?                │
+                      ├───────────────────────────────┤
+                      │     < Yes >   < No  >         │
+                      └───────────────────────────────┘
 ```
 
 #### Setting a root password
@@ -317,16 +376,14 @@ New Password:
 If desired, configure Ethernet networking by pressing Enter.
 
 ```
-  ┌────────────────────────Network Configuration───────────────────────────┐
-  │ Please select a network interface to configure:                        │
-  │ ┌────────────────────────────────────────────────────────────────────┐ │
-  │ │   re0  RealTek 8168/8111 B/C/CP/D/DP/E/F/G PCIe Gigabit Ethernet   │ │
-  │ │                                                                    │ │
-  │ │                                                                    │ │
-  │ └────────────────────────────────────────────────────────────────────┘ │
-  ├────────────────────────────────────────────────────────────────────────┤
-  │                     <  OK  >           <Cancel>                        │
-  └────────────────────────────────────────────────────────────────────────┘
+      ┌─────────────────────┤Network Configuration├─────────────────────┐
+      │ Please select a network interface to configure:                 │
+      │ ┌─────────────────────────────────────────────────────────────┐ │
+      │ │re0 RealTek 8168/8111 B/C/CP/D/DP/E/F/G PCIe Gigabit Ethernet│ │
+      │ └─────────────────────────────────────────────────────────────┘ │
+      ├─────────────────────────────────────────────────────────────────┤
+      │                      [  OK  ]     [Cancel]                      │
+      └─────────────────────────────────────────────────────────────────┘
 ```
 
 #### Network configuration - enabling IPv4
@@ -349,13 +406,12 @@ If you will be using DHCP, select Yes and press Enter.
 Otherwise select No and press Enter to perform a manual IPv4 configuration.
 
 ```
-                        ┌──Network Configuration────┐
-                        │ Would you like to use     │
-                        │ DHCP to configure this    │
-                        │ interface?                │
-                        ├───────────────────────────┤
-                        │     < Yes >   < No  >     │
-                        └───────────────────────────┘
+                       ┌────┤Network Configuration├───┐
+                       │ Would you like to use DHCP   │
+                       │ to configure this interface? │
+                       ├──────────────────────────────┤
+                       │     [ Yes  ]    [  No  ]     │
+                       └──────────────────────────────┘
 ```
 
 #### Network configuration - enabling IPv6
@@ -363,27 +419,25 @@ Otherwise select No and press Enter to perform a manual IPv4 configuration.
 If desired, enable IPv6 on the Ethernet interface by selecting Yes and
 pressing Enter:
 ```
-                        ┌──Network Configuration────┐
-                        │ Would you like to         │
-                        │ configure IPv6 for this   │
-                        │ interface?                │
-                        ├───────────────────────────┤
-                        │     < Yes >   < No  >     │
-                        └───────────────────────────┘
+                        ┌───┤Network Configuration├───┐
+                        │ Would you like to configure │
+                        │ IPv6 for this interface?    │
+                        ├─────────────────────────────┤
+                        │    [ Yes  ]    [  No  ]     │
+                        └─────────────────────────────┘
 ```
 
 #### Network configuration - SLAAC for IPv6
 
 Press Enter to use stateless address autoconfiguration for IPv6:
 ```
-                        ┌──Network Configuration────┐
-                        │ Would you like to try     │
-                        │ stateless address         │
-                        │ autoconfiguration         │
-                        │ (SLAAC)?                  │
-                        ├───────────────────────────┤
-                        │     < Yes >   < No  >     │
-                        └───────────────────────────┘
+                      ┌─────┤Network Configuration├─────┐
+                      │ Would you like to try stateless │
+                      │ address autoconfiguration       │
+                      │ (SLAAC)?                        │
+                      ├─────────────────────────────────┤
+                      │      [ Yes  ]     [  No  ]      │
+                      └─────────────────────────────────┘
 ```
 
 #### Network configuration - resolver configuration
@@ -407,7 +461,7 @@ autoconfigured DNS configuration:
 
 #### Local or UTC clock
 
-Press Enter to select a system clock on UTC
+Press Enter to select a system clock on UTC:
 ```
    ┌───────────┤Select local or UTC (Greenwich Mean Time) clock├───────────┐
    │ Is this machine's CMOS clock set to UTC?  If it is set to local time, │
@@ -420,28 +474,30 @@ Press Enter to select a system clock on UTC
 
 #### Timezone selection
 
-Select your continent and press Enter:
+Press Enter to select UTC as your timezone; otherwise, select your continent
+and press Enter.
 ```
-                     ┌───────┤Time Zone Selector├───────┐
-                     │ Select a region                  │
-                     │ ┌──────────────────────────────┐ │
-                     │ │ 1 Africa                     │ │
-                     │ │ 2 America -- North and South │ │
-                     │ │ 3 Antarctica                 │ │
-                     │ │ 4 Asia                       │ │
-                     │ │ 5 Atlantic Ocean             │ │
-                     │ │ 6 Australia                  │ │
-                     │ │ 7 Europe                     │ │
-                     │ │ 8 Indian Ocean               │ │
-                     │ │ 9 Pacific Ocean              │ │
-                     │ │ 0 UTC                        │ │
-                     │ └──────────────────────────────┘ │
-                     ├──────────────────────────────────┤
-                     │        [  OK  ]   [Cancel]       │
-                     └──────────────────────────────────┘
+                      ┌──────┤Time Zone Selector├───────┐
+                      │ Select a region                 │
+                      │ ┌─────────────────────────────┐ │
+                      │ │0  UTC                       │ │
+                      │ │1  Africa                    │ │
+                      │ │2  America -- North and South│ │
+                      │ │3  Antarctica                │ │
+                      │ │4  Arctic Ocean              │ │
+                      │ │5  Asia                      │ │
+                      │ │6  Atlantic Ocean            │ │
+                      │ │7  Australia                 │ │
+                      │ │8  Europe                    │ │
+                      │ │9  Indian Ocean              │ │
+                      │ │10 Pacific Ocean             │ │
+                      │ └─────────────────────────────┘ │
+                      ├─────────────────────────────────┤
+                      │      [  OK  ]     [Cancel]      │
+                      └─────────────────────────────────┘
 ```
 
-Then select your country and press Enter:
+If you have not selected UTC, select your country and press Enter:
 ```
         ┌────────────────────┤Countries in Europe├────────────────────┐
         │ Select a country or region                                  │
@@ -471,9 +527,9 @@ Then select your country and press Enter:
 Confirm your choice by selecting Yes and pressing Enter:
 ```
    ┌────────────────────────────┤Confirmation├────────────────────────────┐
-   │ Does the abbreviation `BST' look reasonable?                         │
+   │ Does the abbreviation `UTC' look reasonable?                         │
    ├──────────────────────────────────────────────────────────────────────┤
-   │                          [ Yes  ]   [  No  ]                         │
+   │                         [ Yes  ]     [  No  ]                        │
    └──────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -482,36 +538,23 @@ Confirm your choice by selecting Yes and pressing Enter:
 As desired, set the date, or select Skip and press Enter if you plan
 to use network time synchronization:
 ```
-                   ┌────────────Time & Date───────────────┐
-                   │                                      │
-                   │  Month            Year               │
-                   │  ┌───────────────┐┌───────────────┐  │
-                   │  │May            ││2022           │  │
-                   │  └───────────────┘└───────────────┘  │
-                   │  ┌─────↑(-)───────────────────────┐  │
-                   │  │    Sun Mon Tue Wed Thu Fri Sat │  │
-                   │  │ 18   1   2   3   4   5   6   7 │  │
-                   │  │ 19   8   9  10  11  12  13  14 │  │
-                   │  │ 20  15  16  17  18  19  20  21 │  │
-                   │  │ 21  22  23  24  25  26  27  28 │  │
-                   │  │ 22  29  30  31                 │  │
-                   │  │                                │  │
-                   │  └─────↓(+)───────────────────────┘  │
+                   ┌─────────────┤Time & Date├────────────┐
+                   │        ┌────┐ ┌─────────┐ ┌──┐       │
+                   │        │2023│/│ December│/│15│       │
+                   │        └────┘ └─────────┘ └──┘       │
                    ├──────────────────────────────────────┤
-                   │       <Set Date>    <  Skip  >       │
+                   │       [Set Date]     [  Skip  ]      │
                    └──────────────────────────────────────┘
 ```
 
 And, likewise, the time:
 ```
-                   ┌────────────Time & Date───────────────┐
-                   │                                      │
-                   │           ┌──┐ ┌──┐ ┌──┐             │
-                   │           │00│:│34│:│36│             │
-                   │           └──┘ └──┘ └──┘             │
-                   │                                      │
+                   ┌─────────────┤Time & Date├────────────┐
+                   │            ┌──┐ ┌──┐ ┌──┐            │
+                   │            │11│:│23│:│20│            │
+                   │            └──┘ └──┘ └──┘            │
                    ├──────────────────────────────────────┤
-                   │       <Set Time>    <  Skip  >       │
+                   │       [Set Time]     [  Skip  ]      │
                    └──────────────────────────────────────┘
 ```
 
@@ -520,22 +563,21 @@ And, likewise, the time:
 As desired, enable any further services (e.g., `ntpd` and `ntpdate`) by
 selecting them and hitting Space:
 ```
-  ┌────────────────────────System Configuration───────────────────────────┐
-  │ Choose the services you would like to be started at boot:             │
-  │ ┌───────────────────────────────────────────────────────────────────┐ │
-  │ │ [ ] local_unbound  Local caching validating resolver              │ │
-  │ │ [*] sshd           Secure shell daemon                            │ │
-  │ │ [ ] moused         PS/2 mouse pointer on console                  │ │
-  │ │ [ ] ntpdate        Synchronize system and network time at bootime │ │
-  │ │ [ ] ntpd           Synchronize system and network time            │ │
-  │ │ [ ] powerd         Adjust CPU frequency dynamically if supported  │ │
-  │ │ [*] dumpdev        Enable kernel crash dumps to /var/crash        │ │
-  │ │                                                                   │ │
-  │ │                                                                   │ │
-  │ └───────────────────────────────────────────────────────────────────┘ │
-  ├───────────────────────────────────────────────────────────────────────┤
-  │                               <  OK  >                                │
-  └───────────────────────────────────────────────────────────────────────┘
+┌───────────────────────────┤System Configuration├───────────────────────────┐
+│ Choose the services you would like to be started at boot:                  │
+│ ┌────────────────────────────────────────────────────────────────────────┐ │
+│ │[ ] local_unbound      Local caching validating resolver                │ │
+│ │[X] sshd               Secure shell daemon                              │ │
+│ │[ ] moused             PS/2 mouse pointer on console                    │ │
+│ │[ ] ntpd               Synchronize system and network time              │ │
+│ │[ ] ntpd_sync_on_start Sync time on ntpd startup, even if offset is high│ │
+│ │[ ] powerd             Adjust CPU frequency dynamically if supported    │ │
+│ │[X] dumpdev            Enable kernel crash dumps to /var/crash          │ │
+│ │[ ] debugger_on_panic  Run debugger on kernel panic                     │ │
+│ └────────────────────────────────────────────────────────────────────────┘ │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                  [  OK  ]                                  │
+└────────────────────────────────────────────────────────────────────────────┘
 ```
 
 Then press Enter to continue.
@@ -546,6 +588,20 @@ If you plan to install the desktop environment in the next step, it is
 useful to create user accounts now.
 If desired, select Yes and press Enter to add non-root accounts.
 Otherwise, select No and press Enter
+
+```
+                        ┌────Add User Accounts──────┐
+                        │ Would you like to add     │
+                        │ users to the installed    │
+                        │ system now?               │
+                        ├───────────────────────────┤
+                        │     < Yes >   < No  >     │
+                        └───────────────────────────┘
+```
+
+If you add non-root users, we recommend adding them to the `wheel`,
+`operator`, and `video` groups to allow them to manage the system as well as
+use the desktop environment.
 
 #### CHERI Desktop environment
 
@@ -565,26 +621,20 @@ configured the network and be able to reach pkg.CheriBSD.org.**
 Select Yes to install (**NOTE: this may take 20-50 minutes depending on
 network conditions**).
 
-#### Adding users to video group
+#### Virtualization support
 
-In order to be able to use the keyboard and mouse when logged in via the
-Simple Desktop Display Manager (SDDM), users must be in the video group.
-If users were added earlier, you will be prompted to select ones to add
-to the group.
+If you wish to configure your CheriBSD system to support `bhyve`-based,
+CHERI-enabled virtual machines, press Enter:
 
 ```
-                  ┌─────────────┤CHERI Desktop├─────────────┐
-                  │ Users must be in the video group to log │
-                  │ in to a desktop environment. Choose any │
-                  │ additional users to add to the group:   │
-                  │ ┌─────────────────────────────────────┐ │
-                  │ │       [ ] localuser Local User      │ │
-                  │ └─────────────────────────────────────┘ │
-                  ├─────────────────────────────────────────┤
-                  │                [  OK  ]                 │
-                  └─────────────────────────────────────────┘
+                      ┌───────┤CHERI VM Support├────────┐
+                      │ Would you like to install CHERI │
+                      │ virtual machine support         │
+                      │ (requires network)?             │
+                      ├─────────────────────────────────┤
+                      │      [ Yes  ]     [  No  ]      │
+                      └─────────────────────────────────┘
 ```
-Use Space to select users to add and then press Enter.
 
 #### Final configuration
 
@@ -607,6 +657,7 @@ Otherwise, press Enter to complete the installation:
 │ │Time Zone         Set system timezone                                   │ │
 │ │Handbook          Install FreeBSD Handbook (requires network)           │ │
 │ │CHERI Desktop     Install the CHERI desktop environment (requires networ│ │
+│ │CHERI VM Support  Install CHERI virtual machine support (requires networ│ │
 │ │                                                                        │ │
 │ │                                                                        │ │
 │ │                                                                        │ │
@@ -636,33 +687,23 @@ Otherwise, select No and press Enter.
 
 Select Reboot and press Enter:
 ```
-                        ┌─────────Complete───────────┐
-                        │ Installation of FreeBSD    │
-                        │ complete! Would you like   │
-                        │ to reboot into the         │
-                        │ installed system now?      │
-                        ├────────────────────────────┤
-                        │   <Reboot >  <Live CD>     │
-                        └────────────────────────────┘
+                     ┌────────────┤Complete├─────────────┐
+                     │ Installation of FreeBSD complete! │
+                     │ Would you like to reboot into the │
+                     │ installed system now?             │
+                     ├───────────────────────────────────┤
+                     │ [ Reboot ] [Shutdown] [Live CD ]  │
+                     └───────────────────────────────────┘
 ```
 
 ### Rebooting after installation
 
 Remove the USB stick to prevent the installer from running after a system
 reboot.
-Due to a [Morello firmware bug](../morello-issues/), OS-triggered reboot is
-not reliable.
-Until a firmware revision correcting this bug is released, you will need to
-type `reboot` on the management console to reboot after installation.
-CheriBSD will print messages along the following lines once it is safe to
-reboot:
-
-```
-Waiting (max 60 seconds) for system process `syncer' to stop...
-Syncing disks, vnodes remaining... 24 0 0 done
-All buffers synced.
-Uptime: 3m12s
-```
+If you have issues with reliabity rebooting your Morello box, confirm that you
+are using a recent Morello firmware revision due to [a known firmware
+bug](../morello-issues/) in earlier versions that made OS-triggered reboot
+unreliable.
 
 ### Logging in
 
@@ -671,29 +712,27 @@ installation process:
 
 ```
 ...
-Mounting late filesystems:.
-Security policy loaded: MAC/ntpd (mac_ntpd)
-Starting ntpd.
-Starting cron.
-Starting sendmail_submit.
-Starting sendmail_msp_queue.
 Performing sanity check on sshd configuration.
 Starting sshd.
+Starting cron.
 Starting background file system checks in 60 seconds.
+Starting sddm.
 
-Sun May  8 00:13:04 BST
+Fri Dec 15 11:32:45 UTC
 CheriBSD/arm64 (cheribsd) (ttyu0)
 
 login: root
 Password:
-May  8 00:13:25 cheribsd login[772]: ROOT LOGIN (root) ON ttyu0
-Last login: Sat May  7 23:41:04 on ttyu0
-FreeBSD 14.0-CURRENT #0 dev-d4897febcde: Tue May  3 13:34:49 BST 2022     rnw24@zeno.sec.cl.cam.ac.uk:/home/rnw24/cheri/build/cheribsd-morello-purecap-build/home/rnw24/cheri/cheribsd/arm64.aarch64c/sys/GENERIC-MORELLO
+Dec 15 11:37:01 cheribsd login[1277]: ROOT LOGIN (root) ON ttyu0
+FreeBSD 14.0-CURRENT aarch64c 1400094 (GENERIC-MORELLO) #0 releng/23.11-3b754ceed4ae: Wed Dec 13 08:54:18 UTC 2023
 
 Welcome to CheriBSD!
 
 CheriBSD extends FreeBSD to implement memory protection and software
-compartmentalization features available in CHERI-extended CPUs.
+compartmentalization features enabled by CHERI-extended CPUs.
+
+The CheriBSD front page:
+  https://www.cheribsd.org/
 
 We provide support via a mailing list:
   https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-lists.html
@@ -705,7 +744,10 @@ CheriBSD source may be found at:
   https://github.com/CTSRD-CHERI/cheribsd/
 
 Find out more about about CHERI at https://cheri-cpu.org/
-You have new mail.
+
+WARNING: INVARIANTS kernel option defined, expect reduced performance
+WARNING: WITNESS kernel option defined, expect reduced performance
+WARNING: capability revocation enabled by default, this may affect performance
 root@cheribsd:~ #
 ```
 
