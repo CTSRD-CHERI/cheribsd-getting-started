@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Getting help - Getting Started with CheriBSD 23.11</title>
+        <title>Debugging packages - Getting Started with CheriBSD 23.11</title>
         
         
 
@@ -93,7 +93,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../cover/index.html">Getting Started with CheriBSD 23.11</a></li><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="../features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../features/kernel.html"><strong aria-hidden="true">3.1.</strong> Kernel compilation modes</a></li><li class="chapter-item expanded "><a href="../features/processes.html"><strong aria-hidden="true">3.2.</strong> Process environments</a></li><li class="chapter-item expanded "><a href="../features/desktop.html"><strong aria-hidden="true">3.3.</strong> CheriABI desktop environment</a></li><li class="chapter-item expanded "><a href="../features/temporal.html"><strong aria-hidden="true">3.4.</strong> Userlevel heap temporal memory safety</a></li><li class="chapter-item expanded "><a href="../features/c18n.html"><strong aria-hidden="true">3.5.</strong> Userlevel software compartmentalization</a></li><li class="chapter-item expanded "><a href="../features/bhyve.html"><strong aria-hidden="true">3.6.</strong> bhyve hypervisor</a></li></ol></li><li class="chapter-item expanded "><a href="../nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="../getting/index.html"><strong aria-hidden="true">5.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">5.1.</strong> Downloading image files</a></li><li class="chapter-item expanded "><a href="../building/index.html"><strong aria-hidden="true">5.2.</strong> Building image files</a></li></ol></li><li class="chapter-item expanded "><a href="../morello/index.html"><strong aria-hidden="true">6.</strong> CheriBSD on an Arm Morello board</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../morello-console/index.html"><strong aria-hidden="true">6.1.</strong> Accessing the Morello console</a></li><li class="chapter-item expanded "><a href="../morello-firmware/index.html"><strong aria-hidden="true">6.2.</strong> Upgrading the Morello firmware</a></li><li class="chapter-item expanded "><a href="../morello-install/index.html"><strong aria-hidden="true">6.3.</strong> Installing on a Morello board</a></li><li class="chapter-item expanded "><a href="../morello-issues/index.html"><strong aria-hidden="true">6.4.</strong> Morello known issues</a></li></ol></li><li class="chapter-item expanded "><a href="../packages/index.html"><strong aria-hidden="true">7.</strong> Third-party packages</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../packages/limitations.html"><strong aria-hidden="true">7.1.</strong> Limitations of packages</a></li><li class="chapter-item expanded "><a href="../packages/missing.html"><strong aria-hidden="true">7.2.</strong> Missing packages</a></li><li class="chapter-item expanded "><a href="../packages/upgrading.html"><strong aria-hidden="true">7.3.</strong> Upgrading packages</a></li><li class="chapter-item expanded "><a href="../packages/debugging.html"><strong aria-hidden="true">7.4.</strong> Debugging packages</a></li><li class="chapter-item expanded "><a href="../packages/commands.html"><strong aria-hidden="true">7.5.</strong> Useful commands</a></li></ol></li><li class="chapter-item expanded "><a href="../helloworld/index.html"><strong aria-hidden="true">8.</strong> Compiling &quot;Hello World&quot;</a></li><li class="chapter-item expanded "><a href="../benchmarking/index.html"><strong aria-hidden="true">9.</strong> Benchmarking guidance</a></li><li class="chapter-item expanded "><a href="../support/index.html" class="active"><strong aria-hidden="true">10.</strong> Getting help</a></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">11.</strong> Resources</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../cover/index.html">Getting Started with CheriBSD 23.11</a></li><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="../features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../features/kernel.html"><strong aria-hidden="true">3.1.</strong> Kernel compilation modes</a></li><li class="chapter-item expanded "><a href="../features/processes.html"><strong aria-hidden="true">3.2.</strong> Process environments</a></li><li class="chapter-item expanded "><a href="../features/desktop.html"><strong aria-hidden="true">3.3.</strong> CheriABI desktop environment</a></li><li class="chapter-item expanded "><a href="../features/temporal.html"><strong aria-hidden="true">3.4.</strong> Userlevel heap temporal memory safety</a></li><li class="chapter-item expanded "><a href="../features/c18n.html"><strong aria-hidden="true">3.5.</strong> Userlevel software compartmentalization</a></li><li class="chapter-item expanded "><a href="../features/bhyve.html"><strong aria-hidden="true">3.6.</strong> bhyve hypervisor</a></li></ol></li><li class="chapter-item expanded "><a href="../nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="../getting/index.html"><strong aria-hidden="true">5.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">5.1.</strong> Downloading image files</a></li><li class="chapter-item expanded "><a href="../building/index.html"><strong aria-hidden="true">5.2.</strong> Building image files</a></li></ol></li><li class="chapter-item expanded "><a href="../morello/index.html"><strong aria-hidden="true">6.</strong> CheriBSD on an Arm Morello board</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../morello-console/index.html"><strong aria-hidden="true">6.1.</strong> Accessing the Morello console</a></li><li class="chapter-item expanded "><a href="../morello-firmware/index.html"><strong aria-hidden="true">6.2.</strong> Upgrading the Morello firmware</a></li><li class="chapter-item expanded "><a href="../morello-install/index.html"><strong aria-hidden="true">6.3.</strong> Installing on a Morello board</a></li><li class="chapter-item expanded "><a href="../morello-issues/index.html"><strong aria-hidden="true">6.4.</strong> Morello known issues</a></li></ol></li><li class="chapter-item expanded "><a href="../packages/index.html"><strong aria-hidden="true">7.</strong> Third-party packages</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../packages/limitations.html"><strong aria-hidden="true">7.1.</strong> Limitations of packages</a></li><li class="chapter-item expanded "><a href="../packages/missing.html"><strong aria-hidden="true">7.2.</strong> Missing packages</a></li><li class="chapter-item expanded "><a href="../packages/upgrading.html"><strong aria-hidden="true">7.3.</strong> Upgrading packages</a></li><li class="chapter-item expanded "><a href="../packages/debugging.html" class="active"><strong aria-hidden="true">7.4.</strong> Debugging packages</a></li><li class="chapter-item expanded "><a href="../packages/commands.html"><strong aria-hidden="true">7.5.</strong> Useful commands</a></li></ol></li><li class="chapter-item expanded "><a href="../helloworld/index.html"><strong aria-hidden="true">8.</strong> Compiling &quot;Hello World&quot;</a></li><li class="chapter-item expanded "><a href="../benchmarking/index.html"><strong aria-hidden="true">9.</strong> Benchmarking guidance</a></li><li class="chapter-item expanded "><a href="../support/index.html"><strong aria-hidden="true">10.</strong> Getting help</a></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">11.</strong> Resources</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -163,86 +163,65 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#getting-help" id="getting-help">Getting help</a></h1>
-<p>CheriBSD is a community-supported open-source research operating system.
-While every effort has been made to engineer to a high quality, many aspects
-of OS design for CHERI processors remain active research, and there are
-constrained engineering resources available to build, maintain, and support
-the system.
-As you gain experience with CheriBSD, your help in supporting newcomers in the
-community will be greatly appreciated.</p>
-<h2><a class="header" href="#github-issue-tracker-and-pull-requests" id="github-issue-tracker-and-pull-requests">GitHub issue tracker and pull requests</a></h2>
-<p>CheriBSD is developed and maintained in the <a href="https://github.com/CTSRD-CHERI/cheribsd">CheriBSD GitHub
-repository</a>, which includes an issue
-tracker in which bugs can be reported, as well as permitting pull requests to
-be submitted.</p>
-<p>This document is also maintained in a <a href="https://github.com/CTSRD-CHERI/cheribsd-getting-started">GitHub
-repository</a>, and your
-feedback and improvements would be very much appreciated.</p>
-<h2><a class="header" href="#cheribsd-slack-on-cheri-cpuslackcom" id="cheribsd-slack-on-cheri-cpuslackcom">CheriBSD Slack on cheri-cpu.slack.com</a></h2>
-<p>Support for CheriBSD is provided via the <a href="https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-slack.html">CHERI CPU
-Slack</a>,
-where a number of topic-specific channels can be found:</p>
-<ul>
-<li>
-<p><code>#cheribsd</code>;</p>
-<p>CheriBSD, its features, releases and future plans.</p>
-</li>
-<li>
-<p><code>#debuggers</code>;</p>
-<p>GDB extended to support CHERI.</p>
-</li>
-<li>
-<p><code>#qemu</code>;</p>
-<p>QEMU-CHERI, QEMU system and user modes for Morello and CHERI-RISC-V.</p>
-</li>
-<li>
-<p><code>#software-porting</code>.</p>
-<p>Third-party software adaptations to CheriABI and CHERI-enabled achitectures,
-CheriBSD ports and Poudriere.</p>
-</li>
-</ul>
-<h2><a class="header" href="#cheribsd-mailing-lists" id="cheribsd-mailing-lists">CheriBSD mailing lists</a></h2>
-<p>There are also several CheriBSD email lists available:</p>
-<ul>
-<li><a href="https://lists.cam.ac.uk/sympa/info/cl-cheribsd-announce">CheriBSD announcement mailing list (low volume)</a></li>
-<li><a href="https://lists.cam.ac.uk/sympa/info/cl-cheribsd-discuss">CheriBSD general discussion</a></li>
-<li><a href="https://lists.cam.ac.uk/sympa/info/cl-cheribsd-ports">CheriBSD ports and packages discussion</a></li>
-<li>CheriBSD security vulnerabilities contact address <a href="mailto:cl-cheribsd-security@lists.cam.ac.uk">cl-cheribsd-security@lists.cam.ac.uk</a> </li>
-</ul>
-<h2><a class="header" href="#in-person-events-and-meetings" id="in-person-events-and-meetings">In-person events and meetings</a></h2>
-<p>You can meet with the CheriBSD developers at a number of conferences and other
-events, including:</p>
-<ul>
-<li>
-<p>UKRI Digital Security by Design (DSbD) All Hands meetings that take place in
-the UK twice annually to discuss the Morello architecture, board, and its
-use.</p>
-</li>
-<li>
-<p>FreeBSD developer summits and conferences around the world, including (when
-it takes place) the BSDCan conference in Canada, and the EuroBSDCon
-conference in Europe.</p>
-</li>
-</ul>
-<p>There is discussion around creating further, more frequent CHERI workshops in
-the UK in the future.</p>
-<p>Most CheriBSD developers are based at the University of Cambridge (UK) and SRI
-International (USA), and it is possible to set up meetings with them directly.
-Get in touch if this would be useful to you.</p>
+                        <h1><a class="header" href="#debugging-packages" id="debugging-packages">Debugging packages</a></h1>
+<p>Similarly to the FreeBSD Project, CheriBSD packages are built with CheriBSD
+ports that are based on FreeBSD ports.
+By default, the packages are built with optimisation levels defined in CheriBSD
+ports or upstream third-party software projects.
+Unfortunately, the FreeBSD ports build system does not allow to build ports with
+optimisations and debug symbols at the same time.
+As a consequence of that, you might discover that debug symbols are missing when
+debugging a program with the GDB debugger.</p>
+<p>In order to allow users to use optimised and debug CheriABI packages, CheriBSD
+provides two package repositories with them: the default repository with
+optimisations and without debug symbols called <code>CheriBSD</code>, and the debug
+repository without optimisations and with debug symbols called <code>CheriBSD-debug</code>.
+Note that we do not provide debug packages for the hybrid and benchmark ABIs.</p>
+<p>You can enable the debug repository by first creating a directory for custom
+package repository configuration files:</p>
+<pre><code>mkdir -p /usr/local/etc/pkg/repos
+</code></pre>
+<p>and then creating a configuration file that enables <code>CheriBSD-debug</code>:</p>
+<pre><code>echo &quot;CheriBSD-debug: { enabled: yes }&quot; &gt;/usr/local/etc/pkg/repos/CheriBSD-debug.conf
+</code></pre>
+<p>You can reinstall all previously installed default packages to replace them with
+debug packages:</p>
+<pre><code>pkg64c upgrade -fr CheriBSD-debug
+</code></pre>
+<p>Alternatively, you can selectively reinstall a package:</p>
+<pre><code>pkg64c upgrade -r CheriBSD-debug &lt;pkg-name&gt;
+</code></pre>
+<p>However, keep in mind that in such case only the package you list is
+reinstalled, leaving its dependencies intact.</p>
+<p>Once you enable the <code>CheriBSD-debug</code> repository, the <code>CheriBSD</code> repository is
+used by default.
+You have to use the <code>-r</code> flag to switch to <code>CheriBSD-debug</code> in a <code>pkg64c</code>
+command, e.g.:</p>
+<pre><code>pkg64c install -r CheriBSD-debug &lt;pkg-name&gt;
+</code></pre>
+<p>If you want to use only the <code>CheriBSD-debug</code> repository, you can create a
+configuration file that disables the <code>CheriBSD</code> repository:</p>
+<pre><code>echo &quot;CheriBSD: { enabled: no }&quot; &gt; /usr/local/etc/pkg/repos/CheriBSD.conf
+</code></pre>
+<p>You can also check if an installed package was fetched from the default or debug
+package repository:</p>
+<pre><code>pkg64c query '%n %R' &lt;pkg-name&gt;
+</code></pre>
+<p>You can omit <code>&lt;pkg-name&gt;</code> in the above command to list all packages with their
+repositories.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../benchmarking/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../packages/upgrading.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../resources/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../packages/commands.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -254,13 +233,13 @@ Get in touch if this would be useful to you.</p>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../benchmarking/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../packages/upgrading.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../resources/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../packages/commands.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
