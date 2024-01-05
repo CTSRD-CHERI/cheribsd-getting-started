@@ -133,6 +133,6 @@ This can be done in one of two ways:
    `1' key to proceed with the boot.
 
 2. By escaping to the loader prompt by hitting the `3` key, unloading the
-   default kernel using the `unload kernel command`, and then booting the
+   default kernel using the `unload kernel` command, and then booting the
    desired kernel using `boot /boot/kernel` (replacing the kernel name as
    required).
