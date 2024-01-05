@@ -33,12 +33,16 @@ Jessica Clarke (University of Cambridge),
 George Neville-Neil (MSB Associates), and Konrad Witaszczyk (University of
 Cambridge) for their contributions to this document.
 
-This work was supported by the Innovate UK project Digital Security by Design
-(DSbD) Technology Platform Prototype, 105694.
+This work was supported in part by the Innovate UK project Digital
+Security by Design (DSbD) Technology Platform Prototype, 105694, and Innovate
+UK project Developing and Evaluating an Open-Source Desktop for Arm Morello,
+10027440.
 
 This material is based upon work supported by the Defense Advanced
-Research Projects Agency (DARPA) under Contract No. HR001122C0110 ("ETC"). Any
-opinions, findings and conclusions or recommendations expressed in this
+Research Projects Agency (DARPA) under Contract No. HR001122C0110 ("ETC") and
+Defense Advanced Research Projects Agency (DARPA) Contract No. HR001122S0003
+("MTSS").
+Any opinions, findings and conclusions or recommendations expressed in this
 material are those of the author(s) and do not necessarily reflect the
 views of the Defense Advanced Research Projects Agency (DARPA).
 
