@@ -18,8 +18,8 @@ further details.
 
 ## Precompiled kernels in CheriBSD 23.11
 
-CheriBSD 23.11 ships with a number of precompiled kernels that enable and
-disable various relevant kernel configuration options.
+CheriBSD ships with a number of precompiled kernels that enable and disable
+various relevant kernel configuration options.
 Kernel configuration files themselves may be found in `sys/amd64/conf` in the
 CheriBSD source tree, and will have names such as `GENERIC-MORELLO`.
 The following kernel features may be selected from amongst the precompiled
@@ -30,6 +30,14 @@ kernels:
 | `PURECAP`     | Compiled with internal memory safety |
 | `NODEBUG`     | Compiled without kernel debugging features |
 | `NOCAPREVOKE` | Compiled without userspace heap temporal safety |
+
+The default kernel uses the `GENERIC-MORELLO` kernel
+configuration, and is a hybrid kernel with debugging and userspace heap
+temporal safety enabled.
+It is unsuitable for benchmarking; instead, use a `NODEBUG` kernel
+configuration.
+The default kernel is expected to change to a pure-capability kernel in future
+CheriBSD releases.
 
 Kernel directory names are in the form `/boot/kernel*`; the default kernel is
 named `/boot/kernel`.
@@ -47,12 +55,6 @@ kernel.GENERIC-MORELLO-PURECAP-NOCAPREVOKE-NODEBUG
 kernel.GENERIC-MORELLO-PURECAP-NODEBUG
 ```
 
-In CheriBSD 23.11, the default kernel uses the `GENERIC-MORELLO` kernel
-configuration, and is a hybrid kernel with debugging and userspace heap
-temporal safety enabled.
-This is expected to change to a pure-capability kernel in future CheriBSD
-releases.
-
 ## Identifying the currently booted kernel
 
 The `uname(1)` command prints information on the kernel configuration.
@@ -63,9 +65,7 @@ The following command-line options may be of use:
 | `-a`        | Print numerous details              |
 | `-i`        | Print the kernel configuration name |
 
-In CheriBSD 23.11, the default kernel is `GENERIC-MORELLO`, a hybrid kernel
-that includes a number of debugging features, and is unsuitable for
-benchmarking.
+For example:
 
 ```
 # uname -i
