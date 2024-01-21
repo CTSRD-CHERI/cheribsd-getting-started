@@ -72,6 +72,12 @@ For example:
 GENERIC-MORELLO
 ```
 
+Additionally, the current kernel directory path is stored in the `kern.bootfile` sysctl variable
+that you can read with the `sysctl(8)` utility. For example:
+
+# sysctl kern.bootfile
+kern.bootfile: /boot/kernel.GENERIC-MORELLO
+
 ## Selecting another kernel using loader.conf
 
 You can set the kernel to boot via `/boot/loader.conf` using the variable
