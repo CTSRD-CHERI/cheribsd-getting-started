@@ -20,7 +20,7 @@ further details.
 
 CheriBSD ships with a number of precompiled kernels that enable and disable
 various relevant kernel configuration options.
-Kernel configuration files themselves may be found in `sys/amd64/conf` in the
+Kernel configuration files themselves may be found in `sys/arm64/conf` in the
 CheriBSD source tree, and will have names such as `GENERIC-MORELLO`.
 The following kernel features may be selected from amongst the precompiled
 kernels:
