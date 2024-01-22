@@ -77,7 +77,7 @@ that you can read with the `sysctl(8)` utility. For example:
 
 ```
 # sysctl kern.bootfile
-kern.bootfile: /boot/kernel.GENERIC-MORELLO
+kern.bootfile: /boot/kernel/kernel
 ```
 
 ## Selecting another kernel using loader.conf
@@ -98,11 +98,14 @@ setting `kernel` as follows in `/boot/loader.conf`:
 kernel="kernel.GENERIC-MORELLO-PURECAP"
 ```
 
-After a reboot, `uname(1)` should then report that this is the kernel in use:
+After a reboot, `uname(1)` and `sysctl(8)` should then report that this is the
+kernel in use:
 
 ```
 # uname -i
 GENERIC-MORELLO-PURECAP
+# sysctl kern.bootfile
+kern.bootfile: /boot/kernel.GENERIC-MORELLO-PURECAP/kernel
 ```
 
 ## Selecting another kernel from the boot loader
