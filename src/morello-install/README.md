@@ -317,8 +317,6 @@ Unless something goes wrong, no user interaction is required.
 Typical output from the installation process will look like this:
 
 ```
- FreeBSD Installer
- ──────────────────────────────────────────────────────────────────────────────
 ┌───────────────────────────┤Checksum Verification├──────────────────────────┐
 │ base.txz                                                   [   Passed    ] │
 │ kernel.txz                                                 [   Passed    ] │
