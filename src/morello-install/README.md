@@ -558,7 +558,7 @@ And, likewise, the time:
 
 #### System configuration
 
-As desired, enable any further services (e.g., `ntpd` and `ntpdate`) by
+As desired, enable any further services (e.g., `ntpd` and `ntpd_sync_on_start`) by
 selecting them and hitting Space:
 ```
 ┌───────────────────────────┤System Configuration├───────────────────────────┐
