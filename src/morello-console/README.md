@@ -35,6 +35,14 @@ Typical command lines to access the MCC and Morello consoles are:
 - MCC console: `cu -l /dev/cuaU0 -s 115200`
 - Morello console: `cu -l /dev/cuaU2 -s 115200`
 
+## Connecting from Ubuntu
+
+Linux uses similar device names to FreeBSD.  Typical command lines to
+access the MCC and Morello consoles are:
+
+- Management console: `sudo picocom -b 115200 /dev/ttyUSB0`
+- Morello console: `sudo picocom -b 115200 /dev/ttyUSB2`
+
 ## Connecting from Apple macOS
 
 macOS creates `/dev/cu.usbserial-` device nodes that embed the device
@@ -46,3 +54,4 @@ Typical command lines to access the MCC and Morello consoles are:
 
 You will need to substitute the serial numbers of the USB converters in your
 specific Morello board for these commands to work.
+
