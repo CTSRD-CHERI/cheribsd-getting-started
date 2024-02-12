@@ -207,6 +207,22 @@ Typical command lines to access the MCC and Morello consoles are:</p>
 </ul>
 <p>You will need to substitute the serial numbers of the USB converters in your
 specific Morello board for these commands to work.</p>
+<h2><a class="header" href="#connecting-from-windows" id="connecting-from-windows">Connecting from Windows</a></h2>
+<p>Windows requires the installation of FTDI drivers to access the Morello
+board's USB ports, and the OS should identify the appropriate driver version
+once the board is connected.
+Plink is a CLI bundled with PuTTY, a third-party terminal emulator and SSH
+client freely available from the 
+<a href="https://apps.microsoft.com/detail/putty/XPFNZKSKLBP7RJ">Windows Store</a>
+and the developer's official
+<a href="https://www.chiark.greenend.org.uk/%7Esgtatham/putty/latest.html">website</a>.
+After installing the drivers and PuTTY, typical command lines to access the
+MCC and Morello consoles are:</p>
+<ul>
+<li>MCC console: <code>plink -serial \\.\COM3 -sercfg 115200</code></li>
+<li>Morello console: <code>plink -serial \\.\COM5 -sercfg 115200</code></li>
+</ul>
+<p>Do note that Windows assigns serial numbers at random.</p>
 
                     </main>
 
