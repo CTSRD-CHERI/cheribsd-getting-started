@@ -40,7 +40,7 @@ UK project Developing and Evaluating an Open-Source Desktop for Arm Morello,
 
 This material is based upon work supported by the Defense Advanced
 Research Projects Agency (DARPA) under Contract No. HR001122C0110 ("ETC") and
-Defense Advanced Research Projects Agency (DARPA) Contract No. HR001122S0003
+Defense Advanced Research Projects Agency (DARPA) Contract No. HR001123C0031
 ("MTSS").
 Any opinions, findings and conclusions or recommendations expressed in this
 material are those of the author(s) and do not necessarily reflect the
