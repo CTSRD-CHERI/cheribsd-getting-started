@@ -61,7 +61,7 @@ You will need to reboot in order for this change to take effect.
 
 # Heap temporal memory safety
 
-As of CheriBSD 23.11, userlevel heap temporal safety is enabled by default with jemalloc as the memory allocator.
+As of CheriBSD 24.05, userlevel heap temporal safety is enabled by default with jemalloc as the memory allocator.
 This support is experimental, and has not yet been through significant
 performance analysis and optimization.
 We recommend disabling temporal safety support for the full system during
@@ -84,7 +84,7 @@ You will need to reboot in order for this change to take effect.
 
 # The Benchmark ABI
 
-As of CheriBSD 23.11, CheriBSD supports the Benchmark ABI, a modified form of
+As of CheriBSD 24.05, CheriBSD supports the Benchmark ABI, a modified form of
 code generation improving performance on the Arm Morello board.
 This is required due to limitations on bounds prediction in the current
 Morello prototype, which would be resolved in a production microarchitecture.

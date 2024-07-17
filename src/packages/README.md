@@ -9,7 +9,7 @@ They have different levels of completeness, maturity, security, and support.
 extends FreeBSD ports, a collection of over 34,000 third-party
 software adaptations to FreeBSD, with CHERI- and CheriBSD-specific patches.
 The
-[releng/23.11](https://github.com/CTSRD-CHERI/cheribsd-ports/tree/releng/23.11)
+[releng/24.05](https://github.com/CTSRD-CHERI/cheribsd-ports/tree/releng/23.11)
 CheriBSD ports branch contains ports matching the packages built for the current
 release.
 

@@ -1,6 +1,6 @@
 # Userlevel heap temporal memory safety (experimental)
 
-CheriBSD 23.11 incorporates support for userlevel heap temporal memory
+CheriBSD 24.05 incorporates support for userlevel heap temporal memory
 safety based on a load-barrier extension to
 [Cornucopia](https://www.cl.cam.ac.uk/research/security/ctsrd/pdfs/2020oakland-cornucopia.pdf),
 which is inspired by garbage-collection techniques.
