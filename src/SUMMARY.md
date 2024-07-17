@@ -1,6 +1,6 @@
 # Summary
 
-[Getting Started with CheriBSD 23.11](cover/README.md)
+[Getting Started with CheriBSD 24.05](cover/README.md)
 
 - [Introduction](introduction/README.md)
 - [Background](background/README.md)
