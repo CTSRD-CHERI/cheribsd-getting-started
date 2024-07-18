@@ -12,9 +12,7 @@ Many other kernel features are not yet well validated, including:
 ## Alpha ZFS support
 
 The 24.05 release includes Alpha support for the ZFS file system.  It is
-lightly tested, but works without known issues with a hybrid kernel.  With
-the pure capability kernel, filesystems can be created and used, but it must
-not be the root file system as it currently hangs on boot.
+lightly tested, but works without known issues.
 
 ## Reporting bugs
 Bug reports relating to these under-validated subsystems would be appreciated,
