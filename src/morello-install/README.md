@@ -150,13 +150,13 @@ key, to select menu options, which many users find confusing.**
 
 Select **Install** at the first menu by hitting Enter:
 ```
-                     ┌────────────Welcome──────────────┐
-                     │ Welcome to FreeBSD! Would you   │
-                     │ like to begin an installation   │
-                     │ or use the live CD?             │
-                     ├─────────────────────────────────┤
-                     │ <Install> < Shell > <Live CD>   │
-                     └─────────────────────────────────┘
+                   ┌────────────────┤Welcome├────────────────┐
+                   │ Welcome to FreeBSD! Would you like to   │
+                   │ begin an installation or use the live   │
+                   │ system?                                 │
+                   ├─────────────────────────────────────────┤
+                   │[  Install  ] [   Shell   ] [Live System]│
+                   └─────────────────────────────────────────┘
 ```
 
 #### Keymap selection
@@ -165,42 +165,43 @@ If you intend only to use the serial console, and not video console, select
 the default keymap by hitting Enter at the next menu; otherwise, use the
 cursor keys and space bar to select a country-specific keyboard layout:
 ```
-     ┌───────────────────────Keymap Selection──────────────────────────┐
-     │ The system console driver for FreeBSD defaults to standard "US" │
-     │ keyboard map. Other keymaps can be chosen below.                │
-     │ ┌─────────────────────────────────────────────────────────────┐ │
-     │ │>>> Continue with default keymap                             │ │
-     │ │->- Test default keymap                                      │ │
-     │ │( ) Armenian phonetic layout                                 │ │
-     │ │( ) Belarusian                                               │ │
-     │ │( ) Belgian                                                  │ │
-     │ │( ) Belgian (accent keys)                                    │ │
-     │ │( ) Brazilian (accent keys)                                  │ │
-     │ │( ) Brazilian (without accent keys)                          │ │
-     │ │( ) Bulgarian (BDS)                                          │ │
-     │ │( ) Bulgarian (Phonetic)                                     │ │
-     │ │( ) Canadian Bilingual                                       │ │
-     │ └────↓(+)─────────────────────────────────────────────12%─────┘ │
-     ├─────────────────────────────────────────────────────────────────┤
-     │                   <Select>          <Cancel>                    │
-     └──────────────────[Press arrows, TAB or ENTER]───────────────────┘
+       ┌───────────────────────┤Keymap Selection├────────────────────────┐
+       │ The system console driver for FreeBSD defaults to standard "US" │
+       │ keyboard map. Other keymaps can be chosen below.                │
+       │ ┌─────────────────────────────────────────────────────────────┐ │
+       │ │>>> Continue with default keymap                             │ │
+       │ │->- Test default keymap                                      │ │
+       │ │( ) Armenian phonetic layout                                 │ │
+       │ │( ) Belarusian                                               │ │
+       │ │( ) Belgian                                                  │ │
+       │ │( ) Belgian (accent keys)                                    │ │
+       │ │( ) Brazilian (accent keys)                                  │ │
+       │ │( ) Brazilian (without accent keys)                          │ │
+       │ │( ) Bulgarian (BDS)                                          │ │
+       │ │( ) Bulgarian (Phonetic)                                     │ │
+       │ │( ) Canadian Bilingual                                       │ │
+       │ └─↓↓↓──────────────────────────────────────────────────── 41%─┘ │
+       ├─────────────────────────────────────────────────────────────────┤
+       │                      [Select]     [Cancel]                      │
+       └────────────────── Press arrows, TAB or ENTER ───────────────────┘
+
 ```
 
 #### Hostname
 
 Press Enter to accept the default hostname, or replace it:
 ```
-           ┌───────────────────Set Hostname──────────────────────┐
-           │ Please choose a hostname for this machine.          │
-           │                                                     │
-           │ If you are running on a managed network, please ask │
-           │ your network administrator for an appropriate name. │
-           │ ┌─────────────────────────────────────────────────┐ │
-           │ │cheribsd                                         │ │
-           │ └─────────────────────────────────────────────────┘ │
-           ├─────────────────────────────────────────────────────┤
-           │                     <  OK  >                        │
-           └─────────────────────────────────────────────────────┘
+            ┌───────────────────┤Set Hostname├────────────────────┐
+            │ Please choose a hostname for this machine.          │
+            │                                                     │
+            │ If you are running on a managed network, please ask │
+            │ your network administrator for an appropriate name. │
+            │ ┌─────────────────────────────────────────────────┐ │
+            │ │cheribsd                                         │ │
+            │ └─────────────────────────────────────────────────┘ │
+            ├─────────────────────────────────────────────────────┤
+            │                      [  OK  ]                       │
+            └─────────────────────────────────────────────────────┘
 ```
 
 #### Partitioning (automatic or manual)
@@ -213,19 +214,17 @@ information on partitioning disks before proceeding.
 
 Press Enter to select an automated UFS install:
 ```
-          ┌─────────────────────Partitioning───────────────────────┐
-          │ How would you like to partition your disk?             │
-          │ ┌────────────────────────────────────────────────────┐ │
-          │ │   Auto (UFS)  Guided UFS Disk Setup                │ │
-          │ │   Auto (ZFS)  EXPERIMENTAL Guided Root-on-ZFS      │ │
-          │ │   Manual      Manual Disk Setup (experts)          │ │
-          │ │   Shell       Open a shell and partition by hand   │ │
-          │ │                                                    │ │
-          │ │                                                    │ │
-          │ └────────────────────────────────────────────────────┘ │
-          ├────────────────────────────────────────────────────────┤
-          │               <  OK  >        <Cancel>                 │
-          └────────────────────────────────────────────────────────┘
+              ┌─────────────────┤Partitioning├──────────────────┐
+              │ How would you like to partition your disk?      │
+              │ ┌─────────────────────────────────────────────┐ │
+              │ │Auto (UFS) Guided UFS Disk Setup             │ │
+              │ │Auto (ZFS) EXPERIMENTAL Guided Root-on-ZFS   │ │
+              │ │Manual     Manual Disk Setup (experts)       │ │
+              │ │Shell      Open a shell and partition by hand│ │
+              │ └─────────────────────────────────────────────┘ │
+              ├─────────────────────────────────────────────────┤
+              │              [  OK  ]     [Cancel]              │
+              └─────────────────────────────────────────────────┘
 ```
 
 #### Partition (entire disk)
@@ -233,30 +232,30 @@ Press Enter to select an automated UFS install:
 Select Entire Disk and press Enter:
 
 ```
-                 ┌───────────────Partition──────────────────┐
-                 │ Would you like to use this entire disk   │
-                 │ (ada0) for FreeBSD or partition it to    │
-                 │ share it with other operating systems?   │
-                 │ Using the entire disk will erase any     │
-                 │ data currently stored there.             │
-                 ├──────────────────────────────────────────┤
-                 │     <Entire Disk>   < Partition >        │
-                 └──────────────────────────────────────────┘
+                 ┌────────────────┤Partition├────────────────┐
+                 │ Would you like to use this entire disk    │
+                 │ (ada0) for FreeBSD or partition it to     │
+                 │ share it with other operating systems?    │
+                 │ Using the entire disk will erase any data │
+                 │ currently stored there.                   │
+                 ├───────────────────────────────────────────┤
+                 │      [Entire Disk]     [ Partition ]      │
+                 └───────────────────────────────────────────┘
 ```
 
 #### Partition (entire disk - confirmation)
 
 Press Enter to confirm:
 ```
-                 ┌───────────────Partition──────────────────┐
-                 │ Would┌──────Confirmation─────────┐disk   │
-                 │ (ada0│ This will erase the disk. │  o    │
-                 │ share│ Are you sure you want to  │  s?   │
-                 │ Using│ proceed?                  │       │
-                 │ data ├───────────────────────────┤       │
-                 ├──────│     < Yes >   < No  >     │  ─────┤
-                 │     <└───────────────────────────┘       │
-                 └────────                             ─────┘
+                 ┌────────────────┤Partition├────────────────┐
+                 │ Would you like to use this entire disk    │
+                 │ (ada┌────────┤Confirmation├─────────┐     │
+                 │ shar│ This will erase the disk. Are │     │
+                 │ Usin│ you sure you want to proceed? │  ta │
+                 │ curr├───────────────────────────────┤     │
+                 ├─────│     [ Yes  ]     [  No  ]     │  ───┤
+                 │     └───────────────────────────────┘     │
+                 └───────                                 ───┘
 ```
 
 #### Partition Editor
@@ -264,22 +263,26 @@ Press Enter to confirm:
 Review the proposed partition scheme, select Finish, and then press Enter to
 proceed:
 ```
-           ┌──────────────────Partition Editor────────────────────┐
-           │ Please review the disk setup. When complete, press   │
-           │ the Finish button.                                   │
-           │┌────────────────────────────────────────────────────┐│
-           ││ada0            224 GB  GPT                         ││
-           ││  ada0p1        260 MB  efi            /boot/efi    ││
-           ││  ada0p2        220 GB  freebsd-ufs    /            ││
-           ││  ada0p3        3.6 GB  freebsd-swap   none         ││
-           ││da0             57 GB   GPT                         ││
-           ││  da0p1         33 MB   efi                         ││
-           ││  da0p2         2.4 GB  freebsd-ufs                 ││
-           ││                                                    ││
-           │└────────────────────────────────────────────────────┘│
-           ├──────────────────────────────────────────────────────┤
-           │<Create> <Delete> <Modify> <Revert> < Auto > <Finish> │
-           └──────────────────────────────────────────────────────┘
+            ┌─────────────────┤Partition Editor├──────────────────┐
+            │ Please review the disk setup. When complete, press  │
+            │ the Finish button.                                  │
+            │                                                     │
+            │                                                     │
+            │ ┌─────────────────────────────────────────────────┐ │
+            │ │ada0       224 GB    GPT                         │ │
+            │ │  ada0p1   260 MB    efi             /boot/efi   │ │
+            │ │  ada0p2   220 GB    freebsd-ufs     /           │ │
+            │ │  ada0p3   3.6 GB    freebsd-swap    none        │ │
+            │ │da0        29 GB     GPT                         │ │
+            │ │  da0p1    33 MB     efi                         │ │
+            │ │  da0p2    3.0 GB    freebsd-ufs                 │ │
+            │ │                                                 │ │
+            │ │                                                 │ │
+            │ │                                                 │ │
+            │ └─────────────────────────────────────────────────┘ │
+            ├─────────────────────────────────────────────────────┤
+            │[Create] [Delete] [Modify] [Revert] [ Auto ] [Finish]│
+            └─────────────────────────────────────────────────────┘
 ```
 
 #### Partition editor - confirmation
@@ -318,24 +321,25 @@ Typical output from the installation process will look like this:
 
 ```
 ┌───────────────────────────┤Checksum Verification├──────────────────────────┐
-│ base.txz                                                   [   Passed    ] │
-│ kernel.txz                                                 [   Passed    ] │
-│ base-dbg.txz                                               [   Passed    ] │
-│ kernel-dbg.txz                                             [   Passed    ] │
-│ kernel.GENERIC-MORELLO-NOCAPREVOKE-NODEBUG-dbg.txz         [   Passed    ] │
-│ kernel.GENERIC-MORELLO-NOCAPREVOKE-NODEBUG.txz             [   Passed    ] │
-│ kernel.GENERIC-MORELLO-NOCAPREVOKE-dbg.txz                 [ In Progress ] │
+│ base.txz                                                   [ In Progress ] │
+│ kernel.txz                                                 [   Pending   ] │
+│ base-dbg.txz                                               [   Pending   ] │
+│ kernel-dbg.txz                                             [   Pending   ] │
+│ kernel.GENERIC-MORELLO-NOCAPREVOKE-NODEBUG-dbg.txz         [   Pending   ] │
+│ kernel.GENERIC-MORELLO-NOCAPREVOKE-NODEBUG.txz             [   Pending   ] │
+│ kernel.GENERIC-MORELLO-NOCAPREVOKE-dbg.txz                 [   Pending   ] │
 │ kernel.GENERIC-MORELLO-NOCAPREVOKE.txz                     [   Pending   ] │
 │ kernel.GENERIC-MORELLO-NODEBUG-dbg.txz                     [   Pending   ] │
 │ kernel.GENERIC-MORELLO-NODEBUG.txz                         [   Pending   ] │
-│ kernel.GENERIC-MORELLO-PURECAP-NOCAPREVOKE-NODEBUG-dbg...  [   Pending   ] │
-│ kernel.GENERIC-MORELLO-PURECAP-NOCAPREVOKE-NODEBUG.txz     [   Pending   ] │
+│ kernel.GENERIC-MORELLO-PURECAP-BENCHMARK-NOCAPREVOKE-NO... [   Pending   ] │
+│ kernel.GENERIC-MORELLO-PURECAP-BENCHMARK-NOCAPREVOKE-NO... [   Pending   ] │
+│ kernel.GENERIC-MORELLO-PURECAP-BENCHMARK-NOCAPREVOKE-db... [   Pending   ] │
 │ ...                                                                        │
 │                                                                            │
 │ Verifying checksums of selected distributions.                             │
 │                                                                            │
 │  ┌─Overall Progress─────────────────────────────────────────────────────┐  │
-│  │                                  24%                                 │  │
+│  │                                   0%                                 │  │
 │  └──────────────────────────────────────────────────────────────────────┘  │
 └────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -347,14 +351,13 @@ prompted to update the boot configuration.
 Press Enter to proceed:
 
 ```
-                      ┌─────Boot Configuration────────┐
-                      │ There are multiple "FreeBSD"  │
-                      │ EFI boot entries. Would you   │
-                      │ like to remove them all and   │
-                      │ add a new one?                │
-                      ├───────────────────────────────┤
-                      │     < Yes >   < No  >         │
-                      └───────────────────────────────┘
+                    ┌────────┤Boot Configuration├────────┐
+                    │ There are multiple "FreeBSD" EFI   │
+                    │ boot entries. Would you like to    │
+                    │ remove them all and add a new one? │
+                    ├────────────────────────────────────┤
+                    │        [ Yes  ]     [  No  ]       │
+                    └────────────────────────────────────┘
 ```
 
 #### Setting a root password
@@ -389,13 +392,12 @@ If desired, configure Ethernet networking by pressing Enter.
 If desired, enable IPv4 on the Ethernet interface by selecting Yes and
 pressing Enter:
 ```
-                        ┌──Network Configuration────┐
-                        │ Would you like to         │
-                        │ configure IPv4 for this   │
-                        │ interface?                │
-                        ├───────────────────────────┤
-                        │     < Yes >   < No  >     │
-                        └───────────────────────────┘
+                        ┌───┤Network Configuration├───┐
+                        │ Would you like to configure │
+                        │ IPv4 for this interface?    │
+                        ├─────────────────────────────┤
+                        │    [ Yes  ]    [  No  ]     │
+                        └─────────────────────────────┘
 ```
 
 #### Network configuration - DHCP for IPv4
@@ -443,18 +445,18 @@ Press Enter to use stateless address autoconfiguration for IPv6:
 Enter DNS resolution configuration information, or press Enter to confirm
 autoconfigured DNS configuration:
 ```
-   ┌───────────────────────Network Configuration──────────────────────────┐
-   │ Resolver Configuration                                               │
-   │ ┌──────────────────────────────────────────────────────────────────┐ │
-   │ │Search                                                            │ │
-   │ │IPv6 DNS #1                                                       │ │
-   │ │IPv6 DNS #2                                                       │ │
-   │ │IPv4 DNS #1    192.168.4.1                                        │ │
-   │ │IPv4 DNS #2                                                       │ │
-   │ └──────────────────────────────────────────────────────────────────┘ │
-   ├──────────────────────────────────────────────────────────────────────┤
-   │                     <  OK  >           <Cancel>                      │
-   └──────────────────────────────────────────────────────────────────────┘
+    ┌───────────────────────┤Network Configuration├───────────────────────┐
+    │ Resolver Configuration                                              │
+    │ ┌─────────────────────────────────────────────────────────────────┐ │
+    │ │Search         localdomain                                       │ │
+    │ │IPv6 DNS #1                                                      │ │
+    │ │IPv6 DNS #2                                                      │ │
+    │ │IPv4 DNS #1    192.168.1.1                                       │ │
+    │ │IPv4 DNS #2                                                      │ │
+    │ └─────────────────────────────────────────────────────────────────┘ │
+    ├─────────────────────────────────────────────────────────────────────┤
+    │                        [  OK  ]     [Cancel]                        │
+    └─────────────────────────────────────────────────────────────────────┘
 ```
 
 #### Local or UTC clock
@@ -537,9 +539,19 @@ As desired, set the date, or select Skip and press Enter if you plan
 to use network time synchronization:
 ```
                    ┌─────────────┤Time & Date├────────────┐
-                   │        ┌────┐ ┌─────────┐ ┌──┐       │
-                   │        │2023│/│ December│/│15│       │
-                   │        └────┘ └─────────┘ └──┘       │
+                   │  Month            Year               │
+                   │  ┌───────────────┐┌───────────────┐  │
+                   │  │           July││           2024│  │
+                   │  └───────────────┘└───────────────┘  │
+                   │  ┌────────────────────────────────┐  │
+                   │  │    Sun Mon Tue Wed Thu Fri Sat │  │
+                   │  │         1   2   3   4   5   6  │  │
+                   │  │     7   8   9  10  11  12  13  │  │
+                   │  │    14  15  16  17  18  19  20  │  │
+                   │  │    21  22  23  24  25  26  27  │  │
+                   │  │    28  29  30  31              │  │
+                   │  │                                │  │
+                   │  └────────────────────────────────┘  │
                    ├──────────────────────────────────────┤
                    │       [Set Date]     [  Skip  ]      │
                    └──────────────────────────────────────┘
@@ -588,13 +600,12 @@ If desired, select Yes and press Enter to add non-root accounts.
 Otherwise, select No and press Enter
 
 ```
-                        ┌────Add User Accounts──────┐
-                        │ Would you like to add     │
-                        │ users to the installed    │
-                        │ system now?               │
-                        ├───────────────────────────┤
-                        │     < Yes >   < No  >     │
-                        └───────────────────────────┘
+                       ┌──────┤Add User Accounts├─────┐
+                       │ Would you like to add users  │
+                       │ to the installed system now? │
+                       ├──────────────────────────────┤
+                       │     [ Yes  ]    [  No  ]     │
+                       └──────────────────────────────┘
 ```
 
 If you add non-root users, we recommend adding them to the `wheel`,
@@ -640,28 +651,24 @@ If there are further configuration settings to change, select an appropriate
 option from the menu and press Space.
 Otherwise, press Enter to complete the installation:
 ```
-┌───────────────────────────Final Configuration──────────────────────────────┐
+┌────────────────────────────┤Final Configuration├───────────────────────────┐
 │ Setup of your FreeBSD system is nearly complete. You can now modify your   │
 │ configuration choices. After this screen, you will have an opportunity to  │
 │ make more complex changes using a shell.                                   │
 │ ┌────────────────────────────────────────────────────────────────────────┐ │
-│ │Exit              Apply configuration and exit installer                │ │
-│ │Add User          Add a user to the system                              │ │
-│ │Root Password     Change root password                                  │ │
-│ │Hostname          Set system hostname                                   │ │
-│ │Network           Networking configuration                              │ │
-│ │Services          Set daemons to run on startup                         │ │
-│ │System Hardening  Set security options                                  │ │
-│ │Time Zone         Set system timezone                                   │ │
-│ │Handbook          Install FreeBSD Handbook (requires network)           │ │
-│ │CHERI Desktop     Install the CHERI desktop environment (requires networ│ │
-│ │CHERI VM Support  Install CHERI virtual machine support (requires networ│ │
-│ │                                                                        │ │
-│ │                                                                        │ │
-│ │                                                                        │ │
+│ │Add User         Add a user to the system                               │ │
+│ │Root Password    Change root password                                   │ │
+│ │Hostname         Set system hostname                                    │ │
+│ │Network          Networking configuration                               │ │
+│ │Services         Set daemons to run on startup                          │ │
+│ │System Hardening Set security options                                   │ │
+│ │Time Zone        Set system timezone                                    │ │
+│ │Handbook         Install FreeBSD Handbook (requires network)            │ │
+│ │CHERI Desktop    Install the CHERI desktop environment (requires network│ │
+│ │CHERI VM Support Install CHERI virtual machine support (requires network│ │
 │ └────────────────────────────────────────────────────────────────────────┘ │
 ├────────────────────────────────────────────────────────────────────────────┤
-│                                 <  OK  >                                   │
+│                            [Select]     [Finish]                           │
 └────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -670,28 +677,27 @@ Otherwise, press Enter to complete the installation:
 If desired, select Yes and press Enter to drop to a shell before reboot.
 Otherwise, select No and press Enter.
 ```
-                   ┌───────Manual Configuration──────────┐
-                   │ The installation is now finished.   │
-                   │ Before exiting the installer, would │
-                   │ you like to open a shell in the new │
-                   │ system to make any final manual     │
-                   │ modifications?                      │
-                   ├─────────────────────────────────────┤
-                   │         < Yes >     < No  >         │
-                   └─────────────────────────────────────┘
+                 ┌──────────┤Manual Configuration├──────────┐
+                 │ The installation is now finished. Before │
+                 │ exiting the installer, would you like to │
+                 │ open a shell in the new system to make   │
+                 │ any final manual modifications?          │
+                 ├──────────────────────────────────────────┤
+                 │           [ Yes  ]     [  No  ]          │
+                 └──────────────────────────────────────────┘
 ```
 
 ### Complete
 
 Select Reboot and press Enter:
 ```
-                     ┌────────────┤Complete├─────────────┐
-                     │ Installation of FreeBSD complete! │
-                     │ Would you like to reboot into the │
-                     │ installed system now?             │
-                     ├───────────────────────────────────┤
-                     │ [ Reboot ] [Shutdown] [Live CD ]  │
-                     └───────────────────────────────────┘
+                  ┌───────────────┤Complete├────────────────┐
+                  │ Installation of FreeBSD complete! Would │
+                  │ you like to reboot into the installed   │
+                  │ system now?                             │
+                  ├─────────────────────────────────────────┤
+                  │[  Reboot   ] [ Shutdown  ] [Live System]│
+                  └─────────────────────────────────────────┘
 ```
 
 ### Rebooting after installation
@@ -716,13 +722,13 @@ Starting cron.
 Starting background file system checks in 60 seconds.
 Starting sddm.
 
-Fri Dec 15 11:32:45 UTC
+Sat Jul 20 00:12:09 UTC
 CheriBSD/arm64 (cheribsd) (ttyu0)
 
 login: root
 Password:
-Dec 15 11:37:01 cheribsd login[1277]: ROOT LOGIN (root) ON ttyu0
-FreeBSD 14.0-CURRENT aarch64c 1400094 (GENERIC-MORELLO) #0 releng/23.11-3b754ceed4ae: Wed Dec 13 08:54:18 UTC 2023
+Jul 20 00:12:13 cheribsd login[968]: ROOT LOGIN (root) ON ttyu0
+FreeBSD 15.0-CURRENT (GENERIC-MORELLO-PURECAP) #0 releng/24.05-b2ad856aac65: Fri Jul 19 21:17:24 UTC 2024
 
 Welcome to CheriBSD!
 
