@@ -45,15 +45,6 @@ CheriBSD on Morello:
   Currently, there is no workaround for this issue and it is likely to occur
   with the HDMI transmitter issue described above.
 
-- The ZFS port is unstable with pure-capability kernels. While it does
-  support creation of file systems it hangs while mounting a ZFS root file
-  system either as a module or compiled in to the kernel. In general it is
-  lightly tested and should be used with caution.
-
-- We have witnessed one apparent deadlock in ZFS during an install.
-  Dozens of other installs have completed without issue so this is not
-  common.
-
 ## Issues with older firmware
 
 The following issues affected users of older firmware revisions:
