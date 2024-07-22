@@ -647,8 +647,9 @@ CHERI-enabled virtual machines, press Enter:
 
 #### Final configuration
 
-If there are further configuration settings to change, select an appropriate
-option from the menu and press Space.
+If there are further configuration settings to change, use the up/down arrow
+keys to highlight an appropriate option from the menu, then use the left arrow
+key to select the Select button and press Enter.
 Otherwise, press Enter to complete the installation:
 ```
 ┌────────────────────────────┤Final Configuration├───────────────────────────┐
