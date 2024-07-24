@@ -7,4 +7,3 @@ title = "Getting Started with CheriBSD 24.05"
 
 [output.html]
 git-repository-url = "https://github.com/CTSRD-CHERI/cheribsd-getting-started"
-site-url = "/cheribsd-getting-started/"

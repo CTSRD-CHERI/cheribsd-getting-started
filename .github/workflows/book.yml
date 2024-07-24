@@ -4,9 +4,13 @@ on:
   push:
     branches-ignore:
       - gh-pages
+      - gh-pages-*
   release:
     types:
       - created
+
+env:
+  PUBLISH_BRANCH: ${{ (github.ref_name == 'main' && 'gh-pages') || (startsWith(github.ref_name, 'releng/') && format('{0}{1}', 'gh-pages-', github.ref_name)) }}
 
 jobs:
   build:
@@ -34,36 +38,48 @@ jobs:
           path: book
 
   draft-release:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && (github.ref_name == 'main' || startsWith(github.ref_name, 'releng/'))
     needs: build
     runs-on: ubuntu-20.04
     steps:
+      - name: Get current date
+        id: date
+        run: |
+          current_date=$(date -u +'%Y%m%d')
+          echo "::set-output name=date::${current_date}"
+          echo "::set-output name=tag_name::draft-${current_date}-${{ github.sha }}"
+
+      - uses: mukunku/tag-exists-action@v1.5.0
+        id: check-tag
+        with:
+          tag: ${{ steps.date.outputs.tag_name }}
+
       - name: Download artifact
         uses: actions/download-artifact@v2
+        if: steps.check-tag.outputs.exists == 'false'
         with:
           name: book
           path: cheribsd-getting-started-snapshot
 
       - name: Create archive
+        if: steps.check-tag.outputs.exists == 'false'
         run: zip -r cheribsd-getting-started-snapshot-${{ github.sha }}.zip cheribsd-getting-started-snapshot
-
-      - name: Get current date
-        id: date
-        run: echo "::set-output name=date::$(date -u +'%Y%m%d')"
 
       - name: Create release
         id: create_release
+        if: steps.check-tag.outputs.exists == 'false'
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: draft-${{ steps.date.outputs.date }}-${{ github.sha }}
+          tag_name: ${{ steps.date.outputs.tag_name }}
           release_name: Draft release ${{ steps.date.outputs.date }}
           body: Latest snapshot (${{ github.sha }})
           prerelease: true
 
       - name: Upload release asset
         id: upload-release-asset
+        if: steps.check-tag.outputs.exists == 'false'
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -99,7 +115,7 @@ jobs:
           asset_content_type: application/zip
 
   deploy:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && (github.ref_name == 'main' || startsWith(github.ref_name, 'releng/'))
     needs: build
     runs-on: ubuntu-20.04
     steps:
@@ -113,3 +129,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: ${{ env.PUBLISH_BRANCH }}
