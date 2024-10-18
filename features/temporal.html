@@ -1,28 +1,19 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Userlevel heap temporal memory safety - Getting Started with CheriBSD 24.05</title>
-        
-        
 
 
         <!-- Custom HTML head -->
         
-
-
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
-        
         <link rel="icon" href="../favicon.svg">
-        
-        
         <link rel="shortcut icon" href="../favicon.png">
-        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
@@ -30,9 +21,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -40,19 +29,18 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
 
-        
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -68,61 +56,89 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
 
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../cover/index.html">Getting Started with CheriBSD 24.05</a></li><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="../features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../features/kernel.html"><strong aria-hidden="true">3.1.</strong> Kernel compilation modes</a></li><li class="chapter-item expanded "><a href="../features/processes.html"><strong aria-hidden="true">3.2.</strong> Process environments</a></li><li class="chapter-item expanded "><a href="../features/desktop.html"><strong aria-hidden="true">3.3.</strong> CheriABI desktop environment</a></li><li class="chapter-item expanded "><a href="../features/temporal.html" class="active"><strong aria-hidden="true">3.4.</strong> Userlevel heap temporal memory safety</a></li><li class="chapter-item expanded "><a href="../features/c18n.html"><strong aria-hidden="true">3.5.</strong> Userlevel software compartmentalization</a></li><li class="chapter-item expanded "><a href="../features/bhyve.html"><strong aria-hidden="true">3.6.</strong> bhyve hypervisor</a></li></ol></li><li class="chapter-item expanded "><a href="../nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="../getting/index.html"><strong aria-hidden="true">5.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">5.1.</strong> Downloading image files</a></li><li class="chapter-item expanded "><a href="../building/index.html"><strong aria-hidden="true">5.2.</strong> Building image files</a></li></ol></li><li class="chapter-item expanded "><a href="../morello/index.html"><strong aria-hidden="true">6.</strong> CheriBSD on an Arm Morello board</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../morello-console/index.html"><strong aria-hidden="true">6.1.</strong> Accessing the Morello console</a></li><li class="chapter-item expanded "><a href="../morello-firmware/index.html"><strong aria-hidden="true">6.2.</strong> Upgrading the Morello firmware</a></li><li class="chapter-item expanded "><a href="../morello-install/index.html"><strong aria-hidden="true">6.3.</strong> Installing on a Morello board</a></li><li class="chapter-item expanded "><a href="../morello-issues/index.html"><strong aria-hidden="true">6.4.</strong> Morello known issues</a></li></ol></li><li class="chapter-item expanded "><a href="../packages/index.html"><strong aria-hidden="true">7.</strong> Third-party packages</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../packages/limitations.html"><strong aria-hidden="true">7.1.</strong> Limitations of packages</a></li><li class="chapter-item expanded "><a href="../packages/missing.html"><strong aria-hidden="true">7.2.</strong> Missing packages</a></li><li class="chapter-item expanded "><a href="../packages/upgrading.html"><strong aria-hidden="true">7.3.</strong> Upgrading packages</a></li><li class="chapter-item expanded "><a href="../packages/debugging.html"><strong aria-hidden="true">7.4.</strong> Debugging packages</a></li><li class="chapter-item expanded "><a href="../packages/commands.html"><strong aria-hidden="true">7.5.</strong> Useful commands</a></li></ol></li><li class="chapter-item expanded "><a href="../helloworld/index.html"><strong aria-hidden="true">8.</strong> Compiling &quot;Hello World&quot;</a></li><li class="chapter-item expanded "><a href="../benchmarking/index.html"><strong aria-hidden="true">9.</strong> Benchmarking guidance</a></li><li class="chapter-item expanded "><a href="../support/index.html"><strong aria-hidden="true">10.</strong> Getting help</a></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">11.</strong> Resources</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../cover/index.html">Getting Started with CheriBSD 24.05</a></li><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="../features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../features/kernel.html"><strong aria-hidden="true">3.1.</strong> Kernel compilation modes</a></li><li class="chapter-item expanded "><a href="../features/processes.html"><strong aria-hidden="true">3.2.</strong> Process environments</a></li><li class="chapter-item expanded "><a href="../features/desktop.html"><strong aria-hidden="true">3.3.</strong> CheriABI desktop environment</a></li><li class="chapter-item expanded "><a href="../features/temporal.html" class="active"><strong aria-hidden="true">3.4.</strong> Userlevel heap temporal memory safety</a></li><li class="chapter-item expanded "><a href="../features/c18n.html"><strong aria-hidden="true">3.5.</strong> Userlevel software compartmentalization</a></li><li class="chapter-item expanded "><a href="../features/bhyve.html"><strong aria-hidden="true">3.6.</strong> bhyve hypervisor</a></li></ol></li><li class="chapter-item expanded "><a href="../nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="../getting/index.html"><strong aria-hidden="true">5.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">5.1.</strong> Downloading image files</a></li><li class="chapter-item expanded "><a href="../building/index.html"><strong aria-hidden="true">5.2.</strong> Building image files</a></li></ol></li><li class="chapter-item expanded "><a href="../morello/index.html"><strong aria-hidden="true">6.</strong> CheriBSD on an Arm Morello board</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../morello-console/index.html"><strong aria-hidden="true">6.1.</strong> Accessing the Morello console</a></li><li class="chapter-item expanded "><a href="../morello-firmware/index.html"><strong aria-hidden="true">6.2.</strong> Upgrading the Morello firmware</a></li><li class="chapter-item expanded "><a href="../morello-install/index.html"><strong aria-hidden="true">6.3.</strong> Installing on a Morello board</a></li><li class="chapter-item expanded "><a href="../morello-issues/index.html"><strong aria-hidden="true">6.4.</strong> Morello known issues</a></li></ol></li><li class="chapter-item expanded "><a href="../packages/index.html"><strong aria-hidden="true">7.</strong> Third-party packages</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../packages/limitations.html"><strong aria-hidden="true">7.1.</strong> Limitations of packages</a></li><li class="chapter-item expanded "><a href="../packages/missing.html"><strong aria-hidden="true">7.2.</strong> Missing packages</a></li><li class="chapter-item expanded "><a href="../packages/upgrading.html"><strong aria-hidden="true">7.3.</strong> Upgrading packages</a></li><li class="chapter-item expanded "><a href="../packages/debugging.html"><strong aria-hidden="true">7.4.</strong> Debugging packages</a></li><li class="chapter-item expanded "><a href="../packages/commands.html"><strong aria-hidden="true">7.5.</strong> Useful commands</a></li></ol></li><li class="chapter-item expanded "><a href="../helloworld/index.html"><strong aria-hidden="true">8.</strong> Compiling "Hello World"</a></li><li class="chapter-item expanded "><a href="../benchmarking/index.html"><strong aria-hidden="true">9.</strong> Benchmarking guidance</a></li><li class="chapter-item expanded "><a href="../support/index.html"><strong aria-hidden="true">10.</strong> Getting help</a></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">11.</strong> Resources</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">Getting Started with CheriBSD 24.05</h1>
@@ -131,18 +147,16 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
                         <a href="https://github.com/CTSRD-CHERI/cheribsd-getting-started" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -150,10 +164,9 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -163,7 +176,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#userlevel-heap-temporal-memory-safety-experimental" id="userlevel-heap-temporal-memory-safety-experimental">Userlevel heap temporal memory safety (experimental)</a></h1>
+                        <h1 id="userlevel-heap-temporal-memory-safety-experimental"><a class="header" href="#userlevel-heap-temporal-memory-safety-experimental">Userlevel heap temporal memory safety (experimental)</a></h1>
 <p>Since CheriBSD 23.11 there has been support for userlevel heap temporal memory
 safety based on a load-barrier extension to
 <a href="https://www.cl.cam.ac.uk/research/security/ctsrd/pdfs/2020oakland-cornucopia.pdf">Cornucopia</a>,
@@ -184,7 +197,7 @@ More information on temporal memory safety support can be found in the
 <a href="https://man.cheribsd.org/cgi-bin/man.cgi/dev/mrs">mrs(3) man page</a>:</p>
 <pre><code>man mrs
 </code></pre>
-<h2><a class="header" href="#checking-whether-temporal-safety-is-globally-enabled" id="checking-whether-temporal-safety-is-globally-enabled">Checking whether temporal safety is globally enabled</a></h2>
+<h2 id="checking-whether-temporal-safety-is-globally-enabled"><a class="header" href="#checking-whether-temporal-safety-is-globally-enabled">Checking whether temporal safety is globally enabled</a></h2>
 <p>Use the <code>sysctl(8)</code> command to inspect the value of the
 <code>security.cheri.runtime_revocation_default</code> system MIB entry:</p>
 <pre><code>sysctl security.cheri.runtime_revocation_default
@@ -193,7 +206,7 @@ More information on temporal memory safety support can be found in the
 startup.
 We recommend setting this in <code>/boot/loader.conf</code>, which is processed by the
 boot loader before any user processes start.</p>
-<h2><a class="header" href="#controlling-revocation-by-binary-or-process" id="controlling-revocation-by-binary-or-process">Controlling revocation by binary or process</a></h2>
+<h2 id="controlling-revocation-by-binary-or-process"><a class="header" href="#controlling-revocation-by-binary-or-process">Controlling revocation by binary or process</a></h2>
 <p>You can forcefully enable or disable revocations for a specific binary or
 process
 with
@@ -207,7 +220,7 @@ and ignore the default policy:</p>
 </code></pre>
 <p>You can read more on these commands in the
 <a href="https://man.cheribsd.org/cgi-bin/man.cgi/dev/mrs">mrs(3) man page</a>.</p>
-<h2><a class="header" href="#synchronous-revocation" id="synchronous-revocation">Synchronous revocation</a></h2>
+<h2 id="synchronous-revocation"><a class="header" href="#synchronous-revocation">Synchronous revocation</a></h2>
 <p>Revocation normally occurs asynchronously, with a memory quarantine preventing
 memory reuse until revocation of any pointers to that memory.
 You can insert a specific call in your program to await synchronous
@@ -217,7 +230,7 @@ revocation:</p>
 <p>Synchronous revocation on every call to <code>free()</code> can be configured using the
 <code>_RUNTIME_REVOCATION_EVERY_FREE_ENABLE</code> environmental variable.</p>
 <p>Note that synchronous revocation can incur extremely high expense.</p>
-<h2><a class="header" href="#monitoring-revocation-in-processes" id="monitoring-revocation-in-processes">Monitoring revocation in processes</a></h2>
+<h2 id="monitoring-revocation-in-processes"><a class="header" href="#monitoring-revocation-in-processes">Monitoring revocation in processes</a></h2>
 <p>Use the <code>procstat cheri -v</code> command to inspect the CHERI memory-safety state
 of a target process.
 For example:</p>
@@ -235,17 +248,13 @@ whereas X.org has a non-zero epoch and has performed multiple passes.</p>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../features/desktop.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
-                            <a rel="next" href="../features/c18n.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../features/c18n.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -253,49 +262,36 @@ whereas X.org has a non-zero epoch and has performed multiple passes.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../features/desktop.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
-                    <a rel="next" href="../features/c18n.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../features/c18n.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
 
-        
 
-        
-        <script type="text/javascript">
+        <script>
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
-        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
 
-        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
-        
 
-        
 
+    </div>
     </body>
 </html>

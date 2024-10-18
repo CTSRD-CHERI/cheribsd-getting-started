@@ -1,30 +1,20 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Getting Started with CheriBSD 24.05</title>
-        
-        <meta name="robots" content="noindex" />
-        
-        
+        <meta name="robots" content="noindex">
 
 
         <!-- Custom HTML head -->
         
-
-
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
-        
         <link rel="icon" href="favicon.svg">
-        
-        
         <link rel="shortcut icon" href="favicon.png">
-        
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
@@ -32,9 +22,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
@@ -42,19 +30,18 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
 
-        
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -70,61 +57,89 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
 
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover/index.html">Getting Started with CheriBSD 24.05</a></li><li class="chapter-item expanded "><a href="introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="features/kernel.html"><strong aria-hidden="true">3.1.</strong> Kernel compilation modes</a></li><li class="chapter-item expanded "><a href="features/processes.html"><strong aria-hidden="true">3.2.</strong> Process environments</a></li><li class="chapter-item expanded "><a href="features/desktop.html"><strong aria-hidden="true">3.3.</strong> CheriABI desktop environment</a></li><li class="chapter-item expanded "><a href="features/temporal.html"><strong aria-hidden="true">3.4.</strong> Userlevel heap temporal memory safety</a></li><li class="chapter-item expanded "><a href="features/c18n.html"><strong aria-hidden="true">3.5.</strong> Userlevel software compartmentalization</a></li><li class="chapter-item expanded "><a href="features/bhyve.html"><strong aria-hidden="true">3.6.</strong> bhyve hypervisor</a></li></ol></li><li class="chapter-item expanded "><a href="nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="getting/index.html"><strong aria-hidden="true">5.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="downloading/index.html"><strong aria-hidden="true">5.1.</strong> Downloading image files</a></li><li class="chapter-item expanded "><a href="building/index.html"><strong aria-hidden="true">5.2.</strong> Building image files</a></li></ol></li><li class="chapter-item expanded "><a href="morello/index.html"><strong aria-hidden="true">6.</strong> CheriBSD on an Arm Morello board</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="morello-console/index.html"><strong aria-hidden="true">6.1.</strong> Accessing the Morello console</a></li><li class="chapter-item expanded "><a href="morello-firmware/index.html"><strong aria-hidden="true">6.2.</strong> Upgrading the Morello firmware</a></li><li class="chapter-item expanded "><a href="morello-install/index.html"><strong aria-hidden="true">6.3.</strong> Installing on a Morello board</a></li><li class="chapter-item expanded "><a href="morello-issues/index.html"><strong aria-hidden="true">6.4.</strong> Morello known issues</a></li></ol></li><li class="chapter-item expanded "><a href="packages/index.html"><strong aria-hidden="true">7.</strong> Third-party packages</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="packages/limitations.html"><strong aria-hidden="true">7.1.</strong> Limitations of packages</a></li><li class="chapter-item expanded "><a href="packages/missing.html"><strong aria-hidden="true">7.2.</strong> Missing packages</a></li><li class="chapter-item expanded "><a href="packages/upgrading.html"><strong aria-hidden="true">7.3.</strong> Upgrading packages</a></li><li class="chapter-item expanded "><a href="packages/debugging.html"><strong aria-hidden="true">7.4.</strong> Debugging packages</a></li><li class="chapter-item expanded "><a href="packages/commands.html"><strong aria-hidden="true">7.5.</strong> Useful commands</a></li></ol></li><li class="chapter-item expanded "><a href="helloworld/index.html"><strong aria-hidden="true">8.</strong> Compiling &quot;Hello World&quot;</a></li><li class="chapter-item expanded "><a href="benchmarking/index.html"><strong aria-hidden="true">9.</strong> Benchmarking guidance</a></li><li class="chapter-item expanded "><a href="support/index.html"><strong aria-hidden="true">10.</strong> Getting help</a></li><li class="chapter-item expanded "><a href="resources/index.html"><strong aria-hidden="true">11.</strong> Resources</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover/index.html">Getting Started with CheriBSD 24.05</a></li><li class="chapter-item expanded "><a href="introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="features/kernel.html"><strong aria-hidden="true">3.1.</strong> Kernel compilation modes</a></li><li class="chapter-item expanded "><a href="features/processes.html"><strong aria-hidden="true">3.2.</strong> Process environments</a></li><li class="chapter-item expanded "><a href="features/desktop.html"><strong aria-hidden="true">3.3.</strong> CheriABI desktop environment</a></li><li class="chapter-item expanded "><a href="features/temporal.html"><strong aria-hidden="true">3.4.</strong> Userlevel heap temporal memory safety</a></li><li class="chapter-item expanded "><a href="features/c18n.html"><strong aria-hidden="true">3.5.</strong> Userlevel software compartmentalization</a></li><li class="chapter-item expanded "><a href="features/bhyve.html"><strong aria-hidden="true">3.6.</strong> bhyve hypervisor</a></li></ol></li><li class="chapter-item expanded "><a href="nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="getting/index.html"><strong aria-hidden="true">5.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="downloading/index.html"><strong aria-hidden="true">5.1.</strong> Downloading image files</a></li><li class="chapter-item expanded "><a href="building/index.html"><strong aria-hidden="true">5.2.</strong> Building image files</a></li></ol></li><li class="chapter-item expanded "><a href="morello/index.html"><strong aria-hidden="true">6.</strong> CheriBSD on an Arm Morello board</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="morello-console/index.html"><strong aria-hidden="true">6.1.</strong> Accessing the Morello console</a></li><li class="chapter-item expanded "><a href="morello-firmware/index.html"><strong aria-hidden="true">6.2.</strong> Upgrading the Morello firmware</a></li><li class="chapter-item expanded "><a href="morello-install/index.html"><strong aria-hidden="true">6.3.</strong> Installing on a Morello board</a></li><li class="chapter-item expanded "><a href="morello-issues/index.html"><strong aria-hidden="true">6.4.</strong> Morello known issues</a></li></ol></li><li class="chapter-item expanded "><a href="packages/index.html"><strong aria-hidden="true">7.</strong> Third-party packages</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="packages/limitations.html"><strong aria-hidden="true">7.1.</strong> Limitations of packages</a></li><li class="chapter-item expanded "><a href="packages/missing.html"><strong aria-hidden="true">7.2.</strong> Missing packages</a></li><li class="chapter-item expanded "><a href="packages/upgrading.html"><strong aria-hidden="true">7.3.</strong> Upgrading packages</a></li><li class="chapter-item expanded "><a href="packages/debugging.html"><strong aria-hidden="true">7.4.</strong> Debugging packages</a></li><li class="chapter-item expanded "><a href="packages/commands.html"><strong aria-hidden="true">7.5.</strong> Useful commands</a></li></ol></li><li class="chapter-item expanded "><a href="helloworld/index.html"><strong aria-hidden="true">8.</strong> Compiling "Hello World"</a></li><li class="chapter-item expanded "><a href="benchmarking/index.html"><strong aria-hidden="true">9.</strong> Benchmarking guidance</a></li><li class="chapter-item expanded "><a href="support/index.html"><strong aria-hidden="true">10.</strong> Getting help</a></li><li class="chapter-item expanded "><a href="resources/index.html"><strong aria-hidden="true">11.</strong> Resources</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">Getting Started with CheriBSD 24.05</h1>
@@ -133,18 +148,16 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
                         <a href="https://github.com/CTSRD-CHERI/cheribsd-getting-started" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -152,10 +165,9 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -165,7 +177,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#getting-started-with-cheribsd-2405" id="getting-started-with-cheribsd-2405">Getting Started with CheriBSD 24.05</a></h1>
+                        <h1 id="getting-started-with-cheribsd-2405"><a class="header" href="#getting-started-with-cheribsd-2405">Getting Started with CheriBSD 24.05</a></h1>
 <p>Robert N. M. Watson (University of Cambridge)
 and
 Brooks Davis (SRI International)</p>
@@ -186,7 +198,7 @@ source code and an issue tracker.
 There is a <a href="https://ctsrd-cheri.github.io/cheribsd-getting-started/">rendered version on the
 web</a>, which is
 automatically updated when the git repository is committed to.</em></p>
-<h2><a class="header" href="#acknowledgements" id="acknowledgements">Acknowledgements</a></h2>
+<h2 id="acknowledgements"><a class="header" href="#acknowledgements">Acknowledgements</a></h2>
 <p>The authors gratefully acknowledge Brian Campbell (University of Edinburgh),
 Jessica Clarke (University of Cambridge),
 George Neville-Neil (MSB Associates), and Konrad Witaszczyk (University of
@@ -196,13 +208,13 @@ Security by Design (DSbD) Technology Platform Prototype, 105694, and Innovate
 UK project Developing and Evaluating an Open-Source Desktop for Arm Morello,
 10027440.</p>
 <p>This material is based upon work supported by the Defense Advanced
-Research Projects Agency (DARPA) under Contract No. HR001122C0110 (&quot;ETC&quot;) and
+Research Projects Agency (DARPA) under Contract No. HR001122C0110 ("ETC") and
 Defense Advanced Research Projects Agency (DARPA) Contract No. HR001123C0031
-(&quot;MTSS&quot;).
+("MTSS").
 Any opinions, findings and conclusions or recommendations expressed in this
 material are those of the author(s) and do not necessarily reflect the
 views of the Defense Advanced Research Projects Agency (DARPA).</p>
-<h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
 <p><a href="https://www.cheribsd.org/">CheriBSD</a> is a version of the open-source
 <a href="https://www.freebsd.org/">FreeBSD</a> operating system that has been extended to
 use CHERI architectural protections.
@@ -227,8 +239,8 @@ of our downloadable pre-compiled images.
 You may want to run directly from a live image in an emulator, or
 alternatively want to use an installer image to install onto an internal disk
 in an Arm Morello-based server or workstation.</p>
-<h1><a class="header" href="#background" id="background">Background</a></h1>
-<h2><a class="header" href="#cheri" id="cheri">CHERI</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="background"><a class="header" href="#background">Background</a></h1>
+<h2 id="cheri"><a class="header" href="#cheri">CHERI</a></h2>
 <p><strong>CHERI</strong> is an extension to processor Instruction-Set Architectures (ISAs) to
 introduce support for fine-grained memory protection and software
 compartmentalization.
@@ -259,7 +271,7 @@ This guide covers all of these use cases.</p>
 <p>You can learn more about CHERI by reading the technical report, <a href="https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-941.pdf">An
 Introduction to
 CHERI</a>.</p>
-<h2><a class="header" href="#cheri-cc" id="cheri-cc">CHERI C/C++</a></h2>
+<h2 id="cheri-cc"><a class="header" href="#cheri-cc">CHERI C/C++</a></h2>
 <p><strong>CHERI C</strong> and <strong>CHERI C++</strong> are programming-language dialects closely tied
 to CHERI-based code generation and Application Binary Interfaces (ABIs) that
 directly support referential and spatial memory safety.
@@ -278,7 +290,7 @@ pointer misalignment) that can be diagnosed with
 <p>You can learn more about CHERI C/C++ and its CheriABI run-time environment by
 reading the technical report, <a href="https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-947.pdf">CHERI C/C++ Programming
 Guide</a>.</p>
-<h2><a class="header" href="#cheribsd" id="cheribsd">CheriBSD</a></h2>
+<h2 id="cheribsd"><a class="header" href="#cheribsd">CheriBSD</a></h2>
 <p><strong>CheriBSD</strong> is an extended version of the open-source
 <em><a href="https://www.freebsd.org/">FreeBSD</a></em> operating system.
 FreeBSD is a mature UNIX-based operating system able to run on multiple
@@ -291,7 +303,7 @@ CheriBSD runs on both CHERI-RISC-V and Morello with nearly identical feature
 sets (Morello includes hardware virtualisation extensions not present in the
 CHERI-RISC-V cores, and so CHERI-extended bhyve hypervisor support is not
 available for CHERI-RISC-V).</p>
-<h1><a class="header" href="#cheribsd-features" id="cheribsd-features">CheriBSD features</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="cheribsd-features"><a class="header" href="#cheribsd-features">CheriBSD features</a></h1>
 <p>CheriBSD extends FreeBSD with added CHERI-enabled features, such as kernel and
 userspace memory safety:</p>
 <ul>
@@ -304,7 +316,7 @@ userspace memory safety:</p>
 </ul>
 <p>Some of these features are in the main CheriBSD branch; other experimental
 features remain on development branches.</p>
-<h1><a class="header" href="#kernel-compilation-modes" id="kernel-compilation-modes">Kernel compilation modes</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="kernel-compilation-modes"><a class="header" href="#kernel-compilation-modes">Kernel compilation modes</a></h1>
 <p>The CheriBSD kernel can be compiled as hybrid, pure-capability,
 or benchmark code:</p>
 <ul>
@@ -321,7 +333,7 @@ evaluation of the Arm Morello architecture and third-party software
 executed on it. It should not be used for a security evaluation and the
 pure-capability kernel should be used instead.</li>
 </ul>
-<h1><a class="header" href="#userlevel-process-environments" id="userlevel-process-environments">Userlevel process environments</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="userlevel-process-environments"><a class="header" href="#userlevel-process-environments">Userlevel process environments</a></h1>
 <p>CheriBSD 24.05 likewise supports three different userspace execution
 environments:</p>
 <ul>
@@ -371,14 +383,14 @@ the <code>bash</code> command is using the Hybrid ABI (<code>FreeBSD ELF64</code
 each of these ABIs, although CheriABI and Benchmark ABI packages are currently
 considered experimental.  This is discussed further in the <a href="features/../packages/">chapter on
 packages</a>.</p>
-<h1><a class="header" href="#cheriabi-desktop-environment-experimental" id="cheriabi-desktop-environment-experimental">CheriABI desktop environment (experimental)</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="cheriabi-desktop-environment-experimental"><a class="header" href="#cheriabi-desktop-environment-experimental">CheriABI desktop environment (experimental)</a></h1>
 <p>The installer has the option to install a desktop environment using the Mali
 Bifrost GPU on the Morello System-on-Chip.
 The option installs a basic desktop environment using KDE and Wayland compiled
 for CheriABI with the <code>cheri-desktop</code> package.
 It also installs a hybrid ABI Chromium web browser via the
 <code>cheri-desktop-hybrid-extras</code> package.</p>
-<h1><a class="header" href="#userlevel-heap-temporal-memory-safety-experimental" id="userlevel-heap-temporal-memory-safety-experimental">Userlevel heap temporal memory safety (experimental)</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="userlevel-heap-temporal-memory-safety-experimental"><a class="header" href="#userlevel-heap-temporal-memory-safety-experimental">Userlevel heap temporal memory safety (experimental)</a></h1>
 <p>Since CheriBSD 23.11 there has been support for userlevel heap temporal memory
 safety based on a load-barrier extension to
 <a href="https://www.cl.cam.ac.uk/research/security/ctsrd/pdfs/2020oakland-cornucopia.pdf">Cornucopia</a>,
@@ -399,7 +411,7 @@ More information on temporal memory safety support can be found in the
 <a href="https://man.cheribsd.org/cgi-bin/man.cgi/dev/mrs">mrs(3) man page</a>:</p>
 <pre><code>man mrs
 </code></pre>
-<h2><a class="header" href="#checking-whether-temporal-safety-is-globally-enabled" id="checking-whether-temporal-safety-is-globally-enabled">Checking whether temporal safety is globally enabled</a></h2>
+<h2 id="checking-whether-temporal-safety-is-globally-enabled"><a class="header" href="#checking-whether-temporal-safety-is-globally-enabled">Checking whether temporal safety is globally enabled</a></h2>
 <p>Use the <code>sysctl(8)</code> command to inspect the value of the
 <code>security.cheri.runtime_revocation_default</code> system MIB entry:</p>
 <pre><code>sysctl security.cheri.runtime_revocation_default
@@ -408,7 +420,7 @@ More information on temporal memory safety support can be found in the
 startup.
 We recommend setting this in <code>/boot/loader.conf</code>, which is processed by the
 boot loader before any user processes start.</p>
-<h2><a class="header" href="#controlling-revocation-by-binary-or-process" id="controlling-revocation-by-binary-or-process">Controlling revocation by binary or process</a></h2>
+<h2 id="controlling-revocation-by-binary-or-process"><a class="header" href="#controlling-revocation-by-binary-or-process">Controlling revocation by binary or process</a></h2>
 <p>You can forcefully enable or disable revocations for a specific binary or
 process
 with
@@ -422,7 +434,7 @@ and ignore the default policy:</p>
 </code></pre>
 <p>You can read more on these commands in the
 <a href="https://man.cheribsd.org/cgi-bin/man.cgi/dev/mrs">mrs(3) man page</a>.</p>
-<h2><a class="header" href="#synchronous-revocation" id="synchronous-revocation">Synchronous revocation</a></h2>
+<h2 id="synchronous-revocation"><a class="header" href="#synchronous-revocation">Synchronous revocation</a></h2>
 <p>Revocation normally occurs asynchronously, with a memory quarantine preventing
 memory reuse until revocation of any pointers to that memory.
 You can insert a specific call in your program to await synchronous
@@ -432,7 +444,7 @@ revocation:</p>
 <p>Synchronous revocation on every call to <code>free()</code> can be configured using the
 <code>_RUNTIME_REVOCATION_EVERY_FREE_ENABLE</code> environmental variable.</p>
 <p>Note that synchronous revocation can incur extremely high expense.</p>
-<h2><a class="header" href="#monitoring-revocation-in-processes" id="monitoring-revocation-in-processes">Monitoring revocation in processes</a></h2>
+<h2 id="monitoring-revocation-in-processes"><a class="header" href="#monitoring-revocation-in-processes">Monitoring revocation in processes</a></h2>
 <p>Use the <code>procstat cheri -v</code> command to inspect the CHERI memory-safety state
 of a target process.
 For example:</p>
@@ -445,7 +457,7 @@ For example:</p>
 quarantining enabled, and are not currently revoking.
 seatd has never needed to perform a revocation pass, as it remains in epoch 0,
 whereas X.org has a non-zero epoch and has performed multiple passes.</p>
-<h1><a class="header" href="#userlevel-software-compartmentalization-experimental" id="userlevel-software-compartmentalization-experimental">Userlevel software compartmentalization (experimental)</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="userlevel-software-compartmentalization-experimental"><a class="header" href="#userlevel-software-compartmentalization-experimental">Userlevel software compartmentalization (experimental)</a></h1>
 <p>CheriBSD implements two different
 CHERI-enabled software compartmentalization models:</p>
 <ul>
@@ -465,7 +477,7 @@ See the <a href="https://man.cheribsd.org/cgi-bin/man.cgi/releng-24.05/c18n">c18
 page</a>
 on an installed system for more information.</li>
 </ul>
-<h2><a class="header" href="#library-compartmentalization" id="library-compartmentalization">Library compartmentalization</a></h2>
+<h2 id="library-compartmentalization"><a class="header" href="#library-compartmentalization">Library compartmentalization</a></h2>
 <p>CheriBSD's library compartmentalization feature (c18n) executes each dynamic
 library within a compartmentalization-enabled process in its own protection
 domain.
@@ -497,17 +509,17 @@ More information on library compartmentalization can be found in the
 page</a>:</p>
 <pre><code>man c18n
 </code></pre>
-<h2><a class="header" href="#enabling-library-compartmentalization-system-wide" id="enabling-library-compartmentalization-system-wide">Enabling library compartmentalization system-wide</a></h2>
+<h2 id="enabling-library-compartmentalization-system-wide"><a class="header" href="#enabling-library-compartmentalization-system-wide">Enabling library compartmentalization system-wide</a></h2>
 <p>Compartmentalization can be enabled for all eligible new processes with
 <code>sysctl</code>:</p>
 <pre><code>sysctl security.cheri.lib_based_c18n_default=1
 </code></pre>
-<h2><a class="header" href="#enabling-library-compartmentalization-temporarily-for-a-particular-binary" id="enabling-library-compartmentalization-temporarily-for-a-particular-binary">Enabling library compartmentalization temporarily for a particular binary</a></h2>
+<h2 id="enabling-library-compartmentalization-temporarily-for-a-particular-binary"><a class="header" href="#enabling-library-compartmentalization-temporarily-for-a-particular-binary">Enabling library compartmentalization temporarily for a particular binary</a></h2>
 <p>To run a particular binary with library compartmentalization enabled just for
 this run, use <code>proccontrol</code>:</p>
 <pre><code>proccontrol -m cheric18n -s enable ./helloworld
 </code></pre>
-<h2><a class="header" href="#enabling-library-compartmentalization-permanently-for-a-particular-binary" id="enabling-library-compartmentalization-permanently-for-a-particular-binary">Enabling library compartmentalization permanently for a particular binary</a></h2>
+<h2 id="enabling-library-compartmentalization-permanently-for-a-particular-binary"><a class="header" href="#enabling-library-compartmentalization-permanently-for-a-particular-binary">Enabling library compartmentalization permanently for a particular binary</a></h2>
 <p>To enable library compartmentalization permanently for a particular binary,
 run the following command to set a flag in the binary:</p>
 <pre><code>elfctl -e +cheric18n ./helloworld
@@ -524,7 +536,7 @@ nocheric18n     'Force Disable CHERI library-based compartmentalisation' is unse
 </code></pre>
 <p>Note that <code>nocheric18n</code> <em>disables</em> c18n for the binary, overriding the
 system-wide default.</p>
-<h2><a class="header" href="#tracing-compartment-boundary-crossings" id="tracing-compartment-boundary-crossings">Tracing compartment-boundary crossings</a></h2>
+<h2 id="tracing-compartment-boundary-crossings"><a class="header" href="#tracing-compartment-boundary-crossings">Tracing compartment-boundary crossings</a></h2>
 <p>The BSD ktrace(1) command is able to trace compartment-boundary crossings.
 To enable this feature, set the <code>LD_UTRACE_COMPARTMENT</code> environmental
 variable, which will cause the run-time linker to emit records using the
@@ -556,12 +568,12 @@ software integrity and confidentiality properties in the presence of a strong
 adversary.
 However, it is also limited by the abstraction being around the current
 library operational model.</p>
-<h1><a class="header" href="#bhyve-hypervisor-experimental" id="bhyve-hypervisor-experimental">bhyve hypervisor (experimental)</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="bhyve-hypervisor-experimental"><a class="header" href="#bhyve-hypervisor-experimental">bhyve hypervisor (experimental)</a></h1>
 <p>CheriBSD implements, on an experimental development branch, CHERI extensions
 to FreeBSD's bhyve Type 2 hypervisor on the Morello architecture.
 This allows bhyve to host CHERI-enabled virtual machines, including those
 running CheriBSD.</p>
-<h1><a class="header" href="#unsupported-freebsd-features" id="unsupported-freebsd-features">Unsupported FreeBSD features</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="unsupported-freebsd-features"><a class="header" href="#unsupported-freebsd-features">Unsupported FreeBSD features</a></h1>
 <p>Certain FreeBSD features are currently unavailable in CheriBSD, including:</p>
 <ul>
 <li>DTrace</li>
@@ -571,14 +583,14 @@ running CheriBSD.</p>
 <li>Non-UFS file systems</li>
 <li>Most optional modules, such as various firewall systems</li>
 </ul>
-<h2><a class="header" href="#alpha-zfs-support" id="alpha-zfs-support">Alpha ZFS support</a></h2>
+<h2 id="alpha-zfs-support"><a class="header" href="#alpha-zfs-support">Alpha ZFS support</a></h2>
 <p>The 24.05 release includes Alpha support for the ZFS file system.  It is
 lightly tested, but works without known issues.</p>
-<h2><a class="header" href="#reporting-bugs" id="reporting-bugs">Reporting bugs</a></h2>
+<h2 id="reporting-bugs"><a class="header" href="#reporting-bugs">Reporting bugs</a></h2>
 <p>Bug reports relating to these under-validated subsystems would be appreciated,
 and may be submitted to the <a href="https://github.com/CTSRD-CHERI/cheribsd/issues">CheriBSD GitHub issue
 tracker</a>.</p>
-<h1><a class="header" href="#getting-cheribsd" id="getting-cheribsd">Getting CheriBSD</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="getting-cheribsd"><a class="header" href="#getting-cheribsd">Getting CheriBSD</a></h1>
 <p>CheriBSD can be installed by <a href="getting/../downloading/">downloading</a> or
 <a href="getting/../building/">building</a> one of two types of disk images:</p>
 <ul>
@@ -594,14 +606,14 @@ These will typically be used on instruction-set emulators such as QEMU and
 the Arm Morello FVP, as well as on FPGA.</p>
 </li>
 </ul>
-<h1><a class="header" href="#downloading-image-files" id="downloading-image-files">Downloading image files</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="downloading-image-files"><a class="header" href="#downloading-image-files">Downloading image files</a></h1>
 <p>Memstick and live images can both be downloaded from the <a href="https://www.cheribsd.org/">CheriBSD
 website</a>.
 Images are compressed using the UNIX <code>xz</code> command, and must be decompressed
 before they can be used; for example by running:</p>
 <pre><code>unxz cheribsd-memstick-arm64-aarch64c-24.05.img.xz
 </code></pre>
-<h1><a class="header" href="#building-image-files" id="building-image-files">Building image files</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="building-image-files"><a class="header" href="#building-image-files">Building image files</a></h1>
 <p>CheriBSD can be built natively on an existing CheriBSD system (e.g., on an Arm
 Morello box), and it can also be cross-built from FreeBSD, Linux, and macOS.
 Building natively from an ISA-level emulator, such as QEMU, is not recommended
@@ -621,7 +633,7 @@ able to build CHERI-enabled toolchain, operating-system stack, and various
 applications and other software used by the CHERI project.</p>
 </li>
 </ul>
-<h2><a class="header" href="#key-source-repositories" id="key-source-repositories">Key source repositories</a></h2>
+<h2 id="key-source-repositories"><a class="header" href="#key-source-repositories">Key source repositories</a></h2>
 <p>CheriBSD repositories currently reside in the <a href="https://github.com/CTSRD-CHERI">CTSRD-CHERI GitHub
 Organization</a>:</p>
 <ul>
@@ -636,23 +648,23 @@ QEMU-CHERI, you should not generally need to manually check out or compile
 most of the above repositories.
 Instead, existing prebuilt software images/packages should be used, or the
 cheribuild command, which will orchestrate software cross-build for you.</p>
-<h2><a class="header" href="#checking-out-cheribuild" id="checking-out-cheribuild">Checking out cheribuild</a></h2>
+<h2 id="checking-out-cheribuild"><a class="header" href="#checking-out-cheribuild">Checking out cheribuild</a></h2>
 <p><a href="https://github.com/CTSRD-CHERI/cheribuild">cheribuild</a> is a Python-based
 build orchestration tool that is the preferred way to cross-build CheriBSD.
 It can be checked out from GitHub:</p>
 <pre><code>git clone git@github.com:CTSRD-CHERI/cheribuild.git
 </code></pre>
-<h2><a class="header" href="#building-and-running-cheribsdrisc-v-in-qemu" id="building-and-running-cheribsdrisc-v-in-qemu">Building and running CheriBSD/RISC-V in QEMU</a></h2>
+<h2 id="building-and-running-cheribsdrisc-v-in-qemu"><a class="header" href="#building-and-running-cheribsdrisc-v-in-qemu">Building and running CheriBSD/RISC-V in QEMU</a></h2>
 <p>The following command builds a CheriBSD/RISC-V live image, and boots it in
 QEMU-CHERI:</p>
 <pre><code>% ./cheribuild.py -d build-and-run-cheribsd-riscv64-purecap
 </code></pre>
-<h2><a class="header" href="#building-and-running-cheribsdmorello-in-qemu" id="building-and-running-cheribsdmorello-in-qemu">Building and running CheriBSD/Morello in QEMU</a></h2>
+<h2 id="building-and-running-cheribsdmorello-in-qemu"><a class="header" href="#building-and-running-cheribsdmorello-in-qemu">Building and running CheriBSD/Morello in QEMU</a></h2>
 <p>The following command builds a CheriBSD/Morello live image, and boots it in
 QEMU-CHERI:</p>
 <pre><code>% ./cheribuild.py -d build-and-run-cheribsd-morello-purecap
 </code></pre>
-<h2><a class="header" href="#building-cheribsdmorello-release-images" id="building-cheribsdmorello-release-images">Building CheriBSD/Morello release images</a></h2>
+<h2 id="building-cheribsdmorello-release-images"><a class="header" href="#building-cheribsdmorello-release-images">Building CheriBSD/Morello release images</a></h2>
 <p>The following command builds a CheriBSD/Morello installer (memstick) image
 suitable to write to a USB stick:</p>
 <pre><code>% ./cheribuild.py -d --clean cheribsd-release-morello-purecap
@@ -662,11 +674,11 @@ lines of:
 <code>output/cheribsd-release-morello-purecap/FreeBSD-14.0-CURRENT-arm64-aarch64c-memstick.img</code>.
 This is relative to your <code>cheribuild</code> destination root, which is, by default,
 <code>~/cheri</code>.</p>
-<h2><a class="header" href="#obtaining-further-information" id="obtaining-further-information">Obtaining further information</a></h2>
+<h2 id="obtaining-further-information"><a class="header" href="#obtaining-further-information">Obtaining further information</a></h2>
 <p>The <code>cheribuild</code> <a href="https://github.com/CTSRD-CHERI/cheribuild#readme">README.md</a>
 provides detailed information on various parameters and targets its supports,
 as well as its dependencies.</p>
-<h1><a class="header" href="#cheribsd-on-an-arm-morello-board" id="cheribsd-on-an-arm-morello-board">CheriBSD on an Arm Morello board</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="cheribsd-on-an-arm-morello-board"><a class="header" href="#cheribsd-on-an-arm-morello-board">CheriBSD on an Arm Morello board</a></h1>
 <p>Arm's Morello board contains a quadcore CHERI-extended Neoverse N1 processor
 design, as well as two management microcontrollers.
 CheriBSD is able to run on, and fully utilize, Morello's CHERI support to
@@ -689,7 +701,7 @@ your Morello board, as the board has most likely shipped with an older
 firmware version.
 If you are not running the latest version, you may experience hard-to-diagnose
 behaviour or reliability problems.</strong></p>
-<h1><a class="header" href="#accessing-the-morello-console" id="accessing-the-morello-console">Accessing the Morello console</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="accessing-the-morello-console"><a class="header" href="#accessing-the-morello-console">Accessing the Morello console</a></h1>
 <p>You can manage the Morello board, including reaching its multiple serial
 consoles and firmware flash storage, via a USB cable connected to a second
 computer -- typically a workstation or remote management server.
@@ -701,7 +713,7 @@ including:</p>
 <li>Flash storage used for firmware (an on-board SD card)</li>
 <li>Two 4-port USB-to-serial converters</li>
 </ul>
-<p>Each controller has a unique serial number ending in the letter &quot;A&quot; or B&quot;.
+<p>Each controller has a unique serial number ending in the letter "A" or B".
 The serial-port converters attach to UARTs associated with:</p>
 <ul>
 <li>The MCC management microcontroller (converter B port 0)</li>
@@ -716,14 +728,14 @@ depend on the operating system being used.
 Often access will also require running the terminal command under su(8) or
 sudo(8), or adding your user to a <code>dialer</code> or similar group to grant access to
 the USB device nodes.</p>
-<h2><a class="header" href="#connecting-from-freebsd" id="connecting-from-freebsd">Connecting from FreeBSD</a></h2>
+<h2 id="connecting-from-freebsd"><a class="header" href="#connecting-from-freebsd">Connecting from FreeBSD</a></h2>
 <p>FreeBSD names USB device nodes in the order they probe and attach.
 Typical command lines to access the MCC and Morello consoles are:</p>
 <ul>
 <li>MCC console: <code>cu -l /dev/cuaU0 -s 115200</code></li>
 <li>Morello console: <code>cu -l /dev/cuaU2 -s 115200</code></li>
 </ul>
-<h2><a class="header" href="#connecting-from-apple-macos" id="connecting-from-apple-macos">Connecting from Apple macOS</a></h2>
+<h2 id="connecting-from-apple-macos"><a class="header" href="#connecting-from-apple-macos">Connecting from Apple macOS</a></h2>
 <p>macOS creates <code>/dev/cu.usbserial-</code> device nodes that embed the device
 serial number (including <code>A</code> or <code>B</code>) and port number.
 Typical command lines to access the MCC and Morello consoles are:</p>
@@ -733,15 +745,15 @@ Typical command lines to access the MCC and Morello consoles are:</p>
 </ul>
 <p>You will need to substitute the serial numbers of the USB converters in your
 specific Morello board for these commands to work.</p>
-<h2><a class="header" href="#connecting-from-windows" id="connecting-from-windows">Connecting from Windows</a></h2>
+<h2 id="connecting-from-windows"><a class="header" href="#connecting-from-windows">Connecting from Windows</a></h2>
 <p>Windows requires the installation of FTDI drivers to access the Morello
 board's USB ports, and the OS should identify the appropriate driver version
 once the board is connected.
 Plink is a CLI bundled with PuTTY, a third-party terminal emulator and SSH
-client freely available from the 
+client freely available from the
 <a href="https://apps.microsoft.com/detail/putty/XPFNZKSKLBP7RJ">Windows Store</a>
 and the developer's official
-<a href="https://www.chiark.greenend.org.uk/%7Esgtatham/putty/latest.html">website</a>.
+<a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">website</a>.
 After installing the drivers and PuTTY, typical command lines to access the
 MCC and Morello consoles are:</p>
 <ul>
@@ -749,7 +761,7 @@ MCC and Morello consoles are:</p>
 <li>Morello console: <code>plink -serial \\.\COM5 -sercfg 115200</code></li>
 </ul>
 <p>Do note that Windows assigns serial numbers at random.</p>
-<h1><a class="header" href="#upgrading-the-morello-firmware" id="upgrading-the-morello-firmware">Upgrading the Morello firmware</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="upgrading-the-morello-firmware"><a class="header" href="#upgrading-the-morello-firmware">Upgrading the Morello firmware</a></h1>
 <p>Newer Morello firmware versions contain important feature extensions (such as
 support for network booting) and also bug fixes (such as persistent variable
 support for UEFI, which is relied on for CheriBSD boot).</p>
@@ -758,7 +770,7 @@ configuration can be found
 <a href="https://developer.arm.com/documentation/den0132/0100/Flash-the-onboard-SD-card">here</a>.
 The instructions in this guide are an abbreviated and slightly modified set of
 instructions better tuned to CheriBSD requirements.</p>
-<h2><a class="header" href="#setting-the-system-clock" id="setting-the-system-clock">Setting the system clock</a></h2>
+<h2 id="setting-the-system-clock"><a class="header" href="#setting-the-system-clock">Setting the system clock</a></h2>
 <p>Start by setting the system date and time in the MCC.
 Although the Arm documentation recommends setting your local time, we
 recommend using UTC with CheriBSD:</p>
@@ -767,7 +779,7 @@ Debug&gt; time
 Debug&gt; date
 Debug&gt; exit
 </code></pre>
-<h2><a class="header" href="#downloading-prebuilt-firmware" id="downloading-prebuilt-firmware">Downloading prebuilt firmware</a></h2>
+<h2 id="downloading-prebuilt-firmware"><a class="header" href="#downloading-prebuilt-firmware">Downloading prebuilt firmware</a></h2>
 <p>Arm provides <a href="https://git.morello-project.org/morello/board-firmware">prebuilt firmware
 images</a> via the
 Morello GitLab instance, although you can also build your own.
@@ -775,7 +787,7 @@ Start by downloading this directory tree, which can be done by performing a
 <code>git clone</code>:</p>
 <pre><code>git clone https://git.morello-project.org/morello/board-firmware.git
 </code></pre>
-<h2><a class="header" href="#reflashing-the-firmware" id="reflashing-the-firmware">Reflashing the firmware</a></h2>
+<h2 id="reflashing-the-firmware"><a class="header" href="#reflashing-the-firmware">Reflashing the firmware</a></h2>
 <p>The Morello firmware is stored on a 2.0GiB SD Card on the Morello board within
 the case.
 The SD Card content can be exposed as a USB mass storage device accessible
@@ -802,13 +814,13 @@ command.</p>
 in your workstation's filesystem buffer cache have been written back, and to
 avoid concurrent accesses leading to possible filesystem corruption.
 This must be done before issuing the MCC <code>reboot</code> command.</strong></p>
-<h2><a class="header" href="#rebooting-the-mcc" id="rebooting-the-mcc">Rebooting the MCC</a></h2>
+<h2 id="rebooting-the-mcc"><a class="header" href="#rebooting-the-mcc">Rebooting the MCC</a></h2>
 <p>Complete the upgrade by rebooting the Morello board via the MCC:</p>
 <pre><code>Cmd&gt; reboot
 Rebooting...
 Disabling debug USB..
 </code></pre>
-<h2><a class="header" href="#recovering-the-sd-card-format" id="recovering-the-sd-card-format">Recovering the SD Card format</a></h2>
+<h2 id="recovering-the-sd-card-format"><a class="header" href="#recovering-the-sd-card-format">Recovering the SD Card format</a></h2>
 <p>If you find that your SD Card no longer has a correct partition table
 (for example, if like the author you have written an installer image
 over it by accident) you will need to restore it to the original state
@@ -816,7 +828,7 @@ with a FAT formated volume named M1SDP. The mechanism for creating
 such a filesystem will vary by OS. After you have created the FAT
 filesystem, follow the instruction above to copy the firmware into place
 and install it.</p>
-<h3><a class="header" href="#linux" id="linux">Linux</a></h3>
+<h3 id="linux"><a class="header" href="#linux">Linux</a></h3>
 <p>On Linux the following commands will create and format the FAT32 partition:</p>
 <pre><code>parted /dev/sdX mktable msdos
 parted /dev/sdX mkpart primary fat32 0% 100%
@@ -824,19 +836,19 @@ mkfs.msdos /dev/sdX1
 </code></pre>
 <p>In this command <code>/dev/sdX</code> should be replaced by the path to the SD Card
 device.</p>
-<h3><a class="header" href="#macos" id="macos">MacOS</a></h3>
+<h3 id="macos"><a class="header" href="#macos">MacOS</a></h3>
 <p>On MacOS the following command will create and format the M1SDP partition:</p>
 <pre><code>diskutil partitionDisk /dev/disk# 1 MBRFormat MS-DOS M1SDP 100%
 </code></pre>
 <p>In this command <code>/dev/disk#</code> should be replaced by the path to the SD Card
 device.</p>
-<h1><a class="header" href="#installing-on-a-morello-board" id="installing-on-a-morello-board">Installing on a Morello Board</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installing-on-a-morello-board"><a class="header" href="#installing-on-a-morello-board">Installing on a Morello Board</a></h1>
 <p><em><strong>Please ensure that you have upgraded the Morello board firmware before
 proceeding to CheriBSD installation.</strong></em></p>
 <p>Once you have a disk image, you will either need to write it to a USB stick
 to boot an Arm Morello system, or specify it as an argument to an emulator
 such as QEMU-CHERI or the Arm Morello FVP.</p>
-<h2><a class="header" href="#writing-an-installer-disk-image-to-a-usb-stick" id="writing-an-installer-disk-image-to-a-usb-stick">Writing an installer disk image to a USB stick</a></h2>
+<h2 id="writing-an-installer-disk-image-to-a-usb-stick"><a class="header" href="#writing-an-installer-disk-image-to-a-usb-stick">Writing an installer disk image to a USB stick</a></h2>
 <p>With appropriate substitutions of image filename and target device, the
 following command would write the image to a USB stick for use with a Morello
 board:</p>
@@ -844,12 +856,12 @@ board:</p>
 </code></pre>
 <p>It is also possible to write a live image to a USB stick, with appropriate
 filename substitution.</p>
-<h2><a class="header" href="#installing-an-arm-morello-system" id="installing-an-arm-morello-system">Installing an Arm Morello system</a></h2>
+<h2 id="installing-an-arm-morello-system"><a class="header" href="#installing-an-arm-morello-system">Installing an Arm Morello system</a></h2>
 <p>It is possible to use Arm Morello systems both by booting the live image on a
 USB stick, and also by installing to the internal hard disk.
 In this section, we describe the how to perform an installation using the
 memstick image.</p>
-<h3><a class="header" href="#starting-the-boot" id="starting-the-boot">Starting the boot</a></h3>
+<h3 id="starting-the-boot"><a class="header" href="#starting-the-boot">Starting the boot</a></h3>
 <p>Before powering on your Morello board, ensure that the installer USB stick is
 inserted into one of the USB ports on the board.
 Use the power switch to power the board on, which should lead to firmware
@@ -949,7 +961,7 @@ Console type [xterm]:
 </code></pre>
 <p>In most cases, simply hitting Enter will be the right thing to do.
 This will enter <code>bsdinstall</code>, the interactive FreeBSD installer.</p>
-<h3><a class="header" href="#bsdinstall" id="bsdinstall">bsdinstall</a></h3>
+<h3 id="bsdinstall"><a class="header" href="#bsdinstall">bsdinstall</a></h3>
 <p><code>bsdinstall</code> uses the <code>libdialog</code> text interface library.
 <strong>Be aware that you will sometimes need to use the space bar, and not enter
 key, to select menu options, which many users find confusing.</strong></p>
@@ -962,12 +974,12 @@ key, to select menu options, which many users find confusing.</strong></p>
                    │[  Install  ] [   Shell   ] [Live System]│
                    └─────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#keymap-selection" id="keymap-selection">Keymap selection</a></h4>
+<h4 id="keymap-selection"><a class="header" href="#keymap-selection">Keymap selection</a></h4>
 <p>If you intend only to use the serial console, and not video console, select
 the default keymap by hitting Enter at the next menu; otherwise, use the
 cursor keys and space bar to select a country-specific keyboard layout:</p>
 <pre><code>       ┌───────────────────────┤Keymap Selection├────────────────────────┐
-       │ The system console driver for FreeBSD defaults to standard &quot;US&quot; │
+       │ The system console driver for FreeBSD defaults to standard "US" │
        │ keyboard map. Other keymaps can be chosen below.                │
        │ ┌─────────────────────────────────────────────────────────────┐ │
        │ │&gt;&gt;&gt; Continue with default keymap                             │ │
@@ -987,7 +999,7 @@ cursor keys and space bar to select a country-specific keyboard layout:</p>
        └────────────────── Press arrows, TAB or ENTER ───────────────────┘
 
 </code></pre>
-<h4><a class="header" href="#hostname" id="hostname">Hostname</a></h4>
+<h4 id="hostname"><a class="header" href="#hostname">Hostname</a></h4>
 <p>Press Enter to accept the default hostname, or replace it:</p>
 <pre><code>            ┌───────────────────┤Set Hostname├────────────────────┐
             │ Please choose a hostname for this machine.          │
@@ -1001,7 +1013,7 @@ cursor keys and space bar to select a country-specific keyboard layout:</p>
             │                      [  OK  ]                       │
             └─────────────────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#partitioning-automatic-or-manual" id="partitioning-automatic-or-manual">Partitioning (automatic or manual)</a></h4>
+<h4 id="partitioning-automatic-or-manual"><a class="header" href="#partitioning-automatic-or-manual">Partitioning (automatic or manual)</a></h4>
 <p>This tutorial assumes that you are performing a fresh install, or a complete
 reinstall of your Morello system, with the intention of booting only CheriBSD.
 It also assumes that you will be using the UFS file system.
@@ -1020,7 +1032,7 @@ information on partitioning disks before proceeding.</p>
               │              [  OK  ]     [Cancel]              │
               └─────────────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#partition-entire-disk" id="partition-entire-disk">Partition (entire disk)</a></h4>
+<h4 id="partition-entire-disk"><a class="header" href="#partition-entire-disk">Partition (entire disk)</a></h4>
 <p>Select Entire Disk and press Enter:</p>
 <pre><code>                 ┌────────────────┤Partition├────────────────┐
                  │ Would you like to use this entire disk    │
@@ -1032,7 +1044,7 @@ information on partitioning disks before proceeding.</p>
                  │      [Entire Disk]     [ Partition ]      │
                  └───────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#partition-entire-disk---confirmation" id="partition-entire-disk---confirmation">Partition (entire disk - confirmation)</a></h4>
+<h4 id="partition-entire-disk---confirmation"><a class="header" href="#partition-entire-disk---confirmation">Partition (entire disk - confirmation)</a></h4>
 <p>Press Enter to confirm:</p>
 <pre><code>                 ┌────────────────┤Partition├────────────────┐
                  │ Would you like to use this entire disk    │
@@ -1044,7 +1056,7 @@ information on partitioning disks before proceeding.</p>
                  │     └───────────────────────────────┘     │
                  └───────                                 ───┘
 </code></pre>
-<h4><a class="header" href="#partition-editor" id="partition-editor">Partition Editor</a></h4>
+<h4 id="partition-editor"><a class="header" href="#partition-editor">Partition Editor</a></h4>
 <p>Review the proposed partition scheme, select Finish, and then press Enter to
 proceed:</p>
 <pre><code>            ┌─────────────────┤Partition Editor├──────────────────┐
@@ -1068,7 +1080,7 @@ proceed:</p>
             │[Create] [Delete] [Modify] [Revert] [ Auto ] [Finish]│
             └─────────────────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#partition-editor---confirmation" id="partition-editor---confirmation">Partition editor - confirmation</a></h4>
+<h4 id="partition-editor---confirmation"><a class="header" href="#partition-editor---confirmation">Partition editor - confirmation</a></h4>
 <p>Select Commit and press Enter to continue with writing out a new partition
 table:</p>
 <pre><code>            ┌─────────────────┤Partition Editor├──────────────────┐
@@ -1092,7 +1104,7 @@ table:</p>
             │[Create] [Delete] [Modify] [Revert] [ Auto ] [Finish]│
             └─────────────────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#the-installation-proceeds" id="the-installation-proceeds">The installation proceeds</a></h4>
+<h4 id="the-installation-proceeds"><a class="header" href="#the-installation-proceeds">The installation proceeds</a></h4>
 <p>The installer will now proceed to check distribution files and unpack them
 onto the disk.
 Unless something goes wrong, no user interaction is required.
@@ -1120,19 +1132,19 @@ Typical output from the installation process will look like this:</p>
 │  └──────────────────────────────────────────────────────────────────────┘  │
 └────────────────────────────────────────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#updating-the-efi-configuration-table" id="updating-the-efi-configuration-table">Updating the EFI configuration table</a></h4>
+<h4 id="updating-the-efi-configuration-table"><a class="header" href="#updating-the-efi-configuration-table">Updating the EFI configuration table</a></h4>
 <p>If you are reinstalling a Morello box with an existing OS install, you may be
 prompted to update the boot configuration.
 Press Enter to proceed:</p>
 <pre><code>                    ┌────────┤Boot Configuration├────────┐
-                    │ There are multiple &quot;FreeBSD&quot; EFI   │
+                    │ There are multiple "FreeBSD" EFI   │
                     │ boot entries. Would you like to    │
                     │ remove them all and add a new one? │
                     ├────────────────────────────────────┤
                     │        [ Yes  ]     [  No  ]       │
                     └────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#setting-a-root-password" id="setting-a-root-password">Setting a root password</a></h4>
+<h4 id="setting-a-root-password"><a class="header" href="#setting-a-root-password">Setting a root password</a></h4>
 <p>Enter a new root password and press Enter.
 Then confirm it by typing the same password again and pressing Enter.</p>
 <pre><code>Please select a password for the system management account (root):
@@ -1140,7 +1152,7 @@ Typed characters will not be visible.
 Changing local password for root
 New Password:
 </code></pre>
-<h4><a class="header" href="#network-configuration" id="network-configuration">Network configuration</a></h4>
+<h4 id="network-configuration"><a class="header" href="#network-configuration">Network configuration</a></h4>
 <p>If desired, configure Ethernet networking by pressing Enter.</p>
 <pre><code>      ┌─────────────────────┤Network Configuration├─────────────────────┐
       │ Please select a network interface to configure:                 │
@@ -1151,7 +1163,7 @@ New Password:
       │                      [  OK  ]     [Cancel]                      │
       └─────────────────────────────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#network-configuration---enabling-ipv4" id="network-configuration---enabling-ipv4">Network configuration - enabling IPv4</a></h4>
+<h4 id="network-configuration---enabling-ipv4"><a class="header" href="#network-configuration---enabling-ipv4">Network configuration - enabling IPv4</a></h4>
 <p>If desired, enable IPv4 on the Ethernet interface by selecting Yes and
 pressing Enter:</p>
 <pre><code>                        ┌───┤Network Configuration├───┐
@@ -1161,7 +1173,7 @@ pressing Enter:</p>
                         │    [ Yes  ]    [  No  ]     │
                         └─────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#network-configuration---dhcp-for-ipv4" id="network-configuration---dhcp-for-ipv4">Network configuration - DHCP for IPv4</a></h4>
+<h4 id="network-configuration---dhcp-for-ipv4"><a class="header" href="#network-configuration---dhcp-for-ipv4">Network configuration - DHCP for IPv4</a></h4>
 <p>If you will be using DHCP, select Yes and press Enter.
 Otherwise select No and press Enter to perform a manual IPv4 configuration.</p>
 <pre><code>                       ┌────┤Network Configuration├───┐
@@ -1171,7 +1183,7 @@ Otherwise select No and press Enter to perform a manual IPv4 configuration.</p>
                        │     [ Yes  ]    [  No  ]     │
                        └──────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#network-configuration---enabling-ipv6" id="network-configuration---enabling-ipv6">Network configuration - enabling IPv6</a></h4>
+<h4 id="network-configuration---enabling-ipv6"><a class="header" href="#network-configuration---enabling-ipv6">Network configuration - enabling IPv6</a></h4>
 <p>If desired, enable IPv6 on the Ethernet interface by selecting Yes and
 pressing Enter:</p>
 <pre><code>                        ┌───┤Network Configuration├───┐
@@ -1181,7 +1193,7 @@ pressing Enter:</p>
                         │    [ Yes  ]    [  No  ]     │
                         └─────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#network-configuration---slaac-for-ipv6" id="network-configuration---slaac-for-ipv6">Network configuration - SLAAC for IPv6</a></h4>
+<h4 id="network-configuration---slaac-for-ipv6"><a class="header" href="#network-configuration---slaac-for-ipv6">Network configuration - SLAAC for IPv6</a></h4>
 <p>Press Enter to use stateless address autoconfiguration for IPv6:</p>
 <pre><code>                      ┌─────┤Network Configuration├─────┐
                       │ Would you like to try stateless │
@@ -1191,7 +1203,7 @@ pressing Enter:</p>
                       │      [ Yes  ]     [  No  ]      │
                       └─────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#network-configuration---resolver-configuration" id="network-configuration---resolver-configuration">Network configuration - resolver configuration</a></h4>
+<h4 id="network-configuration---resolver-configuration"><a class="header" href="#network-configuration---resolver-configuration">Network configuration - resolver configuration</a></h4>
 <p>Enter DNS resolution configuration information, or press Enter to confirm
 autoconfigured DNS configuration:</p>
 <pre><code>    ┌───────────────────────┤Network Configuration├───────────────────────┐
@@ -1207,7 +1219,7 @@ autoconfigured DNS configuration:</p>
     │                        [  OK  ]     [Cancel]                        │
     └─────────────────────────────────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#local-or-utc-clock" id="local-or-utc-clock">Local or UTC clock</a></h4>
+<h4 id="local-or-utc-clock"><a class="header" href="#local-or-utc-clock">Local or UTC clock</a></h4>
 <p>Press Enter to select a system clock on UTC:</p>
 <pre><code>   ┌───────────┤Select local or UTC (Greenwich Mean Time) clock├───────────┐
    │ Is this machine's CMOS clock set to UTC?  If it is set to local time, │
@@ -1217,7 +1229,7 @@ autoconfigured DNS configuration:</p>
    │                          [ Yes  ]   [  No  ]                          │
    └───────────────────────────────────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#timezone-selection" id="timezone-selection">Timezone selection</a></h4>
+<h4 id="timezone-selection"><a class="header" href="#timezone-selection">Timezone selection</a></h4>
 <p>Press Enter to select UTC as your timezone; otherwise, select your continent
 and press Enter.</p>
 <pre><code>                      ┌──────┤Time Zone Selector├───────┐
@@ -1271,7 +1283,7 @@ and press Enter.</p>
    │                         [ Yes  ]     [  No  ]                        │
    └──────────────────────────────────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#setting-the-date-and-time" id="setting-the-date-and-time">Setting the date and time</a></h4>
+<h4 id="setting-the-date-and-time"><a class="header" href="#setting-the-date-and-time">Setting the date and time</a></h4>
 <p>As desired, set the date, or select Skip and press Enter if you plan
 to use network time synchronization:</p>
 <pre><code>                   ┌─────────────┤Time &amp; Date├────────────┐
@@ -1301,7 +1313,7 @@ to use network time synchronization:</p>
                    │       [Set Time]     [  Skip  ]      │
                    └──────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#system-configuration" id="system-configuration">System configuration</a></h4>
+<h4 id="system-configuration"><a class="header" href="#system-configuration">System configuration</a></h4>
 <p>As desired, enable any further services (e.g., <code>ntpd</code> and <code>ntpd_sync_on_start</code>) by
 selecting them and hitting Space:</p>
 <pre><code>┌───────────────────────────┤System Configuration├───────────────────────────┐
@@ -1321,7 +1333,7 @@ selecting them and hitting Space:</p>
 └────────────────────────────────────────────────────────────────────────────┘
 </code></pre>
 <p>Then press Enter to continue.</p>
-<h4><a class="header" href="#add-user-accounts" id="add-user-accounts">Add user accounts</a></h4>
+<h4 id="add-user-accounts"><a class="header" href="#add-user-accounts">Add user accounts</a></h4>
 <p>If you plan to install the desktop environment in the next step, it is
 useful to create user accounts now.
 If desired, select Yes and press Enter to add non-root accounts.
@@ -1336,7 +1348,7 @@ Otherwise, select No and press Enter</p>
 <p>If you add non-root users, we recommend adding them to the <code>wheel</code>,
 <code>operator</code>, and <code>video</code> groups to allow them to manage the system as well as
 use the desktop environment.</p>
-<h4><a class="header" href="#cheri-desktop-environment" id="cheri-desktop-environment">CHERI Desktop environment</a></h4>
+<h4 id="cheri-desktop-environment"><a class="header" href="#cheri-desktop-environment">CHERI Desktop environment</a></h4>
 <p>If you wish to configure your CheriBSD system with a KDE-based desktop
 environment you can do so now.  <strong>NOTE: You must have previously
 configured the network and be able to reach pkg.CheriBSD.org.</strong></p>
@@ -1350,7 +1362,7 @@ configured the network and be able to reach pkg.CheriBSD.org.</strong></p>
 </code></pre>
 <p>Select Yes to install (<strong>NOTE: this may take 20-50 minutes depending on
 network conditions</strong>).</p>
-<h4><a class="header" href="#virtualization-support" id="virtualization-support">Virtualization support</a></h4>
+<h4 id="virtualization-support"><a class="header" href="#virtualization-support">Virtualization support</a></h4>
 <p>If you wish to configure your CheriBSD system to support <code>bhyve</code>-based,
 CHERI-enabled virtual machines, press Enter:</p>
 <pre><code>                      ┌───────┤CHERI VM Support├────────┐
@@ -1361,7 +1373,7 @@ CHERI-enabled virtual machines, press Enter:</p>
                       │      [ Yes  ]     [  No  ]      │
                       └─────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#final-configuration" id="final-configuration">Final configuration</a></h4>
+<h4 id="final-configuration"><a class="header" href="#final-configuration">Final configuration</a></h4>
 <p>If there are further configuration settings to change, use the up/down arrow
 keys to highlight an appropriate option from the menu, then use the left arrow
 key to select the Select button and press Enter.
@@ -1386,7 +1398,7 @@ Otherwise, press Enter to complete the installation:</p>
 │                            [Select]     [Finish]                           │
 └────────────────────────────────────────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#manual-configuration" id="manual-configuration">Manual configuration</a></h4>
+<h4 id="manual-configuration"><a class="header" href="#manual-configuration">Manual configuration</a></h4>
 <p>If desired, select Yes and press Enter to drop to a shell before reboot.
 Otherwise, select No and press Enter.</p>
 <pre><code>                 ┌──────────┤Manual Configuration├──────────┐
@@ -1398,7 +1410,7 @@ Otherwise, select No and press Enter.</p>
                  │           [ Yes  ]     [  No  ]          │
                  └──────────────────────────────────────────┘
 </code></pre>
-<h3><a class="header" href="#complete" id="complete">Complete</a></h3>
+<h3 id="complete"><a class="header" href="#complete">Complete</a></h3>
 <p>Select Reboot and press Enter:</p>
 <pre><code>                  ┌───────────────┤Complete├────────────────┐
                   │ Installation of FreeBSD complete! Would │
@@ -1408,14 +1420,14 @@ Otherwise, select No and press Enter.</p>
                   │[  Reboot   ] [ Shutdown  ] [Live System]│
                   └─────────────────────────────────────────┘
 </code></pre>
-<h3><a class="header" href="#rebooting-after-installation" id="rebooting-after-installation">Rebooting after installation</a></h3>
+<h3 id="rebooting-after-installation"><a class="header" href="#rebooting-after-installation">Rebooting after installation</a></h3>
 <p>Remove the USB stick to prevent the installer from running after a system
 reboot.
 If you have issues with reliabity rebooting your Morello box, confirm that you
 are using a recent Morello firmware revision due to <a href="morello-install/../morello-issues/">a known firmware
 bug</a> in earlier versions that made OS-triggered reboot
 unreliable.</p>
-<h3><a class="header" href="#logging-in" id="logging-in">Logging in</a></h3>
+<h3 id="logging-in"><a class="header" href="#logging-in">Logging in</a></h3>
 <p>Log in using the username <code>root</code> and the password you entered during the
 installation process:</p>
 <pre><code>...
@@ -1459,7 +1471,7 @@ root@cheribsd:~ #
 </code></pre>
 <p>You can now add further users, install SSH keys for remote access, install
 packages, and so on.</p>
-<h1><a class="header" href="#morello-known-issues" id="morello-known-issues">Morello known issues</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="morello-known-issues"><a class="header" href="#morello-known-issues">Morello known issues</a></h1>
 <p>The following known issues may affect the reliability and usability of
 CheriBSD on Morello:</p>
 <ul>
@@ -1491,7 +1503,7 @@ A user can configure the kernel to ignore hot plug detection and assume
 that the attached monitor can receive HDMI input.
 To do that, add the following line to <code>/boot/loader.conf</code> and reboot your
 board:</p>
-<pre><code>hw.tda19988.broken_hpd=&quot;1&quot;
+<pre><code>hw.tda19988.broken_hpd="1"
 </code></pre>
 <p>While the screen itself should be working with this workaround, the user can
 still experience EDID reading failures described below.</p>
@@ -1507,13 +1519,13 @@ case:</p>
 with the HDMI transmitter issue described above.</p>
 </li>
 </ul>
-<h2><a class="header" href="#issues-with-older-firmware" id="issues-with-older-firmware">Issues with older firmware</a></h2>
+<h2 id="issues-with-older-firmware"><a class="header" href="#issues-with-older-firmware">Issues with older firmware</a></h2>
 <p>The following issues affected users of older firmware revisions:</p>
 <ul>
 <li>
 <p>Due to a firmware bug, OS-triggered reboot may lead the system to hang when
 using older firmware.
-Update your firmware or use the &quot;reboot&quot; command on the management console to
+Update your firmware or use the "reboot" command on the management console to
 reboot the system once the OS has shut down.</p>
 </li>
 <li>
@@ -1527,7 +1539,7 @@ further USB sticks.</p>
 <p><strong>It is extremely important that you use the most recent firmware with your
 Morello board, to avoid these and other issues present in earlier firmware
 releases.</strong></p>
-<h1><a class="header" href="#third-party-packages" id="third-party-packages">Third-party packages</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="third-party-packages"><a class="header" href="#third-party-packages">Third-party packages</a></h1>
 <p>CheriBSD on Morello ships with CheriABI, hybrid ABI and benchmark ABI packages
 (compilations) of the CheriBSD ports collection, each targeting a different
 form of code generation and Application Binary Interface (ABI).
@@ -1539,18 +1551,19 @@ The
 <a href="https://github.com/CTSRD-CHERI/cheribsd-ports/tree/releng/24.05">releng/24.05</a>
 CheriBSD ports branch contains ports matching the packages built for the current
 release.</p>
-<h2><a class="header" href="#overview" id="overview">Overview</a></h2>
+<h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
 <p>The following table presents an overview of available package managers in
 CheriBSD that are described in more details in consecutive sections.
 You can also browse package repositories at
 <a href="https://pkg.CheriBSD.org/">pkg.CheriBSD.org</a>
 to check what packages are available for a specific ABI version.</p>
-<table><thead><tr><th>ABI</th><th>#</th><th>Manager</th><th>Install path</th><th>Suitable for</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>ABI</th><th>#</th><th>Manager</th><th>Install path</th><th>Suitable for</th></tr></thead><tbody>
 <tr><td>CheriABI</td><td>~10,000</td><td><code>pkg64c</code></td><td><code>/usr/local</code></td><td>Security evaluation</td></tr>
 <tr><td>Benchmark ABI</td><td>~10,000</td><td><code>pkg64cb</code></td><td><code>/usr/local64cb</code></td><td>Performance evaluation</td></tr>
 <tr><td>Hybrid ABI</td><td>~25,000</td><td><code>pkg64</code></td><td><code>/usr/local64</code></td><td>Day-to-day use</td></tr>
 </tbody></table>
-<h2><a class="header" href="#package-managers-in-cheribsd" id="package-managers-in-cheribsd">Package managers in CheriBSD</a></h2>
+</div>
+<h2 id="package-managers-in-cheribsd"><a class="header" href="#package-managers-in-cheribsd">Package managers in CheriBSD</a></h2>
 <p><em>Note:</em> As of this writing we only provide packages for Morello systems.</p>
 <p>CheriBSD includes three package managers:</p>
 <ul>
@@ -1571,7 +1584,7 @@ pages shipped with CheriBSD, e.g. for the commands <code>pkg64 rquery</code> and
 <a href="https://www.freebsd.org/cgi/man.cgi?pkg(7)">pkg(8) manual page</a> online
 and the <a href="https://docs.freebsd.org/en/books/handbook/ports/">FreeBSD Handbook chapter on packages and
 ports</a>.</p>
-<h2><a class="header" href="#cheriabi-packages" id="cheriabi-packages">CheriABI packages</a></h2>
+<h2 id="cheriabi-packages"><a class="header" href="#cheriabi-packages">CheriABI packages</a></h2>
 <p><strong>CheriABI packages</strong> are compiled using pure-capability CHERI C/C++, and
 employ fine-grained C/C++ memory protection.</p>
 <p>These packages are considered appropriate for <strong>experimental use</strong> and
@@ -1619,7 +1632,7 @@ hardware-software stack.</p>
 </ul>
 <p>The packages are installed in the standard <code>/usr/local</code> hierarchy as they match
 the base system ABI.</p>
-<h2><a class="header" href="#benchmark-abi-packages" id="benchmark-abi-packages">Benchmark ABI packages</a></h2>
+<h2 id="benchmark-abi-packages"><a class="header" href="#benchmark-abi-packages">Benchmark ABI packages</a></h2>
 <p><strong>Benchmark ABI packages</strong> are compiled similarly to CheriABI packages, but
 differ in generated code that takes into account current limitations of the
 Morello architecture.
@@ -1643,7 +1656,7 @@ If you are planning to use a custom shell, remember to add these paths to
 custom local base path (<code>/usr/local64cb</code>) and a custom <code>LD_LIBRARY_PATH</code>
 variable name (<code>LD_64CB_LIBRARY_PATH</code>) for the benchmark ABI.
 Multiple ports do not correctly handle these differences.</p>
-<h2><a class="header" href="#hybrid-abi-packages" id="hybrid-abi-packages">Hybrid ABI packages</a></h2>
+<h2 id="hybrid-abi-packages"><a class="header" href="#hybrid-abi-packages">Hybrid ABI packages</a></h2>
 <p><strong>Hybrid ABI packages</strong> are compiled almost identically to packages in the
 baseline non-CHERI architecture (e.g., Armv8-a for Morello, and 64-bit
 RISC-V for RISC-V), and do not have improvements in memory protection or
@@ -1704,13 +1717,13 @@ By default, <code>/usr/local64/bin</code> and <code>/usr/local64/sbin</code> are
 <code>PATH</code> environment variable of a shell shipped with CheriBSD.
 If you are planning to use a custom shell, remember to add these paths to
 <code>PATH</code>.</p>
-<h1><a class="header" href="#limitations-of-packages" id="limitations-of-packages">Limitations of packages</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="limitations-of-packages"><a class="header" href="#limitations-of-packages">Limitations of packages</a></h1>
 <p>When using or even considering third-party software delivered with CheriBSD
 packages, it is important to keep in mind the maturity of currently available
 CheriABI packages, and potential conflicts between hybrid ABI and CheriABI
 packages.
 The following sections describe some of such limitations.</p>
-<h2><a class="header" href="#maturity-of-cheriabi-packages" id="maturity-of-cheriabi-packages">Maturity of CheriABI packages</a></h2>
+<h2 id="maturity-of-cheriabi-packages"><a class="header" href="#maturity-of-cheriabi-packages">Maturity of CheriABI packages</a></h2>
 <p>There are many projects that must still be ported to CHERI in order to provide
 a fully-functional CheriABI package repository.
 The available CheriABI packages are also not continuously tested as part of the
@@ -1728,7 +1741,7 @@ a CheriABI package repository that covers functionalities currently included
 in the hybrid ABI package repository.</p>
 <p>We encourage everyone to report bugs related to CHERI support in the
 <a href="https://github.com/CTSRD-CHERI/cheribsd-ports/issues">CheriBSD ports issue tracker</a>.</p>
-<h2><a class="header" href="#separate-local-bases-for-abis" id="separate-local-bases-for-abis">Separate local bases for ABIs</a></h2>
+<h2 id="separate-local-bases-for-abis"><a class="header" href="#separate-local-bases-for-abis">Separate local bases for ABIs</a></h2>
 <p>Upstream FreeBSD does not have the ability to manage packages for multiple ABIs
 at the same time and its <code>pkg</code> package manager installs all packages in the
 default local base path (<code>/usr/local</code>).
@@ -1745,7 +1758,7 @@ might hardcode <code>/usr/local</code> in its source code.</p>
 <p>We encourage everyone to report bugs related to invalid local base paths in the
 hybrid ABI packages in our
 <a href="https://github.com/CTSRD-CHERI/cheribsd-ports/issues">CheriBSD ports issue tracker</a>.</p>
-<h2><a class="header" href="#cross-abi-package-conflicts" id="cross-abi-package-conflicts">Cross-ABI package conflicts</a></h2>
+<h2 id="cross-abi-package-conflicts"><a class="header" href="#cross-abi-package-conflicts">Cross-ABI package conflicts</a></h2>
 <p>Hybrid ABI and CheriABI package repositories include many counterpart packages,
 e.g. <code>git</code> is available in both repositories.
 CheriABI packages have a higher priority than the hybrid ABI packages in default
@@ -1759,14 +1772,14 @@ account both <code>/usr/local</code> and <code>/usr/local64</code> paths.
 The user can set the order of the paths they prefer but it is recommended to
 place <code>/usr/local</code> before <code>/usr/local64</code> in such configurations to match
 CheriBSD's defaults.</p>
-<h2><a class="header" href="#cross-abi-package-dependencies" id="cross-abi-package-dependencies">Cross-ABI package dependencies</a></h2>
+<h2 id="cross-abi-package-dependencies"><a class="header" href="#cross-abi-package-dependencies">Cross-ABI package dependencies</a></h2>
 <p>At the moment, a package cannot depend at run time on another package with
 a different ABI, e.g. to execute a program provided by that package.
 Such a feature would be useful for CheriBSD ports which cannot easily be adapted
 to CheriABI and which include programs that could be executed by other ports
 already adapted to CheriABI.
 There are currently no plans to support this case.</p>
-<h1><a class="header" href="#missing-packages" id="missing-packages">Missing packages</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="missing-packages"><a class="header" href="#missing-packages">Missing packages</a></h1>
 <p>Hybrid ABI and CheriABI package repositories might be missing third-party
 software due to the following reasons:</p>
 <ul>
@@ -1790,7 +1803,7 @@ CheriBSD packages</a> to find failed build logs
 and skipped build causes.</p>
 </li>
 </ul>
-<h1><a class="header" href="#upgrading-packages" id="upgrading-packages">Upgrading packages</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="upgrading-packages"><a class="header" href="#upgrading-packages">Upgrading packages</a></h1>
 <p>It is recommended to upgrade packages in the following situations:</p>
 <ul>
 <li>
@@ -1819,18 +1832,20 @@ If the package upgrade does not resolve your issue, please
 </li>
 </ul>
 <p>Use the following commands to upgrade your packages:</p>
-<table><thead><tr><th>CheriABI</th><th>Hybrid ABI</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>CheriABI</th><th>Hybrid ABI</th></tr></thead><tbody>
 <tr><td><code>pkg64c upgrade</code></td><td><code>pkg64 upgrade</code></td></tr>
 </tbody></table>
+</div>
 <p>If you do not want perform the upgrade itself but only check if newer versions
 are available, use the <code>-n</code> flag:</p>
-<table><thead><tr><th>CheriABI</th><th>Hybrid ABI</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>CheriABI</th><th>Hybrid ABI</th></tr></thead><tbody>
 <tr><td><code>pkg64c upgrade -n</code></td><td><code>pkg64 upgrade -n</code></td></tr>
 </tbody></table>
+</div>
 <p>You can read more on the <code>upgrade</code> command at
 <a href="https://www.freebsd.org/cgi/man.cgi?pkg-upgrade(8)">pkg-upgrade(8)</a>
 or in your console with <code>man pkg-upgrade</code>.</p>
-<h1><a class="header" href="#debugging-packages" id="debugging-packages">Debugging packages</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="debugging-packages"><a class="header" href="#debugging-packages">Debugging packages</a></h1>
 <p>Similarly to the FreeBSD Project, CheriBSD packages are built with CheriBSD
 ports that are based on FreeBSD ports.
 By default, the packages are built with optimisation levels defined in CheriBSD
@@ -1849,7 +1864,7 @@ package repository configuration files:</p>
 <pre><code>mkdir -p /usr/local/etc/pkg/repos
 </code></pre>
 <p>and then creating a configuration file that enables <code>CheriBSD-debug</code>:</p>
-<pre><code>echo &quot;CheriBSD-debug: { enabled: yes }&quot; &gt;/usr/local/etc/pkg/repos/CheriBSD-debug.conf
+<pre><code>echo "CheriBSD-debug: { enabled: yes }" &gt;/usr/local/etc/pkg/repos/CheriBSD-debug.conf
 </code></pre>
 <p>You can reinstall all previously installed default packages to replace them with
 debug packages:</p>
@@ -1868,7 +1883,7 @@ command, e.g.:</p>
 </code></pre>
 <p>If you want to use only the <code>CheriBSD-debug</code> repository, you can create a
 configuration file that disables the <code>CheriBSD</code> repository:</p>
-<pre><code>echo &quot;CheriBSD: { enabled: no }&quot; &gt; /usr/local/etc/pkg/repos/CheriBSD.conf
+<pre><code>echo "CheriBSD: { enabled: no }" &gt; /usr/local/etc/pkg/repos/CheriBSD.conf
 </code></pre>
 <p>You can also check if an installed package was fetched from the default or debug
 package repository:</p>
@@ -1876,7 +1891,7 @@ package repository:</p>
 </code></pre>
 <p>You can omit <code>&lt;pkg-name&gt;</code> in the above command to list all packages with their
 repositories.</p>
-<h1><a class="header" href="#useful-commands" id="useful-commands">Useful commands</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="useful-commands"><a class="header" href="#useful-commands">Useful commands</a></h1>
 <p>The following list includes useful commands to manage packages.
 Replace <code>&lt;pkg&gt;</code> with <code>pkg64c</code> to execute a command in the context of CheriABI
 packages and with <code>pkg64</code> in the context of hybrid ABI packages.</p>
@@ -1949,12 +1964,12 @@ on a CheriBSD host.</p>
 </code></pre>
 </li>
 </ul>
-<h1><a class="header" href="#compiling-hello-world" id="compiling-hello-world">Compiling &quot;Hello World&quot;</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="compiling-hello-world"><a class="header" href="#compiling-hello-world">Compiling "Hello World"</a></h1>
 <p>These instructions are intended for use on an Arm Morello board, and install
 hybrid ABI versions of key toolchain and utilities using <code>pkg64</code>.
 The commands will (eventually) work the same on CHERI-RISC-V, but output
 details and registers in GDB will differ.</p>
-<h2><a class="header" href="#toolchain-installation" id="toolchain-installation">Toolchain installation</a></h2>
+<h2 id="toolchain-installation"><a class="header" href="#toolchain-installation">Toolchain installation</a></h2>
 <p>You will need the Morello LLVM toolchain and Morello GDB for this
 exercise. To install LLVM, use the command:</p>
 <p><code>pkg64 install llvm-base</code></p>
@@ -2016,23 +2031,23 @@ Checking integrity... done (0 conflicting)
 wish to install the <code>nano</code> or <code>vim</code> package to access a
 more familiar editor. Currently only hybrid packages installable with
 <code>pkg64</code> are available.</p>
-<h2><a class="header" href="#source-code" id="source-code">Source code</a></h2>
+<h2 id="source-code"><a class="header" href="#source-code">Source code</a></h2>
 <pre><code class="language-C">#include &lt;stdio.h&gt;
 
 int
 main(void)
 {
-	printf(&quot;Hello world\n&quot;);
+	printf("Hello world\n");
 }
 </code></pre>
-<h2><a class="header" href="#building-for-cheriabi" id="building-for-cheriabi">Building for CheriABI</a></h2>
+<h2 id="building-for-cheriabi"><a class="header" href="#building-for-cheriabi">Building for CheriABI</a></h2>
 <p>To build a CheriABI Hello World program use:</p>
 <p><code>cc -g -O2 -Wall -o helloworld helloworld.c</code></p>
 <p>You can verify this is a CheriABI binary with the <code>file</code> command:</p>
 <pre><code>root@cheribsd:~ # file helloworld
 helloworld: ELF 64-bit LSB pie executable, ARM aarch64, C64, CheriABI, version 1 (SYSV), dynamically linked, interpreter /libexec/ld-elf.so.1, for FreeBSD 14.0 (1400094), FreeBSD-style, with debug_info, not stripped
 </code></pre>
-<h2><a class="header" href="#building-for-the-benchmark-abi" id="building-for-the-benchmark-abi">Building for the Benchmark ABI</a></h2>
+<h2 id="building-for-the-benchmark-abi"><a class="header" href="#building-for-the-benchmark-abi">Building for the Benchmark ABI</a></h2>
 <p>To target the <a href="helloworld/../benchmarking/">Benchmark ABI</a>, add the argument
 <code>-mabi=purecap-benchmark</code> to the <code>cc</code> command line:</p>
 <p><code>cc -g -O2 -Wall -mabi=purecap-benchmark -o helloworld helloworld.c</code></p>
@@ -2040,12 +2055,12 @@ helloworld: ELF 64-bit LSB pie executable, ARM aarch64, C64, CheriABI, version 1
 <pre><code>root@cheribsd:~ # file helloworld
 helloworld: ELF 64-bit LSB pie executable, ARM aarch64, C64, CheriABI, version 1 (SYSV), dynamically linked, interpreter /libexec/ld-elf.so.1, for FreeBSD 14.0 (1400094), FreeBSD-style, pure-capability benchmark ABI, with debug_info, not stripped
 </code></pre>
-<h2><a class="header" href="#running" id="running">Running</a></h2>
+<h2 id="running"><a class="header" href="#running">Running</a></h2>
 <p>Run the program:</p>
 <pre><code>root@cheribsd:~ # ./helloworld
 Hello world
 </code></pre>
-<h2><a class="header" href="#debugging" id="debugging">Debugging</a></h2>
+<h2 id="debugging"><a class="header" href="#debugging">Debugging</a></h2>
 <p>First, if it is not already installed, install the CHERI GDB debugger:</p>
 <p><code>pkg64 install gdb-cheri</code></p>
 <p>You can then debug <code>helloworld</code> by running GDB and setting a breakpoint
@@ -2061,14 +2076,14 @@ Breakpoint 1 at 0x10a14: file helloworld.c, line 6.
 Starting program: /root/helloworld
 
 Breakpoint 1, main () at helloworld.c:6
-6           printf(&quot;Hello world\n&quot;);
+6           printf("Hello world\n");
 (gdb) 
 </code></pre>
 <p>If you then step into the <code>printf</code> (or <code>puts</code> depending on
 optimization level) call you will see that GDB prints the capability
 argument with expanded information including bounds and permissions:</p>
 <pre><code>(gdb) s
-puts (s=0x1006e0 [rR,0x1006e0-0x1006ec] &quot;Hello world&quot;)
+puts (s=0x1006e0 [rR,0x1006e0-0x1006ec] "Hello world")
     at /home/bed22/cheri/cheribsd/lib/libc/stdio/puts.c:60
 60      /home/bed22/cheri/cheribsd/lib/libc/stdio/puts.c: No such file or directory.
 </code></pre>
@@ -2082,8 +2097,8 @@ c0             0x905f400046ec06e000000000001006e0 0x1006e0 [rR,0x1006e0-0x1006ec
 <p>If a capability (either in memory or a register) contains a
 null-derived value, it is displayed as a simple scalar value without
 any attributes.  If a capability is not null-derived but is untagged,
-the string &quot;(invalid)&quot; is displayed after the bounds.</p>
-<p>Capability tags in memory can also be examined by passing the &quot;m&quot;
+the string "(invalid)" is displayed after the bounds.</p>
+<p>Capability tags in memory can also be examined by passing the "m"
 flag to the eXamine command.  For example, compare the output of the
 internal FILE structure used for stdout in libc:</p>
 <pre><code>(gdb) p *__stdoutp
@@ -2094,8 +2109,8 @@ $1 = {_p = 0x0, _r = 0, _w = 0, _flags = 8, _file = 1, _bf = {_base = 0x0,
   _read = 0x402bada5 &lt;__sread&gt; [rxRE,0x4018e000-0x407f0000] (sentry), 
   _seek = 0x402baddd &lt;__sseek&gt; [rxRE,0x4018e000-0x407f0000] (sentry), 
   _write = 0x402badc1 &lt;__swrite&gt; [rxRE,0x4018e000-0x407f0000] (sentry), _ub = {
-    _base = 0x0, _size = 0}, _up = 0x0, _ur = 0, _ubuf = &quot;\000\000&quot;, 
-  _nbuf = &quot;&quot;, _lb = {_base = 0x0, _size = 0}, _blksize = 0, _offset = 0, 
+    _base = 0x0, _size = 0}, _up = 0x0, _ur = 0, _ubuf = "\000\000", 
+  _nbuf = "", _lb = {_base = 0x0, _size = 0}, _blksize = 0, _offset = 0, 
   _fl_mutex = 0x0, _fl_owner = 0x0, _fl_count = 0, _orientation = 0, 
   _mbstate = {__mbstate8 = '\000' &lt;repeats 127 times&gt;, _mbstateL = 0, 
     _mbstateP = 0x0 }, _flags2 = 0}
@@ -2117,12 +2132,12 @@ $1 = {_p = 0x0, _r = 0, _w = 0, _flags = 8, _file = 1, _bf = {_base = 0x0,
 &lt;CHERI Tag 1 for range [0x403a8470,0x403a8480)&gt;
 0x403a8470:     0x00000000402bada5      0xb05fc000bf0618e7
 </code></pre>
-<h1><a class="header" href="#benchmarking-guidance" id="benchmarking-guidance">Benchmarking guidance</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="benchmarking-guidance"><a class="header" href="#benchmarking-guidance">Benchmarking guidance</a></h1>
 <p>CheriBSD is a research operating system designed to run on experimental
 hardware.
 In this section, we provide high-level guidance on configuring CheriBSD for
 software benchmarking.</p>
-<h1><a class="header" href="#framing" id="framing">Framing</a></h1>
+<h1 id="framing"><a class="header" href="#framing">Framing</a></h1>
 <p>The expectation of this section is that a performance comparison is being
 made between baseline aarch64-compiled software (64-bit Arm) and memory-safe
 aarch64c software (CheriABI) on the Arm Morello board.</p>
@@ -2133,18 +2148,18 @@ That document provides detailed information on how to interpret performance
 measurements, including documenting known limitations of the prototype
 Morello microarchitecture.</p>
 <p>A key conclusion from that work is that CheriABI software being used for
-performance measurement should be compiled for the aarch64cb &quot;Benchmark ABI&quot;,
+performance measurement should be compiled for the aarch64cb "Benchmark ABI",
 and not aarch64c.</p>
-<h1><a class="header" href="#kernel-configuration" id="kernel-configuration">Kernel configuration</a></h1>
+<h1 id="kernel-configuration"><a class="header" href="#kernel-configuration">Kernel configuration</a></h1>
 <p>Depending on the version of CheriBSD you are using, the kernel may have a
 number of debugging fetures enabled.
 These features can substantially impact system performance, including
 inducing disproportionate performance overhead for specific system behaviours.
-For example, enabling kernel lock-order checking (&quot;WITNESS&quot;) will introduce
+For example, enabling kernel lock-order checking ("WITNESS") will introduce
 substantial overhead, and in particular will impact kernel-centric workloads
 that make more intensive use of locks, such as networking.
 During boot, CheriBSD will add the following lines to <code>/etc/motd</code>, which will
-be displayed at login, to warn you about the &quot;INVARIANTS&quot; and &quot;WITNESS&quot;
+be displayed at login, to warn you about the "INVARIANTS" and "WITNESS"
 debugging features:</p>
 <pre><code>WARNING: INVARIANTS kernel option defined, expect reduced performance
 WARNING: WITNESS kernel option defined, expect reduced performance
@@ -2153,15 +2168,15 @@ WARNING: WITNESS kernel option defined, expect reduced performance
 <code>kernel.GENERIC-MORELLO-NODEBUG</code> configuration when kernel memory safety is
 not required.
 The following line can be added to <code>/boot/loader.conf</code>:</p>
-<pre><code>kernel=&quot;kernel.GENERIC-MORELLO-NODEBUG&quot;
+<pre><code>kernel="kernel.GENERIC-MORELLO-NODEBUG"
 </code></pre>
 <p>Measurements requiring a memory-safe kernel should use the
 <code>kernel.GENERIC-MORELLO-PURECAP-NODEBUG</code> configuration.
 The following can be added to <code>/boot/loader.conf</code>:</p>
-<pre><code>kernel=&quot;kernel.GENERIC-MORELLO-PURECAP-NODEBUG&quot;
+<pre><code>kernel="kernel.GENERIC-MORELLO-PURECAP-NODEBUG"
 </code></pre>
 <p>You will need to reboot in order for this change to take effect.</p>
-<h1><a class="header" href="#heap-temporal-memory-safety" id="heap-temporal-memory-safety">Heap temporal memory safety</a></h1>
+<h1 id="heap-temporal-memory-safety"><a class="header" href="#heap-temporal-memory-safety">Heap temporal memory safety</a></h1>
 <p>Since CheriBSD 23.11, userlevel heap temporal safety is enabled by default with jemalloc as the memory allocator.
 This support is experimental, and has not yet been through significant
 performance analysis and optimization.
@@ -2176,7 +2191,7 @@ be displayed at login, to warn you about the temporal safety feature:</p>
 <pre><code>security.cheri.runtime_revocation_default=0
 </code></pre>
 <p>You will need to reboot in order for this change to take effect.</p>
-<h1><a class="header" href="#the-benchmark-abi" id="the-benchmark-abi">The Benchmark ABI</a></h1>
+<h1 id="the-benchmark-abi"><a class="header" href="#the-benchmark-abi">The Benchmark ABI</a></h1>
 <p>Since CheriBSD 23.11, CheriBSD supports the Benchmark ABI, a modified form of
 code generation improving performance on the Arm Morello board.
 This is required due to limitations on bounds prediction in the current
@@ -2194,7 +2209,7 @@ More information on what the Benchmark ABI is, and how to interpret
 performance results, can be found in <a href="https://ctsrd-cheri.github.io/morello-early-performance-results/cover/index.html">Early performance results from the
 prototype Morello
 microarchitecture</a>.</p>
-<h1><a class="header" href="#getting-help" id="getting-help">Getting help</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="getting-help"><a class="header" href="#getting-help">Getting help</a></h1>
 <p>CheriBSD is a community-supported open-source research operating system.
 While every effort has been made to engineer to a high quality, many aspects
 of OS design for CHERI processors remain active research, and there are
@@ -2202,7 +2217,7 @@ constrained engineering resources available to build, maintain, and support
 the system.
 As you gain experience with CheriBSD, your help in supporting newcomers in the
 community will be greatly appreciated.</p>
-<h2><a class="header" href="#github-issue-tracker-and-pull-requests" id="github-issue-tracker-and-pull-requests">GitHub issue tracker and pull requests</a></h2>
+<h2 id="github-issue-tracker-and-pull-requests"><a class="header" href="#github-issue-tracker-and-pull-requests">GitHub issue tracker and pull requests</a></h2>
 <p>CheriBSD is developed and maintained in the <a href="https://github.com/CTSRD-CHERI/cheribsd">CheriBSD GitHub
 repository</a>, which includes an issue
 tracker in which bugs can be reported, as well as permitting pull requests to
@@ -2210,7 +2225,7 @@ be submitted.</p>
 <p>This document is also maintained in a <a href="https://github.com/CTSRD-CHERI/cheribsd-getting-started">GitHub
 repository</a>, and your
 feedback and improvements would be very much appreciated.</p>
-<h2><a class="header" href="#cheribsd-slack-on-cheri-cpuslackcom" id="cheribsd-slack-on-cheri-cpuslackcom">CheriBSD Slack on cheri-cpu.slack.com</a></h2>
+<h2 id="cheribsd-slack-on-cheri-cpuslackcom"><a class="header" href="#cheribsd-slack-on-cheri-cpuslackcom">CheriBSD Slack on cheri-cpu.slack.com</a></h2>
 <p>Support for CheriBSD is provided via the <a href="https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-slack.html">CHERI CPU
 Slack</a>,
 where a number of topic-specific channels can be found:</p>
@@ -2233,15 +2248,15 @@ where a number of topic-specific channels can be found:</p>
 CheriBSD ports and Poudriere.</p>
 </li>
 </ul>
-<h2><a class="header" href="#cheribsd-mailing-lists" id="cheribsd-mailing-lists">CheriBSD mailing lists</a></h2>
+<h2 id="cheribsd-mailing-lists"><a class="header" href="#cheribsd-mailing-lists">CheriBSD mailing lists</a></h2>
 <p>There are also several CheriBSD email lists available:</p>
 <ul>
 <li><a href="https://lists.cam.ac.uk/sympa/info/cl-cheribsd-announce">CheriBSD announcement mailing list (low volume)</a></li>
 <li><a href="https://lists.cam.ac.uk/sympa/info/cl-cheribsd-discuss">CheriBSD general discussion</a></li>
 <li><a href="https://lists.cam.ac.uk/sympa/info/cl-cheribsd-ports">CheriBSD ports and packages discussion</a></li>
-<li>CheriBSD security vulnerabilities contact address <a href="mailto:cl-cheribsd-security@lists.cam.ac.uk">cl-cheribsd-security@lists.cam.ac.uk</a> </li>
+<li>CheriBSD security vulnerabilities contact address <a href="mailto:cl-cheribsd-security@lists.cam.ac.uk">cl-cheribsd-security@lists.cam.ac.uk</a></li>
 </ul>
-<h2><a class="header" href="#in-person-events-and-meetings" id="in-person-events-and-meetings">In-person events and meetings</a></h2>
+<h2 id="in-person-events-and-meetings"><a class="header" href="#in-person-events-and-meetings">In-person events and meetings</a></h2>
 <p>You can meet with the CheriBSD developers at a number of conferences and other
 events, including:</p>
 <ul>
@@ -2261,14 +2276,14 @@ the UK in the future.</p>
 <p>Most CheriBSD developers are based at the University of Cambridge (UK) and SRI
 International (USA), and it is possible to set up meetings with them directly.
 Get in touch if this would be useful to you.</p>
-<h1><a class="header" href="#resources" id="resources">Resources</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="resources"><a class="header" href="#resources">Resources</a></h1>
 <p>In addition to the <a href="resources/../support/">CheriBSD support channels</a>, the
 following resources may also be useful.</p>
-<h2><a class="header" href="#cheribsd-1" id="cheribsd-1">CheriBSD</a></h2>
+<h2 id="cheribsd-1"><a class="header" href="#cheribsd-1">CheriBSD</a></h2>
 <ul>
 <li><a href="https://www.cheribsd.org/">CheriBSD website</a></li>
 </ul>
-<h2><a class="header" href="#cheri-1" id="cheri-1">CHERI</a></h2>
+<h2 id="cheri-1"><a class="header" href="#cheri-1">CHERI</a></h2>
 <ul>
 <li><a href="https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/">CHERI project
 website</a></li>
@@ -2277,7 +2292,7 @@ CHERI</a></li>
 <li><a href="https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-947.pdf">The CHERI C/C++ Programming
 Guide</a></li>
 </ul>
-<h2><a class="header" href="#freebsd" id="freebsd">FreeBSD</a></h2>
+<h2 id="freebsd"><a class="header" href="#freebsd">FreeBSD</a></h2>
 <ul>
 <li><a href="https://docs.freebsd.org/en/books/handbook/">The FreeBSD Handbook</a></li>
 </ul>
@@ -2286,9 +2301,7 @@ Guide</a></li>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
 
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -2296,49 +2309,35 @@ Guide</a></li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
 
-                
             </nav>
 
         </div>
 
-        
 
-        
 
-        
 
-        
-        <script type="text/javascript">
+        <script>
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
 
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-        
 
-        
-        
-        <script type="text/javascript">
+        <script>
         window.addEventListener('load', function() {
             window.setTimeout(window.print, 100);
         });
         </script>
-        
-        
 
+    </div>
     </body>
 </html>

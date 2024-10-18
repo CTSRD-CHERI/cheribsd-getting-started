@@ -1,28 +1,19 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Installing on a Morello board - Getting Started with CheriBSD 24.05</title>
-        
-        
 
 
         <!-- Custom HTML head -->
         
-
-
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
-        
         <link rel="icon" href="../favicon.svg">
-        
-        
         <link rel="shortcut icon" href="../favicon.png">
-        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
@@ -30,9 +21,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -40,19 +29,18 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
 
-        
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -68,61 +56,89 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
 
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../cover/index.html">Getting Started with CheriBSD 24.05</a></li><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="../features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../features/kernel.html"><strong aria-hidden="true">3.1.</strong> Kernel compilation modes</a></li><li class="chapter-item expanded "><a href="../features/processes.html"><strong aria-hidden="true">3.2.</strong> Process environments</a></li><li class="chapter-item expanded "><a href="../features/desktop.html"><strong aria-hidden="true">3.3.</strong> CheriABI desktop environment</a></li><li class="chapter-item expanded "><a href="../features/temporal.html"><strong aria-hidden="true">3.4.</strong> Userlevel heap temporal memory safety</a></li><li class="chapter-item expanded "><a href="../features/c18n.html"><strong aria-hidden="true">3.5.</strong> Userlevel software compartmentalization</a></li><li class="chapter-item expanded "><a href="../features/bhyve.html"><strong aria-hidden="true">3.6.</strong> bhyve hypervisor</a></li></ol></li><li class="chapter-item expanded "><a href="../nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="../getting/index.html"><strong aria-hidden="true">5.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">5.1.</strong> Downloading image files</a></li><li class="chapter-item expanded "><a href="../building/index.html"><strong aria-hidden="true">5.2.</strong> Building image files</a></li></ol></li><li class="chapter-item expanded "><a href="../morello/index.html"><strong aria-hidden="true">6.</strong> CheriBSD on an Arm Morello board</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../morello-console/index.html"><strong aria-hidden="true">6.1.</strong> Accessing the Morello console</a></li><li class="chapter-item expanded "><a href="../morello-firmware/index.html"><strong aria-hidden="true">6.2.</strong> Upgrading the Morello firmware</a></li><li class="chapter-item expanded "><a href="../morello-install/index.html" class="active"><strong aria-hidden="true">6.3.</strong> Installing on a Morello board</a></li><li class="chapter-item expanded "><a href="../morello-issues/index.html"><strong aria-hidden="true">6.4.</strong> Morello known issues</a></li></ol></li><li class="chapter-item expanded "><a href="../packages/index.html"><strong aria-hidden="true">7.</strong> Third-party packages</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../packages/limitations.html"><strong aria-hidden="true">7.1.</strong> Limitations of packages</a></li><li class="chapter-item expanded "><a href="../packages/missing.html"><strong aria-hidden="true">7.2.</strong> Missing packages</a></li><li class="chapter-item expanded "><a href="../packages/upgrading.html"><strong aria-hidden="true">7.3.</strong> Upgrading packages</a></li><li class="chapter-item expanded "><a href="../packages/debugging.html"><strong aria-hidden="true">7.4.</strong> Debugging packages</a></li><li class="chapter-item expanded "><a href="../packages/commands.html"><strong aria-hidden="true">7.5.</strong> Useful commands</a></li></ol></li><li class="chapter-item expanded "><a href="../helloworld/index.html"><strong aria-hidden="true">8.</strong> Compiling &quot;Hello World&quot;</a></li><li class="chapter-item expanded "><a href="../benchmarking/index.html"><strong aria-hidden="true">9.</strong> Benchmarking guidance</a></li><li class="chapter-item expanded "><a href="../support/index.html"><strong aria-hidden="true">10.</strong> Getting help</a></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">11.</strong> Resources</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../cover/index.html">Getting Started with CheriBSD 24.05</a></li><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li class="chapter-item expanded "><a href="../features/index.html"><strong aria-hidden="true">3.</strong> CheriBSD features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../features/kernel.html"><strong aria-hidden="true">3.1.</strong> Kernel compilation modes</a></li><li class="chapter-item expanded "><a href="../features/processes.html"><strong aria-hidden="true">3.2.</strong> Process environments</a></li><li class="chapter-item expanded "><a href="../features/desktop.html"><strong aria-hidden="true">3.3.</strong> CheriABI desktop environment</a></li><li class="chapter-item expanded "><a href="../features/temporal.html"><strong aria-hidden="true">3.4.</strong> Userlevel heap temporal memory safety</a></li><li class="chapter-item expanded "><a href="../features/c18n.html"><strong aria-hidden="true">3.5.</strong> Userlevel software compartmentalization</a></li><li class="chapter-item expanded "><a href="../features/bhyve.html"><strong aria-hidden="true">3.6.</strong> bhyve hypervisor</a></li></ol></li><li class="chapter-item expanded "><a href="../nonfeatures/index.html"><strong aria-hidden="true">4.</strong> Unsupported FreeBSD features</a></li><li class="chapter-item expanded "><a href="../getting/index.html"><strong aria-hidden="true">5.</strong> Getting CheriBSD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../downloading/index.html"><strong aria-hidden="true">5.1.</strong> Downloading image files</a></li><li class="chapter-item expanded "><a href="../building/index.html"><strong aria-hidden="true">5.2.</strong> Building image files</a></li></ol></li><li class="chapter-item expanded "><a href="../morello/index.html"><strong aria-hidden="true">6.</strong> CheriBSD on an Arm Morello board</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../morello-console/index.html"><strong aria-hidden="true">6.1.</strong> Accessing the Morello console</a></li><li class="chapter-item expanded "><a href="../morello-firmware/index.html"><strong aria-hidden="true">6.2.</strong> Upgrading the Morello firmware</a></li><li class="chapter-item expanded "><a href="../morello-install/index.html" class="active"><strong aria-hidden="true">6.3.</strong> Installing on a Morello board</a></li><li class="chapter-item expanded "><a href="../morello-issues/index.html"><strong aria-hidden="true">6.4.</strong> Morello known issues</a></li></ol></li><li class="chapter-item expanded "><a href="../packages/index.html"><strong aria-hidden="true">7.</strong> Third-party packages</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../packages/limitations.html"><strong aria-hidden="true">7.1.</strong> Limitations of packages</a></li><li class="chapter-item expanded "><a href="../packages/missing.html"><strong aria-hidden="true">7.2.</strong> Missing packages</a></li><li class="chapter-item expanded "><a href="../packages/upgrading.html"><strong aria-hidden="true">7.3.</strong> Upgrading packages</a></li><li class="chapter-item expanded "><a href="../packages/debugging.html"><strong aria-hidden="true">7.4.</strong> Debugging packages</a></li><li class="chapter-item expanded "><a href="../packages/commands.html"><strong aria-hidden="true">7.5.</strong> Useful commands</a></li></ol></li><li class="chapter-item expanded "><a href="../helloworld/index.html"><strong aria-hidden="true">8.</strong> Compiling "Hello World"</a></li><li class="chapter-item expanded "><a href="../benchmarking/index.html"><strong aria-hidden="true">9.</strong> Benchmarking guidance</a></li><li class="chapter-item expanded "><a href="../support/index.html"><strong aria-hidden="true">10.</strong> Getting help</a></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">11.</strong> Resources</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">Getting Started with CheriBSD 24.05</h1>
@@ -131,18 +147,16 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
                         <a href="https://github.com/CTSRD-CHERI/cheribsd-getting-started" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -150,10 +164,9 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -163,13 +176,13 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#installing-on-a-morello-board" id="installing-on-a-morello-board">Installing on a Morello Board</a></h1>
+                        <h1 id="installing-on-a-morello-board"><a class="header" href="#installing-on-a-morello-board">Installing on a Morello Board</a></h1>
 <p><em><strong>Please ensure that you have upgraded the Morello board firmware before
 proceeding to CheriBSD installation.</strong></em></p>
 <p>Once you have a disk image, you will either need to write it to a USB stick
 to boot an Arm Morello system, or specify it as an argument to an emulator
 such as QEMU-CHERI or the Arm Morello FVP.</p>
-<h2><a class="header" href="#writing-an-installer-disk-image-to-a-usb-stick" id="writing-an-installer-disk-image-to-a-usb-stick">Writing an installer disk image to a USB stick</a></h2>
+<h2 id="writing-an-installer-disk-image-to-a-usb-stick"><a class="header" href="#writing-an-installer-disk-image-to-a-usb-stick">Writing an installer disk image to a USB stick</a></h2>
 <p>With appropriate substitutions of image filename and target device, the
 following command would write the image to a USB stick for use with a Morello
 board:</p>
@@ -177,12 +190,12 @@ board:</p>
 </code></pre>
 <p>It is also possible to write a live image to a USB stick, with appropriate
 filename substitution.</p>
-<h2><a class="header" href="#installing-an-arm-morello-system" id="installing-an-arm-morello-system">Installing an Arm Morello system</a></h2>
+<h2 id="installing-an-arm-morello-system"><a class="header" href="#installing-an-arm-morello-system">Installing an Arm Morello system</a></h2>
 <p>It is possible to use Arm Morello systems both by booting the live image on a
 USB stick, and also by installing to the internal hard disk.
 In this section, we describe the how to perform an installation using the
 memstick image.</p>
-<h3><a class="header" href="#starting-the-boot" id="starting-the-boot">Starting the boot</a></h3>
+<h3 id="starting-the-boot"><a class="header" href="#starting-the-boot">Starting the boot</a></h3>
 <p>Before powering on your Morello board, ensure that the installer USB stick is
 inserted into one of the USB ports on the board.
 Use the power switch to power the board on, which should lead to firmware
@@ -282,7 +295,7 @@ Console type [xterm]:
 </code></pre>
 <p>In most cases, simply hitting Enter will be the right thing to do.
 This will enter <code>bsdinstall</code>, the interactive FreeBSD installer.</p>
-<h3><a class="header" href="#bsdinstall" id="bsdinstall">bsdinstall</a></h3>
+<h3 id="bsdinstall"><a class="header" href="#bsdinstall">bsdinstall</a></h3>
 <p><code>bsdinstall</code> uses the <code>libdialog</code> text interface library.
 <strong>Be aware that you will sometimes need to use the space bar, and not enter
 key, to select menu options, which many users find confusing.</strong></p>
@@ -295,12 +308,12 @@ key, to select menu options, which many users find confusing.</strong></p>
                    │[  Install  ] [   Shell   ] [Live System]│
                    └─────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#keymap-selection" id="keymap-selection">Keymap selection</a></h4>
+<h4 id="keymap-selection"><a class="header" href="#keymap-selection">Keymap selection</a></h4>
 <p>If you intend only to use the serial console, and not video console, select
 the default keymap by hitting Enter at the next menu; otherwise, use the
 cursor keys and space bar to select a country-specific keyboard layout:</p>
 <pre><code>       ┌───────────────────────┤Keymap Selection├────────────────────────┐
-       │ The system console driver for FreeBSD defaults to standard &quot;US&quot; │
+       │ The system console driver for FreeBSD defaults to standard "US" │
        │ keyboard map. Other keymaps can be chosen below.                │
        │ ┌─────────────────────────────────────────────────────────────┐ │
        │ │&gt;&gt;&gt; Continue with default keymap                             │ │
@@ -320,7 +333,7 @@ cursor keys and space bar to select a country-specific keyboard layout:</p>
        └────────────────── Press arrows, TAB or ENTER ───────────────────┘
 
 </code></pre>
-<h4><a class="header" href="#hostname" id="hostname">Hostname</a></h4>
+<h4 id="hostname"><a class="header" href="#hostname">Hostname</a></h4>
 <p>Press Enter to accept the default hostname, or replace it:</p>
 <pre><code>            ┌───────────────────┤Set Hostname├────────────────────┐
             │ Please choose a hostname for this machine.          │
@@ -334,7 +347,7 @@ cursor keys and space bar to select a country-specific keyboard layout:</p>
             │                      [  OK  ]                       │
             └─────────────────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#partitioning-automatic-or-manual" id="partitioning-automatic-or-manual">Partitioning (automatic or manual)</a></h4>
+<h4 id="partitioning-automatic-or-manual"><a class="header" href="#partitioning-automatic-or-manual">Partitioning (automatic or manual)</a></h4>
 <p>This tutorial assumes that you are performing a fresh install, or a complete
 reinstall of your Morello system, with the intention of booting only CheriBSD.
 It also assumes that you will be using the UFS file system.
@@ -353,7 +366,7 @@ information on partitioning disks before proceeding.</p>
               │              [  OK  ]     [Cancel]              │
               └─────────────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#partition-entire-disk" id="partition-entire-disk">Partition (entire disk)</a></h4>
+<h4 id="partition-entire-disk"><a class="header" href="#partition-entire-disk">Partition (entire disk)</a></h4>
 <p>Select Entire Disk and press Enter:</p>
 <pre><code>                 ┌────────────────┤Partition├────────────────┐
                  │ Would you like to use this entire disk    │
@@ -365,7 +378,7 @@ information on partitioning disks before proceeding.</p>
                  │      [Entire Disk]     [ Partition ]      │
                  └───────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#partition-entire-disk---confirmation" id="partition-entire-disk---confirmation">Partition (entire disk - confirmation)</a></h4>
+<h4 id="partition-entire-disk---confirmation"><a class="header" href="#partition-entire-disk---confirmation">Partition (entire disk - confirmation)</a></h4>
 <p>Press Enter to confirm:</p>
 <pre><code>                 ┌────────────────┤Partition├────────────────┐
                  │ Would you like to use this entire disk    │
@@ -377,7 +390,7 @@ information on partitioning disks before proceeding.</p>
                  │     └───────────────────────────────┘     │
                  └───────                                 ───┘
 </code></pre>
-<h4><a class="header" href="#partition-editor" id="partition-editor">Partition Editor</a></h4>
+<h4 id="partition-editor"><a class="header" href="#partition-editor">Partition Editor</a></h4>
 <p>Review the proposed partition scheme, select Finish, and then press Enter to
 proceed:</p>
 <pre><code>            ┌─────────────────┤Partition Editor├──────────────────┐
@@ -401,7 +414,7 @@ proceed:</p>
             │[Create] [Delete] [Modify] [Revert] [ Auto ] [Finish]│
             └─────────────────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#partition-editor---confirmation" id="partition-editor---confirmation">Partition editor - confirmation</a></h4>
+<h4 id="partition-editor---confirmation"><a class="header" href="#partition-editor---confirmation">Partition editor - confirmation</a></h4>
 <p>Select Commit and press Enter to continue with writing out a new partition
 table:</p>
 <pre><code>            ┌─────────────────┤Partition Editor├──────────────────┐
@@ -425,7 +438,7 @@ table:</p>
             │[Create] [Delete] [Modify] [Revert] [ Auto ] [Finish]│
             └─────────────────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#the-installation-proceeds" id="the-installation-proceeds">The installation proceeds</a></h4>
+<h4 id="the-installation-proceeds"><a class="header" href="#the-installation-proceeds">The installation proceeds</a></h4>
 <p>The installer will now proceed to check distribution files and unpack them
 onto the disk.
 Unless something goes wrong, no user interaction is required.
@@ -453,19 +466,19 @@ Typical output from the installation process will look like this:</p>
 │  └──────────────────────────────────────────────────────────────────────┘  │
 └────────────────────────────────────────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#updating-the-efi-configuration-table" id="updating-the-efi-configuration-table">Updating the EFI configuration table</a></h4>
+<h4 id="updating-the-efi-configuration-table"><a class="header" href="#updating-the-efi-configuration-table">Updating the EFI configuration table</a></h4>
 <p>If you are reinstalling a Morello box with an existing OS install, you may be
 prompted to update the boot configuration.
 Press Enter to proceed:</p>
 <pre><code>                    ┌────────┤Boot Configuration├────────┐
-                    │ There are multiple &quot;FreeBSD&quot; EFI   │
+                    │ There are multiple "FreeBSD" EFI   │
                     │ boot entries. Would you like to    │
                     │ remove them all and add a new one? │
                     ├────────────────────────────────────┤
                     │        [ Yes  ]     [  No  ]       │
                     └────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#setting-a-root-password" id="setting-a-root-password">Setting a root password</a></h4>
+<h4 id="setting-a-root-password"><a class="header" href="#setting-a-root-password">Setting a root password</a></h4>
 <p>Enter a new root password and press Enter.
 Then confirm it by typing the same password again and pressing Enter.</p>
 <pre><code>Please select a password for the system management account (root):
@@ -473,7 +486,7 @@ Typed characters will not be visible.
 Changing local password for root
 New Password:
 </code></pre>
-<h4><a class="header" href="#network-configuration" id="network-configuration">Network configuration</a></h4>
+<h4 id="network-configuration"><a class="header" href="#network-configuration">Network configuration</a></h4>
 <p>If desired, configure Ethernet networking by pressing Enter.</p>
 <pre><code>      ┌─────────────────────┤Network Configuration├─────────────────────┐
       │ Please select a network interface to configure:                 │
@@ -484,7 +497,7 @@ New Password:
       │                      [  OK  ]     [Cancel]                      │
       └─────────────────────────────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#network-configuration---enabling-ipv4" id="network-configuration---enabling-ipv4">Network configuration - enabling IPv4</a></h4>
+<h4 id="network-configuration---enabling-ipv4"><a class="header" href="#network-configuration---enabling-ipv4">Network configuration - enabling IPv4</a></h4>
 <p>If desired, enable IPv4 on the Ethernet interface by selecting Yes and
 pressing Enter:</p>
 <pre><code>                        ┌───┤Network Configuration├───┐
@@ -494,7 +507,7 @@ pressing Enter:</p>
                         │    [ Yes  ]    [  No  ]     │
                         └─────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#network-configuration---dhcp-for-ipv4" id="network-configuration---dhcp-for-ipv4">Network configuration - DHCP for IPv4</a></h4>
+<h4 id="network-configuration---dhcp-for-ipv4"><a class="header" href="#network-configuration---dhcp-for-ipv4">Network configuration - DHCP for IPv4</a></h4>
 <p>If you will be using DHCP, select Yes and press Enter.
 Otherwise select No and press Enter to perform a manual IPv4 configuration.</p>
 <pre><code>                       ┌────┤Network Configuration├───┐
@@ -504,7 +517,7 @@ Otherwise select No and press Enter to perform a manual IPv4 configuration.</p>
                        │     [ Yes  ]    [  No  ]     │
                        └──────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#network-configuration---enabling-ipv6" id="network-configuration---enabling-ipv6">Network configuration - enabling IPv6</a></h4>
+<h4 id="network-configuration---enabling-ipv6"><a class="header" href="#network-configuration---enabling-ipv6">Network configuration - enabling IPv6</a></h4>
 <p>If desired, enable IPv6 on the Ethernet interface by selecting Yes and
 pressing Enter:</p>
 <pre><code>                        ┌───┤Network Configuration├───┐
@@ -514,7 +527,7 @@ pressing Enter:</p>
                         │    [ Yes  ]    [  No  ]     │
                         └─────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#network-configuration---slaac-for-ipv6" id="network-configuration---slaac-for-ipv6">Network configuration - SLAAC for IPv6</a></h4>
+<h4 id="network-configuration---slaac-for-ipv6"><a class="header" href="#network-configuration---slaac-for-ipv6">Network configuration - SLAAC for IPv6</a></h4>
 <p>Press Enter to use stateless address autoconfiguration for IPv6:</p>
 <pre><code>                      ┌─────┤Network Configuration├─────┐
                       │ Would you like to try stateless │
@@ -524,7 +537,7 @@ pressing Enter:</p>
                       │      [ Yes  ]     [  No  ]      │
                       └─────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#network-configuration---resolver-configuration" id="network-configuration---resolver-configuration">Network configuration - resolver configuration</a></h4>
+<h4 id="network-configuration---resolver-configuration"><a class="header" href="#network-configuration---resolver-configuration">Network configuration - resolver configuration</a></h4>
 <p>Enter DNS resolution configuration information, or press Enter to confirm
 autoconfigured DNS configuration:</p>
 <pre><code>    ┌───────────────────────┤Network Configuration├───────────────────────┐
@@ -540,7 +553,7 @@ autoconfigured DNS configuration:</p>
     │                        [  OK  ]     [Cancel]                        │
     └─────────────────────────────────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#local-or-utc-clock" id="local-or-utc-clock">Local or UTC clock</a></h4>
+<h4 id="local-or-utc-clock"><a class="header" href="#local-or-utc-clock">Local or UTC clock</a></h4>
 <p>Press Enter to select a system clock on UTC:</p>
 <pre><code>   ┌───────────┤Select local or UTC (Greenwich Mean Time) clock├───────────┐
    │ Is this machine's CMOS clock set to UTC?  If it is set to local time, │
@@ -550,7 +563,7 @@ autoconfigured DNS configuration:</p>
    │                          [ Yes  ]   [  No  ]                          │
    └───────────────────────────────────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#timezone-selection" id="timezone-selection">Timezone selection</a></h4>
+<h4 id="timezone-selection"><a class="header" href="#timezone-selection">Timezone selection</a></h4>
 <p>Press Enter to select UTC as your timezone; otherwise, select your continent
 and press Enter.</p>
 <pre><code>                      ┌──────┤Time Zone Selector├───────┐
@@ -604,7 +617,7 @@ and press Enter.</p>
    │                         [ Yes  ]     [  No  ]                        │
    └──────────────────────────────────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#setting-the-date-and-time" id="setting-the-date-and-time">Setting the date and time</a></h4>
+<h4 id="setting-the-date-and-time"><a class="header" href="#setting-the-date-and-time">Setting the date and time</a></h4>
 <p>As desired, set the date, or select Skip and press Enter if you plan
 to use network time synchronization:</p>
 <pre><code>                   ┌─────────────┤Time &amp; Date├────────────┐
@@ -634,7 +647,7 @@ to use network time synchronization:</p>
                    │       [Set Time]     [  Skip  ]      │
                    └──────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#system-configuration" id="system-configuration">System configuration</a></h4>
+<h4 id="system-configuration"><a class="header" href="#system-configuration">System configuration</a></h4>
 <p>As desired, enable any further services (e.g., <code>ntpd</code> and <code>ntpd_sync_on_start</code>) by
 selecting them and hitting Space:</p>
 <pre><code>┌───────────────────────────┤System Configuration├───────────────────────────┐
@@ -654,7 +667,7 @@ selecting them and hitting Space:</p>
 └────────────────────────────────────────────────────────────────────────────┘
 </code></pre>
 <p>Then press Enter to continue.</p>
-<h4><a class="header" href="#add-user-accounts" id="add-user-accounts">Add user accounts</a></h4>
+<h4 id="add-user-accounts"><a class="header" href="#add-user-accounts">Add user accounts</a></h4>
 <p>If you plan to install the desktop environment in the next step, it is
 useful to create user accounts now.
 If desired, select Yes and press Enter to add non-root accounts.
@@ -669,7 +682,7 @@ Otherwise, select No and press Enter</p>
 <p>If you add non-root users, we recommend adding them to the <code>wheel</code>,
 <code>operator</code>, and <code>video</code> groups to allow them to manage the system as well as
 use the desktop environment.</p>
-<h4><a class="header" href="#cheri-desktop-environment" id="cheri-desktop-environment">CHERI Desktop environment</a></h4>
+<h4 id="cheri-desktop-environment"><a class="header" href="#cheri-desktop-environment">CHERI Desktop environment</a></h4>
 <p>If you wish to configure your CheriBSD system with a KDE-based desktop
 environment you can do so now.  <strong>NOTE: You must have previously
 configured the network and be able to reach pkg.CheriBSD.org.</strong></p>
@@ -683,7 +696,7 @@ configured the network and be able to reach pkg.CheriBSD.org.</strong></p>
 </code></pre>
 <p>Select Yes to install (<strong>NOTE: this may take 20-50 minutes depending on
 network conditions</strong>).</p>
-<h4><a class="header" href="#virtualization-support" id="virtualization-support">Virtualization support</a></h4>
+<h4 id="virtualization-support"><a class="header" href="#virtualization-support">Virtualization support</a></h4>
 <p>If you wish to configure your CheriBSD system to support <code>bhyve</code>-based,
 CHERI-enabled virtual machines, press Enter:</p>
 <pre><code>                      ┌───────┤CHERI VM Support├────────┐
@@ -694,7 +707,7 @@ CHERI-enabled virtual machines, press Enter:</p>
                       │      [ Yes  ]     [  No  ]      │
                       └─────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#final-configuration" id="final-configuration">Final configuration</a></h4>
+<h4 id="final-configuration"><a class="header" href="#final-configuration">Final configuration</a></h4>
 <p>If there are further configuration settings to change, use the up/down arrow
 keys to highlight an appropriate option from the menu, then use the left arrow
 key to select the Select button and press Enter.
@@ -719,7 +732,7 @@ Otherwise, press Enter to complete the installation:</p>
 │                            [Select]     [Finish]                           │
 └────────────────────────────────────────────────────────────────────────────┘
 </code></pre>
-<h4><a class="header" href="#manual-configuration" id="manual-configuration">Manual configuration</a></h4>
+<h4 id="manual-configuration"><a class="header" href="#manual-configuration">Manual configuration</a></h4>
 <p>If desired, select Yes and press Enter to drop to a shell before reboot.
 Otherwise, select No and press Enter.</p>
 <pre><code>                 ┌──────────┤Manual Configuration├──────────┐
@@ -731,7 +744,7 @@ Otherwise, select No and press Enter.</p>
                  │           [ Yes  ]     [  No  ]          │
                  └──────────────────────────────────────────┘
 </code></pre>
-<h3><a class="header" href="#complete" id="complete">Complete</a></h3>
+<h3 id="complete"><a class="header" href="#complete">Complete</a></h3>
 <p>Select Reboot and press Enter:</p>
 <pre><code>                  ┌───────────────┤Complete├────────────────┐
                   │ Installation of FreeBSD complete! Would │
@@ -741,14 +754,14 @@ Otherwise, select No and press Enter.</p>
                   │[  Reboot   ] [ Shutdown  ] [Live System]│
                   └─────────────────────────────────────────┘
 </code></pre>
-<h3><a class="header" href="#rebooting-after-installation" id="rebooting-after-installation">Rebooting after installation</a></h3>
+<h3 id="rebooting-after-installation"><a class="header" href="#rebooting-after-installation">Rebooting after installation</a></h3>
 <p>Remove the USB stick to prevent the installer from running after a system
 reboot.
 If you have issues with reliabity rebooting your Morello box, confirm that you
 are using a recent Morello firmware revision due to <a href="../morello-issues/">a known firmware
 bug</a> in earlier versions that made OS-triggered reboot
 unreliable.</p>
-<h3><a class="header" href="#logging-in" id="logging-in">Logging in</a></h3>
+<h3 id="logging-in"><a class="header" href="#logging-in">Logging in</a></h3>
 <p>Log in using the username <code>root</code> and the password you entered during the
 installation process:</p>
 <pre><code>...
@@ -797,17 +810,13 @@ packages, and so on.</p>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../morello-firmware/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
-                            <a rel="next" href="../morello-issues/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../morello-issues/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -815,49 +824,36 @@ packages, and so on.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../morello-firmware/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
-                    <a rel="next" href="../morello-issues/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../morello-issues/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
 
-        
 
-        
-        <script type="text/javascript">
+        <script>
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
-        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
 
-        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
-        
 
-        
 
+    </div>
     </body>
 </html>
