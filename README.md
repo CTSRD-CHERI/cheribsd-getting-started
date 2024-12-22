@@ -56,4 +56,6 @@ will build the static HTML files in the `book/` directory, whilst `mdbook
 serve` will build and serve them at `http://localhost:3000`. Please refer to
 the mdBook documentation for futher options.
 
+{% block extrahead %}
 <meta name="google-site-verification" content="Ue9Os-dHuJkfSAPaju1OqeJOdvJI_yYwf-43SYmd_is" />
+{% endblock %}
