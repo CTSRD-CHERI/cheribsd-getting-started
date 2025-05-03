@@ -1,6 +1,6 @@
 <!-- ANCHOR: cover -->
 
-# Getting Started with CheriBSD 24.05
+# Getting Started with CheriBSD 25.03
 
 Robert N. M. Watson (University of Cambridge)
 and
@@ -15,7 +15,7 @@ further information and support.
 <!--
 NOTE: A release version is also in SUMMARY.md.
 -->
-**The document describes CheriBSD as of the 24.05 release, unless explicitly
+**The document describes CheriBSD as of the 25.03 release, unless explicitly
 stated in sections referring to earlier or later releases.**
 
 *This document is a work-in-progress.  Feedback and contributions are
@@ -39,9 +39,10 @@ UK project Developing and Evaluating an Open-Source Desktop for Arm Morello,
 10027440.
 
 This material is based upon work supported by the Defense Advanced
-Research Projects Agency (DARPA) under Contract No. HR001122C0110 ("ETC") and
+Research Projects Agency (DARPA) under Contract No. HR001122C0110 ("ETC"),
 Defense Advanced Research Projects Agency (DARPA) Contract No. HR001123C0031
-("MTSS").
+("MTSS"), and Defense Advanced Research Projects Agency (DARPA) Contract No.
+FA8750-24-C-B047 ("DEC").
 Any opinions, findings and conclusions or recommendations expressed in this
 material are those of the author(s) and do not necessarily reflect the
 views of the Defense Advanced Research Projects Agency (DARPA).

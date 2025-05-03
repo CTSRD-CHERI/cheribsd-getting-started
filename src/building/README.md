@@ -72,7 +72,7 @@ suitable to write to a USB stick:
 
 The resulting image file will be generated in a file with a name along the
 lines of:
-`output/cheribsd-release-morello-purecap/FreeBSD-14.0-CURRENT-arm64-aarch64c-memstick.img`.
+`output/cheribsd-release-morello-purecap/FreeBSD-15.0-CURRENT-arm64-aarch64c-memstick.img`.
 This is relative to your `cheribuild` destination root, which is, by default,
 `~/cheri`.
 

@@ -9,12 +9,19 @@ such as QEMU-CHERI or the Arm Morello FVP.
 
 ## Writing an installer disk image to a USB stick
 
+If the image file you have downloaded is compressed (i.e., has a `.xz`
+filename suffix), you will need to first decompress the image:
+
+```
+unxz cheribsd-memstick-arm64-aarch64c-25.03.img.xz
+```
+
 With appropriate substitutions of image filename and target device, the
 following command would write the image to a USB stick for use with a Morello
 board:
 
 ```
-dd if=cheribsd-memstick-arm64-aarch64c-24.05.img of=/dev/DISK bs=1M
+dd if=cheribsd-memstick-arm64-aarch64c-25.03.img of=/dev/DISK bs=1M
 ```
 
 It is also possible to write a live image to a USB stick, with appropriate
