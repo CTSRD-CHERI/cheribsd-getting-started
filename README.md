@@ -2,9 +2,12 @@
 
 # Getting Started with CheriBSD 25.03
 
-Robert N. M. Watson (University of Cambridge)
+Robert N. M. Watson (University of Cambridge),
+Jessica Clarke (University of Cambridge),
+Brooks Davis (SRI International),
+Konrad Witaszczyk (University of Cambridge)
 and
-Brooks Davis (SRI International)
+George V. Neville-Neil (MSB Associates)
 
 This is a living document that describes how to get up and running with
 [CheriBSD](https://www.cheribsd.org/) on Morello and CHERI-RISC-V.
@@ -28,10 +31,8 @@ automatically updated when the git repository is committed to.*
 
 ## Acknowledgements
 
-The authors gratefully acknowledge Brian Campbell (University of Edinburgh),
-Jessica Clarke (University of Cambridge),
-George Neville-Neil (MSB Associates), and Konrad Witaszczyk (University of
-Cambridge) for their contributions to this document.
+The authors gratefully acknowledge Brian Campbell (University of Edinburgh)
+and Elise Haldane (Digital Catapult) for their contributions to this document.
 
 This work was supported in part by the Innovate UK project Digital
 Security by Design (DSbD) Technology Platform Prototype, 105694, and Innovate
