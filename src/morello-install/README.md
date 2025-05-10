@@ -7,6 +7,9 @@ Once you have a disk image, you will either need to write it to a USB stick
 to boot an Arm Morello system, or specify it as an argument to an emulator
 such as QEMU-CHERI or the Arm Morello FVP.
 
+*Note that some screen shots in these instructions are from the 24.05
+release, and will be updated soon.*
+
 ## Writing an installer disk image to a USB stick
 
 If the image file you have downloaded is compressed (i.e., has a `.xz`
