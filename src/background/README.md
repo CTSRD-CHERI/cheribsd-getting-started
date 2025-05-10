@@ -34,6 +34,10 @@ You can learn more about CHERI by reading the technical report, [An
 Introduction to
 CHERI](https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-941.pdf).
 
+The recently published article, [CHERI: Hardware-Enabled C/C++ Memory
+Protection at Scale](https://ieeexplore.ieee.org/abstract/document/10568212),
+describes the CHERI software ecosystem and developing CHERI hardware stacks.
+
 ## CHERI C/C++
 
 **CHERI C** and **CHERI C++** are programming-language dialects closely tied

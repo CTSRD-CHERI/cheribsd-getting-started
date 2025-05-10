@@ -4,8 +4,9 @@ Since CheriBSD 23.11 there has been support for userlevel heap temporal memory
 safety based on a load-barrier extension to
 [Cornucopia](https://www.cl.cam.ac.uk/research/security/ctsrd/pdfs/2020oakland-cornucopia.pdf),
 which is inspired by garbage-collection techniques.
-A forthcoming paper at ASPLOS 2024 on the Cornucopia Reloaded technique will
-describe these differences in detail.
+Our paper on [Cornucopia
+Reloaded](https://www.cl.cam.ac.uk/research/security/ctsrd/pdfs/202404asplos-cornucopia-reloaded.pdf),
+which appeared in ASPLOS 2024, describes this work in detail.
 
 This feature involves a collaboration between the kernel (which provides
 asynchronous capability revocation with VM acceleration) and the userlevel
@@ -34,7 +35,7 @@ sysctl security.cheri.runtime_revocation_default
 ```
 
 This sysctl sets the default policy for revocation used by processes on
-startup.
+startup, which is enabled by default as of CheriBSD 23.11.
 We recommend setting this in `/boot/loader.conf`, which is processed by the
 boot loader before any user processes start.
 
