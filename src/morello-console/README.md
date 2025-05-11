@@ -32,8 +32,8 @@ the USB device nodes.
 FreeBSD names USB device nodes in the order they probe and attach.
 Typical command lines to access the MCC and Morello consoles are:
 
-- MCC console: `cu -l /dev/cuaU0 -s 115200`
-- Morello console: `cu -l /dev/cuaU2 -s 115200`
+- MCC console: `cu -s 115200 -l /dev/cuaU0`
+- Morello console: `cu -s 115200 -l /dev/cuaU2`
 
 ## Connecting from Apple macOS
 
@@ -41,8 +41,8 @@ macOS creates `/dev/cu.usbserial-` device nodes that embed the device
 serial number (including `A` or `B`) and port number.
 Typical command lines to access the MCC and Morello consoles are:
 
-- MCC console: `cu -l /dev/cu.usbserial-00FT41683097B0 -s 115200`
-- Morello console: `cu -l /dev/cu.usbserial-00FT41683097B2 -s 115200`
+- MCC console: `cu -s 115200 -l /dev/cu.usbserial-00FT41683097B0`
+- Morello console: `cu -s 115200 -l /dev/cu.usbserial-00FT41683097B2`
 
 You will need to substitute the serial numbers of the USB converters in your
 specific Morello board for these commands to work.
