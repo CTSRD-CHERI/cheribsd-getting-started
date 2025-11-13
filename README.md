@@ -40,7 +40,7 @@ UK project Developing and Evaluating an Open-Source Desktop for Arm Morello,
 10027440.
 
 This work was supported by part by the Engineering and Physical Sciences
-Research Council (SPSRC) under UKRI3001: CHERI Research Centre.
+Research Council (EPSRC) under UKRI3001: CHERI Research Centre.
 
 This material is based upon work supported by the Defense Advanced
 Research Projects Agency (DARPA) under Contract No. HR001122C0110 ("ETC"),
