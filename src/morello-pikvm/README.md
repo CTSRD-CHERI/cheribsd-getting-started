@@ -24,7 +24,7 @@ You will also need:
 
 * HDMI cable (male to male)
 
-* Micro SD card at least 32GB
+* Micro SD card at least 32GB in size
 
 
 
@@ -38,36 +38,42 @@ To get set up, you will need to connect as follows:
 
 3. HDMI cable from the Morello to the PiKVM 
 
-4. Power connection to the PiKVM
+4. Do not connect any ATX headers for power/reset button control - they are not needed.
 
-5. Do not connect any ATX headers for power/reset button control - they are not needed.
+5. Power connection to the PiKVM
+
+6. Power connection to the Morello box
 
 ## PiKVM setup
 
 Follow [the PiKVM instructions about getting started with your PiKVM].  In brief:
 
-1. Download the appropriate SD card image for your hardware from the PiKVM website and write it to a micro SD card (use [Raspberry Pi Imager](https://www.raspberrypi.com/software/)) and insert the card into the Pi (the slot is usually on the underside)
+1. Download the appropriate SD card image for your hardware [from the PiKVM website](https://docs.pikvm.org/flashing_os/) and write it to a micro SD card (use [Raspberry Pi Imager](https://www.raspberrypi.com/software/) but refuse customization options).
 
-2. Power on the Pi and let it boot. 
+2. If using the DIY Zero2W you will likely need to [configure wifi](https://docs.pikvm.org/on_boot_config/) by putting the card into a computer and editing some settings files before first boot.  You can do this on other boards if you plan to use wifi instead of Ethernet.
 
-3. Connect power to the Morello box but don't press the power button.
+3. Insert the card into the Pi (the slot is usually on the underside).
 
-4. Visit the website hosted on the PiKVM in your web browser (e.g. http://pikvm/ or find its IP via your router/DHCP server)
+4. Power on the Pi and let it boot. 
 
-Follow the [PiKVM cheat sheet](https://docs.pikvm.org/cheatsheet/) for how to interact with the PiKVM web interface and command line.  At this point we have not booted the Morello so we'll have a black video window - this is no problem.  The PiKVM OS is based on ArchLinuxARM, a fork of Arch Linux.
+5. Connect power to the Morello box and switch on the rear power switch but don't press the power button.
 
-Open the web terminal for the PiKVM and continue below.
+6. Visit the website hosted on the PiKVM in your web browser (e.g. http://pikvm.local/ or find its IP via your router/DHCP server)
+
+Follow the [PiKVM cheat sheet](https://docs.pikvm.org/cheatsheet/) for how to interact with the PiKVM web interface and command line.  The PiKVM OS is based on ArchLinuxARM, a fork of Arch Linux.  At this point we have not booted the Morello so we'll have a black video window saying a problem with signal - this is expected.
+
+Open the web terminal for the PiKVM and continue below.  You can alternatively access the terminal using SSH, as described in the cheatsheet.
 
 ### Filesystem modification
 
 Note that the PiKVM filesystem is read only by default. To make config changes you will need to temporarily make it read-write: 
 
 ```
-su # (enter root password)  
+su # (enter PiKVM root password)  
 rw 
 # make changes here 
 ro 
-exit # back to unprivileged user
+exit # back to unprivileged webterm user
 ```
 
 ### Serial port setup
@@ -85,24 +91,26 @@ reboot
 
 The PiKVM will reboot. Wait a few minutes then, in your browser, log back into the web terminal. 
 
-### Screen and serial consoles
+### Screen terminal multiplexer
 
-If you wish you can use GNU Screen to hold your serial session. Due to the read only filesystem it requires some tweaking each time you run screen:
+If you wish you can use GNU Screen to hold your serial sessions. Due to the read only filesystem it requires some tweaking each time you run screen:
 
 ```
 mkdir -p /tmp/s && chmod 700 /tmp/s 
 SCREENDIR=/tmp/s SHELL=bash screen 
 ```
  
-When screen is running Ctrl-A then the key C will create a new sub-session and Ctrl-A followed by 0 to Ctrl-A plus 9 will flip between one of your running sessions. If you lose your terminal window, adding '-r' to your screen command above will reconnect to the existing session.
+When screen is running pressing Ctrl-A then the key C will create a new sub-session and Ctrl-A then 0 to Ctrl-A then 9 will flip between one of your running sessions. If you close your terminal window, adding `-r` to your screen command above will reconnect to the existing session, and if you didn't disconnect cleanly then it's `-r -d`
 
-To connect to the Morello terminals, create two sub-sessions (or two web browser tabs each showing the PiKVM web console) and in the first run 
+## Serial consoles
+
+To connect to the Morello terminals, create two Screen sub-sessions (or two web browser tabs or SSH logins each showing the PiKVM console) and in the first run 
 
 ```
 picocom -b 115200 -eb /dev/ttyUSB0 
 ```
  
-which connects to the MCC console and in the second:
+which connects to the MCC console, and in the second:
 
 ```
 picocom -b 115200 -eb /dev/ttyUSB2 
@@ -110,7 +118,7 @@ picocom -b 115200 -eb /dev/ttyUSB2
  
 which connects to the Morello (and hence CheriBSD) console.  With the above commands, the keystrokes Ctrl-B followed by Ctrl-X can be used to quit picocom.
 
-If you press Enter on the MCC console you should see a `Cmd>` prompt indicating the Morello MCC is communicating.
+If you press Enter on the MCC console you should see a `Cmd>` prompt indicating the Morello MCC is communicating.  If not, check your wiring and that power is connected to the Morello.
 
 ## Upgrading the firmware via the PiKVM
 
@@ -131,25 +139,29 @@ exit
 
 ## Power control of the Morello
 
-In the MCC console, `shutdown` will power down the Morello but keep the MCC console alive.  `reboot` will power up or power cycle the Morello.
+In the MCC console, `shutdown` will power down the Morello but keep the MCC console alive.  `reboot` will power up the Morello, or power cycle it if it is already on.
 
 ## Installing CheriBSD using the PiKVM remote media
 
 We can use the PiKVM to present a virtual USB flash drive to the Morello to provide its install media.
 
-First, download an image from the [CheriBSD](https://www.cheribsd.org/) website.  These are typically `xz` compressed - you will need to decompress them on your computer, to give a file with a `.img` extension.
+First, download an image from the [CheriBSD](https://www.cheribsd.org/) website.  These are typically `xz` compressed - you will need to decompress them on your computer, to give a file with a `.img` extension, eg via:
 
-Follow the [PiKVM instructions](https://docs.pikvm.org/msd/) about how to configure this as a 'flash drive', which is accessed from the Drive menu at the top of the PiKVM's 'KVM' web page.
+```
+unxz cheribsd-memstick-arm64-aarch64c-25.03.img.xz
+```
+
+Follow the [PiKVM instructions](https://docs.pikvm.org/msd/) about how to configure this as a 'flash drive', which is accessed from the Drive menu at the top of the PiKVM's 'KVM' web page.  In brief:
 
 1. Open another browser tab on the PiKVM, and this time select 'KVM' instead of 'Terminal', and you should see 'Drive' at the top right. Click on it.
 
-2. _Select an image to upload_, then _Browse_ and choose the `.img` file from your local storage.  Click _Upload_ and wait as the image uploads.
+2. Click _Select an image to upload_, then _Browse_ and choose the `.img` file from your local storage.  Click _Upload_ and wait as the image uploads.
 
 3. Then in the _Image_ dropdown, choose the name of your image.
 
 4. Toggle _drive mode_ to _Flash_ and click _Connect drive to server_
 
-5. The virtual USB flash drive has now been 'inserted' into the Morello
+5. The virtual USB flash drive has now been 'inserted' into the Morello.  You can _Disconnect_ it later when you are done installing.
 
 ## Installing CheriBSD
 
