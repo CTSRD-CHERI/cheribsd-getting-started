@@ -6,13 +6,13 @@
 
 You can use one of the following hardware:  
 
-* Any [official PiKVM hardware](https://pikvm.org/products/). _Recommended option_. This is supported by the PiKVM team and funds ongoing development. However it is relatively expensive and as a standalone box with separate PSU which doesn't integrate well in a server environment.
+* [Official PiKVM](https://pikvm.org/products/) v3 or v4 Plus (not v4 Mini). _Recommended option_. This is supported by the PiKVM team and funds ongoing development. However it is relatively expensive and as a standalone box with separate PSU it doesn't integrate well in a server environment.
 
 * A [PiKVM 'DIY v2'](https://docs.pikvm.org/v2/). A Raspberry Pi 4 or Zero2W with an HDMI to CSI adapter (examples include ['Geekworm C779'](https://wiki.geekworm.com/C779) and ['WaveShare'](https://www.waveshare.com/wiki/HDMI_to_CSI_Adapter)). You don't need the breadboard which generates ATX case control signals (power button and LEDs) as the Morello MCC handles this. Both need modifications to their USB wiring as described on the PiKVM v2 page.  The Zero2W is simpler to wire but only has wifi, no ethernet.
 
-* Untested: Another Pi-based IPKVM from e.g. [SupTronics](https://suptronics.com/ite/ipkvm_pcie.html) or [BliKVM](https://www.blikvm.com/docs/development/modify-pikvm-image/) as found on AliExpress ([example X630-A8](https://www.aliexpress.com/item/1005007417520546.html)). These fit in a PCIe slot and some are powered via PoE. We haven't tested these and note that these clones don't fund PiKVM development and don't receive support from the PiKVM developers. 
+* Untested: Another Pi-based IPKVM from e.g. [SupTronics](https://suptronics.com/ite/ipkvm_pcie.html) as found on AliExpress ([example X630-A8](https://www.aliexpress.com/item/1005007417520546.html)). These fit in a PCIe slot and some are powered via PoE. We haven't tested these and note that these clones don't fund PiKVM development and don't receive support from the PiKVM developers. Note that it must use a Pi4 or a Compute Module 4 and have a USB-A port to work (some CM4-based boards like the BliKVM v2 are missing the USB-A).
 
-* Any third party KVM board that does not use a Pi or Compute Module 4 *will not work*.
+* Any third party KVM board/box that does not use a Pi or Compute Module 4 *will not work*.
 
 You will also need:
 
@@ -36,7 +36,7 @@ To get set up, you will need to connect as follows:
 
 2. A cable from a USB-A port on the Morello to the USB-C or MicroUSB data port on the PiKVM (check the documentation)
 
-3. HDMI cable from the Morello to the PiKVM 
+3. HDMI cable from the Morello to the PiKVM HDMI-in port
 
 4. Do not connect any ATX headers for power/reset button control - they are not needed.
 
