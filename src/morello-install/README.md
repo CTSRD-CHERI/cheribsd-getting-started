@@ -16,7 +16,7 @@ If the image file you have downloaded is compressed (i.e., has a `.xz`
 filename suffix), you will need to first decompress the image:
 
 ```
-unxz cheribsd-memstick-arm64-aarch64c-25.03.img.xz
+unxz cheribsd-memstick-arm64-aarch64c-26.05.img.xz
 ```
 
 With appropriate substitutions of image filename and target device, the
@@ -24,7 +24,7 @@ following command would write the image to a USB stick for use with a Morello
 board:
 
 ```
-dd if=cheribsd-memstick-arm64-aarch64c-25.03.img of=/dev/DISK bs=1M
+dd if=cheribsd-memstick-arm64-aarch64c-26.05.img of=/dev/DISK bs=1M
 ```
 
 It is also possible to write a live image to a USB stick, with appropriate
@@ -112,22 +112,23 @@ You can press Enter to proceed, or wait for the countdown timer to finish:
   | |    | '_ \ / _ \ '__| |  _ < \___ \| |  | |
   | |____| | | |  __/ |  | | |_) |____) | |__| |
    \_____|_| |_|\___|_|  |_|____/|_____/|_____/
-                                                 ```                        `
-                                                s` `.....---.......--.```   -/
- /---------- Welcome to CheriBSD ----------\    +o   .--`         /y:`      +.
- |                                         |     yo`:.            :o      `+-
- |  1. Boot Installer [Enter]              |      y/               -/`   -o/
- |  2. Boot Single user                    |     .-                  ::/sy+:.
- |  3. Escape to loader prompt             |     /                     `--  /
- |  4. Reboot                              |    `:                          :`
- |  5. Cons: Serial                        |    `:                          :`
- |                                         |     /                          /
- |  Options:                               |     .-                        -.
- |  6. Kernel: default/kernel (1 of 1)     |      --                      -.
- |  7. Boot Options                        |       `:`                  `:`
- |                                         |         .--             `--.
- |                                         |            .---.....----.
- \-----------------------------------------/
+
+
+ /-------- Welcome to CheriBSD ---------\  ```                        `
+ |                                      | s` `.....---.......--.```   -/
+ |  1. Boot Installer [Enter]           | +o   .--`         /y:`      +.
+ |  2. Boot Single user                 |  yo`:.            :o      `+-
+ |  3. Escape to loader prompt          |   y/               -/`   -o/
+ |  4. Reboot                           |  .-                  ::/sy+:.
+ |  5. Cons: Serial                     |  /                     `--  /
+ |                                      | `:                          :`
+ |  Kernel:                             | `:                          :`
+ |  6. kernel (1 of 1)                  |  /                          /
+ |                                      |  .-                        -.
+ |  Options:                            |   --                      -.
+ |  7. Boot Options                     |    `:`                  `:`
+ |                                      |      .--             `--.
+ \--------------------------------------/         .---.....----.
    Autoboot in 10 seconds. [Space] to pause
 ```
 
@@ -160,13 +161,13 @@ key, to select menu options, which many users find confusing.**
 
 Select **Install** at the first menu by hitting Enter:
 ```
-                   ┌────────────────┤Welcome├────────────────┐
-                   │ Welcome to FreeBSD! Would you like to   │
-                   │ begin an installation or use the live   │
-                   │ system?                                 │
-                   ├─────────────────────────────────────────┤
-                   │[  Install  ] [   Shell   ] [Live System]│
-                   └─────────────────────────────────────────┘
+                  ┌────────────────┤Welcome├────────────────┐
+                  │ Welcome to FreeBSD! Would you like to   │
+                  │ begin an installation or use the live   │
+                  │ system?                                 │
+                  ├─────────────────────────────────────────┤
+                  │[  Install  ] [   Shell   ] [Live System]│
+                  └─────────────────────────────────────────┘
 ```
 
 #### Keymap selection
@@ -175,26 +176,25 @@ If you intend only to use the serial console, and not video console, select
 the default keymap by hitting Enter at the next menu; otherwise, use the
 cursor keys and space bar to select a country-specific keyboard layout:
 ```
-       ┌───────────────────────┤Keymap Selection├────────────────────────┐
-       │ The system console driver for FreeBSD defaults to standard "US" │
-       │ keyboard map. Other keymaps can be chosen below.                │
-       │ ┌─────────────────────────────────────────────────────────────┐ │
-       │ │>>> Continue with default keymap                             │ │
-       │ │->- Test default keymap                                      │ │
-       │ │( ) Armenian phonetic layout                                 │ │
-       │ │( ) Belarusian                                               │ │
-       │ │( ) Belgian                                                  │ │
-       │ │( ) Belgian (accent keys)                                    │ │
-       │ │( ) Brazilian (accent keys)                                  │ │
-       │ │( ) Brazilian (without accent keys)                          │ │
-       │ │( ) Bulgarian (BDS)                                          │ │
-       │ │( ) Bulgarian (Phonetic)                                     │ │
-       │ │( ) Canadian Bilingual                                       │ │
-       │ └─↓↓↓──────────────────────────────────────────────────── 41%─┘ │
-       ├─────────────────────────────────────────────────────────────────┤
-       │                      [Select]     [Cancel]                      │
-       └────────────────── Press arrows, TAB or ENTER ───────────────────┘
-
+      ┌───────────────────────┤Keymap Selection├────────────────────────┐
+      │ The system console driver for FreeBSD defaults to standard "US" │
+      │ keyboard map. Other keymaps can be chosen below.                │
+      │ ┌─────────────────────────────────────────────────────────────┐ │
+      │ │>>> Continue with default keymap                             │ │
+      │ │->- Test default keymap                                      │ │
+      │ │( ) Armenian phonetic layout                                 │ │
+      │ │( ) Belarusian                                               │ │
+      │ │( ) Belgian                                                  │ │
+      │ │( ) Belgian (accent keys)                                    │ │
+      │ │( ) Brazilian (accent keys)                                  │ │
+      │ │( ) Brazilian (without accent keys)                          │ │
+      │ │( ) Bulgarian (BDS)                                          │ │
+      │ │( ) Bulgarian (Phonetic)                                     │ │
+      │ │( ) Canadian Bilingual                                       │ │
+      │ └─↓↓↓──────────────────────────────────────────────────── 12%─┘ │
+      ├─────────────────────────────────────────────────────────────────┤
+      │                      [Select]     [Cancel]                      │
+      └────────────────── Press arrows, TAB or ENTER ───────────────────┘
 ```
 
 #### Hostname
@@ -285,7 +285,7 @@ proceed:
             │ │  ada0p3   3.6 GB    freebsd-swap    none        │ │
             │ │da0        29 GB     GPT                         │ │
             │ │  da0p1    33 MB     efi                         │ │
-            │ │  da0p2    3.0 GB    freebsd-ufs                 │ │
+            │ │  da0p2    2.0 GB    freebsd-ufs                 │ │
             │ │                                                 │ │
             │ │                                                 │ │
             │ │                                                 │ │
@@ -330,28 +330,27 @@ Unless something goes wrong, no user interaction is required.
 Typical output from the installation process will look like this:
 
 ```
-┌───────────────────────────┤Checksum Verification├──────────────────────────┐
-│ base.txz                                                   [ In Progress ] │
-│ kernel.txz                                                 [   Pending   ] │
-│ base-dbg.txz                                               [   Pending   ] │
-│ kernel-dbg.txz                                             [   Pending   ] │
-│ kernel.GENERIC-MORELLO-NOCAPREVOKE-NODEBUG-dbg.txz         [   Pending   ] │
-│ kernel.GENERIC-MORELLO-NOCAPREVOKE-NODEBUG.txz             [   Pending   ] │
-│ kernel.GENERIC-MORELLO-NOCAPREVOKE-dbg.txz                 [   Pending   ] │
-│ kernel.GENERIC-MORELLO-NOCAPREVOKE.txz                     [   Pending   ] │
-│ kernel.GENERIC-MORELLO-NODEBUG-dbg.txz                     [   Pending   ] │
-│ kernel.GENERIC-MORELLO-NODEBUG.txz                         [   Pending   ] │
-│ kernel.GENERIC-MORELLO-PURECAP-BENCHMARK-NOCAPREVOKE-NO... [   Pending   ] │
-│ kernel.GENERIC-MORELLO-PURECAP-BENCHMARK-NOCAPREVOKE-NO... [   Pending   ] │
-│ kernel.GENERIC-MORELLO-PURECAP-BENCHMARK-NOCAPREVOKE-db... [   Pending   ] │
-│ ...                                                                        │
-│                                                                            │
-│ Verifying checksums of selected distributions.                             │
-│                                                                            │
-│  ┌─Overall Progress─────────────────────────────────────────────────────┐  │
-│  │                                   0%                                 │  │
-│  └──────────────────────────────────────────────────────────────────────┘  │
-└────────────────────────────────────────────────────────────────────────────┘
+ ┌──────────────────────────┤Checksum Verification├─────────────────────────┐
+ │ base.txz                                                 [ In Progress ] │
+ │ kernel.txz                                               [   Pending   ] │
+ │ base-dbg.txz                                             [   Pending   ] │
+ │ kernel-dbg.txz                                           [   Pending   ] │
+ │ kernel.GENERIC-MORELLO-NODEBUG-dbg.txz                   [   Pending   ] │
+ │ kernel.GENERIC-MORELLO-NODEBUG.txz                       [   Pending   ] │
+ │ kernel.GENERIC-MORELLO-PURECAP-BENCHMARK-NODEBUG-dbg.txz [   Pending   ] │
+ │ kernel.GENERIC-MORELLO-PURECAP-BENCHMARK-NODEBUG.txz     [   Pending   ] │
+ │ kernel.GENERIC-MORELLO-PURECAP-BENCHMARK-dbg.txz         [   Pending   ] │
+ │ kernel.GENERIC-MORELLO-PURECAP-BENCHMARK.txz             [   Pending   ] │
+ │ kernel.GENERIC-MORELLO-PURECAP-NODEBUG-dbg.txz           [   Pending   ] │
+ │ kernel.GENERIC-MORELLO-PURECAP-NODEBUG.txz               [   Pending   ] │
+ │ ...                                                                      │
+ │                                                                          │
+ │ Verifying checksums of selected distributions.                           │
+ │                                                                          │
+ │  ┌─Overall Progress───────────────────────────────────────────────────┐  │
+ │  │                                  0%                                │  │
+ │  └────────────────────────────────────────────────────────────────────┘  │
+ └──────────────────────────────────────────────────────────────────────────┘
 ```
 
 #### Updating the EFI configuration table
@@ -384,103 +383,22 @@ New Password:
 
 #### Network configuration
 
-If desired, configure Ethernet networking by pressing Enter.
+If desired, configure Ethernet networking by pressing Enter to select Auto.
 
 ```
       ┌─────────────────────┤Network Configuration├─────────────────────┐
-      │ Please select a network interface to configure:                 │
+      │ Please select a network interface and configuration mode:       │
       │ ┌─────────────────────────────────────────────────────────────┐ │
       │ │re0 RealTek 8168/8111 B/C/CP/D/DP/E/F/G PCIe Gigabit Ethernet│ │
       │ └─────────────────────────────────────────────────────────────┘ │
       ├─────────────────────────────────────────────────────────────────┤
-      │                      [  OK  ]     [Cancel]                      │
+      │               [ Auto ]     [Manual]     [Cancel]                │
       └─────────────────────────────────────────────────────────────────┘
 ```
 
-#### Network configuration - enabling IPv4
-
-If desired, enable IPv4 on the Ethernet interface by selecting Yes and
-pressing Enter:
-```
-                        ┌───┤Network Configuration├───┐
-                        │ Would you like to configure │
-                        │ IPv4 for this interface?    │
-                        ├─────────────────────────────┤
-                        │    [ Yes  ]    [  No  ]     │
-                        └─────────────────────────────┘
-```
-
-#### Network configuration - DHCP for IPv4
-
-If you will be using DHCP, select Yes and press Enter.
-Otherwise select No and press Enter to perform a manual IPv4 configuration.
-
-```
-                       ┌────┤Network Configuration├───┐
-                       │ Would you like to use DHCP   │
-                       │ to configure this interface? │
-                       ├──────────────────────────────┤
-                       │     [ Yes  ]    [  No  ]     │
-                       └──────────────────────────────┘
-```
-
-#### Network configuration - enabling IPv6
-
-If desired, enable IPv6 on the Ethernet interface by selecting Yes and
-pressing Enter:
-```
-                        ┌───┤Network Configuration├───┐
-                        │ Would you like to configure │
-                        │ IPv6 for this interface?    │
-                        ├─────────────────────────────┤
-                        │    [ Yes  ]    [  No  ]     │
-                        └─────────────────────────────┘
-```
-
-#### Network configuration - SLAAC for IPv6
-
-Press Enter to use stateless address autoconfiguration for IPv6:
-```
-                      ┌─────┤Network Configuration├─────┐
-                      │ Would you like to try stateless │
-                      │ address autoconfiguration       │
-                      │ (SLAAC)?                        │
-                      ├─────────────────────────────────┤
-                      │      [ Yes  ]     [  No  ]      │
-                      └─────────────────────────────────┘
-```
-
-#### Network configuration - resolver configuration
-
-Enter DNS resolution configuration information, or press Enter to confirm
-autoconfigured DNS configuration:
-```
-    ┌───────────────────────┤Network Configuration├───────────────────────┐
-    │ Resolver Configuration                                              │
-    │ ┌─────────────────────────────────────────────────────────────────┐ │
-    │ │Search         localdomain                                       │ │
-    │ │IPv6 DNS #1                                                      │ │
-    │ │IPv6 DNS #2                                                      │ │
-    │ │IPv4 DNS #1    192.168.1.1                                       │ │
-    │ │IPv4 DNS #2                                                      │ │
-    │ └─────────────────────────────────────────────────────────────────┘ │
-    ├─────────────────────────────────────────────────────────────────────┤
-    │                        [  OK  ]     [Cancel]                        │
-    └─────────────────────────────────────────────────────────────────────┘
-```
-
-#### Local or UTC clock
-
-Press Enter to select a system clock on UTC:
-```
-   ┌───────────┤Select local or UTC (Greenwich Mean Time) clock├───────────┐
-   │ Is this machine's CMOS clock set to UTC?  If it is set to local time, │
-   │ or you don't know, please choose NO here!                             │
-   │                                                                       │
-   ├───────────────────────────────────────────────────────────────────────┤
-   │                          [ Yes  ]   [  No  ]                          │
-   └───────────────────────────────────────────────────────────────────────┘
-```
+If this fails (e.g. your network requires static configuration), you may be
+asked to provide additional information, or you may need to retry selecting
+Manual.
 
 #### Timezone selection
 
@@ -509,35 +427,35 @@ and press Enter.
 
 If you have not selected UTC, select your country and press Enter:
 ```
-        ┌────────────────────┤Countries in Europe├────────────────────┐
-        │ Select a country or region                                  │
-        │ ┌─^^^─────────────────────────────────────────────────────┐ │
-        │ │ 35 Poland                                               │ │
-        │ │ 36 Portugal                                             │ │
-        │ │ 37 Romania                                              │ │
-        │ │ 38 Russian Federation                                   │ │
-        │ │ 39 San Marino                                           │ │
-        │ │ 40 Serbia                                               │ │
-        │ │ 41 Slovakia                                             │ │
-        │ │ 42 Slovenia                                             │ │
-        │ │ 43 Spain                                                │ │
-        │ │ 44 Svalbard and Jan Mayen                               │ │
-        │ │ 45 Sweden                                               │ │
-        │ │ 46 Switzerland                                          │ │
-        │ │ 47 Turkey                                               │ │
-        │ │ 48 Ukraine                                              │ │
-        │ │ 49 United Kingdom of Great Britain and Northern Ireland │ │
-        │ │ 50 Åland Islands                                        │ │
-        │ └────────────────────────────────────────────────100%─────┘ │
-        ├─────────────────────────────────────────────────────────────┤
-        │                     [  OK  ]   [Cancel]                     │
-        └─────────────────────────────────────────────────────────────┘
+         ┌───────────────────┤Countries in Europe├───────────────────┐
+         │ Select a country or region                                │
+         │ ┌───────────────────────────────────────────────────────┐ │
+         │ │1  Albania                                             │ │
+         │ │2  Andorra                                             │ │
+         │ │3  Austria                                             │ │
+         │ │4  Belarus                                             │ │
+         │ │5  Belgium                                             │ │
+         │ │6  Bosnia and Herzegovina                              │ │
+         │ │7  Bulgaria                                            │ │
+         │ │8  Croatia                                             │ │
+         │ │9  Cyprus                                              │ │
+         │ │10 Czech Republic                                      │ │
+         │ │11 Denmark                                             │ │
+         │ │12 Estonia                                             │ │
+         │ │13 Finland                                             │ │
+         │ │14 France                                              │ │
+         │ │15 Germany                                             │ │
+         │ │16 Gibraltar                                           │ │
+         │ └─↓↓↓────────────────────────────────────────────── 32%─┘ │
+         ├───────────────────────────────────────────────────────────┤
+         │                   [  OK  ]     [Cancel]                   │
+         └───────────────────────────────────────────────────────────┘
 ```
 
 Confirm your choice by selecting Yes and pressing Enter:
 ```
    ┌────────────────────────────┤Confirmation├────────────────────────────┐
-   │ Does the abbreviation `UTC' look reasonable?                         │
+   │ Does the timezone abbreviation `UTC' look reasonable?                │
    ├──────────────────────────────────────────────────────────────────────┤
    │                         [ Yes  ]     [  No  ]                        │
    └──────────────────────────────────────────────────────────────────────┘
@@ -551,7 +469,7 @@ to use network time synchronization:
                    ┌─────────────┤Time & Date├────────────┐
                    │  Month            Year               │
                    │  ┌───────────────┐┌───────────────┐  │
-                   │  │           July││           2024│  │
+                   │  │           June││           2026│  │
                    │  └───────────────┘└───────────────┘  │
                    │  ┌────────────────────────────────┐  │
                    │  │    Sun Mon Tue Wed Thu Fri Sat │  │
@@ -559,7 +477,7 @@ to use network time synchronization:
                    │  │     7   8   9  10  11  12  13  │  │
                    │  │    14  15  16  17  18  19  20  │  │
                    │  │    21  22  23  24  25  26  27  │  │
-                   │  │    28  29  30  31              │  │
+                   │  │    28  29  30                  │  │
                    │  │                                │  │
                    │  └────────────────────────────────┘  │
                    ├──────────────────────────────────────┤
@@ -571,7 +489,7 @@ And, likewise, the time:
 ```
                    ┌─────────────┤Time & Date├────────────┐
                    │            ┌──┐ ┌──┐ ┌──┐            │
-                   │            │11│:│23│:│20│            │
+                   │            │01│:│17│:│58│            │
                    │            └──┘ └──┘ └──┘            │
                    ├──────────────────────────────────────┤
                    │       [Set Time]     [  Skip  ]      │
@@ -658,15 +576,15 @@ CHERI-enabled virtual machines, press Enter:
 #### Final configuration
 
 If there are further configuration settings to change, use the up/down arrow
-keys to highlight an appropriate option from the menu, then use the left arrow
-key to select the Select button and press Enter.
-Otherwise, press Enter to complete the installation:
+keys to highlight an appropriate option from the menu and press Enter.
+Otherwise, with Finish highlighted, press Enter to complete the installation:
 ```
 ┌────────────────────────────┤Final Configuration├───────────────────────────┐
 │ Setup of your FreeBSD system is nearly complete. You can now modify your   │
 │ configuration choices. After this screen, you will have an opportunity to  │
 │ make more complex changes using a shell.                                   │
 │ ┌────────────────────────────────────────────────────────────────────────┐ │
+│ │Finish           Apply configuration and exit installer                 │ │
 │ │Add User         Add a user to the system                               │ │
 │ │Root Password    Change root password                                   │ │
 │ │Hostname         Set system hostname                                    │ │
@@ -674,12 +592,12 @@ Otherwise, press Enter to complete the installation:
 │ │Services         Set daemons to run on startup                          │ │
 │ │System Hardening Set security options                                   │ │
 │ │Time Zone        Set system timezone                                    │ │
+│ │Firmware         Install Firmware (requires network)                    │ │
 │ │Handbook         Install FreeBSD Handbook (requires network)            │ │
 │ │CHERI Desktop    Install the CHERI desktop environment (requires network│ │
-│ │CHERI VM Support Install CHERI virtual machine support (requires network│ │
-│ └────────────────────────────────────────────────────────────────────────┘ │
+│ └─↓↓↓─────────────────────────────────────────────────────────────── 91%─┘ │
 ├────────────────────────────────────────────────────────────────────────────┤
-│                            [Select]     [Finish]                           │
+│                                  [Select]                                  │
 └────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -729,17 +647,16 @@ installation process:
 ...
 Performing sanity check on sshd configuration.
 Starting sshd.
-Starting cron.
 Starting background file system checks in 60 seconds.
-Starting sddm.
 
-Sat Jul 20 00:12:09 UTC
+Tue Jun  2 01:30:00 UTC 2026
+
 CheriBSD/arm64 (cheribsd) (ttyu0)
 
 login: root
 Password:
-Jul 20 00:12:13 cheribsd login[968]: ROOT LOGIN (root) ON ttyu0
-FreeBSD 15.0-CURRENT (GENERIC-MORELLO-PURECAP) #0 releng/24.05-b2ad856aac65: Fri Jul 19 21:17:24 UTC 2024
+Jun  2 01:30:41 cheribsd login[2701]: ROOT LOGIN (root) ON ttyu0
+FreeBSD 15.0-CURRENT (GENERIC-MORELLO-PURECAP) #0 dev-81cc6eea40d1: Fri May 29 14:24:42 UTC 2026
 
 Welcome to CheriBSD!
 

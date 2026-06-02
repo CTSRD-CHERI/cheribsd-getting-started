@@ -1,6 +1,6 @@
 <!-- ANCHOR: cover -->
 
-# Getting Started with CheriBSD 25.03
+# Getting Started with CheriBSD 26.05
 
 Robert N. M. Watson (University of Cambridge),
 Jessica Clarke (University of Cambridge),
@@ -18,7 +18,7 @@ further information and support.
 <!--
 NOTE: A release version is also in SUMMARY.md.
 -->
-**The document describes CheriBSD as of the 25.03 release, unless explicitly
+**The document describes CheriBSD as of the 26.05 release, unless explicitly
 stated in sections referring to earlier or later releases.**
 
 *This document is a work-in-progress.  Feedback and contributions are
