@@ -478,19 +478,19 @@ capabilities.  Support for co-processes is maintained in an experimental
 development branch and is not included in current software releases.
 For more information see the <a href="https://github.com/CTSRD-CHERI/cheripedia/wiki/Colocation-Tutorial">Colocation Tutorial</a>
 wiki page.</li>
-<li><strong>Dynamic-linker-based compartmentalization</strong> isolates shared libraries
+<li><strong>Dynamic-linkage-based compartmentalization</strong> isolates shared libraries
 within a process using CHERI capabilities limiting the access of attackers
 who have achieved arbitrary code execution within a library.
-The linker-based library compartmentalization model has been included since
+The linkage-based compartmentalization prototype has been included since
 the 22.12 release of CheriBSD.
 See the <a href="https://man.cheribsd.org/cgi-bin/man.cgi/releng-25.03/c18n">c18n(3) man
 page</a>
 on an installed system for more information.</li>
 </ul>
-<h2 id="library-compartmentalization"><a class="header" href="#library-compartmentalization">Library compartmentalization</a></h2>
-<p>CheriBSD's library compartmentalization feature (c18n) executes each dynamic
-library within a compartmentalization-enabled process in its own protection
-domain.
+<h2 id="linkage-based-compartmentalization"><a class="header" href="#linkage-based-compartmentalization">Linkage-based compartmentalization</a></h2>
+<p>CheriBSD's linkage-based compartmentalization feature (c18n) executes each
+dynamic library within a compartmentalization-enabled process in its own
+protection domain.
 When c18n is enabled, the run-time linker grants libraries capabilities only
 to resources (global variables, APIs) declared in their ELF linkage.
 Function calls that cross domain boundaries are interposed on by
@@ -499,39 +499,33 @@ domain-crossing shims implemented by the run-time linker.</p>
 untrustworthy execution: a library such as <code>libpng</code> or <code>libjpeg</code> is trusted
 until it begins dynamic execution -- and has potentially been exposed to
 malicious data.
-With library compartmentalization, an adversary who achieves arbitrary code
-execution within the library at run time will be able to reach only the
+With linkage-based compartmentalization, an adversary who achieves arbitrary
+code execution within the library at run time will be able to reach only the
 resources (and further attack surfaces) declared statically through its
 linkage.
 The programmer must then harden that linkage, and any involved APIs, to make
 them suitable for adversarial engagement -- but the foundation of isolation,
 controlled access, and controlled domain transition is provided by the c18n
 implementation.</p>
-<p>In addition to a modified run-time linker, modest changes have been made to
-the aarch64c calling convention to avoid assumptions such as implicit stack
-sharing between callers and callees across library boundaries when passing
-variadic argument lists.
-This modified ABI is now used by all CheriABI binaries in CheriBSD, and so
-off-the-shelf aarch64c binaries and libraries can be used with library
-compartmentalization without recompilation to the modified ABI.
-More information on library compartmentalization can be found in the
-<a href="https://man.cheribsd.org/cgi-bin/man.cgi/releng-25.03/c18n">c18n(3) man
+<p>Note that linkage-based compartmentalization is still an experimental work
+in progress and does not yet provide complete isolation between compartments.
+More information on security caveats can be found in the <a href="https://man.cheribsd.org/cgi-bin/man.cgi/releng-25.03/c18n">c18n(7) man
 page</a>:</p>
 <pre><code>man c18n
 </code></pre>
-<h2 id="enabling-library-compartmentalization-system-wide"><a class="header" href="#enabling-library-compartmentalization-system-wide">Enabling library compartmentalization system-wide</a></h2>
+<h2 id="enabling-linkage-based-compartmentalization-system-wide"><a class="header" href="#enabling-linkage-based-compartmentalization-system-wide">Enabling linkage-based compartmentalization system-wide</a></h2>
 <p>Compartmentalization can be enabled for all eligible new processes with
 <code>sysctl</code>:</p>
 <pre><code>sysctl security.cheri.lib_based_c18n_default=1
 </code></pre>
-<h2 id="enabling-library-compartmentalization-temporarily-for-a-particular-binary"><a class="header" href="#enabling-library-compartmentalization-temporarily-for-a-particular-binary">Enabling library compartmentalization temporarily for a particular binary</a></h2>
-<p>To run a particular binary with library compartmentalization enabled just for
-this run, use <code>proccontrol</code>:</p>
+<h2 id="enabling-linkage-based-compartmentalization-temporarily-for-a-particular-binary"><a class="header" href="#enabling-linkage-based-compartmentalization-temporarily-for-a-particular-binary">Enabling linkage-based compartmentalization temporarily for a particular binary</a></h2>
+<p>To run a particular binary with linkage-based compartmentalization enabled
+just for this run, use <code>proccontrol</code>:</p>
 <pre><code>proccontrol -m cheric18n -s enable ./helloworld
 </code></pre>
-<h2 id="enabling-library-compartmentalization-permanently-for-a-particular-binary"><a class="header" href="#enabling-library-compartmentalization-permanently-for-a-particular-binary">Enabling library compartmentalization permanently for a particular binary</a></h2>
-<p>To enable library compartmentalization permanently for a particular binary,
-run the following command to set a flag in the binary:</p>
+<h2 id="enabling-linkage-based-compartmentalization-permanently-for-a-particular-binary"><a class="header" href="#enabling-linkage-based-compartmentalization-permanently-for-a-particular-binary">Enabling linkage-based compartmentalization permanently for a particular binary</a></h2>
+<p>To enable linkage-based compartmentalization permanently for a particular
+binary, run the following command to set a flag in the binary:</p>
 <pre><code>elfctl -e +cheric18n ./helloworld
 </code></pre>
 <p>This can be reversed by replacing <code>+cheric18n</code> with <code>-cheric18n</code>.</p>
@@ -573,7 +567,7 @@ You can install <code>objdump</code> with <code>pkg64 install llvm-base</code> a
 <li>Consider larger software architectural changes that will allow a library
 to be used more robustly when running within a computerment.</li>
 </ul>
-<p>Library compartmentalization has the potential to significantly improve
+<p>Linkage-based compartmentalization has the potential to significantly improve
 software integrity and confidentiality properties in the presence of a strong
 adversary.
 However, it is also limited by the abstraction being around the current
