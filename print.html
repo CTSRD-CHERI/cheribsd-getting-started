@@ -735,6 +735,13 @@ Typical command lines to access the MCC and Morello consoles are:</p>
 <li>MCC console: <code>cu -s 115200 -l /dev/cuaU0</code></li>
 <li>Morello console: <code>cu -s 115200 -l /dev/cuaU2</code></li>
 </ul>
+<h2 id="connecting-from-ubuntu"><a class="header" href="#connecting-from-ubuntu">Connecting from Ubuntu</a></h2>
+<p>Linux uses similar device names to FreeBSD.  Typical command lines to
+access the MCC and Morello consoles are:</p>
+<ul>
+<li>Management console: <code>sudo picocom -b 115200 /dev/ttyUSB0</code></li>
+<li>Morello console: <code>sudo picocom -b 115200 /dev/ttyUSB2</code></li>
+</ul>
 <h2 id="connecting-from-apple-macos"><a class="header" href="#connecting-from-apple-macos">Connecting from Apple macOS</a></h2>
 <p>macOS creates <code>/dev/cu.usbserial-</code> device nodes that embed the device
 serial number (including <code>A</code> or <code>B</code>) and port number.
@@ -862,6 +869,13 @@ board:</p>
 </code></pre>
 <p>It is also possible to write a live image to a USB stick, with appropriate
 filename substitution.</p>
+<p>On systems such as Ubuntu you can also use the GNOME Disks utility to
+write to a USB stick:</p>
+<p><img src="morello-install/gnome-disks.png" alt="GNOME Disks" /></p>
+<p>First select the USB stick in the left pane, then use the menu at the
+top right to select "Restore Disk Image...".  It will ask for the
+image to write and confirm which device will be written to.  Finally
+the eject icon can be used to safely remove the stick before use.</p>
 <h2 id="installing-an-arm-morello-system"><a class="header" href="#installing-an-arm-morello-system">Installing an Arm Morello system</a></h2>
 <p>It is possible to use Arm Morello systems both by booting the live image on a
 USB stick, and also by installing to the internal hard disk.
