@@ -10,7 +10,9 @@ details and registers in GDB will differ.
 You will need the Morello LLVM toolchain and Morello GDB for this
 exercise. To install LLVM, use the command:
 
-```pkg64 install llvm-base```
+```
+pkg64 install llvm-base
+```
 
 If this is the first time you are using `pkg64` on this system, you will
 be prompted to bootstrap the `pkg` package before the package database
@@ -21,52 +23,40 @@ and its dependencies:
 root@cheribsd:~ # pkg64 install llvm-base
 The package management tool is not yet installed on your system.
 Do you want to fetch and install it now? [y/N]: y
-Bootstrapping pkg from pkg+http://pkg.CheriBSD.org/CheriBSD:20220314:aarch64, please wait...
+Bootstrapping pkg from http://pkg.CheriBSD.org/CheriBSD:20260710:aarch64, please wait...
 Verifying signature with trusted certificate pkg.cheribsd.org.2022032901... done
-Installing pkg-1.17.5_1...
-Extracting pkg-1.17.5_1: 100%
+Installing pkg-1.20.5_1...
+Extracting pkg-1.20.5_1: 100%
 Updating CheriBSD repository catalogue...
-Fetching meta.conf: 100%    163 B   0.2kB/s    00:01
-Fetching packagesite.pkg: 100%    4 MiB   1.4MB/s    00:03
+Fetching meta.conf: 100%    179 B   0.2kB/s    00:01
+Fetching packagesite.pkg: 100%    7 MiB   7.2MB/s    00:01
 Processing entries: 100%
-CheriBSD repository update completed. 20954 packages processed.
+CheriBSD repository update completed. 26229 packages processed.
 All repositories are up to date.
 Updating database digests format: 100%
-The following 12 package(s) will be affected (of 0 checked):
+The following 3 package(s) will be affected (of 0 checked):
 
 New packages to be INSTALLED:
-        gettext-runtime: 0.21
-        indexinfo: 0.3.1
-        libedit: 3.1.20210910,1
-        libffi: 3.3_1
-        libxml2: 2.9.13_2
-        llvm: 13,1
-        llvm-base: 1
-        llvm-morello: 13.0.d20220502_1
-        mpdecimal: 2.5.1
-        perl5: 5.32.1_1
-        python38: 3.8.13
-        readline: 8.1.2
+        llvm: 17,1
+        llvm-base: 20240315
+        llvm-morello: 17.0.d20260205_4
 
-Number of packages to be installed: 12
+Number of packages to be installed: 3
 
-The process will require 902 MiB more space.
-190 MiB to be downloaded.
+The process will require 818 MiB more space.
+116 MiB to be downloaded.
 
 Proceed with this action? [y/N]: y
-[1/12] Fetching llvm-base-1.pkg: 100%    3 KiB   2.8kB/s    00:01
-[2/12] Fetching llvm-13,1.pkg: 100%   11 KiB  11.2kB/s    00:01
-...
-[12/12] Fetching libedit-3.1.20210910,1.pkg: 100%  119 KiB 121.8kB/s    00:01
+[1/3] Fetching llvm-base-20240315.pkg: 100%    1 KiB   1.1kB/s    00:01
+[2/3] Fetching llvm-morello-17.0.d20260205_4.pkg: 100%  116 MiB  60.8MB/s    00:02
+[3/3] Fetching llvm-17,1.pkg: 100%   12 KiB  11.8kB/s    00:01
 Checking integrity... done (0 conflicting)
-[1/12] Installing indexinfo-0.3.1...
-[1/12] Extracting indexinfo-0.3.1: 100%
-...
-[12/12] Installing llvm-base-1...
-[12/12] Extracting llvm-base-1: 100%
-=====
-...
-
+[1/3] Installing llvm-morello-17.0.d20260205_4...
+[1/3] Extracting llvm-morello-17.0.d20260205_4: 100%
+[2/3] Installing llvm-17,1...
+[2/3] Extracting llvm-17,1: 100%
+[3/3] Installing llvm-base-20240315...
+[3/3] Extracting llvm-base-20240315: 100%
 ```
 
 *Note:* By default FreeBSD ships with the `vi` and `ee` editors. You may
@@ -90,13 +80,15 @@ main(void)
 
 To build a CheriABI Hello World program use:
 
-```cc -g -O2 -Wall -o helloworld helloworld.c```
+```
+cc -g -O2 -Wall -o helloworld helloworld.c
+```
 
 You can verify this is a CheriABI binary with the `file` command:
 
 ```
-root@cheribsd:~ # file helloworld
-helloworld: ELF 64-bit LSB pie executable, ARM aarch64, C64, CheriABI, version 1 (SYSV), dynamically linked, interpreter /libexec/ld-elf.so.1, for FreeBSD 14.0 (1400094), FreeBSD-style, with debug_info, not stripped
+user@cheribsd:~ $ file helloworld
+helloworld: ELF 64-bit LSB pie executable, ARM aarch64, C64, CheriABI, version 1 (SYSV), dynamically linked, interpreter /libexec/ld-elf.so.1, for FreeBSD 15.0 (1500040), FreeBSD-style, with debug_info, not stripped
 ```
 
 ## Building for the Benchmark ABI
@@ -104,12 +96,14 @@ helloworld: ELF 64-bit LSB pie executable, ARM aarch64, C64, CheriABI, version 1
 To target the [Benchmark ABI](../benchmarking/), add the argument
 `-mabi=purecap-benchmark` to the `cc` command line:
 
-```cc -g -O2 -Wall -mabi=purecap-benchmark -o helloworld helloworld.c```
+```
+cc -g -O2 -Wall -mabi=purecap-benchmark -o helloworld helloworld.c
+```
 
 You can verify this is a Benchmark ABI binary with the `file` command:
 ```
-root@cheribsd:~ # file helloworld
-helloworld: ELF 64-bit LSB pie executable, ARM aarch64, C64, CheriABI, version 1 (SYSV), dynamically linked, interpreter /libexec/ld-elf.so.1, for FreeBSD 14.0 (1400094), FreeBSD-style, pure-capability benchmark ABI, with debug_info, not stripped
+user@cheribsd:~ $ file helloworld
+helloworld: ELF 64-bit LSB pie executable, ARM aarch64, C64, CheriABI, version 1 (SYSV), dynamically linked, interpreter /libexec/ld-elf.so.1, for FreeBSD 15.0 (1500040), FreeBSD-style, pure-capability benchmark ABI, with debug_info, not stripped
 ```
 
 ## Running
@@ -117,7 +111,7 @@ helloworld: ELF 64-bit LSB pie executable, ARM aarch64, C64, CheriABI, version 1
 Run the program:
 
 ```
-root@cheribsd:~ # ./helloworld
+user@cheribsd:~ $ ./helloworld
 Hello world
 ```
 
@@ -125,24 +119,26 @@ Hello world
 
 First, if it is not already installed, install the CHERI GDB debugger:
 
-```pkg64 install gdb-cheri```
+```
+pkg64 install gdb-cheri
+```
 
 You can then debug `helloworld` by running GDB and setting a breakpoint
-on `main`:
+on `main` (note the output here is for the CheriABI helloworld binary, not the
+Benchmark ABI one):
 
 ```
-root@cheribsd:~ # gdb ./helloworld
-GNU gdb (GDB) 12.1
+user@cheribsd:~ $ gdb ./helloworld
+GNU gdb (GDB) 14.1 [GDB v14.1.d20260511 for FreeBSD]
 ...
 Reading symbols from ./helloworld...
-...
 (gdb) b main
-Breakpoint 1 at 0x10a14: file helloworld.c, line 6.
+Breakpoint 1 at 0x107fc: file helloworld.c, line 6.
 (gdb) r
-Starting program: /root/helloworld
+Starting program: /home/user/helloworld
 
 Breakpoint 1, main () at helloworld.c:6
-6           printf("Hello world\n");
+6               printf("Hello world\n");
 (gdb) 
 ```
 
@@ -152,17 +148,19 @@ argument with expanded information including bounds and permissions:
 
 ```
 (gdb) s
-puts (s=0x1006e0 [rR,0x1006e0-0x1006ec] "Hello world")
-    at /home/bed22/cheri/cheribsd/lib/libc/stdio/puts.c:60
-60      /home/bed22/cheri/cheribsd/lib/libc/stdio/puts.c: No such file or directory.
+puts (s=0x100651 [rR,0x100651-0x10065d] "Hello world")
+    at /local/scratch/jenkins/workspace/CheriBSD-pipeline_releng_26.07/cheribsd/lib/libc/stdio/puts.c:54
+warning: 54     /local/scratch/jenkins/workspace/CheriBSD-pipeline_releng_26.07/cheribsd/lib/libc/stdio/puts.c: No such file or directory
 ```
-The argument can also be examined directly as either an integer or capability register:
+
+The argument can also be examined directly as either an integer or capability
+register:
+
 ```
 (gdb) info reg x0
-x0             0x1006e0            1050336
+x0             0x100651            1050193
 (gdb) info reg c0
-c0             0x905f400046ec06e000000000001006e0 0x1006e0 [rR,0x1006e0-0x1006ec]
-(gdb)
+c0             0x905c4000465d06510000000000100651 0x100651 [rR,0x100651-0x10065d]
 ```
 
 If a capability (either in memory or a register) contains a
@@ -176,33 +174,33 @@ internal FILE structure used for stdout in libc:
 
 ```
 (gdb) p *__stdoutp
-$1 = {_p = 0x0, _r = 0, _w = 0, _flags = 8, _file = 1, _bf = {_base = 0x0, 
-    _size = 0}, _lbfsize = 0, 
-  _cookie = 0x403a8400 [rwRWE,0x403a8230-0x403a87a0], 
-  _close = 0x402bade5 <__sclose> [rxRE,0x4018e000-0x407f0000] (sentry), 
-  _read = 0x402bada5 <__sread> [rxRE,0x4018e000-0x407f0000] (sentry), 
-  _seek = 0x402baddd <__sseek> [rxRE,0x4018e000-0x407f0000] (sentry), 
-  _write = 0x402badc1 <__swrite> [rxRE,0x4018e000-0x407f0000] (sentry), _ub = {
-    _base = 0x0, _size = 0}, _up = 0x0, _ur = 0, _ubuf = "\000\000", 
-  _nbuf = "", _lb = {_base = 0x0, _size = 0}, _blksize = 0, _offset = 0, 
-  _fl_mutex = 0x0, _fl_owner = 0x0, _fl_count = 0, _orientation = 0, 
-  _mbstate = {__mbstate8 = '\000' <repeats 127 times>, _mbstateL = 0, 
+$1 = {_p = 0x0, _r = 0, _w = 0, _flags = 8, _file = 1, _bf = {_base = 0x0,
+    _size = 0}, _lbfsize = 0,
+  _cookie = 0x403ec7f0 [rwRW,0x403ec620-0x403ecb90],
+  _close = 0x402dece1 <__sclose> [rxRE,0x401f1200-0x403c7000] (sentry),
+  _read = 0x402deca1 <__sread> [rxRE,0x401f1200-0x403c7000] (sentry),
+  _seek = 0x402decd9 <__sseek> [rxRE,0x401f1200-0x403c7000] (sentry),
+  _write = 0x402decbd <__swrite> [rxRE,0x401f1200-0x403c7000] (sentry), _ub = {
+    _base = 0x0, _size = 0}, _up = 0x0, _ur = 0, _ubuf = "\000\000",
+  _nbuf = "", _lb = {_base = 0x0, _size = 0}, _blksize = 0, _offset = 0,
+  _fl_mutex = 0x0, _fl_owner = 0x0, _fl_count = 0, _orientation = 0,
+  _mbstate = {__mbstate8 = '\000' <repeats 127 times>, _mbstateL = 0,
     _mbstateP = 0x0 }, _flags2 = 0}
 (gdb) x/16gxm __stdoutp
-<CHERI Tag 0 for range [0x403a8400,0x403a8410)>
-0x403a8400:     0x0000000000000000      0x0000000000000000
-<CHERI Tag 0 for range [0x403a8410,0x403a8420)>
-0x403a8410:     0x0000000000000000      0x0000000000010008
-<CHERI Tag 0 for range [0x403a8420,0x403a8430)>
-0x403a8420:     0x0000000000000000      0x0000000000000000
-<CHERI Tag 0 for range [0x403a8430,0x403a8440)>
-0x403a8430:     0x0000000000000000      0x0000000000000000
-<CHERI Tag 0 for range [0x403a8440,0x403a8450)>
-0x403a8440:     0x0000000000000000      0x0000000000000000
-<CHERI Tag 1 for range [0x403a8450,0x403a8460)>
-0x403a8450:     0x00000000403a8400      0xdc5fc00047a08230
-<CHERI Tag 1 for range [0x403a8460,0x403a8470)>
-0x403a8460:     0x00000000402bade5      0xb05fc000bf0618e7
-<CHERI Tag 1 for range [0x403a8470,0x403a8480)>
-0x403a8470:     0x00000000402bada5      0xb05fc000bf0618e7
+<CHERI Tag 0 for range [0x403ec7f0,0x403ec800)>
+0x403ec7f0:       0x0000000000000000      0x0000000000000000
+<CHERI Tag 0 for range [0x403ec800,0x403ec810)>
+0x403ec800:       0x0000000000000000      0x0000000000010008
+<CHERI Tag 0 for range [0x403ec810,0x403ec820)>
+0x403ec810:       0x0000000000000000      0x0000000000000000
+<CHERI Tag 0 for range [0x403ec820,0x403ec830)>
+0x403ec820:       0x0000000000000000      0x0000000000000000
+<CHERI Tag 0 for range [0x403ec830,0x403ec840)>
+0x403ec830:       0x0000000000000000      0x0000000000000000
+<CHERI Tag 1 for range [0x403ec840,0x403ec850)>
+0x403ec840:       0x00000000403ec7f0      0xdc5d40004b90c620
+<CHERI Tag 1 for range [0x403ec850,0x403ec860)>
+0x403ec850:       0x00000000402dece1      0xb05dc000b1c77c49
+<CHERI Tag 1 for range [0x403ec860,0x403ec870)>
+0x403ec860:       0x00000000402deca1      0xb05dc000b1c77c49
 ```
