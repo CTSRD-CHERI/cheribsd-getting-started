@@ -1,6 +1,6 @@
 # Summary
 
-[Getting Started with CheriBSD 25.03](cover/README.md)
+[Getting Started with CheriBSD 26.07](cover/README.md)
 
 - [Introduction](introduction/README.md)
 - [Background](background/README.md)
@@ -15,6 +15,7 @@
 - [Getting CheriBSD](getting/README.md)
   - [Downloading image files](downloading/README.md)
   - [Building image files](building/README.md)
+  - [Updating an existing system](updating/README.md)
 - [CheriBSD on an Arm Morello board](morello/README.md)
   - [Accessing the Morello console](morello-console/README.md)
   - [Upgrading the Morello firmware](morello-firmware/README.md)
