@@ -1,6 +1,6 @@
 # Userlevel process environments
 
-CheriBSD 25.03 likewise supports three different userspace execution
+CheriBSD 26.07 likewise supports three different userspace execution
 environments:
 
 - **Hybrid processes** provide strong binary compatibility with the non-CHERI
