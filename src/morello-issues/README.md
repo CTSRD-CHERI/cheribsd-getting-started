@@ -45,6 +45,18 @@ CheriBSD on Morello:
   Currently, there is no workaround for this issue and it is likely to occur
   with the HDMI transmitter issue described above.
 
+- The firmware can report messages that appear to be errors when booting a
+  kernel with a large number of compartments (e.g., security/kernel-c18n-cpm
+  from CheriBSD ports). For example:
+  ```
+  ConvertPages: Incompatible memory types, the pages to allocate have been allocated
+  (...)
+  ConvertPages: range E0000000 - E0843FFF covers multiple entries
+  ```
+  These messages are harmless and expected. The Morello firmware uses a debug
+  build of EDK2 that prints additional diagnostic messages, in this case to
+  explain why it could not grow the boot loader's memory allocation in-place.
+
 ## Issues with older firmware
 
 The following issues affected users of older firmware revisions:
