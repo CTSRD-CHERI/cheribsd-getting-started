@@ -188,11 +188,125 @@ vulnerabilities in components such as the network stack and system-call
 layer.</li>
 <li>The <strong>benchmark kernel</strong> implements the <a href="../benchmarking/">Benchmark ABI</a>
 which improves performance on the Arm Morello board at the cost of reduced
-security.  The benchmark kernel is considered appropriate for a performance
+security.
+The benchmark kernel is considered appropriate for a performance
 evaluation of the Arm Morello architecture and third-party software
-executed on it. It should not be used for a security evaluation and the
+executed on it.
+It should not be used for a security evaluation and the
 pure-capability kernel should be used instead.</li>
 </ul>
+<p>A number of precompiled kernels are provided in the CheriBSD release, enabling
+or disabling debugging in combination with hybrid, pure-capability, and
+benchmark compilations.
+In general, we recommend that performance benchmarking be done only with
+benchmark <code>NODEBUG</code> kernels;
+see <a href="../benchmarking/README.html">Benchmarking guidance</a> for further details.</p>
+<h2 id="precompiled-kernels-in-cheribsd"><a class="header" href="#precompiled-kernels-in-cheribsd">Precompiled kernels in CheriBSD</a></h2>
+<p>CheriBSD ships with a number of precompiled kernels.
+Kernel configuration files themselves may be found in <code>sys/arm64/conf</code> in the
+CheriBSD source tree, and will have names such as <code>GENERIC-MORELLO-PURECAP</code>.
+Kernel configuration file names start with one of the following prefixes
+identifying the compilation mode of the kernel:</p>
+<div class="table-wrapper"><table><thead><tr><th>Prefix</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>GENERIC-MORELLO</code></td><td>Compiled without internal memory safety</td></tr>
+<tr><td><code>GENERIC-MORELLO-PURECAP</code></td><td>Compiled with internal memory safety</td></tr>
+<tr><td><code>GENERIC-MORELLO-PURECAP-BENCHMARK</code></td><td>Compiled with the Benchmark ABI</td></tr>
+</tbody></table>
+</div>
+<p>In addition to the base kernels for each compilation mode, CheriBSD includes
+precompiled kernels which disable debugging.
+These kernel configurations append a <code>-NODEBUG</code> suffix to the kernel
+configuration file name.</p>
+<p>The default kernel uses the <code>GENERIC-MORELLO-PURECAP</code> kernel
+configuration, and is a pure-capability kernel with debugging enabled.
+It is unsuitable for benchmarking; instead, use the
+<code>GENERIC-MORELLO-PURECAP-BENCHMARK-NODEBUG</code> kernel configuration.</p>
+<p>Kernels and their associated modules are stored in subdirectories of <code>/boot</code>
+matching the pattern <code>kernel*</code>; the default kernel is named <code>/boot/kernel</code>.</p>
+<pre><code># cd /boot
+# ls -d kernel*
+kernel
+kernel.GENERIC-MORELLO
+kernel.GENERIC-MORELLO-NODEBUG
+kernel.GENERIC-MORELLO-PURECAP-BENCHMARK
+kernel.GENERIC-MORELLO-PURECAP-BENCHMARK-NODEBUG
+kernel.GENERIC-MORELLO-PURECAP-NODEBUG
+</code></pre>
+<h2 id="identifying-the-currently-booted-kernel"><a class="header" href="#identifying-the-currently-booted-kernel">Identifying the currently booted kernel</a></h2>
+<p>The <code>uname(1)</code> command prints information on the kernel configuration.
+The following command-line options may be of use:</p>
+<div class="table-wrapper"><table><thead><tr><th>Option name</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>-a</code></td><td>Print numerous details</td></tr>
+<tr><td><code>-i</code></td><td>Print the kernel configuration name</td></tr>
+</tbody></table>
+</div>
+<p>For example:</p>
+<pre><code># uname -i
+GENERIC-MORELLO-PURECAP
+</code></pre>
+<p>Additionally, the current kernel file path is stored in the <code>kern.bootfile</code>
+sysctl variable that you can read with the <code>sysctl(8)</code> utility.
+For example:</p>
+<pre><code># sysctl kern.bootfile
+kern.bootfile: /boot/kernel/kernel
+</code></pre>
+<h2 id="selecting-another-kernel-using-nextboot8"><a class="header" href="#selecting-another-kernel-using-nextboot8">Selecting another kernel using nextboot(8)</a></h2>
+<p>You can request an alternate kernel for the next boot of the system via
+the <code>-k</code> flag of the <code>nextboot(8)</code> command.
+The value of the flag should be set to the name of the kernel directory
+under <code>/boot</code>; for example, to use a pure-capability kernel without
+debugging on the next boot, use:</p>
+<pre><code># nextboot -k kernel.GENERIC-MORELLO-PURECAP-NODEBUG
+</code></pre>
+<p>prior to rebooting.
+The system will revert back to the kernel configured in <code>/boot/loader.conf</code>
+on subsequent boots.</p>
+<h2 id="selecting-another-kernel-using-loaderconf"><a class="header" href="#selecting-another-kernel-using-loaderconf">Selecting another kernel using loader.conf</a></h2>
+<p>You can set the kernel to boot via <code>/boot/loader.conf</code> using the variable
+<code>kernel</code>.
+This is set to the name of the kernel directory under <code>/boot</code>; for example,
+the default is:</p>
+<pre><code>kernel="kernel"
+</code></pre>
+<p>You can persistently set the system to boot with a Benchmark ABI kernel by
+setting <code>kernel</code> as follows in <code>/boot/loader.conf</code>:</p>
+<pre><code>kernel="kernel.GENERIC-MORELLO-PURECAP-BENCHMARK"
+</code></pre>
+<p>After a reboot, <code>uname(1)</code> and <code>sysctl(8)</code> should then report that this is the
+kernel in use:</p>
+<pre><code># uname -i
+GENERIC-MORELLO-PURECAP-BENCHMARK
+# sysctl kern.bootfile
+kern.bootfile: /boot/kernel.GENERIC-MORELLO-PURECAP-BENCHMARK/kernel
+</code></pre>
+<h2 id="selecting-another-kernel-from-the-boot-loader"><a class="header" href="#selecting-another-kernel-from-the-boot-loader">Selecting another kernel from the boot loader</a></h2>
+<p>It is also possible to interactively select a different kernel from the boot
+loader on the video or serial console:</p>
+<pre><code>    _____ _               _ ____   _____ _____
+   / ____| |             (_)  _ \ / ____|  __ \
+  | |    | |__   ___ _ __ _| |_) | (___ | |  | |
+  | |    | '_ \ / _ \ '__| |  _ &lt; \___ \| |  | |
+  | |____| | | |  __/ |  | | |_) |____) | |__| |
+   \_____|_| |_|\___|_|  |_|____/|_____/|_____/
+                                                 ```                        `
+                                                s` `.....---.......--.```   -/
+ /---------- Welcome to CheriBSD ----------\    +o   .--`         /y:`      +.
+ |                                         |     yo`:.            :o      `+-
+ |  1. Boot Multi user [Enter]             |      y/               -/`   -o/
+ |  2. Boot Single user                    |     .-                  ::/sy+:.
+ |  3. Escape to loader prompt             |     /                     `--  /
+ |  4. Reboot                              |    `:                          :`
+ |  5. Cons: Serial                        |    `:                          :`
+ |                                         |     /                          /
+ |  Options:                               |     .-                        -.
+ |  6. Kernel: kernel (1 of 6)             |      --                      -.
+ |  7. Boot Options                        |       `:`                  `:`
+ |                                         |         .--             `--.
+ |                                         |            .---.....----.
+ \-----------------------------------------/
+</code></pre>
+<p>Use the <code>6</code> key to rotate through kernel selections.
+Once the desired kernel is selected, press the <code>1</code> key to proceed with the boot.</p>
 
                     </main>
 
