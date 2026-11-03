@@ -1,0 +1,13 @@
+Received reset request from SoC via F2P_SS_RSTREQ.
+F2P_SS_RSTREQ ignored because IOFPGA is powered off.
+Received reset request from SoC via F2P_SS_RSTREQ.
+F2P_SS_RSTREQ ignored because IOFPGA is powered off.
+F2PCC_INT triggered by IOFPGA, nothing to do here.
+Sent reg 2000   cmd 0000   data 0000
+Received reg D003   cmd 0000   data 0002
+MCC Request Command detected
+PCC FMC GPIO init request
+PCC FMC GPIO init complete
+
+pcc_cli>
+

@@ -73,3 +73,42 @@ MCC and Morello consoles are:
 - Morello console: `plink -serial \\.\COM5 -sercfg 115200`
 
 Do note that Windows assigns serial numbers at random.
+
+## Identifying your console
+
+Determining which console you have attached to can sometimes be confusing.
+Below we show representative output of the more relevant consoles to help.
+
+### MCC console
+The MCC console usually sits at a prompt like
+```
+Cmd>
+```
+On a soft-reboot the output looks like:
+```console
+{{#include mcc-reboot.txt}}
+```
+
+### PCC console
+The PCC console usually sits at a prompt like:
+```
+pcc_cli>
+```
+On soft-reboot the output looks like:
+```
+{{#include pcc-reboot.txt}}
+```
+
+Note: the colored prompt on the PCC console breaks the "<new-line>~."
+pattern of exiting `cu` on MacOS and you may have to kill your
+session should you connect.
+
+### SCP console
+You should not need to connect to the SCP console, but if USB device
+probing causes the converters to be probed in an unexpected order,
+you may see this reboot output instead of the expected connection
+to the MCC console.
+
+```
+{{#include scp-reboot.txt}}}
+```

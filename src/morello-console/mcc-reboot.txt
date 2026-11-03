@@ -1,0 +1,129 @@
+Rebooting...
+Disabling debug USB..
+
+MCC to access SD card request acknowledged.
+Clear ULINK JTAG
+Board rebooting...
+
+Powering up system...
+
+MCC to access SD card request acknowledged.
+Clear ULINK JTAG
+
+Time :  10:50:07 
+Date :  03:11:2026 
+
+Switching on ATXPSU...
+Switching on main power...
+
+12V Rail Check Pass
+
+Reading Board File \MB\HBI0364B\io_v010f.txt
+TOTAL OSCCLKS: 15
+PMIC RAM configuration (80_1_86G.bin)...
+
+Temperature (deg C)
+Outlet = 28.9 PMIC   = 40.2 SoC = 33.9 IN2  = 31.9 IN1 = 28.9 
+MidBrd = 41   PCIeSW = 48   MCC = 32.0 FPGA = 35.0 SoC Fan Speed = 9%
+ALERT off
+
+Configuring motherboard (rev B, var A)...
+
+Configuring FPGA from file \MB\HBI0364B\io_v010f.bit
+Address: 0x007E0000
+FPGA configuration complete.
+
+Config clocks num: 15
+OSCCLK0  : 50.000000MHz
+OSCCLK1  : 50.000000MHz
+OSCCLK2  : 50.000000MHz
+OSCCLK3  : 50.000000MHz
+OSCCLK4  : 50.000000MHz
+OSCCLK5  : 50.000000MHz
+OSCCLK6  : 50.000000MHz
+OSCCLK7  : 50.000000MHz
+OSCCLK8  : 75.000000MHz
+OSCCLK9  : 85.000000MHz
+OSCCLK10  : 12.288000MHz
+OSCCLK11  : 50.000000MHz
+OSCCLK12  : 50.000000MHz
+OSCCLK13  : 50.000000MHz
+OSCCLK14  : 170.000000MHz
+OSCCLK setup: PASSED
+GTXCLK setup: PASSED
+
+EEPROM config found
+File to compare \MB\HBI0364B\pci_v002.bin \MB\HBI0364B\pci_v002.bin
+Writing SCC 0x014 with ACLK 50000000 Hz
+Writing SCC 0x00C with 0x00000003
+Writing SCC 0x020 with 0x11090805
+Writing SCC 0x024 with 0x06060606
+Writing SCC 0x028 with 0x00000606
+Writing SCC 0x1160 with 0x00000001
+Writing SCC 0x1164 with 0x01000000
+Writing SCC 0x1168 with 0x00000000
+Writing SCC 0x116C with 0x00000000
+Writing SCC 0x1180 with 0x00000000
+Writing SCC 0x1184 with 0x0000000C
+Writing SCC 0x1188 with 0x00000000
+Writing SCC 0x118C with 0x00000000
+Writing SCC 0x1190 with 0x00000000
+Writing SCC 0x1194 with 0x00000000
+Writing SCC 0x1198 with 0x00000000
+Writing SCC 0x119C with 0x00000000
+Reading SCC 0xFF8 with 0x0A364A08
+Reading SCC 0xFFC with 0x41050000
+
+QSPI Controller detected id = 0x4000303
+Device ID 0x20, 0xBB, 0x19
+Setting QSPI dummy clocks...
+Dummy clocks already set
+Device ID 0x20, 0xBB, 0x19
+QSPI Controller detected id = 0x4000303
+Device ID 0x20, 0xBB, 0x19
+Setting QSPI dummy clocks...
+Dummy clocks already set
+Device ID 0x20, 0xBB, 0x19
+QSPI Controller detected id = 0x4000303
+Device ID 0x20, 0xBB, 0x19
+Setting QSPI dummy clocks...
+Dummy clocks already set
+Device ID 0x20, 0xBB, 0x19
+
+Reading images file \MB\HBI0364B\images.txt
+
+PCIe NIC MAC address = 0002 F700A475
+PCC MAC address = 0002 F700A474
+LAN9221 was identified successfully.
+MAC addrs test: PASSED
+
+SMC MAC address 0002-F700-A476
+
+Identifying DDR 0
+
+Device Information
+Manufacturer ID = 80 2C
+Module Part Number = 18ASF4G72PDZ-3G2F1  
+Module Serial Number = D0 9E CB CF
+
+Identifying DDR 1
+
+Device Information
+Manufacturer ID = 80 2C
+Module Part Number = 18ASF4G72PDZ-3G2F1  
+Module Serial Number = D0 9E CB CB
+
+Setting System LEDs[7:4]
+Setting PCIe_nPERST/PCIESW_PERSTN
+PCIe control C2C disabled
+APUART0 connected to USBPORT_3
+SCPUART connected to USBPORT_4
+MCPUART connected to USBPORT_5
+PL031 Date & Time set = Tue Nov  3 10:50:26 2026
+
+QSPI test (0x6403FEF8):0xFFFFFFFF
+Releasing SOC_nPOR/SOC_nSRST
+Setting I2C_MUX to SCP
+USB Serial Number = 50051023C232
+Cmd> 
+
