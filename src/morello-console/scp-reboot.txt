@@ -1,0 +1,31 @@
+[    0.000000]  ___  ___ ___      __ _
+[    0.000000] / __|/ __| _ \___ / _(_)_ _ _ ____ __ ____ _ _ _ ___
+[    0.000000] \__ | (__|  _|___|  _| | '_| '  \ V  V / _` | '_/ -_)
+[    0.000000] |___/\___|_|     |_| |_|_| |_|_|_\_/\_/\__,_|_| \___|
+[    0.000000] 
+[    0.000000] v2.7.0_2020-11-19_07-20-34-d49e1335
+[    0.000000] 
+[    0.000000] [FWK] Module initialization complete!
+[    0.000000] [ROM] Trying to identify FIP at 0x30000000
+[    0.000000] [ROM] Located MCP_BL2:
+[    0.000000] [ROM]   address: 0x30000060
+[    0.000000] [ROM]   size   : 30896
+[    0.000000] [ROM]   flags  : 0x0000000000000000
+[    0.000000] [ROM] Copying MCP_BL2 to ITCRAM...!
+[    0.000000] [ROM] Done!
+[    0.000000] [ROM] Jumping to MCP_BL2
+[    0.000000]  ___  ___ ___      __ _
+[    0.000000] / __|/ __| _ \___ / _(_)_ _ _ ____ __ ____ _ _ _ ___
+[    0.000000] \__ | (__|  _|___|  _| | '_| '  \ V  V / _` | '_/ -_)
+[    0.000000] |___/\___|_|     |_| |_|_| |_|_|_\_/\_/\__,_|_| \___|
+[    0.000000] 
+[    0.000000] 1.8_c0d655b
+[    0.000000] 
+[    0.000000] [FWK] Module initialization complete!
+[    0.000000] [MCP SYSTEM] Waiting for handshake pattern from SCP...
+[    0.933689] [MCP SYSTEM] Handshake pattern received from SCP.
+[    1.126754] [MCP SYSTEM] Found management protocol version: 0x10000
+[    1.130308] [MCP SYSTEM] SCP clock status: 0x1
+[    1.134636] [MCP SYSTEM] MCP PIK clocks configured
+[    1.139456] [MCP SYSTEM] MC Mode: 0x0 CHIPID: 0x0
+[    1.144091] [MCP SYSTEM] MCP Initialization completed

@@ -17,6 +17,7 @@
   - [Building image files](building/README.md)
   - [Updating an existing system](updating/README.md)
 - [CheriBSD on an Arm Morello board](morello/README.md)
+  - [I/O Ports on the Morello board](morello-ports/README.md)
   - [Accessing the Morello console](morello-console/README.md)
   - [Upgrading the Morello firmware](morello-firmware/README.md)
   - [Installing on a Morello board](morello-install/README.md)
