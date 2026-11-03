@@ -12,12 +12,12 @@ including:
 * Flash storage used for firmware (an on-board SD card)
 * Two 4-port USB-to-serial converters
 
-Each controller has a unique serial number ending in the letter "A" or B".
-The serial-port converters attach to UARTs associated with:
+The first three ports of one of the USB-to-serial converters (usually the first)
+will be the:
 
-* The MCC management microcontroller (converter B port 0)
-* The PCC management microcontroller (converter B port 1)
-* The Morello system console (converter B port 2)
+* The MCC management microcontroller console
+* The PCC management microcontroller console
+* The Morello system console
 
 In normal use, only the MCC and Morello system console ports will be used.
 You can connect to these using a serial access tool such as cu(1), or a full
@@ -46,15 +46,21 @@ access the MCC and Morello consoles are:
 
 ## Connecting from Apple macOS
 
+Each converter has a unique serial number ending in the letter "A" or B".
+
 macOS creates `/dev/cu.usbserial-` device nodes that embed the device
 serial number (including `A` or `B`) and port number.
-Typical command lines to access the MCC and Morello consoles are:
+Typical command lines to access the MCC and Morello consoles look like:
 
 - MCC console: `cu -s 115200 -l /dev/cu.usbserial-00FT41683097B0`
 - Morello console: `cu -s 115200 -l /dev/cu.usbserial-00FT41683097B2`
 
 You will need to substitute the serial numbers of the USB converters in your
 specific Morello board for these commands to work.
+Depending on your configuration, the desired consoles may be attached to the
+"A" or "B" converter.
+See the section below on [Identifying your console](#identifying-your-console)
+to see which your system is using.
 
 ## Connecting from Windows
 
