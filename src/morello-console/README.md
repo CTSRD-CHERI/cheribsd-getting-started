@@ -3,8 +3,9 @@
 You can manage the Morello board, including reaching its multiple serial
 consoles and firmware flash storage, via a USB cable connected to a second
 computer -- typically a workstation or remote management server.
-When you plug the USB cable into your workstation, a number of different
-devices will attach (depending on device drivers on your workstation),
+When you plug the USB cable into the USB-B port (labled **DBG USB**) of
+your workstation, a number of different devices will attach (depending on
+device drivers on your workstation and Morello firmware configuration),
 including:
 
 * Arm Morello USB debug and trace
